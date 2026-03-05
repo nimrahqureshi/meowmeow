@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Basic Meta -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO -->
+  <title>About Us | MeowMeow</title>
+  <meta name="description"
+        content="MeowMeow - Discover the best pet products, fashion, toys, cosmetics, shoes, jewelry, and more. We compare top deals from Amazon, Daraz, Temu & AliExpress." />
+  <meta name="keywords"
+        content="affiliate store, pet products, fashion deals, toys, cosmetics, jewelry, shoes, Amazon affiliate, Daraz deals, Temu products" />
+  <meta name="author" content="MeowMeow" />
+
+  <!-- Open Graph (Social Sharing) -->
+  <meta property="og:title" content="MeowMeow - Best Affiliate Deals Online" />
+  <meta property="og:description"
+        content="Compare top deals across multiple platforms and shop smarter with MeowMeow." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="images/logo.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS FILES (ORDER MATTERS) -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/buttons.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-theme="light"></body>
+<!-- ====== SCROLL PROGRESS BAR ====== -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+
+    <!-- Logo -->
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">
+        <i class="fas fa-paw"></i>
+      </div>
+      <span class="logo-text">
+        Meow<span class="logo-highlight">Meow</span>
+      </span>
+    </a>
+
+    <!-- Search Bar -->
+    <div class="nav-search" id="navSearch">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text"
+               id="searchInput"
+               placeholder="Search products..."
+               autocomplete="off" />
+        <button class="search-clear" id="searchClear">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+
+      <!-- Search Toggle (Mobile) -->
+      <button class="nav-btn search-toggle" id="searchToggle">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <!-- Cart -->
+      <a href="cart.html" class="nav-btn cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <!-- Theme Toggle -->
+      <button class="nav-btn theme-toggle" id="themeToggle">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="nav-btn menu-toggle" id="menuToggle">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ====== MOBILE OVERLAY ====== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ====== MOBILE MENU ====== -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <i class="fas fa-paw"></i>
+        </div>
+        <span class="logo-text">
+          Meow<span class="logo-highlight">Meow</span>
+        </span>
+      </a>
+      <button class="mobile-close" id="mobileClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+
+    <div class="mobile-theme-switch">
+      <span>Dark Mode</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="mobileThemeToggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+  </div>
+</nav>
+
+<main id="mainContent">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>🐾 About MeowMeow</h1>
+      <p>We help you discover the best products — so you shop smarter, not harder.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <span>About Us</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERO ABOUT SECTION -->
+  <section class="section about-hero">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1547658719-da2b512dfd6d?w=500&h=500&fit=crop&auto=format" alt="Happy shopper with packages" loading="lazy" />
+        </div>
+        <div class="about-text">
+          <h2>Who We Are</h2>
+          <p>
+            MeowMeow is a free online product discovery platform helping shoppers find the best deals across fashion, beauty, electronics, home, pets, and more — for women, men, kids, and even your furry friends.
+          </p>
+          <p>
+            We’re not a store. We’re your shopping sidekick — researching, comparing, and curating top-rated products from Amazon, Daraz, Temu, AliExpress, and other trusted global marketplaces.
+          </p>
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number" data-count="25000">0</span>
+              <span class="stat-label">Products Reviewed</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="8900">0</span>
+              <span class="stat-label">Customer Reviews</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-count="97">0</span>
+              <span class="stat-label">% User Satisfaction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header center">
+        <h2>🔍 What We Do</h2>
+        <p class="section-subtitle">Real research. Real recommendations. Zero fluff.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-search"></i></div>
+          <h3>Product Research</h3>
+          <p>We spend hours testing, reading reviews, and comparing specs so you don’t have to.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-tags"></i></div>
+          <h3>Price Comparison</h3>
+          <p>See which marketplace offers the best deal — including coupons and shipping costs.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-hand-holding-heart"></i></div>
+          <h3>Honest Reviews</h3>
+          <p>No sponsored posts. Just real opinions based on performance, value, and user feedback.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon"><i class="fas fa-link"></i></div>
+          <h3>Affiliate Transparency</h3>
+          <p>Some links earn us a small commission (at no cost to you) — helping keep MeowMeow free.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR GOAL -->
+  <section class="section light-bg">
+    <div class="container">
+      <div class="section-header center">
+        <h2>🎯 Our Goal</h2>
+        <p class="section-subtitle">Empowering smarter, stress-free shopping for everyone.</p>
+      </div>
+
+      <div class="goal-content">
+        <p>
+          Shopping online should be fun — not frustrating. With thousands of products and endless reviews, it’s easy to feel overwhelmed. That’s where we come in.
+        </p>
+        <p>
+          Whether you’re buying shoes for a wedding, toys for your toddler, a smartwatch for fitness, or a cozy bed for your golden retriever — we cut through the noise and show you what’s truly worth your money.
+        </p>
+        <blockquote>
+          “We believe everyone deserves access to honest, well-researched buying guides — regardless of budget.”
+        </blockquote>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEET THE TEAM (Optional) -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header center">
+        <h2>👥 Meet Our Team</h2>
+        <p class="section-subtitle">Passionate shoppers, researchers, and pet lovers behind the scenes.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-member">
+          <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Sarah M." />
+          <h4>Sarah M.</h4>
+          <p><small>Fashion & Beauty Editor</small></p>
+          <p>Former retail buyer with 8+ years in trend forecasting.</p>
+        </div>
+        <div class="team-member">
+          <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="James K." />
+          <h4>James K.</h4>
+          <p><small>Tech & Toys Specialist</small></p>
+          <p>Engineer by day, dad & toy tester by night.</p>
+        </div>
+        <div class="team-member">
+          <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Priya S." />
+          <h4>Priya S.</h4>
+          <p><small>Home & Lifestyle Guru</small></p>
+          <p>Interior stylist who finds luxury dupes under $20.</p>
+        </div>
+        <div class="team-member">
+          <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="David T." />
+          <h4>David T.</h4>
+          <p><small>Pet Care Advisor</small></p>
+          <p>Veterinary assistant & proud dog dad of Max 🐶.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="section light-bg">
+    <div class="container">
+      <div class="section-header center">
+        <h2>❓ Frequently Asked Questions</h2>
+        <p class="section-subtitle">Everything you’ve wondered about MeowMeow.</p>
+      </div>
+
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Is MeowMeow a store? Do you sell products?</h3>
+          <p>Nope! We don’t sell anything. We’re a free guide that helps you find and compare the best products from real online stores like Amazon, Daraz, Temu, and AliExpress.</p>
+        </div>
+        <div class="faq-item">
+          <h3>How do you make money?</h3>
+          <p>Some of our links are affiliate links. If you buy through them, we may earn a small commission — at absolutely no extra cost to you. This helps us keep the lights on and the content free!</p>
+        </div>
+        <div class="faq-item">
+          <h3>Are your reviews biased?</h3>
+          <p>Never. We purchase or test most products ourselves, and base reviews on real performance, customer feedback, and value. We reject paid placements and sponsored rankings.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Can I suggest a product or category?</h3>
+          <p>Absolutely! We love hearing from our readers. Use our <a href="contact.html">Contact Form</a> or email us at hello@meowmeow.com.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Do you cover international shipping?</h3>
+          <p>Yes! We always note if a product ships to your region and highlight any customs or delivery time considerations.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER CTA -->
+  <section class="section newsletter-section">
+    <div class="container">
+      <div class="newsletter-card">
+        <div class="newsletter-content">
+          <h2><i class="fas fa-envelope-open-text"></i> Join Our Community</h2>
+          <p>Get weekly product roundups, exclusive deals, and shopping tips — straight to your inbox.</p>
+        </div>
+        <form class="newsletter-form" id="aboutNewsletterForm">
+          <div class="form-group">
+            <input type="email" placeholder="Your email address" required aria-label="Subscribe to MeowMeow updates">
+            <button type="submit" class="btn btn-cta btn-3d">
+              <i class="fas fa-paper-plane"></i> Subscribe Free
+            </button>
+          </div>
+          <p class="form-note"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ====== FOOTER ====== -->
+ <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+      </svg>
+    </div>
+
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-grid">
+
+            <!-- Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <div class="logo-icon"><i class="fas fa-paw"></i></div>
+            <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+          </a>
+          <p>
+            MeowMeow is an independent product discovery and comparison website. 
+            We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more — so you can shop smarter and save.
+          </p>
+
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Hot Deals</a></li>
+            <li><a href="products.html">Categories</a></li>
+            <li><a href="products.html">Trending</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div class="footer-links-group">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="help.html">Help Center</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="cookie.html">Cookie Policy</a></li>
+            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+            <li><a href="dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- TOP ROW (Newsletter + Disclosure) -->
+      <div class="footer-top-row">
+
+        
+
+        <p class="footer-disclosure">
+          Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.
+        </p>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="footer-bottom">
+
+        <p class="footer-copy">
+          &copy; 2026 MeowMeow. All rights reserved.
+        </p>
+
+        <p class="footer-contact">
+          Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a>
+        </p> 
+
+        <div class="footer-payments">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+          <i class="fab fa-cc-amex"></i>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ====== BACK TO TOP ====== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ====== TOAST NOTIFICATION ====== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- JS Files -->
+<!-- JS FILES -->
+<script src="js/navbar.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/scroll.js"></script>
+<script src="js/search.js"></script>
+<script src="js/affiliate.js"></script>
+<script src="js/script.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

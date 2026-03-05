@@ -1,0 +1,130 @@
+/* ============================
+   LEGAL.CSS — PRIVACY, TERMS, DISCLOSURE STYLES
+   ============================ */
+
+.legal-section {
+  padding: 60px 0;
+}
+
+.legal-content {
+  background: var(--bg-secondary);
+  padding: 40px;
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-md);
+  line-height: 1.7;
+  font-size: 1.05rem;
+  border: 1px solid var(--border);
+}
+
+.legal-content h2 {
+  font-size: 1.6rem;
+  margin: 35px 0 15px;
+  color: var(--text-primary);
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--border);
+  font-family: var(--font-heading);
+}
+
+.legal-content p,
+.legal-content ul {
+  margin-bottom: 20px;
+  color: var(--text-secondary);
+}
+
+.legal-content ul {
+  padding-left: 25px;
+}
+
+.legal-content li {
+  margin-bottom: 8px;
+}
+
+.last-updated {
+  background: var(--bg-tertiary);
+  padding: 12px 20px;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  color: var(--text-secondary);
+  display: inline-block;
+  margin-bottom: 30px;
+  font-size: 0.9rem;
+}
+
+/* ===== CONTACT BOX ===== */
+.contact-info-box {
+  background: var(--accent-light);
+  padding: 25px;
+  border-radius: var(--radius-lg);
+  margin: 25px 0;
+  border-left: 4px solid var(--accent);
+}
+
+.contact-info-box p {
+  margin: 8px 0;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.contact-info-box i {
+  color: var(--accent);
+  margin-right: 8px;
+}
+
+/* ===== ACKNOWLEDGEMENT ===== */
+.acknowledgement {
+  background: rgba(40, 167, 69, 0.1);
+  padding: 20px;
+  border-radius: var(--radius-lg);
+  margin-top: 30px;
+  text-align: center;
+  font-style: italic;
+  color: var(--success);
+  border: 1px solid rgba(40, 167, 69, 0.2);
+}
+
+.acknowledgement i {
+  margin-right: 8px;
+  color: var(--success);
+}
+
+/* ===== DMCA NOTICE ===== */
+.dmca-notice {
+  background: var(--bg-tertiary);
+  padding: 25px;
+  border-radius: var(--radius-lg);
+  margin: 25px 0;
+  font-family: monospace;
+  border: 1px dashed var(--border);
+}
+
+.dmca-notice p {
+  margin: 8px 0;
+  color: var(--text-primary);
+}
+
+/* ===== ALERT BOXES ===== */
+.alert-box {
+  background: #e3f2fd;
+  padding: 20px;
+  border-radius: var(--radius-md);
+  margin: 30px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #0d47a1;
+  border-left: 4px solid #2196f3;
+}
+
+.alert-warning {
+  background: #fff8e1;
+  color: #ff6f00;
+  border-left-color: #ffc107;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .legal-content {
+    padding: 25px;
+    font-size: 1rem;
+  }
+}

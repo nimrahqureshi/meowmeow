@@ -1,0 +1,319 @@
+/* ============================
+   RESPONSIVE DESIGN
+   ============================ */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+
+  .hero-content {
+    order: 1;
+  }
+
+  .hero-subtitle {
+    margin: 0 auto 32px;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+
+  .hero-stats {
+    justify-content: center;
+  }
+
+  .hero-visual {
+    order: 0;
+    min-height: 350px;
+  }
+
+  .hero-card-stack {
+    width: 280px;
+    height: 370px;
+  }
+
+  .floating-card {
+    width: 200px;
+  }
+
+  .floating-card img {
+    height: 130px;
+  }
+
+  .trending-grid {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .trending-card.large {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    height: 350px;
+  }
+
+  .trending-card {
+    height: 250px;
+  }
+
+  .newsletter-card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  html {
+    font-size: 15px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 100px 0 60px;
+  }
+
+  .hero-visual {
+    display: none;
+  }
+
+  .hero-badge {
+    font-size: 0.8rem;
+  }
+
+  .hero-stats {
+    gap: 24px;
+  }
+
+  .stat-number {
+    font-size: 1.5rem;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 12px;
+  }
+
+  .category-card {
+    padding: 24px 16px;
+  }
+
+  .category-icon {
+    width: 56px;
+    height: 56px;
+    font-size: 1.3rem;
+  }
+
+  .trending-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .trending-card.large {
+    height: 280px;
+  }
+
+  .trending-card {
+    height: 200px;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .newsletter-card {
+    padding: 30px 20px;
+  }
+
+  .newsletter-form .form-group {
+    flex-direction: column;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-form {
+    padding: 24px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .deal-timer {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .timer-block {
+    min-width: 60px;
+    padding: 8px 12px;
+  }
+
+  .timer-number {
+    font-size: 1.4rem;
+  }
+
+  .back-to-top {
+    width: 44px;
+    height: 44px;
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .marketplace-logos {
+    gap: 24px;
+  }
+
+  .marketplace-item span {
+    display: none;
+  }
+
+  .marketplace-item i {
+    font-size: 2.2rem;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+
+  .container {
+    width: 95%;
+  }
+
+  .hero-cta {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .hero-cta .btn {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .hero-stats {
+    flex-wrap: wrap;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Large Desktop */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+  }
+
+  .hero-title {
+    font-size: 4rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print */
+@media print {
+  .navbar,
+  .back-to-top,
+  .scroll-progress,
+  .affiliate-disclosure,
+  .newsletter-section,
+  .footer {
+    display: none !important;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+}
+/* Footer responsive layout */
+
+@media (min-width: 768px) {
+  .footer-bottom {
+    flex-direction: row;
+    text-align: left;
+  }
+
+  .footer-newsletter {
+    max-width: 400px;
+  }
+
+  .footer-disclosure {
+    text-align: right;
+    max-width: 450px;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .footer-newsletter form {
+    flex-direction: column;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+  }
+}
