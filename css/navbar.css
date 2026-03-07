@@ -1,179 +1,377 @@
-/* =========================
-   NAVBAR
-========================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modern Glass Navbar</title>
+  <style>
+    :root {
+      --navbar-height: 70px;
+      --transition: 0.3s ease;
+      --primary: #ff7a00;
+      --text-primary: #111;
+      --text-secondary: #555;
+      --bg-glass: rgba(255, 255, 255, 0.85);
+      --border: #e5e7eb;
+      --accent: #ff7a00;
+      --accent-light: rgba(255, 122, 0, 0.1);
+      --radius-md: 10px;
+      --radius-full: 30px;
+    }
 
-:root{
-  --navbar-height:70px;
-  --transition:0.3s ease;
-}
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: #f9fafb;
+      color: var(--text-primary);
+      transition: var(--transition);
+    }
 
-.navbar{
-  position:fixed;
-  top:0;
-  left:0;
-  right:0;
-  height:var(--navbar-height);
-  backdrop-filter:blur(12px);
-  background:rgba(255,255,255,0.8);
-  border-bottom:1px solid #e5e7eb;
-  z-index:1000;
-}
+    body.dark {
+      background: #0f0f0f;
+      color: #fff;
+    }
 
-body.dark .navbar{
-  background:rgba(20,20,20,0.85);
-  border-color:#333;
-}
+    body.dark .navbar {
+      background: rgba(20, 20, 20, 0.85);
+      border-color: #333;
+    }
 
-.nav-container{
-  max-width:1400px;
-  margin:auto;
-  height:100%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:0 20px;
-}
+    /* ===== Navbar ===== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: var(--navbar-height);
+      background: var(--bg-glass);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      z-index: 1000;
+      transition: var(--transition);
+    }
 
-/* Logo */
+    .nav-container {
+      max-width: 1400px;
+      margin: auto;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      gap: 16px;
+    }
 
-.nav-logo{
-  display:flex;
-  align-items:center;
-  gap:10px;
-  text-decoration:none;
-}
+    /* ===== Logo ===== */
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
 
-.logo-icon{
-  width:40px;
-  height:40px;
-  background:linear-gradient(45deg,#ff7a00,#ffb347);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:white;
-  border-radius:8px;
-}
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(45deg, var(--primary), #ffb347);
+      border-radius: var(--radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
 
-.logo-text{
-  font-weight:700;
-  font-size:20px;
-  color:#111;
-}
+    .nav-logo:hover .logo-icon {
+      transform: rotate(15deg) scale(1.1);
+    }
 
-body.dark .logo-text{
-  color:white;
-}
+    .logo-text {
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--text-primary);
+    }
 
-/* Nav Links */
+    /* ===== Nav Links ===== */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
 
-.nav-links{
-  display:flex;
-  gap:10px;
-}
+    .nav-link {
+      padding: 8px 14px;
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-weight: 500;
+      transition: var(--transition);
+    }
 
-.nav-link{
-  padding:8px 14px;
-  border-radius:30px;
-  text-decoration:none;
-  color:#555;
-  font-weight:500;
-  transition:var(--transition);
-}
+    .nav-link:hover,
+    .nav-link.active {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
 
-.nav-link:hover{
-  background:#f3f4f6;
-  color:#ff7a00;
-}
+    /* ===== Actions ===== */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
 
-body.dark .nav-link{
-  color:#ddd;
-}
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: var(--transition);
+    }
 
-body.dark .nav-link:hover{
-  background:#222;
-}
+    .nav-btn:hover {
+      background: #f1f1f1;
+    }
 
-/* Actions */
+    body.dark .nav-btn:hover {
+      background: #222;
+    }
 
-.nav-actions{
-  display:flex;
-  gap:10px;
-}
+    /* ===== Search ===== */
+    .nav-search {
+      flex: 1;
+      max-width: 420px;
+      position: relative;
+    }
 
-.nav-btn{
-  width:40px;
-  height:40px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  cursor:pointer;
-}
+    .nav-search input {
+      width: 100%;
+      padding: 10px 16px 10px 42px;
+      border-radius: var(--radius-full);
+      border: 2px solid var(--border);
+      background: rgba(255, 255, 255, 0.8);
+      color: var(--text-primary);
+      font-size: 0.9rem;
+      transition: var(--transition);
+    }
 
-.nav-btn:hover{
-  background:#f1f1f1;
-}
+    .nav-search input:focus {
+      border-color: var(--accent);
+      background: #fff;
+      outline: none;
+    }
 
-body.dark .nav-btn:hover{
-  background:#222;
-}
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #777;
+    }
 
-/* Mobile Menu */
+    /* ===== Hamburger ===== */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+    }
 
-.menu-toggle{
-  display:none;
-  cursor:pointer;
-}
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
 
-.hamburger{
-  display:flex;
-  flex-direction:column;
-  gap:4px;
-}
+    .hamburger span {
+      width: 22px;
+      height: 2.5px;
+      background: var(--text-primary);
+      border-radius: 3px;
+      transition: var(--transition);
+    }
 
-.hamburger span{
-  width:22px;
-  height:2px;
-  background:#333;
-}
+    .menu-toggle.active .hamburger span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+    .menu-toggle.active .hamburger span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active .hamburger span:nth-child(3) {
+      transform: rotate(-45deg) translate(5px, -5px);
+    }
 
-body.dark .hamburger span{
-  background:white;
-}
+    /* ===== Mobile Menu ===== */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 300px;
+      max-width: 85vw;
+      height: 100vh;
+      background: #fff;
+      z-index: 1100;
+      overflow-y: auto;
+      transition: var(--transition);
+      box-shadow: -5px 0 20px rgba(0, 0, 0, 0.1);
+    }
 
-/* Sidebar */
+    body.dark .mobile-menu {
+      background: #111;
+    }
 
-.mobile-menu{
-  position:fixed;
-  right:-300px;
-  top:0;
-  height:100%;
-  width:260px;
-  background:white;
-  transition:0.3s;
-  padding:20px;
-  z-index:1100;
-}
+    .mobile-menu.active {
+      right: 0;
+    }
 
-body.dark .mobile-menu{
-  background:#111;
-}
+    .mobile-nav-links {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 20px;
+    }
 
-.mobile-menu.active{
-  right:0;
-}
+    .mobile-nav-links a {
+      text-decoration: none;
+      color: var(--text-primary);
+      font-size: 1rem;
+      padding: 10px 14px;
+      border-radius: var(--radius-md);
+      transition: var(--transition);
+    }
 
-.mobile-nav-links{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-}
+    .mobile-nav-links a:hover {
+      background: var(--accent-light);
+      color: var(--accent);
+    }
 
-.mobile-nav-links a{
-  text-decoration:none;
-  color:#333;
-}
+    /* ===== Theme Toggle ===== */
+    .theme-switch {
+      position: relative;
+      width: 50px;
+      height: 26px;
+    }
 
-body.dark .mobile-nav-links a{
-  color:white;
-}
+    .theme-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .toggle-slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: #ccc;
+      border-radius: 30px;
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .toggle-slider::before {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      left: 3px;
+      bottom: 3px;
+      background: #fff;
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+
+    .theme-switch input:checked + .toggle-slider {
+      background: var(--accent);
+    }
+
+    .theme-switch input:checked + .toggle-slider::before {
+      transform: translateX(24px);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .nav-links,
+      .nav-search {
+        display: none;
+      }
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo">
+        <div class="logo-icon">K</div>
+        <div class="logo-text">Krypto</div>
+      </a>
+
+      <div class="nav-search">
+        <span class="search-icon">🔍</span>
+        <input type="text" placeholder="Search...">
+      </div>
+
+      <div class="nav-links">
+        <a href="#" class="nav-link active">Home</a>
+        <a href="#" class="nav-link">Explore</a>
+        <a href="#" class="nav-link">About</a>
+        <a href="#" class="nav-link">Contact</a>
+      </div>
+
+      <div class="nav-actions">
+        <div class="nav-btn" id="themeToggle">
+          <label class="theme-switch">
+            <input type="checkbox" id="themeCheck">
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div class="nav-btn">🛒</div>
+        <div class="nav-btn">👤</div>
+        <div class="menu-toggle" id="menuToggle">
+          <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-nav-links">
+      <a href="#">Home</a>
+      <a href="#">Explore</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+
+    menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+
+    // Theme Switcher
+    const themeCheck = document.getElementById('themeCheck');
+    themeCheck.addEventListener('change', () => {
+      document.body.classList.toggle('dark');
+    });
+  </script>
+</body>
+</html>
