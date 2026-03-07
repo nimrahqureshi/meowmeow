@@ -40,22 +40,3 @@ console.log(
 console.log('%cBuilt with ❤️ for pet lovers everywhere!', 'color: #7C3AED; font-size: 12px;');
 
 
-const menu = document.querySelector(".mobile-menu");
-const overlay = document.querySelector(".mobile-overlay");
-const toggle = document.querySelector(".menu-toggle");
-const closeBtn = document.querySelector(".mobile-close");
-
-toggle.addEventListener("click", () => {
-  menu.classList.toggle("active");
-  overlay.classList.toggle("active");
-});
-
-closeBtn.addEventListener("click", () => {
-  menu.classList.remove("active");
-  overlay.classList.remove("active");
-});
-
-overlay.addEventListener("click", () => {
-  menu.classList.remove("active");
-  overlay.classList.remove("active");
-});
