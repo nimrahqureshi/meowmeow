@@ -36,4 +36,26 @@ console.log(
   'background: linear-gradient(135deg, #7C3AED, #F472B6); color: white; font-size: 18px; font-weight: bold; padding: 8px 12px; border-radius: 8px 0 0 8px;',
   'background: #1e293b; color: #f1f5f9; font-size: 14px; padding: 8px 12px; border-radius: 0 8px 8px 0;'
 );
+
 console.log('%cBuilt with ❤️ for pet lovers everywhere!', 'color: #7C3AED; font-size: 12px;');
+
+
+const menu = document.querySelector(".mobile-menu");
+const overlay = document.querySelector(".mobile-overlay");
+const toggle = document.querySelector(".menu-toggle");
+const closeBtn = document.querySelector(".mobile-close");
+
+toggle.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  overlay.classList.toggle("active");
+});
+
+closeBtn.addEventListener("click", () => {
+  menu.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+overlay.addEventListener("click", () => {
+  menu.classList.remove("active");
+  overlay.classList.remove("active");
+});
