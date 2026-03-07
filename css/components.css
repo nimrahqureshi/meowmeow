@@ -1,4 +1,3 @@
-
 /* ============================
    COMPONENTS.CSS — REUSABLE UI BLOCKS
    ============================ */
@@ -7,7 +6,7 @@
 .newsletter-card {
   background: linear-gradient(135deg, var(--accent), var(--cta));
   color: white;
-  padding: 40px;
+  padding: 40px 20px;
   border-radius: var(--radius-xl);
   text-align: center;
   box-shadow: var(--shadow-lg);
@@ -23,10 +22,12 @@
   display: flex;
   max-width: 500px;
   margin: 20px auto;
+  flex-wrap: wrap; /* mobile wrap */
 }
 
 .newsletter-form input {
   flex: 1;
+  min-width: 200px;
   padding: 15px;
   border: none;
   border-radius: var(--radius-md) 0 0 var(--radius-md);
@@ -40,10 +41,26 @@
   background: #fff;
   color: var(--accent);
   font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition-fast);
 }
 
 .newsletter-form button:hover {
   background: rgba(255,255,255,0.9);
+}
+
+/* Small mobile input stack */
+@media (max-width: 480px) {
+  .newsletter-form .form-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .newsletter-form input {
+    border-radius: var(--radius-md);
+  }
+  .newsletter-form button {
+    border-radius: var(--radius-md);
+  }
 }
 
 .form-note {
@@ -106,7 +123,7 @@
 
 .feature-card {
   background: var(--bg-secondary);
-  padding: 30px;
+  padding: 30px 20px;
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-md);
   text-align: center;
@@ -127,7 +144,7 @@
 /* ===== TEAM GRID ===== */
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 30px;
   margin-top: 40px;
 }
@@ -171,6 +188,7 @@
 .faq-list {
   max-width: 800px;
   margin: 40px auto 0;
+  padding: 0 10px; /* mobile padding */
 }
 
 .faq-item {
@@ -206,6 +224,7 @@
   font-size: 0.9rem;
   color: var(--text-tertiary);
   margin-top: 10px;
+  flex-wrap: wrap; /* mobile wrap */
 }
 
 .breadcrumb a {
@@ -218,7 +237,7 @@
 
 /* ===== PAGE HEADER ===== */
 .page-header {
-  padding: 80px 0 40px;
+  padding: 80px 20px 40px;
   text-align: center;
   background: var(--bg-tertiary);
   border-bottom: 1px solid var(--border);
@@ -265,13 +284,14 @@
   max-width: 500px;
   margin: 0 auto 30px;
 }
-/* Filter Buttons */
+
+/* ===== FILTER BUTTONS ===== */
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
   justify-content: center;
-  padding: 20px 0;
+  padding: 20px 10px;
   margin-bottom: 30px;
   background: var(--bg-tertiary);
   border-radius: var(--radius-lg);
@@ -312,11 +332,12 @@
 .filter-btn i {
   font-size: 1rem;
 }
-/* Subcategory Bar */
+
+/* ===== SUBCATEGORY BAR ===== */
 .subcategory-bar {
   background: var(--bg-tertiary);
   border-radius: var(--radius-lg);
-  padding: 20px;
+  padding: 20px 10px;
   margin: 20px 0;
   box-shadow: var(--shadow-sm);
 }
@@ -347,3 +368,22 @@
   font-weight: 600;
 }
 
+/* ===== RESPONSIVE FIXES ===== */
+@media (max-width: 768px) {
+  .features-grid, .team-grid {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+  .about-stats {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .page-header h1 {
+    font-size: 2rem;
+  }
+  .page-header p {
+    font-size: 1rem;
+  }
+  .faq-list {
+    padding: 0 15px;
+  }
+}
