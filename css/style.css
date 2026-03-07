@@ -5,13 +5,32 @@
 @charset "UTF-8";
 
 /* ============================
-   IMPORT EXTERNAL RESOURCES FIRST
+   GLOBAL RESET
+   ============================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+  font-family: "Inter", system-ui, sans-serif;
+  background: #ffffff;
+  color: #111827;
+}
+
+/* ============================
+   IMPORT EXTERNAL RESOURCES
    ============================ */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css');
 
 /* ============================
-   DEFINE VARIABLES BEFORE ANYTHING ELSE
+   VARIABLES
    ============================ */
 :root {
   --bg-primary: #ffffff;
@@ -56,10 +75,10 @@
 }
 
 /* ============================
-   CORE STRUCTURE (Load in dependency order)
+   IMPORT CORE FILES
    ============================ */
-@import url('base.css');          /* Reset, global typography, box model */
-@import url('variables.css');     /* Your custom vars (if any additional ones) */
+@import url('variables.css');
+@import url('base.css');          
 @import url('buttons.css');
 @import url('cards.css');
 @import url('components.css');
@@ -101,6 +120,17 @@
   align-items: center;
 }
 
+.nav-links a {
+  text-decoration: none;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
 .menu-toggle {
   display: none;
   font-size: 1.5rem;
@@ -114,7 +144,7 @@
 .mobile-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,.5);
+  background: rgba(0,0,0,.45);
   opacity: 0;
   visibility: hidden;
   transition: .3s;
@@ -134,10 +164,13 @@
   width: 280px;
   height: 100vh;
   background: var(--bg-primary);
-  transition: .3s ease;
+  transition: .35s ease;
   z-index: 999;
-  padding: 20px;
-  box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: -5px 0 20px rgba(0,0,0,0.12);
 }
 
 .mobile-menu.active {
@@ -147,15 +180,17 @@
 .mobile-close {
   font-size: 1.5rem;
   cursor: pointer;
-  margin-bottom: 20px;
+  align-self: flex-end;
   background: none;
   border: none;
-  color: var(--text-primary);
 }
 
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .menu-toggle { display: block; }
+.mobile-menu a {
+  text-decoration: none;
+  font-weight: 600;
+  color: var(--text-primary);
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
 }
 
 /* ===== FILTER BAR ===== */
@@ -380,10 +415,9 @@
   background: var(--footer-bg);
   color: #fff;
   padding: 40px 5%;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
+  gap: 24px;
 }
 
 .footer a {
@@ -394,4 +428,30 @@
 
 .footer a:hover {
   color: var(--accent);
+}
+
+/* ============================
+   MOBILE FIXES
+   ============================ */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .footer {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .filter-bar {
+    gap: 6px;
+  }
 }
