@@ -1,460 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Contact Us | MeowMeow</title>
-  <meta name="description" content="Contact MeowMeow — get support, ask questions, or explore partnership opportunities." />
-  <meta name="keywords" content="affiliate store, fashion deals, electronics, beauty, home decor, kids toys, Amazon affiliate, Daraz deals, Temu products, AliExpress" />
-  <meta name="author" content="MeowMeow" />
-  <meta property="og:title" content="Contact Us | MeowMeow" />
-  <meta property="og:description" content="Contact MeowMeow — get support, ask questions, or explore partnership opportunities." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://meowmeow-livid.vercel.app/" />
-  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png" />
+  <meta name="description" content="Get in touch with MeowMeow — for partnerships, broken links, media inquiries, or general questions." />
   <link rel="icon" type="image/png" href="images/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/cards.css" />
-  <link rel="stylesheet" href="css/buttons.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/themes.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/cart.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/contact.css" />
-  <link rel="stylesheet" href="css/legal.css" />
-  <!-- Google tag (gtag.js) -->
+  <link rel="stylesheet" href="css/variables.css" /><link rel="stylesheet" href="css/base.css" /><link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" /><link rel="stylesheet" href="css/sections.css" /><link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/buttons.css" /><link rel="stylesheet" href="css/footer.css" /><link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/themes.css" /><link rel="stylesheet" href="css/responsive.css" /><link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/cart.css" /><link rel="stylesheet" href="css/components.css" /><link rel="stylesheet" href="css/contact.css" /><link rel="stylesheet" href="css/legal.css" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8QLN8M6LJ3');
-  </script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
 </head>
 <body data-theme="light">
-<!-- ====== SCROLL PROGRESS BAR ====== -->
 <div class="scroll-progress" id="scrollProgress"></div>
-<!-- ====== NAVBAR ====== -->
-<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+<nav class="navbar" id="navbar">
   <div class="nav-container">
-
-    <!-- Logo -->
-    <a href="index.html" class="nav-logo" aria-label="MeowMeow Home">
-      <div class="logo-icon"><i class="fas fa-paw" aria-hidden="true"></i></div>
-      <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
-    </a>
-
-    <!-- Search Bar (desktop) -->
-    <div class="nav-search" id="navSearch" role="search">
-      <div class="search-wrapper">
-        <i class="fas fa-search search-icon" aria-hidden="true"></i>
-        <input type="text" id="searchInput" placeholder="Search fashion, gadgets, beauty..." autocomplete="off" aria-label="Search products" />
-        <button class="search-clear" id="searchClear" aria-label="Clear search"><i class="fas fa-times"></i></button>
-        <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
-      </div>
-    </div>
-
-    <!-- Desktop Nav Links -->
-    <ul class="nav-links" id="navLinks" role="menubar">
-      <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-      <li class="nav-item has-dropdown">
-        <a href="products.html" class="nav-link">Women <i class="fas fa-chevron-down nav-arrow"></i></a>
-        <div class="nav-dropdown" id="women-menu">
-          <div class="dropdown-grid"><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-tshirt"></i><span>Dresses</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-tshirt"></i><span>Tops & T-shirts</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-ruler-horizontal"></i><span>Jeans & Pants</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-star"></i><span>Skirts</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-tshirt"></i><span>Jackets & Hoodies</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-shopping-bag"></i><span>Handbags</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-shoe-prints"></i><span>Shoes & Sandals</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-gem"></i><span>Jewelry</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-clock"></i><span>Watches</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-palette"></i><span>Makeup</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-seedling"></i><span>Skincare</span></a><a href="products.html?cat=women" class="dropdown-item"><i class="fas fa-feather"></i><span>Hair Accessories</span></a></div><div class="dropdown-footer"><a href="products.html" class="dropdown-see-all">See all Women →</a></div>
-        </div>
-      </li>
-      <li class="nav-item has-dropdown">
-        <a href="products.html" class="nav-link">Men <i class="fas fa-chevron-down nav-arrow"></i></a>
-        <div class="nav-dropdown" id="men-menu">
-          <div class="dropdown-grid"><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-tshirt"></i><span>T-shirts</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-tshirt"></i><span>Shirts</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-tshirt"></i><span>Hoodies</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-tshirt"></i><span>Jackets</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-ruler-horizontal"></i><span>Jeans</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-ruler-horizontal"></i><span>Pants</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-shoe-prints"></i><span>Sneakers</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-shoe-prints"></i><span>Boots</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-clock"></i><span>Watches</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-glasses"></i><span>Sunglasses</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-wallet"></i><span>Wallets</span></a><a href="products.html?cat=men" class="dropdown-item"><i class="fas fa-cut"></i><span>Grooming Kits</span></a></div><div class="dropdown-footer"><a href="products.html" class="dropdown-see-all">See all Men →</a></div>
-        </div>
-      </li>
-      <li class="nav-item has-dropdown">
-        <a href="products.html" class="nav-link">Kids <i class="fas fa-chevron-down nav-arrow"></i></a>
-        <div class="nav-dropdown" id="kids-menu">
-          <div class="dropdown-grid"><a href="products.html?cat=kids" class="dropdown-item"><i class="fas fa-baby"></i><span>Baby Clothes</span></a><a href="products.html?cat=kids" class="dropdown-item"><i class="fas fa-tshirt"></i><span>Kids Shirts</span></a><a href="products.html?cat=kids" class="dropdown-item"><i class="fas fa-tshirt"></i><span>Kids Dresses</span></a><a href="products.html?cat=kids" class="dropdown-item"><i class="fas fa-backpack"></i><span>School Bags</span></a><a href="products.html?cat=kids" class="dropdown-item"><i class="fas fa-gamepad"></i><span>Toys</span></a><a href="products.html?cat=kids" class="dropdown-item"><i class="fas fa-puzzle-piece"></i><span>Educational Toys</span></a><a href="products.html?cat=kids" class="dropdown-item"><i class="fas fa-shoe-prints"></i><span>Kids Shoes</span></a><a href="products.html?cat=kids" class="dropdown-item"><i class="fas fa-star"></i><span>Kids Accessories</span></a></div><div class="dropdown-footer"><a href="products.html" class="dropdown-see-all">See all Kids →</a></div>
-        </div>
-      </li>
-      <li class="nav-item has-dropdown">
-        <a href="products.html" class="nav-link">Electronics <i class="fas fa-chevron-down nav-arrow"></i></a>
-        <div class="nav-dropdown" id="electronics-menu">
-          <div class="dropdown-grid"><a href="products.html?cat=electronics" class="dropdown-item"><i class="fas fa-mobile-alt"></i><span>Smartphones</span></a><a href="products.html?cat=electronics" class="dropdown-item"><i class="fas fa-headphones-alt"></i><span>Earbuds</span></a><a href="products.html?cat=electronics" class="dropdown-item"><i class="fas fa-headphones"></i><span>Headphones</span></a><a href="products.html?cat=electronics" class="dropdown-item"><i class="fas fa-clock"></i><span>Smart Watches</span></a><a href="products.html?cat=electronics" class="dropdown-item"><i class="fas fa-mouse"></i><span>Gaming Mouse</span></a><a href="products.html?cat=electronics" class="dropdown-item"><i class="fas fa-keyboard"></i><span>Keyboards</span></a><a href="products.html?cat=electronics" class="dropdown-item"><i class="fas fa-battery-full"></i><span>Power Banks</span></a><a href="products.html?cat=electronics" class="dropdown-item"><i class="fas fa-plug"></i><span>Chargers</span></a><a href="products.html?cat=electronics" class="dropdown-item"><i class="fas fa-mobile-alt"></i><span>Phone Cases</span></a><a href="products.html?cat=electronics" class="dropdown-item"><i class="fas fa-laptop"></i><span>Laptops</span></a></div><div class="dropdown-footer"><a href="products.html" class="dropdown-see-all">See all Electronics →</a></div>
-        </div>
-      </li>
-      <li class="nav-item has-dropdown">
-        <a href="products.html" class="nav-link">Home &amp; Kitchen <i class="fas fa-chevron-down nav-arrow"></i></a>
-        <div class="nav-dropdown" id="home-menu">
-          <div class="dropdown-grid"><a href="products.html?cat=home" class="dropdown-item"><i class="fas fa-utensils"></i><span>Kitchen Tools</span></a><a href="products.html?cat=home" class="dropdown-item"><i class="fas fa-fire"></i><span>Air Fryer</span></a><a href="products.html?cat=home" class="dropdown-item"><i class="fas fa-blender"></i><span>Blender</span></a><a href="products.html?cat=home" class="dropdown-item"><i class="fas fa-box"></i><span>Storage Boxes</span></a><a href="products.html?cat=home" class="dropdown-item"><i class="fas fa-couch"></i><span>Home Decor</span></a><a href="products.html?cat=home" class="dropdown-item"><i class="fas fa-lightbulb"></i><span>Lamps</span></a><a href="products.html?cat=home" class="dropdown-item"><i class="fas fa-image"></i><span>Wall Art</span></a><a href="products.html?cat=home" class="dropdown-item"><i class="fas fa-bed"></i><span>Bedsheets</span></a></div><div class="dropdown-footer"><a href="products.html" class="dropdown-see-all">See all Home & Kitchen →</a></div>
-        </div>
-      </li>
-      <li class="nav-item has-dropdown">
-        <a href="products.html" class="nav-link">Beauty &amp; Health <i class="fas fa-chevron-down nav-arrow"></i></a>
-        <div class="nav-dropdown" id="beauty-menu">
-          <div class="dropdown-grid"><a href="products.html?cat=beauty" class="dropdown-item"><i class="fas fa-seedling"></i><span>Skincare</span></a><a href="products.html?cat=beauty" class="dropdown-item"><i class="fas fa-palette"></i><span>Makeup</span></a><a href="products.html?cat=beauty" class="dropdown-item"><i class="fas fa-magic"></i><span>Hair Tools</span></a><a href="products.html?cat=beauty" class="dropdown-item"><i class="fas fa-dumbbell"></i><span>Fitness Equipment</span></a><a href="products.html?cat=beauty" class="dropdown-item"><i class="fas fa-leaf"></i><span>Yoga Mats</span></a><a href="products.html?cat=beauty" class="dropdown-item"><i class="fas fa-spa"></i><span>Massagers</span></a><a href="products.html?cat=beauty" class="dropdown-item"><i class="fas fa-pills"></i><span>Supplements</span></a><a href="products.html?cat=beauty" class="dropdown-item"><i class="fas fa-spray-can"></i><span>Perfumes</span></a></div><div class="dropdown-footer"><a href="products.html" class="dropdown-see-all">See all Beauty & Health →</a></div>
-        </div>
-      </li>
-      <li class="nav-item"><a href="products.html#trending" class="nav-link nav-link-hot"><i class="fas fa-fire"></i> Trending</a></li>
-      <li class="nav-item"><a href="products.html#deals" class="nav-link nav-link-deals"><i class="fas fa-bolt"></i> Best Deals</a></li>
-      <li class="nav-item"><a href="blog.html" class="nav-link">Blog</a></li>
-      <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
-    </ul>
-
-    <!-- Nav Actions -->
+    <a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a>
+    <div class="nav-search" id="navSearch"><div class="search-wrapper"><i class="fas fa-search search-icon"></i><input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" /><button class="search-clear" id="searchClear"><i class="fas fa-times"></i></button><div class="search-results" id="searchResults"></div></div></div>
+    <ul class="nav-links" id="navLinks"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="products.html" class="nav-link">Products</a></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="contact.html" class="nav-link active">Contact</a></li></ul>
     <div class="nav-actions">
-      <button class="nav-btn" id="searchToggle" aria-label="Toggle search"><i class="fas fa-search"></i></button>
-
-      <button class="nav-btn cart-btn" id="cartBtn" aria-label="Open cart" style="position:relative;">
-        <i class="fas fa-shopping-cart" aria-hidden="true"></i>
-        <span class="cart-badge" id="cartCount" style="display:none;">0</span>
-      </button>
-
-      <button class="nav-btn" id="wishlistBtn" aria-label="Wishlist" style="position:relative;">
-        <i class="fas fa-heart" aria-hidden="true"></i>
-        <span class="wishlist-badge" id="wishlistCount" style="display:none;">0</span>
-      </button>
-
-      <button class="nav-btn" id="notifBtn" aria-label="Notifications" style="position:relative;">
-        <i class="fas fa-bell" aria-hidden="true"></i>
-        <span class="notif-badge" id="notifCount" style="display:none;">3</span>
-      </button>
-
-      <button class="nav-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
-        <i class="fas fa-sun" id="themeIcon" aria-hidden="true"></i>
-      </button>
-
-      <button class="nav-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
-        <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
-      </button>
+      <button class="nav-btn search-toggle" id="searchToggle"><i class="fas fa-search"></i></button>
+      <a href="cart.html" class="nav-btn cart-btn"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></a>
+      <button class="nav-btn theme-toggle" id="themeToggle"><i class="fas fa-sun" id="themeIcon"></i></button>
+      <button class="nav-btn menu-toggle" id="menuToggle"><span class="hamburger"><span></span><span></span><span></span></span></button>
     </div>
   </div>
-
-  <!-- ====== NOTIFICATION PANEL ====== -->
-  <div class="notif-panel" id="notifPanel" role="dialog" aria-label="Notifications">
-    <div class="notif-panel-header">
-      <h3><i class="fas fa-bell"></i> Notifications</h3>
-      <button id="markAllRead" class="notif-mark-all">Mark all read</button>
-    </div>
-    <div class="notif-list" id="notifList"></div>
-  </div>
-
-  <!-- ====== MOBILE OVERLAY ====== -->
-  <div class="mobile-overlay" id="mobileOverlay" aria-hidden="true"></div>
-
-  <!-- ====== MOBILE MENU ====== -->
-  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-label="Mobile navigation" aria-hidden="true">
-    <div class="mobile-menu-header">
-      <a href="index.html" class="nav-logo" aria-label="MeowMeow Home">
-        <div class="logo-icon"><i class="fas fa-paw"></i></div>
-        <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
-      </a>
-      <button class="mobile-close" id="mobileClose" aria-label="Close menu"><i class="fas fa-times"></i></button>
-    </div>
-
-    <!-- Mobile Search -->
-    <div class="mobile-search-box">
-      <i class="fas fa-search"></i>
-      <input type="text" id="mobileSearchInput" placeholder="Search products..." autocomplete="off" />
-    </div>
-
-    <ul class="mobile-nav-links" role="menu">
-      <li role="menuitem"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-      <li role="menuitem"><a href="products.html"><i class="fas fa-store"></i> All Products</a></li>
-      <li role="menuitem"><a href="products.html#trending"><i class="fas fa-fire" style="color:#ef4444;"></i> Trending</a></li>
-      <li role="menuitem"><a href="products.html#deals"><i class="fas fa-bolt" style="color:#f59e0b;"></i> Best Deals</a></li>
-      
-      <li class="mobile-cat-header">👗 Women</li>
-      <li><a href="products.html?cat=women">Dresses &amp; Tops</a></li>
-      <li><a href="products.html?cat=women">Jeans &amp; Pants</a></li>
-      <li><a href="products.html?cat=women">Handbags &amp; Shoes</a></li>
-      <li><a href="products.html?cat=women">Jewelry &amp; Watches</a></li>
-      <li><a href="products.html?cat=women">Makeup &amp; Skincare</a></li>
-      <li class="mobile-cat-header">👔 Men</li>
-      <li><a href="products.html?cat=men">T-shirts &amp; Shirts</a></li>
-      <li><a href="products.html?cat=men">Hoodies &amp; Jackets</a></li>
-      <li><a href="products.html?cat=men">Jeans &amp; Pants</a></li>
-      <li><a href="products.html?cat=men">Sneakers &amp; Boots</a></li>
-      <li><a href="products.html?cat=men">Watches &amp; Wallets</a></li>
-      <li class="mobile-cat-header">🧒 Kids</li>
-      <li><a href="products.html?cat=kids">Clothes &amp; Dresses</a></li>
-      <li><a href="products.html?cat=kids">Toys &amp; Educational</a></li>
-      <li><a href="products.html?cat=kids">School Bags &amp; Shoes</a></li>
-      <li class="mobile-cat-header">📱 Electronics</li>
-      <li><a href="products.html?cat=electronics">Smartphones &amp; Earbuds</a></li>
-      <li><a href="products.html?cat=electronics">Smart Watches &amp; Gaming</a></li>
-      <li><a href="products.html?cat=electronics">Power Banks &amp; Cases</a></li>
-      <li class="mobile-cat-header">🏠 Home &amp; Kitchen</li>
-      <li><a href="products.html?cat=home">Kitchen Tools &amp; Air Fryer</a></li>
-      <li><a href="products.html?cat=home">Storage &amp; Home Decor</a></li>
-      <li><a href="products.html?cat=home">Lamps &amp; Bedsheets</a></li>
-      <li class="mobile-cat-header">💄 Beauty &amp; Health</li>
-      <li><a href="products.html?cat=beauty">Skincare &amp; Makeup</a></li>
-      <li><a href="products.html?cat=beauty">Hair Tools &amp; Fitness</a></li>
-      <li><a href="products.html?cat=beauty">Supplements &amp; Massagers</a></li>
-      <li role="menuitem"><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
-      <li role="menuitem"><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-      <li role="menuitem"><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-      <li role="menuitem"><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span class="cart-badge" id="mobileCartCount" style="display:none;">0</span></a></li>
-    </ul>
-
-    <div class="mobile-theme-switch">
-      <span><i class="fas fa-moon"></i> Dark Mode</span>
-      <label class="toggle-switch">
-        <input type="checkbox" id="mobileThemeToggle" aria-label="Toggle dark mode">
-        <span class="toggle-slider"></span>
-      </label>
-    </div>
-
-    <div class="mobile-menu-footer">
-      <a href="mailto:onlinemeowmeow@gmail.com"><i class="fas fa-envelope"></i> onlinemeowmeow@gmail.com</a>
-    </div>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a><button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button></div>
+    <ul class="mobile-nav-links"><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="cart.html">Cart</a></li></ul>
+    <div class="mobile-theme-switch"><span>Dark Mode</span><label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle"><span class="toggle-slider"></span></label></div>
   </div>
 </nav>
-<!-- ====== CART DRAWER ====== -->
-<div class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Shopping cart" aria-hidden="true">
-  <div class="cart-drawer-header">
-    <h3><i class="fas fa-shopping-cart"></i> Your Cart</h3>
-    <button id="cartClose" aria-label="Close cart"><i class="fas fa-times"></i></button>
-  </div>
-  <div class="cart-drawer-body" id="cartDrawerBody">
-    <div class="cart-empty-state">
-      <i class="fas fa-shopping-cart"></i>
-      <p>Your cart is empty</p>
-      <a href="products.html" class="btn btn-primary btn-sm">Shop Now</a>
-    </div>
-  </div>
-  <div class="cart-drawer-footer" id="cartDrawerFooter" style="display:none;">
-    <div class="cart-drawer-total">
-      <span>Total:</span>
-      <strong id="cartDrawerTotal">$0.00</strong>
-    </div>
-    <a href="cart.html" class="btn btn-primary btn-block">View Full Cart</a>
-    <button class="btn btn-cta btn-block" id="cartCheckout">Checkout →</button>
-    <div class="cart-payment-icons">
-      <i class="fab fa-cc-visa" title="Visa"></i>
-      <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-      <i class="fab fa-cc-paypal" title="PayPal"></i>
-      <i class="fab fa-cc-amex" title="Amex"></i>
-      <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
-    </div>
-  </div>
-</div>
-<div class="cart-overlay" id="cartOverlay" aria-hidden="true"></div>
-<!-- ====== QUICK VIEW MODAL ====== -->
-<div class="quick-view-modal" id="quickViewModal" role="dialog" aria-label="Quick view" aria-hidden="true">
-  <div class="quick-view-inner">
-    <button class="quick-view-close" id="quickViewClose" aria-label="Close quick view"><i class="fas fa-times"></i></button>
-    <div class="quick-view-content modal-body"></div>
-  </div>
-</div>
-<!-- ====== COOKIE BANNER ====== -->
-<div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
-  <div class="cookie-content">
-    <i class="fas fa-cookie-bite cookie-icon"></i>
-    <div class="cookie-text">
-      <strong>We use cookies</strong>
-      <p>We use cookies to personalize content, run ads, and analyze traffic. By clicking "Accept", you consent to our use of cookies. <a href="cookie.html">Learn more</a></p>
-    </div>
-    <div class="cookie-actions">
-      <button class="btn btn-primary btn-sm" id="cookieAccept">Accept All</button>
-      <button class="btn btn-outline btn-sm" id="cookieDecline">Decline</button>
-    </div>
-  </div>
-</div>
-<!-- ====== NEWSLETTER POPUP ====== -->
-<div class="newsletter-popup" id="newsletterPopup" role="dialog" aria-label="Newsletter signup" aria-hidden="true">
-  <div class="newsletter-popup-inner">
-    <button class="popup-close" id="popupClose" aria-label="Close popup"><i class="fas fa-times"></i></button>
-    <div class="popup-emoji">🎁</div>
-    <h3>Get 10% Off Your First Order!</h3>
-    <p>Join 50,000+ smart shoppers. Get weekly deals &amp; exclusive coupons.</p>
-    <form class="popup-form newsletter-form">
-      <input type="email" placeholder="Enter your email address" required aria-label="Email for newsletter" />
-      <button type="submit" class="btn btn-cta btn-block subscribe-btn">
-        <i class="fas fa-paper-plane"></i> Get My Discount
-      </button>
-    </form>
-    <small><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</small>
-  </div>
-</div>
-
 <main id="mainContent">
   <section class="page-header">
     <div class="container">
-      <h1>📬 Contact Us</h1>
-      <p>We'd love to hear from you. Drop us a message!</p>
-      <div class="breadcrumb"><a href="index.html">Home</a> <span>/</span> <span>Contact</span></div>
+      <h1>📬 Contact MeowMeow</h1>
+      <p>We'd love to hear from you — reach out anytime</p>
+      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Contact</span></div>
     </div>
   </section>
   <section class="section">
     <div class="container">
-      <div class="contact-grid">
-        <div class="contact-info reveal">
-          <h2>Get in Touch</h2>
-          <p>Have a question, feedback, or partnership inquiry? We typically respond within 24 hours.</p>
-          <div class="contact-items">
-            <div class="contact-item"><div class="contact-icon"><i class="fas fa-envelope"></i></div><div><h4>Email</h4><a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></div></div>
-            <div class="contact-item"><div class="contact-icon"><i class="fas fa-clock"></i></div><div><h4>Response Time</h4><p>Within 24 hours (Mon–Sat)</p></div></div>
-            <div class="contact-item"><div class="contact-icon"><i class="fas fa-handshake"></i></div><div><h4>Partnerships</h4><p>Open to brand collaborations &amp; affiliate partnerships</p></div></div>
+      <div class="contact-layout">
+        <div class="contact-info">
+          <div class="contact-info-card reveal">
+            <div class="contact-info-icon"><i class="fas fa-envelope"></i></div>
+            <h3>General Inquiries</h3>
+            <p>For general questions, feedback, or anything else:</p>
+            <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a>
           </div>
-          <div class="contact-socials">
-            <a href="#" aria-label="Facebook" class="social-btn"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram" class="social-btn"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="Twitter" class="social-btn"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="TikTok" class="social-btn"><i class="fab fa-tiktok"></i></a>
+          <div class="contact-info-card reveal">
+            <div class="contact-info-icon"><i class="fas fa-handshake"></i></div>
+            <h3>Partnerships & Affiliates</h3>
+            <p>Want to partner with us or propose a collaboration?</p>
+            <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a>
+          </div>
+          <div class="contact-info-card reveal">
+            <div class="contact-info-icon"><i class="fas fa-link"></i></div>
+            <h3>Broken Link Reports</h3>
+            <p>Found a broken affiliate link or outdated product? Let us know!</p>
+            <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a>
+          </div>
+          <div class="contact-info-card reveal">
+            <div class="contact-info-icon"><i class="fas fa-clock"></i></div>
+            <h3>Response Time</h3>
+            <p>We typically respond within <strong>24–48 business hours</strong>. We read every message!</p>
+          </div>
+          <div class="contact-social reveal">
+            <h3>Find Us On Social Media</h3>
+            <div class="social-btns">
+              <a href="#" class="social-btn fb"><i class="fab fa-facebook-f"></i> Facebook</a>
+              <a href="#" class="social-btn ig"><i class="fab fa-instagram"></i> Instagram</a>
+              <a href="#" class="social-btn yt"><i class="fab fa-youtube"></i> YouTube</a>
+              <a href="#" class="social-btn tt"><i class="fab fa-tiktok"></i> TikTok</a>
+            </div>
           </div>
         </div>
-        <div class="contact-form-wrapper reveal-right">
-          <form class="contact-form" id="contactForm" novalidate>
-            <h3>Send a Message</h3>
+        <div class="contact-form-wrap reveal">
+          <h2>Send Us a Message</h2>
+          <p style="color:var(--text-secondary);margin-bottom:24px;">Fill out the form below and we'll get back to you as soon as possible.</p>
+          <form id="contactForm" class="contact-form" novalidate>
             <div class="form-row">
-              <div class="form-group"><label for="contactName">Your Name *</label><input type="text" id="contactName" name="name" placeholder="John Doe" required /></div>
-              <div class="form-group"><label for="contactEmail">Email Address *</label><input type="email" id="contactEmail" name="email" placeholder="you@example.com" required /></div>
+              <div class="form-group">
+                <label for="contactName">Your Name *</label>
+                <input type="text" id="contactName" placeholder="Jane Smith" required />
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email Address *</label>
+                <input type="email" id="contactEmail" placeholder="jane@example.com" required />
+              </div>
             </div>
-            <div class="form-group"><label for="contactSubject">Subject *</label><input type="text" id="contactSubject" name="subject" placeholder="How can we help?" required /></div>
-            <div class="form-group"><label for="contactMessage">Message *</label><textarea id="contactMessage" name="message" rows="5" placeholder="Tell us more..." required></textarea></div>
-            <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-paper-plane"></i> Send Message</button>
+            <div class="form-group">
+              <label for="contactSubject">Subject *</label>
+              <select id="contactSubject" required>
+                <option value="">— Select a topic —</option>
+                <option value="general">General Question</option>
+                <option value="partnership">Partnership / Collaboration</option>
+                <option value="broken-link">Broken Link Report</option>
+                <option value="product-request">Product Request</option>
+                <option value="press">Press / Media Inquiry</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Your Message *</label>
+              <textarea id="contactMessage" rows="6" placeholder="Tell us what's on your mind..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-3d" style="width:100%">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+            <p id="contactMsg" style="margin-top:16px;font-weight:600;"></p>
           </form>
         </div>
       </div>
     </div>
   </section>
 </main>
+<script>
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const msg = document.getElementById('contactMsg');
+  msg.textContent = '✅ Message sent! We'll get back to you within 24-48 hours.';
+  msg.style.color = 'var(--color-primary, #e91e8c)';
+  this.reset();
+});
+</script>
 
-<!-- ====== FOOTER ====== -->
-<footer class="footer" role="contentinfo">
-  <div class="footer-wave" aria-hidden="true">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-    </svg>
-  </div>
-
-  <div class="footer-content">
-    <div class="container">
-      <div class="footer-grid">
-
-        <!-- Brand -->
-        <div class="footer-brand">
-          <a href="index.html" class="footer-logo" aria-label="MeowMeow Home">
-            <div class="logo-icon"><i class="fas fa-paw" aria-hidden="true"></i></div>
-            <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
-          </a>
-          <p>MeowMeow is an independent product discovery and comparison site. We curate top deals across fashion, electronics, beauty, home &amp; more — helping you shop smarter and save big.</p>
-          <div class="footer-socials">
-            <a href="#" aria-label="Facebook" rel="noopener"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter/X" rel="noopener"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Instagram" rel="noopener"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="YouTube" rel="noopener"><i class="fab fa-youtube"></i></a>
-            <a href="#" aria-label="TikTok" rel="noopener"><i class="fab fa-tiktok"></i></a>
-            <a href="#" aria-label="Pinterest" rel="noopener"><i class="fab fa-pinterest"></i></a>
-          </div>
-        </div>
-
-        <!-- Shop -->
-        <div class="footer-links-group">
-          <h4>Shop</h4>
-          <ul>
-            <li><a href="products.html?cat=women">👗 Women</a></li>
-            <li><a href="products.html?cat=men">👔 Men</a></li>
-            <li><a href="products.html?cat=kids">🧒 Kids</a></li>
-            <li><a href="products.html?cat=electronics">📱 Electronics</a></li>
-            <li><a href="products.html?cat=home">🏠 Home &amp; Kitchen</a></li>
-            <li><a href="products.html?cat=beauty">💄 Beauty &amp; Health</a></li>
-            <li><a href="products.html#deals"><i class="fas fa-fire" style="color:#ef4444;font-size:.75rem;"></i> Hot Deals</a></li>
-            <li><a href="products.html#trending"><i class="fas fa-bolt" style="color:#f59e0b;font-size:.75rem;"></i> Trending</a></li>
-          </ul>
-        </div>
-
-        <!-- Support -->
-        <div class="footer-links-group">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="help.html">Help Center</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="shipping.html">Shipping Info</a></li>
-            <li><a href="returns.html">Returns &amp; Refunds</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="about.html">About Us</a></li>
-          </ul>
-        </div>
-
-        <!-- Legal -->
-        <div class="footer-links-group">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="cookie.html">Cookie Policy</a></li>
-            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
-            <li><a href="dmca.html">DMCA</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- Newsletter row -->
-      <div class="footer-top-row">
-        <div class="footer-newsletter">
-          <h4><i class="fas fa-envelope-open-text"></i> Stay Updated</h4>
-          <p>Get weekly deals, product guides, and exclusive coupons.</p>
-          <form id="newsletter-form" class="newsletter-form">
-            <input type="email" id="newsletter-email" placeholder="Your email address" required aria-label="Newsletter email" />
-            <button type="submit" class="subscribe-btn">Subscribe</button>
-          </form>
-          <small id="newsletter-msg"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</small>
-        </div>
-        <p class="footer-disclosure">
-          <i class="fas fa-info-circle"></i>
-          <strong>Disclosure:</strong> MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you. <a href="disclosure.html">Learn more</a>
-        </p>
-      </div>
-
-      <!-- Bottom bar -->
-      <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved.</p>
-        <p class="footer-contact">
-          <i class="fas fa-envelope"></i>
-          <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a>
-        </p>
-        <div class="footer-payments" aria-label="Accepted payment methods">
-          <i class="fab fa-cc-visa" title="Visa"></i>
-          <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-          <i class="fab fa-cc-paypal" title="PayPal"></i>
-          <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
-          <i class="fab fa-cc-amex" title="Amex"></i>
-          <i class="fab fa-cc-stripe" title="Stripe"></i>
-        </div>
-      </div>
+<footer class="footer">
+  <div class="footer-wave"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path></svg></div>
+  <div class="footer-content"><div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="footer-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a><p>MeowMeow is an independent product discovery &amp; comparison website. Find top deals across fashion, electronics, beauty, home &amp; more.</p><div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a><a href="#"><i class="fab fa-tiktok"></i></a></div></div>
+      <div class="footer-links-group"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li></ul></div>
+      <div class="footer-links-group"><h4>Support</h4><ul><li><a href="help.html">Help Center</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="shipping.html">Shipping Info</a></li><li><a href="returns.html">Returns</a></li></ul></div>
+      <div class="footer-links-group"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookie.html">Cookie Policy</a></li><li><a href="disclosure.html">Affiliate Disclosure</a></li><li><a href="dmca.html">DMCA</a></li></ul></div>
     </div>
-  </div>
+    <div class="footer-top-row"><div class="footer-newsletter"><h4>Stay Updated</h4><p>Get weekly deals, product guides, and smart shopping tips.</p><form id="newsletter-form"><input type="email" id="newsletter-email" placeholder="Your email address" required /><button type="submit">Subscribe</button></form><small id="newsletter-msg">No spam. Unsubscribe anytime.</small></div><p class="footer-disclosure">Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.</p></div>
+    <div class="footer-bottom"><p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved.</p><p class="footer-contact">Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p><div class="footer-payments"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-cc-apple-pay"></i><i class="fab fa-cc-amex"></i></div></div>
+  </div></div>
 </footer>
-<!-- ====== BACK TO TOP ====== -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top">
-  <i class="fas fa-chevron-up" aria-hidden="true"></i>
-</button>
-<!-- ====== TOAST NOTIFICATIONS ====== -->
-<div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
-<!-- ====== JS FILES (ORDER MATTERS) ====== -->
-<script src="js/main.js"></script>
-<script src="js/theme.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/search.js"></script>
-<script src="js/script.js"></script>
-<script src="js/affiliate.js"></script>
-</body>
-</html>
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+<div class="toast-container" id="toastContainer"></div>
+<script src="js/navbar.js"></script><script src="js/theme.js"></script><script src="js/scroll.js"></script><script src="js/search.js"></script><script src="js/affiliate.js"></script><script src="js/script.js"></script><script src="js/main.js"></script>
+<script>const nf=document.getElementById('newsletter-form');if(nf)nf.addEventListener('submit',function(e){e.preventDefault();const m=document.getElementById('newsletter-msg');m.textContent='✅ Subscribed!';m.style.color='#6ee7b7';this.reset();});</script>
+</body></html>
