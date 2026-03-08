@@ -1,185 +1,189 @@
-/* ============================================================
-   THEME.JS — DARK/LIGHT MODE + SEASONAL AUTO-THEME
-   MeowMeow Affiliate Site — Production v2.0
-   ============================================================ */
+/* ================================================================
+   THEME.JS — LIGHT / DARK MODE (no flash of unstyled content)
+   ShopLux v3.0
+   ================================================================ */
 
-(function() {
+/* ── ANTI-FOUC INLINE SCRIPT ─────────────────────────────────────
+   Copy this tiny snippet into <head> BEFORE any CSS link tags:
+
+   <script>
+     (function(){
+       var t = localStorage.getItem('shoplux_theme');
+       if (!t) t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+       document.documentElement.setAttribute('data-theme', t);
+     })();
+   </script>
+   ──────────────────────────────────────────────────────────────── */
+
+(function () {
   'use strict';
 
-  var STORAGE_KEY = 'meowmeow-theme';
-  var body = document.documentElement; // apply to <html> for CSS var cascade
+  const STORAGE_KEY = 'shoplux_theme';
+  const ROOT        = document.documentElement;
 
-  // ===== SEASONAL CONFIG =====
-  var SEASONS = {
-    spring:  { months: [2, 3, 4],    emoji: '🌸', label: 'Spring Sale',  bar: '🌸 Spring is here! Fresh deals on pet essentials. Shop now →' },
-    summer:  { months: [5, 6, 7],    emoji: '☀️', label: 'Summer Deals', bar: '☀️ Summer Sale Live! Beat the heat with hot pet deals →' },
-    autumn:  { months: [8, 9],       emoji: '🍂', label: 'Fall Finds',   bar: '🍂 Autumn Specials! Cozy up your pet this season →' },
-    holiday: { months: [10, 11],     emoji: '🎄', label: 'Holiday Sale', bar: '🎄 Holiday Sale! Best gifts for your furry friends →' },
-    winter:  { months: [0, 1],       emoji: '❄️', label: 'Winter Deals', bar: '❄️ Winter Warmers! Keep your pet cozy this season →' }
-  };
-
-  // ===== DETECT CURRENT SEASON =====
-  function getCurrentSeason() {
-    var month = new Date().getMonth(); // 0-11
-    for (var season in SEASONS) {
-      if (SEASONS[season].months.indexOf(month) > -1) return season;
-    }
-    return 'winter';
+  /* ── PLATFORM ──────────────────────────────────────────────── */
+  function getPlatform() {
+    const ua = navigator.userAgent;
+    if (/iPhone|iPad|iPod/.test(ua)) return 'ios';
+    if (/Android/.test(ua))         return 'android';
+    return 'desktop';
   }
 
-  // ===== APPLY SEASON =====
-  function applySeason(season) {
-    body.setAttribute('data-season', season);
-    var cfg = SEASONS[season];
-    if (!cfg) return;
-
-    // Update announcement/promo bar text
-    var barText = document.querySelector('.announcement-text, .promo-bar-text, #announcementText');
-    if (barText) barText.textContent = cfg.bar;
-
-    // Update page title emoji if wanted
-    var seasonBadge = document.querySelector('.season-badge');
-    if (seasonBadge) seasonBadge.textContent = cfg.emoji + ' ' + cfg.label;
-
-    // Spawn particles for winter/holiday
-    if (season === 'winter' || season === 'holiday') {
-      spawnSeasonalParticles(season === 'holiday' ? ['❄️','🎄','🎁','⭐','✨'] : ['❄️','❄️','❄️','✨','💙']);
-    } else if (season === 'spring') {
-      spawnSeasonalParticles(['🌸','🌺','🌷','🌻','🍀']);
-    } else if (season === 'autumn') {
-      spawnSeasonalParticles(['🍂','🍁','🍃','🌰','🎃']);
-    }
-  }
-
-  // ===== SEASONAL PARTICLES =====
-  function spawnSeasonalParticles(emojis) {
-    var existing = document.getElementById('seasonParticles');
-    if (existing) return; // Already running
-
-    var container = document.createElement('div');
-    container.id = 'seasonParticles';
-    container.style.cssText = 'position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;overflow:hidden;';
-    document.body.prepend(container);
-
-    var count = 0;
-    var maxParticles = 18;
-
-    function createParticle() {
-      if (count >= maxParticles) return;
-      count++;
-      var p = document.createElement('span');
-      var emoji = emojis[Math.floor(Math.random() * emojis.length)];
-      var left = Math.random() * 100;
-      var delay = Math.random() * 3;
-      var dur = 6 + Math.random() * 8;
-      var size = 14 + Math.random() * 14;
-      p.textContent = emoji;
-      p.style.cssText =
-        'position:absolute;top:-40px;left:' + left + '%;' +
-        'font-size:' + size + 'px;' +
-        'animation:seasonFall ' + dur + 's linear ' + delay + 's forwards;' +
-        'opacity:0.7;';
-      container.appendChild(p);
-      setTimeout(function() { if (p.parentNode) p.remove(); count--; }, (dur + delay) * 1000 + 500);
-    }
-
-    // Inject keyframe if not present
-    if (!document.getElementById('seasonFallStyle')) {
-      var style = document.createElement('style');
-      style.id = 'seasonFallStyle';
-      style.textContent = '@keyframes seasonFall{0%{transform:translateY(0) rotate(0deg);opacity:.7}100%{transform:translateY(110vh) rotate(360deg);opacity:0}}';
-      document.head.appendChild(style);
-    }
-
-    // Spawn particles over time
-    var interval = setInterval(createParticle, 600);
-    setTimeout(function() {
-      clearInterval(interval);
-    }, maxParticles * 600 + 1000);
-  }
-
-  // ===== GET PREFERRED THEME =====
-  function getPreferredTheme() {
-    var saved = localStorage.getItem(STORAGE_KEY);
+  /* ── RESOLVE THEME ─────────────────────────────────────────── */
+  function getInitial() {
+    const saved = localStorage.getItem(STORAGE_KEY);
     if (saved === 'dark' || saved === 'light') return saved;
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
-    return 'light';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
-  // ===== APPLY THEME =====
-  function applyTheme(theme) {
-    body.setAttribute('data-theme', theme);
+  /* ── APPLY ─────────────────────────────────────────────────── */
+  function apply(theme, withTransition = true) {
+    if (withTransition) {
+      ROOT.style.setProperty('--_theme-transition', '0.35s');
+    }
+
+    ROOT.setAttribute('data-theme', theme);
     document.body && document.body.setAttribute('data-theme', theme);
-    localStorage.setItem(STORAGE_KEY, theme);
-    updateAllThemeIcons(theme);
-    updateMobileToggles(theme);
+
+    try { localStorage.setItem(STORAGE_KEY, theme); } catch {}
+
+    _updateAllToggles(theme);
+    _updateMeta(theme);
+    _updateStatusBar(theme);
+
+    document.dispatchEvent(new CustomEvent('shoplux:themeChanged', { detail: { theme } }));
+
+    if (withTransition) {
+      setTimeout(() => ROOT.style.removeProperty('--_theme-transition'), 400);
+    }
   }
 
-  // ===== UPDATE ICONS =====
-  function updateAllThemeIcons(theme) {
-    document.querySelectorAll('.theme-icon, #themeIcon').forEach(function(icon) {
-      if (theme === 'dark') {
-        icon.classList.remove('fa-sun'); icon.classList.add('fa-moon');
-      } else {
-        icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');
+  /* ── META THEME-COLOR (browser chrome) ─────────────────────── */
+  function _updateMeta(theme) {
+    let meta = document.querySelector('meta[name="theme-color"]');
+    if (!meta) {
+      meta = document.createElement('meta');
+      meta.name = 'theme-color';
+      document.head.appendChild(meta);
+    }
+    meta.content = theme === 'dark' ? '#09090b' : '#ffffff';
+  }
+
+  /* ── APPLE STATUS BAR ───────────────────────────────────────── */
+  function _updateStatusBar(theme) {
+    let m = document.querySelector('meta[name="apple-mobile-web-app-status-bar-style"]');
+    if (!m) return;
+    m.content = theme === 'dark' ? 'black-translucent' : 'default';
+  }
+
+  /* ── SYNC ALL TOGGLE UI ─────────────────────────────────────── */
+  function _updateAllToggles(theme) {
+    const isDark = theme === 'dark';
+
+    /* icon buttons */
+    document.querySelectorAll('[data-theme-toggle], #themeToggle').forEach(btn => {
+      btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+      btn.setAttribute('title',      isDark ? 'Light mode'           : 'Dark mode');
+      btn.setAttribute('aria-pressed', String(isDark));
+
+      const icon = btn.querySelector('#themeIcon, .theme-icon, i');
+      if (icon) {
+        icon.className = isDark
+          ? icon.className.replace('fa-sun', 'fa-moon')
+          : icon.className.replace('fa-moon','fa-sun');
+        // Force correct class
+        if (isDark) { icon.classList.remove('fa-sun');  icon.classList.add('fa-moon'); }
+        else        { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun');  }
+      }
+
+      /* ripple animation */
+      btn.classList.add('theme-anim');
+      setTimeout(() => btn.classList.remove('theme-anim'), 500);
+    });
+
+    /* legacy #themeIcon */
+    const legacyIcon = document.getElementById('themeIcon');
+    if (legacyIcon) {
+      legacyIcon.className = isDark ? 'fas fa-moon' : 'fas fa-sun';
+    }
+
+    /* checkbox toggles (mobile) */
+    document.querySelectorAll(
+      '[data-mobile-theme-toggle], #mobileThemeToggle, .mobile-theme-check'
+    ).forEach(el => {
+      if (el.type === 'checkbox') el.checked = isDark;
+    });
+
+    /* text labels */
+    document.querySelectorAll('[data-theme-label]').forEach(el => {
+      el.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+    });
+  }
+
+  /* ── TOGGLE ─────────────────────────────────────────────────── */
+  function toggle() {
+    const current = ROOT.getAttribute('data-theme') || 'light';
+    apply(current === 'dark' ? 'light' : 'dark', true);
+  }
+
+  /* ── BIND EVENTS ────────────────────────────────────────────── */
+  function bindEvents() {
+    /* click any toggle */
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('[data-theme-toggle], #themeToggle, .theme-toggle-btn')) {
+        toggle();
       }
     });
-    // Update aria-label on toggle buttons
-    document.querySelectorAll('#themeToggle, .theme-toggle-btn').forEach(function(btn) {
-      btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-    });
-  }
 
-  // ===== UPDATE MOBILE TOGGLES =====
-  function updateMobileToggles(theme) {
-    document.querySelectorAll('#mobileThemeToggle, .mobile-theme-input').forEach(function(input) {
-      if (input.tagName === 'INPUT') input.checked = (theme === 'dark');
-    });
-  }
-
-  // ===== TOGGLE THEME =====
-  window.toggleTheme = function() {
-    var current = body.getAttribute('data-theme') || 'light';
-    applyTheme(current === 'light' ? 'dark' : 'light');
-  };
-
-  // ===== EXPOSE setTheme GLOBALLY =====
-  window.setTheme = applyTheme;
-
-  // ===== EVENT LISTENERS =====
-  document.addEventListener('DOMContentLoaded', function() {
-    // Desktop toggle
-    var themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) themeToggle.addEventListener('click', window.toggleTheme);
-
-    // Any .theme-toggle-btn
-    document.querySelectorAll('.theme-toggle-btn').forEach(function(btn) {
-      btn.addEventListener('click', window.toggleTheme);
+    /* checkbox change (mobile panel) */
+    document.addEventListener('change', function (e) {
+      const el = e.target.closest(
+        '[data-mobile-theme-toggle], #mobileThemeToggle, .mobile-theme-check'
+      );
+      if (el && el.type === 'checkbox') {
+        apply(el.checked ? 'dark' : 'light', true);
+      }
     });
 
-    // Mobile checkbox toggle
-    var mobileToggle = document.getElementById('mobileThemeToggle');
-    if (mobileToggle) {
-      mobileToggle.addEventListener('change', function() {
-        applyTheme(this.checked ? 'dark' : 'light');
+    /* system pref change — only if user has no manual pref */
+    if (window.matchMedia) {
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+        if (!localStorage.getItem(STORAGE_KEY)) {
+          apply(e.matches ? 'dark' : 'light', true);
+        }
       });
     }
 
-    // Apply season
-    var season = getCurrentSeason();
-    applySeason(season);
-  });
-
-  // ===== SYSTEM THEME CHANGE LISTENER =====
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-      if (!localStorage.getItem(STORAGE_KEY)) {
-        applyTheme(e.matches ? 'dark' : 'light');
+    /* keyboard: Shift+T  or  just T when not in input */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'T' && !e.ctrlKey && !e.metaKey &&
+          e.target.tagName !== 'INPUT' &&
+          e.target.tagName !== 'TEXTAREA' &&
+          e.target.tagName !== 'SELECT') {
+        toggle();
       }
     });
   }
 
-  // ===== APPLY THEME IMMEDIATELY (before DOMContentLoaded to prevent flash) =====
-  applyTheme(getPreferredTheme());
+  /* ── INIT ─────────────────────────────────────────────────────
+     Apply immediately (ROOT attr already set by anti-FOUC snippet).
+     Only update UI widgets once DOM is ready.
+     ─────────────────────────────────────────────────────────── */
+  const initialTheme = getInitial();
+  ROOT.setAttribute('data-theme', initialTheme); // no-op if snippet already ran
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      apply(initialTheme, false);
+      bindEvents();
+    });
+  } else {
+    apply(initialTheme, false);
+    bindEvents();
+  }
+
+  /* expose API */
+  window.ShopLux = window.ShopLux || {};
+  ShopLux.Theme = { toggle, apply, getInitial };
 
 })();
