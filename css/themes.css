@@ -1,83 +1,167 @@
 /* ============================
-   GLOBAL THEME VARIABLES
+   THEMES.CSS — GLOBAL THEME SYSTEM
+   Light / Dark + Seasonal
    ============================ */
 
+/* ====== DEFAULT LIGHT ====== */
 :root {
-  /* Backgrounds */
-  --bg-primary: #ffffff;
-  --bg-secondary: #f9fafb;
-  --bg-tertiary: #f3f4f6;
+  color-scheme: light;
+}
 
-  /* Text */
-  --text-primary: #111827;
-  --text-secondary: #4b5563;
-  --text-tertiary: #9ca3af;
-
-  /* Brand Colors */
-  --accent: #7C3AED;
-  --accent-hover: #6D28D9;
-  --accent-light: rgba(124,58,237,0.12);
-
-  --cta: #F472B6;
-  --cta-hover: #EC4899;
-
-  --success: #10b981;
-  --warning: #f59e0b;
-  --danger: #ef4444;
-
-  /* Borders */
-  --border: #e5e7eb;
-
-  /* Footer */
-  --footer-bg: #111827;
-
-  /* Fonts */
-  --font-body: "Inter", system-ui, sans-serif;
-  --font-heading: "Poppins", system-ui, sans-serif;
-
-  /* Radius */
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-  --radius-full: 999px;
-
-  /* Shadows */
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.04);
-  --shadow-md: 0 6px 12px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
-  --shadow-xl: 0 20px 40px rgba(0,0,0,0.15);
-  --shadow-glow-accent: 0 0 0 4px rgba(124,58,237,0.15);
-
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #7C3AED, #F472B6);
-
-  /* Transitions */
-  --transition-fast: 0.2s ease;
-  --transition: 0.3s ease;
-  --transition-slow: 0.5s ease;
+/* ====== DARK MODE ====== */
+[data-theme="dark"] {
+  color-scheme: dark;
 }
 
 /* ============================
-   DARK MODE
+   COMPONENT-LEVEL DARK OVERRIDES
    ============================ */
 
-[data-theme="dark"] {
-  --bg-primary: #0f172a;
-  --bg-secondary: #1e293b;
-  --bg-tertiary: #334155;
-
-  --text-primary: #f9fafb;
-  --text-secondary: #d1d5db;
-  --text-tertiary: #9ca3af;
-
-  --border: #374151;
-
-  --footer-bg: #020617;
-
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.25);
-  --shadow-md: 0 6px 12px rgba(0,0,0,0.35);
-  --shadow-lg: 0 12px 24px rgba(0,0,0,0.45);
-  --shadow-xl: 0 20px 40px rgba(0,0,0,0.6);
-  --shadow-glow-accent: 0 0 0 4px rgba(124,58,237,0.35);
+[data-theme="dark"] .navbar {
+  background: var(--navbar-bg);
+  border-bottom-color: rgba(255,255,255,0.06);
 }
+
+[data-theme="dark"] .search-wrapper input {
+  background: var(--bg-tertiary);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+
+[data-theme="dark"] .mobile-menu,
+[data-theme="dark"] .mobile-menu-header,
+[data-theme="dark"] .mobile-search { border-color: var(--border); }
+
+[data-theme="dark"] .product-card,
+[data-theme="dark"] .blog-card,
+[data-theme="dark"] .category-card,
+[data-theme="dark"] .review-card,
+[data-theme="dark"] .feature-card,
+[data-theme="dark"] .team-member,
+[data-theme="dark"] .faq-item { border-color: var(--border); }
+
+[data-theme="dark"] .summary-card,
+[data-theme="dark"] .cart-items,
+[data-theme="dark"] .cart-item { border-color: var(--border); }
+
+[data-theme="dark"] .newsletter-form input {
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.15);
+}
+
+[data-theme="dark"] .toast { background: var(--bg-tertiary); }
+
+[data-theme="dark"] .modal { background: var(--bg-secondary); }
+
+[data-theme="dark"] .tag-success { background: rgba(16,185,129,0.15); color: #6ee7b7; }
+
+[data-theme="dark"] .page-header { background: var(--bg-secondary); }
+
+[data-theme="dark"] .trust-bar { background: var(--bg-secondary); }
+
+[data-theme="dark"] .cookie-banner { background: var(--bg-secondary); }
+
+/* Scrollbar Dark */
+[data-theme="dark"]::-webkit-scrollbar-track { background: var(--bg-tertiary); }
+
+/* ============================
+   SEASONAL THEME OVERLAYS
+   ============================ */
+
+/* Spring - Fresh Green */
+[data-season="spring"] body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at 20% 80%, rgba(16,185,129,0.04) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(245,158,11,0.03) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+
+/* Summer - Warm Orange */
+[data-season="summer"] body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at 10% 90%, rgba(245,158,11,0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 90% 10%, rgba(239,68,68,0.03) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+
+/* Autumn - Warm Brown/Orange */
+[data-season="autumn"] body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at 15% 85%, rgba(217,119,6,0.05) 0%, transparent 60%),
+              radial-gradient(ellipse at 85% 15%, rgba(220,38,38,0.03) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+
+/* Winter - Cool Blue */
+[data-season="winter"] body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at 20% 80%, rgba(59,130,246,0.04) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 20%, rgba(99,102,241,0.03) 0%, transparent 60%);
+  pointer-events: none; z-index: 0;
+}
+
+/* Holiday - Red/Green */
+[data-season="holiday"] body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background: radial-gradient(ellipse at 10% 90%, rgba(220,38,38,0.05) 0%, transparent 50%),
+              radial-gradient(ellipse at 90% 10%, rgba(22,163,74,0.04) 0%, transparent 50%);
+  pointer-events: none; z-index: 0;
+}
+
+/* ============================
+   SEASONAL SECTION HEADER TINTS
+   ============================ */
+
+[data-season="spring"]  .section-badge { background: rgba(16,185,129,0.12); color: var(--accent); }
+[data-season="summer"]  .section-badge { background: rgba(245,158,11,0.12); color: var(--accent); }
+[data-season="autumn"]  .section-badge { background: rgba(217,119,6,0.12);  color: var(--accent); }
+[data-season="winter"]  .section-badge { background: rgba(59,130,246,0.12); color: var(--accent); }
+[data-season="holiday"] .section-badge { background: rgba(220,38,38,0.12);  color: var(--accent); }
+
+/* ============================
+   SPECIAL: HOLIDAY SNOW EFFECT
+   ============================ */
+[data-season="holiday"] .seasonal-particles,
+[data-season="winter"]  .seasonal-particles {
+  display: block;
+}
+
+.seasonal-particles { display: none; }
+
+/* ============================
+   ANNOUNCEMENT BAR THEMES
+   ============================ */
+
+.announcement-bar {
+  width: 100%; text-align: center;
+  padding: 9px 20px; font-size: 0.84rem; font-weight: 600;
+  letter-spacing: 0.3px; position: relative; z-index: calc(var(--z-navbar) + 1);
+}
+
+[data-season="spring"]  .announcement-bar { background: #d1fae5; color: #065f46; }
+[data-season="summer"]  .announcement-bar { background: #fef3c7; color: #92400e; }
+[data-season="autumn"]  .announcement-bar { background: #fed7aa; color: #7c2d12; }
+[data-season="winter"]  .announcement-bar { background: #dbeafe; color: #1e3a8a; }
+[data-season="holiday"] .announcement-bar { background: #fee2e2; color: #991b1b; }
+
+/* Default announcement bar */
+.announcement-bar:not([class*="data-season"]) {
+  background: var(--gradient-primary);
+  color: #fff;
+}
+
+.announcement-bar a { color: inherit; text-decoration: underline; }
+
+.announcement-close {
+  position: absolute; right: 14px; top: 50%;
+  transform: translateY(-50%);
+  background: none; border: none; cursor: pointer;
+  color: inherit; opacity: 0.6; font-size: 0.9rem;
+}
+
+.announcement-close:hover { opacity: 1; }
