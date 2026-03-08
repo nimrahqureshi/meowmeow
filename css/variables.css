@@ -1,105 +1,207 @@
 /* =========================================
-   DESIGN TOKENS - VARIABLES
+   VARIABLES.CSS — DESIGN TOKENS
+   Full production-ready token system
    ========================================= */
 
 :root {
-  --bg-primary: #FFFFFF;
+  /* ====== BACKGROUNDS ====== */
+  --bg-primary:   #FFFFFF;
   --bg-secondary: #F9FAFB;
-  --bg-tertiary: #F3F4F6;
-  --bg-glass: rgba(255,255,255,0.85);
+  --bg-tertiary:  #F3F4F6;
+  --bg-glass:     rgba(255,255,255,0.85);
+  --bg-glass-border: rgba(255,255,255,0.2);
+  --bg-card:      #FFFFFF;
+  --bg-overlay:   rgba(0,0,0,0.5);
 
-  --text-primary: #111827;
+  /* ====== TEXT ====== */
+  --text-primary:   #111827;
   --text-secondary: #4B5563;
-  --text-tertiary: #9CA3AF;
-  --text-white: #FFFFFF;
+  --text-tertiary:  #9CA3AF;
+  --text-white:     #FFFFFF;
 
-  --accent: #7C3AED;
-  --accent-hover: #6D28D9;
-  --accent-light: rgba(124,58,237,0.12);
-  --accent-gradient: linear-gradient(135deg,#7C3AED,#A78BFA);
+  /* ====== BRAND ====== */
+  --accent:          #7C3AED;
+  --accent-hover:    #6D28D9;
+  --accent-light:    rgba(124,58,237,0.12);
+  --gradient-primary: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
 
-  --cta: #EC4899;
-  --cta-hover: #DB2777;
-  --cta-light: rgba(236,72,153,0.12);
-  --cta-gradient: linear-gradient(135deg,#EC4899,#F472B6);
+  --cta:         #EC4899;
+  --cta-hover:   #DB2777;
+  --cta-light:   rgba(236,72,153,0.12);
+  --gradient-cta: linear-gradient(135deg, #EC4899 0%, #F472B6 100%);
 
-  --success: #10B981;
+  /* ====== STATUS ====== */
+  --success:       #10B981;
   --success-light: rgba(16,185,129,0.15);
-  --warning: #F59E0B;
+  --warning:       #F59E0B;
   --warning-light: rgba(245,158,11,0.15);
-  --danger: #EF4444;
-  --danger-light: rgba(239,68,68,0.15);
-  --info: #3B82F6;
-  --info-light: rgba(59,130,246,0.15);
+  --danger:        #EF4444;
+  --danger-light:  rgba(239,68,68,0.15);
+  --info:          #3B82F6;
+  --info-light:    rgba(59,130,246,0.15);
 
-  --border: #E5E7EB;
-  --radius-sm: 6px;
-  --radius-md: 10px;
-  --radius-lg: 14px;
-  --radius-xl: 20px;
-  --radius-full: 999px;
+  /* ====== SEASONAL THEMES ====== */
+  /* Spring */
+  --spring-primary: #10B981;
+  --spring-secondary: #34D399;
+  --spring-accent: #FCD34D;
+  /* Summer */
+  --summer-primary: #F59E0B;
+  --summer-secondary: #FBBF24;
+  --summer-accent: #EF4444;
+  /* Autumn */
+  --autumn-primary: #D97706;
+  --autumn-secondary: #B45309;
+  --autumn-accent: #DC2626;
+  /* Winter */
+  --winter-primary: #3B82F6;
+  --winter-secondary: #6366F1;
+  --winter-accent: #A5B4FC;
+  /* Holiday */
+  --holiday-primary: #DC2626;
+  --holiday-secondary: #16A34A;
+  --holiday-accent: #FCD34D;
 
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.05);
-  --shadow-md: 0 6px 12px rgba(0,0,0,0.08);
-  --shadow-lg: 0 12px 24px rgba(0,0,0,0.12);
-  --shadow-xl: 0 20px 40px rgba(0,0,0,0.16);
+  /* ====== BORDERS ====== */
+  --border:      #E5E7EB;
+  --border-dark: #374151;
+
+  /* ====== RADIUS ====== */
+  --radius-sm:   6px;
+  --radius-md:   10px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-2xl:  28px;
+  --radius-full: 9999px;
+
+  /* ====== SHADOWS ====== */
+  --shadow-sm:  0 2px 4px rgba(0,0,0,0.05);
+  --shadow-md:  0 6px 12px rgba(0,0,0,0.08);
+  --shadow-lg:  0 12px 24px rgba(0,0,0,0.12);
+  --shadow-xl:  0 20px 40px rgba(0,0,0,0.16);
   --shadow-2xl: 0 25px 50px rgba(0,0,0,0.25);
-  --shadow-3d: 0 8px 0 rgba(0,0,0,0.1);
+  --shadow-3d:  0 8px 0 rgba(0,0,0,0.1);
   --shadow-glow-accent: 0 0 20px rgba(124,58,237,0.3);
-  --shadow-glow-cta: 0 0 20px rgba(236,72,153,0.3);
+  --shadow-glow-cta:    0 0 20px rgba(236,72,153,0.3);
+  --shadow-inner: inset 0 2px 8px rgba(0,0,0,0.06);
 
-  --font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-heading: 'Syne', system-ui, sans-serif;
+  /* ====== TYPOGRAPHY ====== */
+  --font-body:    'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-heading: 'Poppins', Inter, sans-serif;
+  --font-mono:    'Fira Code', 'Courier New', monospace;
 
+  /* ====== NAVBAR ====== */
   --navbar-height: 72px;
-  --navbar-bg: rgba(255,255,255,0.92);
-  --navbar-blur: 20px;
+  --navbar-bg:     rgba(255,255,255,0.92);
+  --navbar-blur:   20px;
 
-  --footer-bg: #0D0D1A;
-  --footer-text: #9CA3AF;
+  /* ====== FOOTER ====== */
+  --footer-bg:   #111827;
+  --footer-text: #D1D5DB;
 
-  --gradient-primary: linear-gradient(135deg,#7C3AED,#EC4899);
-  --gradient-cta: linear-gradient(135deg,#EC4899,#F472B6);
+  /* ====== TRANSITIONS ====== */
+  --transition-fast:   0.15s ease;
+  --transition:        0.3s ease;
+  --transition-slow:   0.5s ease;
+  --transition-bounce: cubic-bezier(0.68,-0.55,0.265,1.55);
 
-  --transition-fast: 0.18s ease;
-  --transition: 0.3s ease;
-  --transition-slow: 0.5s ease;
-
+  /* ====== Z-INDEX ====== */
+  --z-base:     1;
   --z-dropdown: 100;
-  --z-sticky: 500;
-  --z-navbar: 1000;
-  --z-overlay: 1500;
-  --z-modal: 2000;
-  --z-toast: 3000;
+  --z-sticky:   500;
+  --z-navbar:   1000;
+  --z-overlay:  1500;
+  --z-modal:    2000;
+  --z-toast:    3000;
+  --z-top:      9999;
 }
 
+/* ====== DARK THEME ====== */
 [data-theme="dark"] {
-  --bg-primary: #0B0B1A;
-  --bg-secondary: #13132A;
-  --bg-tertiary: #1E1E35;
-  --bg-glass: rgba(19,19,42,0.92);
+  --bg-primary:   #0F172A;
+  --bg-secondary: #1E293B;
+  --bg-tertiary:  #334155;
+  --bg-glass:     rgba(15,23,42,0.9);
+  --bg-glass-border: rgba(255,255,255,0.08);
+  --bg-card:      #1E293B;
+  --bg-overlay:   rgba(0,0,0,0.7);
 
-  --text-primary: #F1F5F9;
-  --text-secondary: #CBD5E1;
-  --text-tertiary: #64748B;
+  --text-primary:   #F9FAFB;
+  --text-secondary: #D1D5DB;
+  --text-tertiary:  #6B7280;
 
-  --accent: #A78BFA;
+  --accent:       #A78BFA;
   --accent-hover: #C4B5FD;
-  --accent-light: rgba(167,139,250,0.18);
+  --accent-light: rgba(167,139,250,0.2);
+  --gradient-primary: linear-gradient(135deg, #7C3AED 0%, #A78BFA 100%);
 
-  --cta: #F9A8D4;
+  --cta:       #F9A8D4;
   --cta-hover: #FBCFE8;
-  --cta-light: rgba(249,168,212,0.18);
+  --cta-light: rgba(249,168,212,0.2);
 
-  --border: #2D2D4E;
-  --navbar-bg: rgba(11,11,26,0.96);
-  --footer-bg: #050510;
-  --footer-text: #64748B;
+  --border:      #374151;
+  --border-dark: #475569;
 
-  --shadow-sm: 0 2px 4px rgba(0,0,0,0.4);
-  --shadow-md: 0 6px 12px rgba(0,0,0,0.5);
-  --shadow-lg: 0 12px 24px rgba(0,0,0,0.6);
-  --shadow-xl: 0 20px 40px rgba(0,0,0,0.7);
-  --shadow-glow-accent: 0 0 25px rgba(167,139,250,0.35);
-  --shadow-glow-cta: 0 0 25px rgba(249,168,212,0.35);
+  --shadow-sm:  0 2px 4px rgba(0,0,0,0.3);
+  --shadow-md:  0 6px 12px rgba(0,0,0,0.4);
+  --shadow-lg:  0 12px 24px rgba(0,0,0,0.5);
+  --shadow-xl:  0 20px 40px rgba(0,0,0,0.6);
+  --shadow-2xl: 0 25px 50px rgba(0,0,0,0.7);
+  --shadow-glow-accent: 0 0 20px rgba(167,139,250,0.4);
+  --shadow-glow-cta:    0 0 20px rgba(249,168,212,0.4);
+
+  --navbar-bg: rgba(15,23,42,0.95);
+  --footer-bg: #020617;
+  --footer-text: #9CA3AF;
+}
+
+/* ====== SEASONAL THEMES ====== */
+[data-season="spring"] {
+  --accent:          #10B981;
+  --accent-hover:    #059669;
+  --accent-light:    rgba(16,185,129,0.12);
+  --gradient-primary: linear-gradient(135deg, #10B981, #34D399);
+  --cta:             #F59E0B;
+  --cta-hover:       #D97706;
+  --shadow-glow-accent: 0 0 20px rgba(16,185,129,0.3);
+}
+
+[data-season="summer"] {
+  --accent:          #F59E0B;
+  --accent-hover:    #D97706;
+  --accent-light:    rgba(245,158,11,0.12);
+  --gradient-primary: linear-gradient(135deg, #F59E0B, #FCD34D);
+  --cta:             #EF4444;
+  --cta-hover:       #DC2626;
+  --shadow-glow-accent: 0 0 20px rgba(245,158,11,0.35);
+}
+
+[data-season="autumn"] {
+  --accent:          #D97706;
+  --accent-hover:    #B45309;
+  --accent-light:    rgba(217,119,6,0.12);
+  --gradient-primary: linear-gradient(135deg, #D97706, #F97316);
+  --cta:             #DC2626;
+  --cta-hover:       #B91C1C;
+  --shadow-glow-accent: 0 0 20px rgba(217,119,6,0.35);
+}
+
+[data-season="winter"] {
+  --accent:          #3B82F6;
+  --accent-hover:    #2563EB;
+  --accent-light:    rgba(59,130,246,0.12);
+  --gradient-primary: linear-gradient(135deg, #3B82F6, #6366F1);
+  --cta:             #A5B4FC;
+  --cta-hover:       #818CF8;
+  --shadow-glow-accent: 0 0 20px rgba(59,130,246,0.3);
+}
+
+[data-season="holiday"] {
+  --accent:          #DC2626;
+  --accent-hover:    #B91C1C;
+  --accent-light:    rgba(220,38,38,0.12);
+  --gradient-primary: linear-gradient(135deg, #DC2626, #16A34A);
+  --cta:             #FCD34D;
+  --cta-hover:       #FBBF24;
+  --shadow-glow-accent: 0 0 20px rgba(220,38,38,0.3);
 }
