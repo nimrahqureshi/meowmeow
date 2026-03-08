@@ -1,112 +1,65 @@
-/* ============================================================
-   ANIMATIONS.CSS — KEYFRAMES & ANIMATION UTILITIES
-   ============================================================ */
+/* ============================
+   ANIMATIONS.CSS — KEYFRAMES & EFFECTS
+   ============================ */
 
-/* ── ENTRANCE ANIMATIONS ── */
+/* ===== FADE IN UTILITIES ===== */
 .animate-fade-up {
   opacity: 0;
-  transform: translateY(32px);
-  animation: fadeUp 0.7s var(--ease-smooth) forwards;
+  transform: translateY(30px);
+  animation: fadeUp 0.8s ease forwards;
 }
 
 .animate-fade-down {
   opacity: 0;
-  transform: translateY(-24px);
-  animation: fadeDown 0.7s var(--ease-smooth) forwards;
+  transform: translateY(-30px);
+  animation: fadeDown 0.8s ease forwards;
 }
 
 .animate-fade-left {
   opacity: 0;
-  transform: translateX(32px);
-  animation: fadeLeft 0.7s var(--ease-smooth) forwards;
+  transform: translateX(30px);
+  animation: fadeLeft 0.8s ease forwards;
 }
 
 .animate-fade-right {
   opacity: 0;
-  transform: translateX(-32px);
-  animation: fadeRight 0.7s var(--ease-smooth) forwards;
+  transform: translateX(-30px);
+  animation: fadeRight 0.8s ease forwards;
 }
 
 .animate-scale-in {
   opacity: 0;
-  transform: scale(0.88);
-  animation: scaleIn 0.55s var(--ease-spring) forwards;
+  transform: scale(0.85);
+  animation: scaleIn 0.6s ease forwards;
 }
 
-.animate-pop {
-  animation: pop 0.4s var(--ease-spring) forwards;
-}
+/* ===== DELAY CLASSES ===== */
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.35s; }
+.delay-4 { animation-delay: 0.5s; }
+.delay-5 { animation-delay: 0.65s; }
+.delay-6 { animation-delay: 0.8s; }
 
-/* ── STAGGER DELAYS ── */
-.delay-0  { animation-delay: 0s; }
-.delay-1  { animation-delay: 0.10s; }
-.delay-2  { animation-delay: 0.20s; }
-.delay-3  { animation-delay: 0.32s; }
-.delay-4  { animation-delay: 0.44s; }
-.delay-5  { animation-delay: 0.56s; }
-.delay-6  { animation-delay: 0.68s; }
-
-/* ── SCROLL REVEAL ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(36px);
-  transition: opacity 0.65s var(--ease-smooth), transform 0.65s var(--ease-smooth);
-}
-.reveal.revealed {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.reveal-left {
-  opacity: 0;
-  transform: translateX(-36px);
-  transition: opacity 0.65s var(--ease-smooth), transform 0.65s var(--ease-smooth);
-}
-.reveal-left.revealed {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-right {
-  opacity: 0;
-  transform: translateX(36px);
-  transition: opacity 0.65s var(--ease-smooth), transform 0.65s var(--ease-smooth);
-}
-.reveal-right.revealed {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.reveal-scale {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.55s var(--ease-smooth), transform 0.55s var(--ease-spring);
-}
-.reveal-scale.revealed {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* ── KEYFRAMES ── */
+/* ===== KEYFRAMES ===== */
 @keyframes fadeUp {
   to { opacity: 1; transform: translateY(0); }
 }
+
 @keyframes fadeDown {
   to { opacity: 1; transform: translateY(0); }
 }
+
 @keyframes fadeLeft {
   to { opacity: 1; transform: translateX(0); }
 }
+
 @keyframes fadeRight {
   to { opacity: 1; transform: translateX(0); }
 }
+
 @keyframes scaleIn {
   to { opacity: 1; transform: scale(1); }
-}
-@keyframes pop {
-  0%   { transform: scale(0.9); opacity: 0; }
-  60%  { transform: scale(1.06); opacity: 1; }
-  100% { transform: scale(1); opacity: 1; }
 }
 
 @keyframes fadeInDown {
@@ -114,13 +67,18 @@
   to   { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-18px); }
+  from { opacity: 0; transform: translateY(-20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(18px); }
+  from { opacity: 0; transform: translateY(20px); }
   to   { opacity: 1; transform: translateY(0); }
 }
 
@@ -134,60 +92,61 @@
   to   { opacity: 1; transform: translateX(0); }
 }
 
-/* ── AMBIENT FLOAT ── */
+/* Float animations */
 @keyframes float {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  25%       { transform: translate(18px, -18px) rotate(5deg); }
-  50%       { transform: translate(-8px, 16px) rotate(-3deg); }
-  75%       { transform: translate(12px, 8px) rotate(2deg); }
+  0%,100% { transform: translate(0,0); }
+  25%     { transform: translate(18px,-18px); }
+  50%     { transform: translate(-10px,20px); }
+  75%     { transform: translate(14px,10px); }
 }
 
 @keyframes floatElement {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50%       { transform: translateY(-14px) rotate(8deg); }
+  0%,100% { transform: translateY(0) rotate(0deg); }
+  50%     { transform: translateY(-14px) rotate(8deg); }
 }
 
-/* ── CARD FLOATS ── */
 @keyframes cardFloat1 {
-  0%, 100% { transform: translateY(0) rotate(-2deg); }
-  50%       { transform: translateY(-14px) rotate(1.5deg); }
-}
-@keyframes cardFloat2 {
-  0%, 100% { transform: translateY(0) rotate(2.5deg); }
-  50%       { transform: translateY(-10px) rotate(-1deg); }
-}
-@keyframes cardFloat3 {
-  0%, 100% { transform: translateY(0) rotate(1deg); }
-  50%       { transform: translateY(-8px) rotate(-2.5deg); }
+  0%,100% { transform: translateY(0) rotate(-2deg); }
+  50%     { transform: translateY(-12px) rotate(1deg); }
 }
 
-/* ── SPECIAL EFFECTS ── */
+@keyframes cardFloat2 {
+  0%,100% { transform: translateY(0) rotate(2deg); }
+  50%     { transform: translateY(-10px) rotate(-1deg); }
+}
+
+@keyframes cardFloat3 {
+  0%,100% { transform: translateY(0) rotate(1deg); }
+  50%     { transform: translateY(-8px) rotate(-2deg); }
+}
+
+/* Utility animations */
 @keyframes scroll {
   0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
-  100% { opacity: 0; transform: translateX(-50%) translateY(14px); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(16px); }
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.25; }
+  0%,100% { opacity: 1; }
+  50%     { opacity: 0.3; }
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); box-shadow: var(--shadow-md); }
-  50%       { transform: scale(1.04); box-shadow: var(--shadow-glow-accent); }
+  0%,100% { transform: scale(1); }
+  50%     { transform: scale(1.05); }
 }
 
 @keyframes pulseRing {
-  0%   { transform: scale(0.92); opacity: 0.8; }
-  100% { transform: scale(1.5);  opacity: 0; }
+  0%   { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
 }
 
 @keyframes shake {
-  0%, 100% { transform: translateX(0); }
-  20%       { transform: translateX(-6px); }
-  40%       { transform: translateX(6px); }
-  60%       { transform: translateX(-4px); }
-  80%       { transform: translateX(4px); }
+  0%,100% { transform: translateX(0); }
+  20%     { transform: translateX(-6px); }
+  40%     { transform: translateX(6px); }
+  60%     { transform: translateX(-4px); }
+  80%     { transform: translateX(4px); }
 }
 
 @keyframes spin {
@@ -195,64 +154,103 @@
   to   { transform: rotate(360deg); }
 }
 
-@keyframes shimmer {
-  0%   { background-position: -600px 0; }
-  100% { background-position:  600px 0; }
-}
-
-@keyframes gradientShift {
-  0%   { background-position: 0% 50%; }
-  50%  { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes ripple {
-  0%   { transform: scale(0); opacity: 0.6; }
-  100% { transform: scale(3); opacity: 0; }
-}
-
-@keyframes countUp {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  14%       { transform: scale(1.18); }
-  28%       { transform: scale(1); }
-  42%       { transform: scale(1.14); }
-  70%       { transform: scale(1); }
+@keyframes spinReverse {
+  from { transform: rotate(360deg); }
+  to   { transform: rotate(0deg); }
 }
 
 @keyframes bounce {
-  0%, 100% { transform: translateY(-8%); animation-timing-function: cubic-bezier(0.8,0,1,1); }
-  50%       { transform: translateY(0); animation-timing-function: cubic-bezier(0,0,0.2,1); }
+  0%,100% { transform: translateY(0); animation-timing-function: cubic-bezier(0.8,0,1,1); }
+  50%     { transform: translateY(-10px); animation-timing-function: cubic-bezier(0,0,0.2,1); }
 }
 
-/* ── LOADING / SKELETON ── */
+@keyframes ripple {
+  0%   { transform: scale(0); opacity: 0.4; }
+  100% { transform: scale(4); opacity: 0; }
+}
+
+/* Snow flakes - for winter/holiday */
+@keyframes snowfall {
+  0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+}
+
+/* Shimmer loading skeleton */
+@keyframes shimmer {
+  0%   { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
 .skeleton {
   background: linear-gradient(90deg,
     var(--bg-tertiary) 25%,
     var(--bg-secondary) 50%,
     var(--bg-tertiary) 75%
   );
-  background-size: 600px 100%;
-  animation: shimmer 1.4s infinite;
-  border-radius: var(--radius-sm);
+  background-size: 1000px 100%;
+  animation: shimmer 1.8s infinite linear;
+  border-radius: var(--radius-md);
 }
 
-/* ── SPINNER ── */
-.spinner {
-  width: 22px;
-  height: 22px;
-  border: 3px solid var(--accent-light);
-  border-top-color: var(--accent);
-  border-radius: 50%;
-  animation: spin 0.75s linear infinite;
-  display: inline-block;
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
-/* ── REDUCED MOTION ── */
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal-left.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.reveal-right.revealed {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ===== CONFETTI (for success state) ===== */
+@keyframes confettiDrop {
+  0%   { transform: translateY(-10px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+}
+
+/* ===== SEASONAL PARTICLES ===== */
+.seasonal-particles {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.particle {
+  position: absolute;
+  top: -20px;
+  font-size: 1rem;
+  opacity: 0.7;
+  animation: snowfall linear infinite;
+}
+
+/* ===== REDUCED MOTION ===== */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
