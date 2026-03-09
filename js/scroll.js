@@ -1,193 +1,212 @@
-/* ============================
-   SCROLL.JS
-   ============================ */
+/* =============================================
+   SCROLL.JS — SCROLL EFFECTS & ANIMATIONS
+   ============================================= */
+'use strict';
 
 (function() {
-  'use strict';
+  /* ── SCROLL PROGRESS ── */
+  const progressBar = document.getElementById('scrollProgress');
 
-  // ===== SCROLL PROGRESS BAR =====
-  function updateScrollProgress() {
-    const bar = document.getElementById('scrollProgress');
-    if (!bar) return;
-    const scrollTop = window.pageYOffset;
-    const docH = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    bar.style.width = docH > 0 ? (scrollTop / docH * 100) + '%' : '0%';
+  function updateProgress() {
+    if (!progressBar) return;
+    const scrollTop  = window.scrollY || window.pageYOffset;
+    const docHeight  = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const progress   = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = Math.min(progress, 100) + '%';
   }
 
-  // ===== BACK TO TOP =====
+  /* ── BACK TO TOP ── */
   const backToTop = document.getElementById('backToTop');
 
-  function updateBackToTop() {
-    backToTop?.classList.toggle('visible', window.pageYOffset > 400);
+  function handleBackToTop() {
+    if (!backToTop) return;
+    backToTop.classList.toggle('visible', window.scrollY > 400);
   }
 
-  backToTop?.addEventListener('click', () => {
+  backToTop && backToTop.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 
-  // ===== SCROLL REVEAL =====
-  function initScrollReveal() {
-    const els = document.querySelectorAll(
-      '.product-card, .category-card, .review-card, .blog-card, .trending-card, .feature-card, .team-card, .contact-item, .faq-item, .promo-card'
-    );
+  /* ── SCROLL REVEAL ── */
+  function initReveal() {
+    const revealEls = document.querySelectorAll('.reveal, .product-card, .category-card, .blog-card, .review-card, .feature-card');
 
     if (!('IntersectionObserver' in window)) {
-      els.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+      revealEls.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
       return;
     }
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('revealed');
+          entry.target.classList.add('visible', 'revealed');
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
           observer.unobserve(entry.target);
         }
       });
-    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-    els.forEach((el, i) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(28px)';
-      el.style.transition = `opacity 0.55s ease ${(i % 5) * 0.07}s, transform 0.55s ease ${(i % 5) * 0.07}s`;
-      observer.observe(el);
-
-      // Handle already revealed
-      el.addEventListener('transitionend', () => {
-        if (el.classList.contains('revealed')) {
-          el.style.opacity = '';
-          el.style.transform = '';
-          el.style.transition = '';
-        }
-      }, { once: true });
+    revealEls.forEach((el, i) => {
+      if (!el.classList.contains('revealed')) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(28px)';
+        el.style.transition = `opacity 0.55s ease ${(i % 5) * 0.08}s, transform 0.55s ease ${(i % 5) * 0.08}s`;
+        observer.observe(el);
+      }
     });
   }
 
-  // ===== COUNTER ANIMATION =====
+  /* ── COUNTER ANIMATION ── */
   function initCounters() {
     const counters = document.querySelectorAll('[data-count]');
     if (!counters.length) return;
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
         const target = parseFloat(el.dataset.count);
         const suffix = el.dataset.suffix || '';
-        const decimals = el.dataset.decimals || 0;
-        let current = 0;
+        const prefix = el.dataset.prefix || '';
+        const duration = 1800;
         const steps = 60;
-        const increment = target / steps;
-        const interval = 2000 / steps;
+        const stepVal = target / steps;
+        let current = 0;
+        let frame = 0;
 
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            current = target;
-            clearInterval(timer);
-          }
-          el.textContent = parseFloat(current.toFixed(decimals)).toLocaleString() + suffix;
-        }, interval);
+        const update = () => {
+          current = Math.min(current + stepVal, target);
+          frame++;
+          const display = Number.isInteger(target) ? Math.floor(current) : current.toFixed(1);
+          el.textContent = prefix + display.toLocaleString() + suffix;
+          if (current < target) requestAnimationFrame(update);
+        };
 
+        requestAnimationFrame(update);
         observer.unobserve(el);
       });
     }, { threshold: 0.5 });
 
-    counters.forEach(c => observer.observe(c));
+    counters.forEach(counter => observer.observe(counter));
   }
 
-  // ===== COUNTDOWN TIMER =====
-  function initCountdownTimer() {
+  /* ── COUNTDOWN TIMER ── */
+  function initTimer() {
     const h = document.getElementById('hours');
     const m = document.getElementById('minutes');
     const s = document.getElementById('seconds');
     if (!h || !m || !s) return;
 
-    // Get or set end time
-    let endTime = parseInt(sessionStorage.getItem('mm-countdown'));
+    // Restore or set new end time (8 hours from now)
+    let endTime = parseInt(sessionStorage.getItem('dealTimerEnd') || '0');
     if (!endTime || endTime < Date.now()) {
-      endTime = Date.now() + (8 * 3600 + 45 * 60 + 33) * 1000;
-      sessionStorage.setItem('mm-countdown', endTime);
+      endTime = Date.now() + 8 * 3600 * 1000 + 45 * 60 * 1000;
+      sessionStorage.setItem('dealTimerEnd', endTime);
     }
 
-    function update() {
-      const diff = Math.max(0, Math.floor((endTime - Date.now()) / 1000));
-      if (diff === 0) {
+    function pad(n) { return String(n).padStart(2, '0'); }
+
+    function tick() {
+      const diff = Math.max(0, endTime - Date.now());
+      const totalSec = Math.floor(diff / 1000);
+      const hh = Math.floor(totalSec / 3600);
+      const mm = Math.floor((totalSec % 3600) / 60);
+      const ss = totalSec % 60;
+
+      h.textContent = pad(hh);
+      m.textContent = pad(mm);
+      s.textContent = pad(ss);
+
+      if (diff <= 0) {
+        // Reset timer
         endTime = Date.now() + 24 * 3600 * 1000;
-        sessionStorage.setItem('mm-countdown', endTime);
+        sessionStorage.setItem('dealTimerEnd', endTime);
       }
-      const hh = Math.floor(diff / 3600);
-      const mm = Math.floor((diff % 3600) / 60);
-      const ss = diff % 60;
-      h.textContent = String(hh).padStart(2, '0');
-      m.textContent = String(mm).padStart(2, '0');
-      s.textContent = String(ss).padStart(2, '0');
     }
 
-    update();
-    setInterval(update, 1000);
+    tick();
+    setInterval(tick, 1000);
   }
 
-  // ===== FLASH SALE TIMER =====
-  function initFlashTimers() {
-    const timers = document.querySelectorAll('[data-flash-timer]');
-    timers.forEach(timerEl => {
-      let seconds = parseInt(timerEl.dataset.flashTimer) || 14400;
-      const hEl = timerEl.querySelector('.t-h');
-      const mEl = timerEl.querySelector('.t-m');
-      const sEl = timerEl.querySelector('.t-s');
-      if (!hEl || !mEl || !sEl) return;
+  /* ── PARALLAX HERO ── */
+  function initParallax() {
+    const hero = document.querySelector('.hero');
+    if (!hero || window.innerWidth < 768) return;
 
-      setInterval(() => {
-        seconds = Math.max(0, seconds - 1);
-        hEl.textContent = String(Math.floor(seconds / 3600)).padStart(2, '0');
-        mEl.textContent = String(Math.floor((seconds % 3600) / 60)).padStart(2, '0');
-        sEl.textContent = String(seconds % 60).padStart(2, '0');
-      }, 1000);
+    window.addEventListener('mousemove', (e) => {
+      const blobs = document.querySelectorAll('.hero-blob');
+      const mx = (e.clientX / window.innerWidth - 0.5) * 2;
+      const my = (e.clientY / window.innerHeight - 0.5) * 2;
+
+      blobs.forEach((blob, i) => {
+        const speed = (i + 1) * 8;
+        blob.style.transform = `translate(${mx * speed}px, ${my * speed}px)`;
+      });
+    }, { passive: true });
+  }
+
+  /* ── STICKY CART SUMMARY ── */
+  function initStickyCartSummary() {
+    const summary = document.querySelector('.cart-summary');
+    if (!summary) return;
+    // Already handled with position: sticky in CSS
+  }
+
+  /* ── LAZY IMAGES ── */
+  function initLazyImages() {
+    if (!('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const img = entry.target;
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+        img.classList.add('loaded');
+        observer.unobserve(img);
+      });
     });
+
+    document.querySelectorAll('img[data-src]').forEach(img => observer.observe(img));
   }
 
-  // ===== ACTIVE NAV LINK ON SCROLL =====
-  function updateActiveNav() {
-    const sections = document.querySelectorAll('section[id]');
-    const links = document.querySelectorAll('.nav-link[href^="#"]');
-    const pos = window.pageYOffset + 100;
-
-    sections.forEach(sec => {
-      if (pos >= sec.offsetTop && pos < sec.offsetTop + sec.offsetHeight) {
-        links.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === '#' + sec.id);
-        });
+  /* ── SMOOTH IMAGE REVEAL ── */
+  function initImageReveal() {
+    document.querySelectorAll('img:not([data-src])').forEach(img => {
+      img.style.transition = 'opacity 0.4s ease';
+      if (!img.complete) {
+        img.style.opacity = '0';
+        img.addEventListener('load', () => img.style.opacity = '1');
+        img.addEventListener('error', () => { img.style.opacity = '1'; });
       }
     });
   }
 
-  // ===== THROTTLE =====
-  function throttle(fn, limit) {
-    let lastTime = 0;
+  /* ── THROTTLE ── */
+  function throttle(fn, ms) {
+    let last = 0;
     return function(...args) {
       const now = Date.now();
-      if (now - lastTime >= limit) {
-        lastTime = now;
-        fn.apply(this, args);
-      }
+      if (now - last >= ms) { last = now; fn.apply(this, args); }
     };
   }
 
-  // ===== SCROLL LISTENER =====
+  /* ── SCROLL LISTENER ── */
   window.addEventListener('scroll', throttle(() => {
-    updateScrollProgress();
-    updateBackToTop();
-    updateActiveNav();
+    updateProgress();
+    handleBackToTop();
   }, 16), { passive: true });
 
-  // ===== INIT =====
+  /* ── INIT ── */
   document.addEventListener('DOMContentLoaded', () => {
-    initScrollReveal();
+    initReveal();
     initCounters();
-    initCountdownTimer();
-    initFlashTimers();
-    updateScrollProgress();
-    updateBackToTop();
+    initTimer();
+    initParallax();
+    initLazyImages();
+    initImageReveal();
   });
-
 })();
