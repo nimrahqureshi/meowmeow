@@ -1,5 +1,5 @@
 /* =============================================
-   MEOWMEOW — BUTTONS
+   BUTTONS.CSS — 3D MODERN BUTTON SYSTEM
    ============================================= */
 
 .btn {
@@ -7,136 +7,184 @@
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 13px 28px;
-  border-radius: var(--r-full);
+  padding: 12px 26px;
+  border-radius: var(--radius-full);
   font-family: var(--font-body);
   font-weight: 700;
   font-size: 0.92rem;
   text-decoration: none;
   cursor: pointer;
   border: none;
-  outline: none;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-  transition: all var(--t-normal);
+  transition: transform var(--t-fast), box-shadow var(--t-fast), background var(--t-fast);
   letter-spacing: 0.3px;
-  -webkit-tap-highlight-color: transparent;
 }
 
-/* SHIMMER */
+/* Shimmer effect */
 .btn::before {
   content: '';
   position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: var(--grad-shimmer);
-  transition: left 0.55s ease;
-  pointer-events: none;
+  top: 0; left: -100%; width: 60%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transform: skewX(-15deg);
+  transition: left var(--t-slow);
 }
-.btn:hover::before { left: 100%; }
 
-/* ── PRIMARY ── */
+.btn:hover::before { left: 130%; }
+
+/* ── PRIMARY (Rose) ── */
 .btn-primary {
-  background: var(--grad-primary);
+  background: var(--gradient-rose);
   color: #fff;
-  box-shadow: 0 4px 20px rgba(108,61,232,0.4);
+  box-shadow: var(--shadow-3d-rose);
 }
 .btn-primary:hover {
-  color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(108,61,232,0.55), var(--shadow-glow-violet);
-}
-.btn-primary:active { transform: translateY(-1px); }
-
-/* ── CTA (ROSE/AMBER) ── */
-.btn-cta {
-  background: var(--grad-cta);
+  box-shadow: 0 8px 0 var(--rose-dark), var(--shadow-glow-rose);
   color: #fff;
-  box-shadow: 0 4px 20px rgba(255,79,123,0.4);
+}
+.btn-primary:active { transform: translateY(1px); box-shadow: 0 2px 0 var(--rose-dark); }
+
+/* ── CTA (Gold) ── */
+.btn-cta {
+  background: var(--gradient-gold);
+  color: #0D0D14;
+  box-shadow: var(--shadow-3d-gold);
 }
 .btn-cta:hover {
-  color: #fff;
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(255,79,123,0.55), var(--shadow-glow-rose);
+  box-shadow: 0 8px 0 var(--gold-dark), var(--shadow-glow-gold);
+  color: #0D0D14;
 }
+.btn-cta:active { transform: translateY(1px); box-shadow: 0 2px 0 var(--gold-dark); }
+
+/* ── VIOLET ── */
+.btn-violet {
+  background: var(--gradient-violet);
+  color: #fff;
+  box-shadow: var(--shadow-3d-violet);
+}
+.btn-violet:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 var(--violet-dark), var(--shadow-glow-violet);
+  color: #fff;
+}
+.btn-violet:active { transform: translateY(1px); box-shadow: 0 2px 0 var(--violet-dark); }
 
 /* ── OUTLINE ── */
 .btn-outline {
   background: transparent;
-  color: var(--violet);
-  border: 2px solid var(--violet);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+  box-shadow: none;
 }
 .btn-outline:hover {
-  background: var(--violet);
+  background: var(--accent);
   color: #fff;
   transform: translateY(-3px);
-  box-shadow: var(--shadow-glow-violet);
+  box-shadow: var(--shadow-glow-rose);
 }
+.btn-outline:active { transform: translateY(0); }
 
 /* ── GHOST ── */
 .btn-ghost {
-  background: var(--violet-light);
-  color: var(--violet);
-  border: 2px solid transparent;
+  background: var(--bg-tertiary);
+  color: var(--text-secondary);
+  border: 1px solid var(--border);
 }
 .btn-ghost:hover {
-  background: var(--violet);
-  color: #fff;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
   transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
 }
 
-/* ── TEAL ── */
-.btn-teal {
-  background: var(--grad-teal);
+/* ── DARK ── */
+.btn-dark {
+  background: var(--gradient-dark);
   color: #fff;
-  box-shadow: 0 4px 20px rgba(0,201,167,0.35);
+  box-shadow: 0 6px 0 rgba(0,0,0,0.4), var(--shadow-md);
 }
-.btn-teal:hover {
-  color: #fff;
+.btn-dark:hover {
   transform: translateY(-3px);
-  box-shadow: 0 8px 30px rgba(0,201,167,0.5);
+  box-shadow: 0 8px 0 rgba(0,0,0,0.4), var(--shadow-xl);
+  color: #fff;
 }
 
-/* ── 3D STYLE ── */
-.btn-3d {
-  box-shadow: var(--shadow-3d), 0 4px 20px rgba(108,61,232,0.35);
-  transform: translateY(-2px);
+/* ── AURORA ── */
+.btn-aurora {
+  background: var(--gradient-aurora);
+  color: #fff;
+  box-shadow: 0 6px 0 rgba(108,43,217,0.5), 0 8px 24px rgba(255,51,102,0.3);
 }
-.btn-3d:hover { transform: translateY(-5px); box-shadow: 0 10px 0 rgba(0,0,0,0.1), 0 8px 30px rgba(108,61,232,0.5); }
-.btn-3d:active { transform: translateY(0); box-shadow: 0 2px 0 rgba(0,0,0,0.1); }
-.btn-cta.btn-3d { box-shadow: var(--shadow-3d), 0 4px 20px rgba(255,79,123,0.35); }
-.btn-cta.btn-3d:hover { box-shadow: 0 10px 0 rgba(0,0,0,0.1), 0 8px 30px rgba(255,79,123,0.5); }
+.btn-aurora:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 0 rgba(108,43,217,0.5), 0 12px 36px rgba(255,51,102,0.4);
+  color: #fff;
+}
 
 /* ── SIZES ── */
-.btn-sm  { padding: 8px 18px; font-size: 0.8rem; }
-.btn-lg  { padding: 16px 36px; font-size: 1rem; }
-.btn-xl  { padding: 18px 44px; font-size: 1.05rem; letter-spacing: 0.5px; }
+.btn-xs  { padding: 6px 14px; font-size: 0.78rem; }
+.btn-sm  { padding: 9px 18px; font-size: 0.83rem; }
+.btn-lg  { padding: 16px 36px; font-size: 1.05rem; }
+.btn-xl  { padding: 20px 48px; font-size: 1.15rem; }
 .btn-block { width: 100%; }
-.btn-icon { width: 44px; height: 44px; padding: 0; border-radius: var(--r-full); }
 
-/* ── WISHLIST ── */
-.wishlist-toggle {
-  position: absolute;
-  top: 12px; right: 12px;
-  width: 38px; height: 38px;
-  background: var(--bg-card);
-  border: 1.5px solid var(--border);
-  border-radius: var(--r-full);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--text-tertiary);
-  font-size: 0.9rem;
-  z-index: 3;
-  transition: all var(--t-fast);
+/* ── BUY NOW specific ── */
+.btn-buy {
+  background: var(--gradient-fire);
+  color: #fff;
+  width: 100%;
+  padding: 12px;
+  border-radius: var(--radius-md);
+  font-size: 0.88rem;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 0 var(--rose-dark), var(--shadow-md);
+  transition: var(--t-fast);
+  text-transform: uppercase;
+}
+.btn-buy:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 var(--rose-dark), var(--shadow-glow-rose);
+  color: #fff;
+}
+.btn-buy:active { transform: translateY(1px); box-shadow: 0 1px 0 var(--rose-dark); }
+
+/* ── ICON BUTTON ── */
+.btn-icon {
+  width: 44px; height: 44px;
+  padding: 0;
+  border-radius: var(--radius-full);
+}
+
+/* ── FILTER BUTTON ── */
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  border: 2px solid var(--border);
+  background: var(--bg-secondary);
+  color: var(--text-secondary);
+  font-weight: 600;
+  font-size: 0.83rem;
   cursor: pointer;
-  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+  transition: var(--t-fast);
+  font-family: var(--font-body);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
-.wishlist-toggle:hover, .wishlist-toggle.active {
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
   background: var(--rose-light);
-  color: var(--rose);
-  border-color: var(--rose);
-  transform: scale(1.1);
+  transform: translateY(-2px);
 }
-.wishlist-toggle.active i { font-weight: 900; }
+.filter-btn.active {
+  background: var(--gradient-rose);
+  color: #fff;
+  border-color: transparent;
+  box-shadow: var(--shadow-3d-rose);
+}
