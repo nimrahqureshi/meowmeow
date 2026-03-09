@@ -1,169 +1,172 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>About Us | MeowMeow</title>
-  <meta name="description" content="Learn about MeowMeow — your trusted affiliate product discovery site for the best deals on fashion, tech, beauty & more." />
-  <meta property="og:title" content="About Us | MeowMeow"><meta property="og:type" content="website">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="author" content="MeowMeow" />
+  <meta name="description" content="About MeowMeow — your trusted affiliate shopping destination for fashion, tech, beauty and more." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://meowmeow-livid.vercel.app/about.html" />
+  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png" />
+  <title>About Us — MeowMeow</title>
+
   <link rel="icon" type="image/png" href="images/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/variables.css" /><link rel="stylesheet" href="css/base.css" /><link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/hero.css" /><link rel="stylesheet" href="css/sections.css" /><link rel="stylesheet" href="css/cards.css" />
-  <link rel="stylesheet" href="css/buttons.css" /><link rel="stylesheet" href="css/footer.css" /><link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/themes.css" /><link rel="stylesheet" href="css/responsive.css" /><link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/cart.css" /><link rel="stylesheet" href="css/components.css" /><link rel="stylesheet" href="css/contact.css" /><link rel="stylesheet" href="css/legal.css" />
-  
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/buttons.css" />
+  <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
+  <script src="js/theme.js"></script>
 </head>
 <body data-theme="light">
 <div class="scroll-progress" id="scrollProgress"></div>
-<nav class="navbar" id="navbar">
-  <div class="nav-container">
-    <a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a>
-    <div class="nav-search" id="navSearch"><div class="search-wrapper"><i class="fas fa-search search-icon"></i><input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" /><button class="search-clear" id="searchClear"><i class="fas fa-times"></i></button><div class="search-results" id="searchResults"></div></div></div>
-    <ul class="nav-links" id="navLinks"><li><a href="index.html" class="nav-link">Home</a></li><li><a href="products.html" class="nav-link">Products</a></li><li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="about.html" class="nav-link active">About</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul>
-    <div class="nav-actions">
-      <button class="nav-btn search-toggle" id="searchToggle"><i class="fas fa-search"></i></button>
-      <a href="cart.html" class="nav-btn cart-btn"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></a>
-      <button class="nav-btn theme-toggle" id="themeToggle"><i class="fas fa-sun" id="themeIcon"></i></button>
-      <button class="nav-btn menu-toggle" id="menuToggle"><span class="hamburger"><span></span><span></span><span></span></span></button>
-    </div>
-  </div>
-  <div class="mobile-overlay" id="mobileOverlay"></div>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-header"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a><button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button></div>
-    <ul class="mobile-nav-links"><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="cart.html">Cart</a></li></ul>
-    <div class="mobile-theme-switch"><span>Dark Mode</span><label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle"><span class="toggle-slider"></span></label></div>
-  </div>
-</nav>
+
 <main id="mainContent">
+
+  <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <h1>🐾 About MeowMeow</h1>
-      <p>Your trusted guide to the best deals on the internet</p>
-      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>About Us</span></div>
+      <span class="section-eyebrow">Our Story</span>
+      <h1>About <span class="text-gradient">MeowMeow</span></h1>
+      <p>We curate the best deals from top marketplaces so you never miss a great find.</p>
+      <nav class="breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right"></i>
+        <span>About Us</span>
+      </nav>
     </div>
   </section>
 
+  <!-- About Grid -->
   <section class="section">
     <div class="container">
-      <div class="about-intro reveal">
-        <div class="about-intro-text">
-          <div class="section-badge"><i class="fas fa-paw"></i> Our Story</div>
-          <h2>We Help You Shop Smarter</h2>
-          <p>MeowMeow was created by a team of deal-hunters who were tired of spending hours searching across Amazon, Daraz, Temu, and AliExpress for the best prices. We built one place that does all that work for you — so you can find amazing products faster, spend less, and shop with confidence.</p>
-          <p>We're not a store. We're your personal shopping guide. Every product we feature is selected based on real ratings, thousands of verified reviews, and honest value-for-money analysis.</p>
-          <a href="products.html" class="btn btn-primary btn-lg"><i class="fas fa-shopping-bag"></i> Browse Products</a>
+      <div class="about-grid reveal">
+        <div class="about-text">
+          <span class="section-eyebrow">Who We Are</span>
+          <h2>Your Trusted Shopping <span class="text-gradient">Companion</span></h2>
+          <p>MeowMeow was born from a simple idea: finding the best products online shouldn't be a chore. We scour Amazon, Daraz, Temu, AliExpress, and more so you can shop smarter, faster, and with confidence.</p>
+          <p>Our team of passionate shoppers and deal hunters tests and reviews thousands of products each month — from must-have fashion pieces to the latest tech gadgets — and brings you only the best picks, hand-curated with love.</p>
+          <p>We believe great style and smart living shouldn't break the bank. That's why every product you see on MeowMeow is selected for quality, value, and genuine usefulness.</p>
+          <div class="about-stats">
+            <div class="about-stat">
+              <span class="stat-number text-gradient" data-count="50000">0</span><span class="text-gradient">+</span>
+              <span class="stat-label">Happy Shoppers</span>
+            </div>
+            <div class="about-stat">
+              <span class="stat-number text-gradient" data-count="12000">0</span><span class="text-gradient">+</span>
+              <span class="stat-label">Products Curated</span>
+            </div>
+            <div class="about-stat">
+              <span class="stat-number text-gradient" data-count="6">0</span><span class="text-gradient">+</span>
+              <span class="stat-label">Marketplaces</span>
+            </div>
+          </div>
         </div>
-        <div class="about-intro-image reveal">
-          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&h=400&fit=crop&auto=format" alt="Online Shopping" loading="lazy" style="border-radius:16px;width:100%;max-width:480px;">
+        <div class="about-image reveal-right">
+          <div class="about-img-wrap">
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80" alt="Shopping" loading="lazy" />
+            <div class="about-img-badge">
+              <i class="fas fa-heart"></i>
+              <span>Curated with love</span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section features-section" style="background:var(--bg-secondary)">
+  <!-- Features Grid -->
+  <section class="section" style="background: var(--bg-secondary);">
     <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-star"></i> What We Do</div>
-        <h2 class="section-title">Why Shoppers Love MeowMeow</h2>
-        <p class="section-subtitle">We make product discovery simple, honest, and enjoyable.</p>
+      <div class="section-header reveal">
+        <span class="section-eyebrow">Why MeowMeow</span>
+        <h2>Shopping Made <span class="text-gradient">Effortless</span></h2>
+        <p>Everything we do is designed to make your shopping experience better.</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-search"></i></div>
-          <h3>Curated Product Picks</h3>
-          <p>Every product is hand-selected based on real reviews, verified ratings, and value-for-money analysis. No junk, no fakes.</p>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon" style="background: var(--rose-light); color: var(--rose);">
+            <i class="fas fa-search"></i>
+          </div>
+          <h3>Expert Curation</h3>
+          <p>Every product is hand-picked by our team of shopping experts who test for quality and value before recommending.</p>
         </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-balance-scale"></i></div>
-          <h3>Multi-Marketplace Comparison</h3>
-          <p>We check Amazon, Daraz, Temu and AliExpress simultaneously so you always get the best price available online.</p>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon" style="background: var(--gold-light); color: var(--gold);">
+            <i class="fas fa-tag"></i>
+          </div>
+          <h3>Best Prices</h3>
+          <p>We compare prices across multiple platforms and always link you to the best available deal at the time of publishing.</p>
         </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-          <h3>Honest & Independent</h3>
-          <p>We're 100% independent. We earn small affiliate commissions at no cost to you — they never influence our recommendations.</p>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon" style="background: var(--violet-light); color: var(--violet);">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Trusted Partners</h3>
+          <p>We partner only with reputable marketplaces — Amazon, Daraz, Temu, AliExpress — so your purchases are always protected.</p>
         </div>
-        <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
-          <h3>Updated Daily</h3>
-          <p>Our team scans the web every 24 hours. Hot deals, new arrivals, and price drops are refreshed constantly.</p>
+        <div class="feature-card reveal reveal-delay-1">
+          <div class="feature-icon" style="background: var(--teal-light); color: var(--teal);">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <h3>Flash Deals</h3>
+          <p>Our deal hunters work around the clock to surface the hottest limited-time offers before they sell out.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-2">
+          <div class="feature-icon" style="background: var(--rose-light); color: var(--rose);">
+            <i class="fas fa-star"></i>
+          </div>
+          <h3>Honest Reviews</h3>
+          <p>We only recommend products we'd buy ourselves. Our reviews are unbiased and based on real-world testing.</p>
+        </div>
+        <div class="feature-card reveal reveal-delay-3">
+          <div class="feature-icon" style="background: var(--gold-light); color: var(--gold);">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>Always Here</h3>
+          <p>Questions? Our friendly support team is just an email away. We respond within 24 hours, every single day.</p>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- Mission -->
   <section class="section">
     <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-chart-bar"></i> By the Numbers</div>
-        <h2 class="section-title">MeowMeow in Numbers</h2>
-      </div>
-      <div class="stats-grid">
-        <div class="stat-card reveal"><span class="stat-big">50K+</span><p>Products Curated</p></div>
-        <div class="stat-card reveal"><span class="stat-big">12K+</span><p>Happy Shoppers</p></div>
-        <div class="stat-card reveal"><span class="stat-big">4</span><p>Trusted Marketplaces</p></div>
-        <div class="stat-card reveal"><span class="stat-big">97%</span><p>Satisfaction Rate</p></div>
+      <div class="newsletter-card reveal" style="text-align:center; max-width: 760px; margin: 0 auto;">
+        <span class="section-eyebrow">Our Mission</span>
+        <h2>Bringing Joy to Every <span class="text-gradient">Shopping Moment</span></h2>
+        <p style="margin-bottom:2rem; font-size:1.1rem;">We're on a mission to help everyone discover products they'll truly love — at prices that make sense. Whether you're treating yourself or shopping for someone special, MeowMeow is here to make it a great experience.</p>
+        <a href="products.html" class="btn btn-cta btn-lg">Shop Now <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
 
-  <section class="section" style="background:var(--bg-secondary)">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-th-large"></i> Categories</div>
-        <h2 class="section-title">What We Cover</h2>
-        <p class="section-subtitle">From dresses to dumbbell sets — we've got every category covered.</p>
-      </div>
-      <div class="category-tags" style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:32px;">
-        <a href="products.html?cat=women" class="category-tag"><i class="fas fa-female"></i> Women's Fashion</a>
-        <a href="products.html?cat=men" class="category-tag"><i class="fas fa-male"></i> Men's Fashion</a>
-        <a href="products.html?cat=kids" class="category-tag"><i class="fas fa-child"></i> Kids & Toys</a>
-        <a href="products.html?cat=tech" class="category-tag"><i class="fas fa-mobile-alt"></i> Electronics & Tech</a>
-        <a href="products.html?cat=beauty" class="category-tag"><i class="fas fa-spa"></i> Beauty & Skincare</a>
-        <a href="products.html?cat=home" class="category-tag"><i class="fas fa-home"></i> Home & Kitchen</a>
-        <a href="products.html?cat=shoes" class="category-tag"><i class="fas fa-shoe-prints"></i> Shoes & Footwear</a>
-        <a href="products.html?cat=fitness" class="category-tag"><i class="fas fa-dumbbell"></i> Fitness & Health</a>
-        <a href="products.html?cat=bags" class="category-tag"><i class="fas fa-shopping-bag"></i> Bags & Handbags</a>
-        <a href="products.html?cat=jewelry" class="category-tag"><i class="fas fa-gem"></i> Jewelry & Watches</a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container" style="text-align:center">
-      <h2 style="margin-bottom:16px;">Ready to Start Shopping Smarter?</h2>
-      <p style="color:var(--text-secondary);margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto;">Join thousands of smart shoppers who save time and money every day with MeowMeow.</p>
-      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
-        <a href="products.html" class="btn btn-primary btn-lg"><i class="fas fa-fire"></i> Shop Hot Deals</a>
-        <a href="contact.html" class="btn btn-outline btn-lg"><i class="fas fa-envelope"></i> Get in Touch</a>
-      </div>
-    </div>
-  </section>
 </main>
 
-<footer class="footer">
-  <div class="footer-wave"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path></svg></div>
-  <div class="footer-content"><div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand"><a href="index.html" class="footer-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a><p>MeowMeow is an independent product discovery &amp; comparison website. Find top deals across fashion, electronics, beauty, home &amp; more.</p><div class="footer-socials"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></div></div>
-      <div class="footer-links-group"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About Us</a></li></ul></div>
-      <div class="footer-links-group"><h4>Support</h4><ul><li><a href="help.html">Help Center</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="shipping.html">Shipping Info</a></li><li><a href="returns.html">Returns</a></li></ul></div>
-      <div class="footer-links-group"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookie.html">Cookie Policy</a></li><li><a href="disclosure.html">Affiliate Disclosure</a></li><li><a href="dmca.html">DMCA</a></li></ul></div>
-    </div>
-    <div class="footer-top-row"><div class="footer-newsletter"><h4>Stay Updated</h4><p>Get weekly deals, product guides, and smart shopping tips.</p><form id="newsletter-form"><input type="email" id="newsletter-email" placeholder="Your email address" required /><button type="submit">Subscribe</button></form><small id="newsletter-msg">No spam. Unsubscribe anytime.</small></div><p class="footer-disclosure">Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.</p></div>
-    <div class="footer-bottom"><p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved.</p><p class="footer-contact">Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p><div class="footer-payments"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-cc-apple-pay"></i><i class="fab fa-cc-amex"></i></div></div>
-  </div></div>
-</footer>
-<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
 <div class="toast-container" id="toastContainer"></div>
-<script src="js/navbar.js"></script><script src="js/theme.js"></script><script src="js/scroll.js"></script><script src="js/search.js"></script><script src="js/affiliate.js"></script><script src="js/script.js"></script><script src="js/main.js"></script><script>
-const nf=document.getElementById('newsletter-form');
-if(nf) nf.addEventListener('submit',function(e){e.preventDefault();const m=document.getElementById('newsletter-msg');m.textContent='✅ Subscribed!';m.style.color='#6ee7b7';this.reset();});
-</script>
+
+<script src="js/components.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/scroll.js"></script>
+<script src="js/search.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/affiliate.js"></script>
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
 </body>
 </html>
