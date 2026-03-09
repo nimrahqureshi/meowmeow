@@ -1,505 +1,444 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>MeowMeow | Smart Shopping — Best Deals on Fashion, Tech, Beauty & More</title>
-  <meta name="description" content="MeowMeow — Discover the best deals on fashion, electronics, beauty, home, kids & more. Curated affiliate deals from Amazon, Daraz, Temu & AliExpress." />
-  <meta name="keywords" content="affiliate store, fashion deals, electronics, beauty products, Amazon affiliate, Daraz deals, Temu, AliExpress, best online deals" />
-  <meta name="author" content="MeowMeow" />
-  <meta property="og:title" content="MeowMeow | Best Online Deals" />
-  <meta property="og:description" content="Discover and compare the best deals from Amazon, Daraz, Temu and AliExpress." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://meowmeow-livid.vercel.app/" />
-  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png" />
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/variables.css" />
-  <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/cards.css" />
-  <link rel="stylesheet" href="css/buttons.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/themes.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/cart.css" />
-  <link rel="stylesheet" href="css/components.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>ShopLux — Find the Best Deals Across Every Category</title>
+  <meta name="description" content="ShopLux is your #1 affiliate shopping destination. Compare top deals from Amazon, Daraz, AliExpress & Temu across fashion, electronics, beauty, home & more."/>
+  <meta name="keywords" content="affiliate store, online shopping, fashion deals, electronics, beauty, Amazon, Daraz, AliExpress, Temu"/>
+  <meta name="author" content="ShopLux"/>
+  <meta property="og:title" content="ShopLux — Best Affiliate Deals Online"/>
+  <meta property="og:description" content="Discover top-rated products across every category. Shop smarter with ShopLux."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://shoplux.store/"/>
+  <meta property="og:image" content="images/og-image.jpg"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
+  <!-- Anti-FOUC -->
+  <script>
+    (function(){var t=localStorage.getItem('shoplux_theme');if(!t)t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})();
+  </script>
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/navbar.css"/>
+  <link rel="stylesheet" href="css/hero.css"/>
+  <link rel="stylesheet" href="css/buttons.css"/>
+  <link rel="stylesheet" href="css/cards.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+  <link rel="stylesheet" href="css/themes.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+  <!-- GA4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
 </head>
-<body data-theme="light">
+<body>
 
-<div class="scroll-progress" id="scrollProgress"></div>
+<!-- SCROLL PROGRESS -->
+<div id="scrollProgress" class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
+
+<!-- PROMO BAR -->
+<div id="promoBar" class="promo-bar">
+  <p><i class="fas fa-bolt"></i> <strong>SALE:</strong> Up to 70% OFF — Today Only! Use code <strong>SHOPLUX</strong> &nbsp;·&nbsp; Free shipping on orders $49+ <i class="fas fa-truck"></i></p>
+  <button id="promoClose" class="promo-close" aria-label="Dismiss promo"><i class="fas fa-xmark"></i></button>
+</div>
 
 <!-- NAVBAR -->
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
-    <a href="index.html" class="nav-logo">
-      <div class="logo-icon"><i class="fas fa-paw"></i></div>
-      <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+
+    <a href="index.html" class="nav-logo" aria-label="ShopLux Home">
+      <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+      <span class="logo-text">Shop<span class="logo-highlight">Lux</span></span>
     </a>
-    <div class="nav-search" id="navSearch">
+
+    <div class="nav-search" id="navSearch" role="search">
       <div class="search-wrapper">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text" id="searchInput" placeholder="Search dresses, phones, skincare..." autocomplete="off" />
-        <button class="search-clear" id="searchClear"><i class="fas fa-times"></i></button>
-        <div class="search-results" id="searchResults"></div>
+        <i class="fas fa-magnifying-glass search-icon" aria-hidden="true"></i>
+        <input type="search" id="searchInput" placeholder="Search dresses, earbuds, yoga mats…" autocomplete="off" aria-label="Search products"/>
+        <button class="search-clear" id="searchClear" aria-label="Clear search"><i class="fas fa-xmark"></i></button>
+        <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
       </div>
     </div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="nav-link active">Home</a></li>
+
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link active" aria-current="page">Home</a></li>
       <li><a href="products.html" class="nav-link">Products</a></li>
       <li><a href="blog.html" class="nav-link">Blog</a></li>
       <li><a href="about.html" class="nav-link">About</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
+
     <div class="nav-actions">
-      <button class="nav-btn search-toggle" id="searchToggle"><i class="fas fa-search"></i></button>
-      <a href="cart.html" class="nav-btn cart-btn"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></a>
-      <button class="nav-btn theme-toggle" id="themeToggle"><i class="fas fa-sun" id="themeIcon"></i></button>
-      <button class="nav-btn menu-toggle" id="menuToggle"><span class="hamburger"><span></span><span></span><span></span></span></button>
+      <button class="nav-btn" id="searchToggle" aria-label="Toggle search" data-theme-toggle="false">
+        <i class="fas fa-magnifying-glass"></i>
+      </button>
+      <button class="nav-btn" id="themeToggle" data-theme-toggle aria-label="Toggle dark mode" title="Dark mode">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+      <a href="cart.html" class="nav-btn cart-btn-nav" id="cartBtn" aria-label="Cart">
+        <i class="fas fa-bag-shopping"></i>
+        <span class="nav-badge" data-cart-badge style="display:none">0</span>
+      </a>
+      <button class="nav-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+        <span class="hamburger"><span></span><span></span><span></span></span>
+      </button>
     </div>
   </div>
+
   <div class="mobile-overlay" id="mobileOverlay"></div>
-  <div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
     <div class="mobile-menu-header">
-      <a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a>
-      <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+      <a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span class="logo-text">Shop<span class="logo-highlight">Lux</span></span></a>
+      <button class="mobile-close" id="mobileClose" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
     </div>
-    <ul class="mobile-nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="cart.html">Cart</a></li>
+    <div class="mobile-search">
+      <input type="search" id="mobileSearchInput" placeholder="Search products…" aria-label="Mobile search"/>
+    </div>
+    <ul class="mobile-nav-links" role="list">
+      <li><a href="index.html" class="mobile-nav-link"><i class="fas fa-house"></i> Home</a></li>
+      <li><a href="products.html" class="mobile-nav-link"><i class="fas fa-bag-shopping"></i> Products</a></li>
+      <li><a href="blog.html" class="mobile-nav-link"><i class="fas fa-newspaper"></i> Blog</a></li>
+      <li><a href="about.html" class="mobile-nav-link"><i class="fas fa-circle-info"></i> About</a></li>
+      <li><a href="contact.html" class="mobile-nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="cart.html" class="mobile-nav-link"><i class="fas fa-bag-shopping"></i> Cart <span data-cart-badge style="display:none;background:var(--accent);color:#fff;border-radius:99px;padding:1px 8px;font-size:.75rem;margin-left:4px">0</span></a></li>
     </ul>
     <div class="mobile-theme-switch">
       <span>Dark Mode</span>
-      <label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle"><span class="toggle-slider"></span></label>
+      <label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle" data-mobile-theme-toggle><span class="toggle-slider"></span></label>
+    </div>
+    <div class="mobile-platforms">
+      <p>Shop on:</p>
+      <div class="platform-chips">
+        <span><i class="fa-brands fa-amazon"></i> Amazon</span>
+        <span><i class="fas fa-store"></i> Daraz</span>
+        <span><i class="fas fa-globe"></i> AliExpress</span>
+        <span><i class="fas fa-tag"></i> Temu</span>
+      </div>
     </div>
   </div>
 </nav>
 
 <main id="mainContent">
 
-  <!-- Affiliate Disclosure Bar -->
-  <div class="affiliate-disclosure" id="affiliateDisclosure">
-    <div class="disclosure-content">
-      <i class="fas fa-info-circle"></i>
-      <p><strong>Disclosure:</strong> MeowMeow participates in Amazon, Daraz, Temu & AliExpress affiliate programs. We may earn a commission <em>at no extra cost to you</em>.</p>
-      <button class="disclosure-close" id="disclosureClose"><i class="fas fa-times"></i></button>
-    </div>
-  </div>
+  <!-- HERO -->
+  <section class="hero" id="home" aria-label="Hero section">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-grid-overlay" aria-hidden="true"></div>
 
-  <!-- HERO SECTION -->
-  <section class="hero" id="home">
-    <div class="hero-bg-shapes" aria-hidden="true">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-      <div class="shape shape-4"></div>
-      <div class="shape shape-5"></div>
-    </div>
     <div class="hero-container">
       <div class="hero-content">
-        <div class="hero-badge animate-fade-up">
-          <i class="fas fa-star"></i> #1 Curated Affiliate Shopping
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <i class="fas fa-bolt"></i> #1 Multi-Platform Shopping Hub
         </div>
-        <h1 class="hero-title animate-fade-up delay-1">
-          Shop <span class="gradient-text">Smarter.</span><br>Save Bigger.
+        <h1 class="hero-title">
+          Discover <span class="gradient-text">Amazing Deals</span><br>Across Every Category
         </h1>
-        <p class="hero-subtitle animate-fade-up delay-2">
-          Discover hand-picked deals on fashion, electronics, beauty, home essentials, kids & more — all in one place. We compare prices so you don't have to.
+        <p class="hero-subtitle">
+          Fashion, Electronics, Beauty, Home & More — curated from Amazon, Daraz, AliExpress & Temu. One place, the best prices.
         </p>
-        <div class="hero-cta animate-fade-up delay-3">
-          <a href="#deals" class="btn btn-primary btn-lg btn-3d"><i class="fas fa-fire"></i> Explore Hot Deals</a>
-          <a href="products.html" class="btn btn-outline btn-lg"><i class="fas fa-th-large"></i> All Categories</a>
+        <div class="hero-cta">
+          <a href="#featured" class="btn btn-cta btn-lg btn-3d">
+            <i class="fas fa-fire"></i> Explore Hot Deals
+          </a>
+          <a href="products.html" class="btn btn-glass btn-lg">
+            <i class="fas fa-grid-2"></i> Browse All
+          </a>
         </div>
-        <div class="hero-stats animate-fade-up delay-4">
-          <div class="stat-item"><span class="stat-number" data-count="50000">0</span><span class="stat-label">Products Listed</span></div>
-          <div class="stat-item"><span class="stat-number" data-count="12000">0</span><span class="stat-label">Happy Shoppers</span></div>
-          <div class="stat-item"><span class="stat-number" data-count="97">0</span><span class="stat-label">% Satisfaction</span></div>
+        <div class="hero-stats">
+          <div class="stat-item"><span class="stat-number" data-count="55000" data-suffix="+">0</span><span class="stat-label">Products</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat-item"><span class="stat-number" data-count="4" data-suffix=" Platforms">0</span><span class="stat-label">Platforms</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat-item"><span class="stat-number" data-count="98" data-suffix="%">0</span><span class="stat-label">Happy Shoppers</span></div>
         </div>
       </div>
-      <div class="hero-visual animate-fade-left delay-2">
+
+      <div class="hero-visual">
         <div class="hero-card-stack">
           <div class="floating-card card-1">
-            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=300&h=300&fit=crop&auto=format" alt="Floral Summer Dress" loading="lazy">
-            <div class="card-info"><span class="card-tag">Best Seller</span><h4>Floral Summer Dress</h4><p class="card-price">$19.99</p></div>
+            <img src="https://images.unsplash.com/photo-1572804013427-4d7ca7268217?w=280&h=280&fit=crop&q=80" alt="Floral Dress Deal" loading="eager"/>
+            <div class="card-info">
+              <span class="card-badge badge-hot">🔥 Hot</span>
+              <h4>Floral Wrap Dress</h4>
+              <p class="card-price"><del>$49.99</del> <strong>$28.99</strong></p>
+            </div>
           </div>
           <div class="floating-card card-2">
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop&auto=format" alt="Smart Watch" loading="lazy">
-            <div class="card-info"><span class="card-tag hot">🔥 Hot Deal</span><h4>Smart Watch Pro X</h4><p class="card-price">$29.99</p></div>
+            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=280&h=280&fit=crop&q=80" alt="ANC Earbuds" loading="eager"/>
+            <div class="card-info">
+              <span class="card-badge badge-best">⭐ Best</span>
+              <h4>ANC Earbuds Pro</h4>
+              <p class="card-price"><del>$89.99</del> <strong>$48.99</strong></p>
+            </div>
           </div>
           <div class="floating-card card-3">
-            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=300&h=300&fit=crop&auto=format" alt="Skincare Set" loading="lazy">
-            <div class="card-info"><span class="card-tag new">✨ New Arrival</span><h4>Glow Skincare Set</h4><p class="card-price">$24.99</p></div>
+            <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=280&h=280&fit=crop&q=80" alt="Vitamin C Serum" loading="eager"/>
+            <div class="card-info">
+              <span class="card-badge badge-new">✨ New</span>
+              <h4>Vitamin C Serum</h4>
+              <p class="card-price"><del>$33.99</del> <strong>$18.99</strong></p>
+            </div>
           </div>
         </div>
-        <div class="hero-floating-elements" aria-hidden="true">
-          <div class="float-element el-1"><i class="fas fa-shopping-bag"></i></div>
-          <div class="float-element el-2"><i class="fas fa-gift"></i></div>
-          <div class="float-element el-3"><i class="fas fa-star"></i></div>
-          <div class="float-element el-4"><i class="fas fa-heart"></i></div>
-          <div class="float-element el-5"><i class="fas fa-percent"></i></div>
+        <div class="hero-float-icons" aria-hidden="true">
+          <span class="fi fi-1"><i class="fas fa-bag-shopping"></i></span>
+          <span class="fi fi-2"><i class="fas fa-star"></i></span>
+          <span class="fi fi-3"><i class="fas fa-heart"></i></span>
+          <span class="fi fi-4"><i class="fas fa-percent"></i></span>
+          <span class="fi fi-5"><i class="fas fa-truck"></i></span>
         </div>
       </div>
     </div>
-    <div class="hero-scroll-indicator">
-      <a href="#deals" aria-label="Scroll to deals"><div class="mouse"><div class="wheel"></div></div><span>Scroll Down</span></a>
-    </div>
+
+    <a href="#marketplaces" class="hero-scroll-cue" aria-label="Scroll down">
+      <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    </a>
   </section>
 
   <!-- MARKETPLACE BAR -->
-  <section class="marketplace-bar">
+  <section class="marketplace-bar" id="marketplaces" aria-label="Trusted marketplaces">
     <div class="container">
-      <p class="marketplace-label">Trusted Marketplaces</p>
-      <div class="marketplace-logos">
-        <div class="marketplace-item"><i class="fab fa-amazon"></i> Amazon</div>
-        <div class="marketplace-item"><i class="fas fa-store"></i> Daraz</div>
-        <div class="marketplace-item"><i class="fas fa-shopping-bag"></i> Temu</div>
-        <div class="marketplace-item"><i class="fas fa-globe"></i> AliExpress</div>
+      <span class="mbar-label">Trusted Platforms</span>
+      <div class="mbar-logos">
+        <div class="mbar-item"><i class="fa-brands fa-amazon"></i><span>Amazon</span></div>
+        <div class="mbar-divider" aria-hidden="true"></div>
+        <div class="mbar-item"><i class="fas fa-store"></i><span>Daraz</span></div>
+        <div class="mbar-divider" aria-hidden="true"></div>
+        <div class="mbar-item"><i class="fas fa-globe"></i><span>AliExpress</span></div>
+        <div class="mbar-divider" aria-hidden="true"></div>
+        <div class="mbar-item"><i class="fas fa-tag"></i><span>Temu</span></div>
+      </div>
+      <div class="payment-icons" aria-label="Accepted payment methods"></div>
+    </div>
+  </section>
+
+  <!-- CATEGORIES -->
+  <section class="section" id="categories" aria-labelledby="cats-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-grid-2"></i> Shop by Category</div>
+        <h2 id="cats-heading" class="section-title">Every Category You Love</h2>
+        <p class="section-subtitle">Fashion · Tech · Kids · Home · Beauty · Fitness — all in one place</p>
+      </div>
+      <div class="category-grid">
+
+        <a href="products.html?cat=women" class="category-card reveal" data-category="women" style="--cat-color:#c026d3">
+          <div class="cat-icon"><i class="fas fa-female"></i></div>
+          <div class="cat-info">
+            <h3>Women's Fashion</h3>
+            <p>Dresses, Tops, Jeans, Handbags, Jewelry & more</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+
+        <a href="products.html?cat=men" class="category-card reveal" data-category="men" style="--cat-color:#2563eb">
+          <div class="cat-icon"><i class="fas fa-male"></i></div>
+          <div class="cat-info">
+            <h3>Men's Fashion</h3>
+            <p>Shirts, Hoodies, Jeans, Sneakers, Grooming & more</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+
+        <a href="products.html?cat=kids" class="category-card reveal" data-category="kids" style="--cat-color:#f59e0b">
+          <div class="cat-icon"><i class="fas fa-child"></i></div>
+          <div class="cat-info">
+            <h3>Kids & Baby</h3>
+            <p>Baby clothes, School bags, Toys, Educational & more</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+
+        <a href="products.html?cat=tech" class="category-card reveal" data-category="tech" style="--cat-color:#0ea5e9">
+          <div class="cat-icon"><i class="fas fa-laptop"></i></div>
+          <div class="cat-info">
+            <h3>Electronics</h3>
+            <p>Smartphones, Earbuds, Gaming, Chargers & more</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+
+        <a href="products.html?cat=home" class="category-card reveal" data-category="home" style="--cat-color:#10b981">
+          <div class="cat-icon"><i class="fas fa-house"></i></div>
+          <div class="cat-info">
+            <h3>Home & Kitchen</h3>
+            <p>Air Fryer, Blender, Decor, Lamps, Bedsheets & more</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+
+        <a href="products.html?cat=beauty" class="category-card reveal" data-category="beauty" style="--cat-color:#f43f5e">
+          <div class="cat-icon"><i class="fas fa-spa"></i></div>
+          <div class="cat-info">
+            <h3>Beauty</h3>
+            <p>Skincare, Makeup, Hair tools & more</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+
+        <a href="products.html?cat=fitness" class="category-card reveal" data-category="fitness" style="--cat-color:#8b5cf6">
+          <div class="cat-icon"><i class="fas fa-dumbbell"></i></div>
+          <div class="cat-info">
+            <h3>Fitness</h3>
+            <p>Yoga mats, Equipment, Massagers, Supplements & more</p>
+          </div>
+          <div class="cat-arrow"><i class="fas fa-arrow-right"></i></div>
+        </a>
+
       </div>
     </div>
   </section>
 
-  <!-- HOT DEALS -->
-  <section class="section deals-section" id="deals">
+  <!-- FEATURED PRODUCTS (auto-rendered by affiliate.js) -->
+  <section class="section section-alt" id="featured" aria-labelledby="feat-heading">
     <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-fire"></i> Limited Time</div>
-        <h2 class="section-title">🔥 Hot Deals Today</h2>
-        <p class="section-subtitle">Flash prices — resets every 24 hours. Don't miss out!</p>
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-fire"></i> Hot Picks</div>
+        <h2 id="feat-heading" class="section-title">🔥 Featured Deals</h2>
+        <p class="section-subtitle">Hand-picked top-rated products across all categories</p>
       </div>
-      <div class="deal-timer">
-        <div class="timer-label"><i class="fas fa-clock"></i> Ends in:</div>
+      <!-- countdown timer -->
+      <div class="deal-timer reveal">
+        <div class="timer-label"><i class="fas fa-clock"></i> Deal ends in:</div>
         <div class="timer-blocks">
-          <div class="timer-block"><span class="timer-number" id="timer-hours">23</span><span class="timer-text">h</span></div>
+          <div class="timer-block"><span id="hours">11</span><small>HRS</small></div>
           <div class="timer-sep">:</div>
-          <div class="timer-block"><span class="timer-number" id="timer-mins">59</span><span class="timer-text">m</span></div>
+          <div class="timer-block"><span id="minutes">47</span><small>MIN</small></div>
           <div class="timer-sep">:</div>
-          <div class="timer-block"><span class="timer-number" id="timer-secs">59</span><span class="timer-text">s</span></div>
+          <div class="timer-block"><span id="seconds">30</span><small>SEC</small></div>
         </div>
       </div>
-      <div class="product-grid">
-
-        <!-- Product 1 -->
-        <div class="product-card reveal" data-category="women">
-          <div class="product-badges"><span class="badge badge-sale">-50%</span><span class="badge badge-hot">🔥</span></div>
-          <button class="wishlist-toggle" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop&auto=format" alt="Boho Floral Dress" loading="lazy">
-            <div class="product-overlay"><a href="products.html" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View Details</a></div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div>
-            <h3 class="product-name">Boho Floral Summer Dress</h3>
-            <div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(2,341)</span></div>
-            <div class="product-price"><span class="price-current">$19.99</span><span class="price-original">$39.99</span></div>
-            <a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Product 2 -->
-        <div class="product-card reveal" data-category="tech">
-          <div class="product-badges"><span class="badge badge-sale">-40%</span></div>
-          <button class="wishlist-toggle" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop&auto=format" alt="Smart Watch" loading="lazy">
-            <div class="product-overlay"><a href="products.html" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View Details</a></div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div>
-            <h3 class="product-name">Smart Watch Pro — Fitness Tracker</h3>
-            <div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(5,128)</span></div>
-            <div class="product-price"><span class="price-current">$29.99</span><span class="price-original">$49.99</span></div>
-            <a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Product 3 -->
-        <div class="product-card reveal" data-category="beauty">
-          <div class="product-badges"><span class="badge badge-new">✨ New</span></div>
-          <button class="wishlist-toggle" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop&auto=format" alt="Skincare Set" loading="lazy">
-            <div class="product-overlay"><a href="products.html" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View Details</a></div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div>
-            <h3 class="product-name">Vitamin C Glow Skincare Set</h3>
-            <div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div><span class="rating-count">(987)</span></div>
-            <div class="product-price"><span class="price-current">$24.99</span><span class="price-original">$44.99</span></div>
-            <a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Product 4 -->
-        <div class="product-card reveal" data-category="men">
-          <div class="product-badges"><span class="badge badge-sale">-35%</span></div>
-          <button class="wishlist-toggle" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop&auto=format" alt="Sneakers" loading="lazy">
-            <div class="product-overlay"><a href="products.html" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View Details</a></div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div>
-            <h3 class="product-name">Men's Casual Sneakers — Lightweight</h3>
-            <div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(3,567)</span></div>
-            <div class="product-price"><span class="price-current">$32.99</span><span class="price-original">$59.99</span></div>
-            <a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Product 5 -->
-        <div class="product-card reveal" data-category="home">
-          <div class="product-badges"><span class="badge badge-hot">🔥 Trending</span></div>
-          <button class="wishlist-toggle" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1585515320310-259814833e62?w=400&h=400&fit=crop&auto=format" alt="Air Fryer" loading="lazy">
-            <div class="product-overlay"><a href="products.html" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View Details</a></div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div>
-            <h3 class="product-name">5L Digital Air Fryer — Oil Free</h3>
-            <div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(8,912)</span></div>
-            <div class="product-price"><span class="price-current">$49.99</span><span class="price-original">$89.99</span></div>
-            <a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Product 6 -->
-        <div class="product-card reveal" data-category="kids">
-          <div class="product-badges"><span class="badge badge-sale">-30%</span></div>
-          <button class="wishlist-toggle" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop&auto=format" alt="Kids Educational Toy" loading="lazy">
-            <div class="product-overlay"><a href="products.html" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View Details</a></div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-store"></i> Daraz</div>
-            <h3 class="product-name">STEM Building Blocks Set — 120pcs</h3>
-            <div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(1,204)</span></div>
-            <div class="product-price"><span class="price-current">$14.99</span><span class="price-original">$21.99</span></div>
-            <a href="https://daraz.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Product 7 -->
-        <div class="product-card reveal" data-category="women">
-          <div class="product-badges"><span class="badge badge-hot">💎 Premium</span></div>
-          <button class="wishlist-toggle" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop&auto=format" alt="Designer Handbag" loading="lazy">
-            <div class="product-overlay"><a href="products.html" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View Details</a></div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div>
-            <h3 class="product-name">Luxury PU Leather Tote Handbag</h3>
-            <div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(4,788)</span></div>
-            <div class="product-price"><span class="price-current">$27.99</span><span class="price-original">$55.00</span></div>
-            <a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-          </div>
-        </div>
-
-        <!-- Product 8 -->
-        <div class="product-card reveal" data-category="tech">
-          <div class="product-badges"><span class="badge badge-sale">-45%</span><span class="badge badge-hot">🔥</span></div>
-          <button class="wishlist-toggle" aria-label="Wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop&auto=format" alt="Wireless Earbuds" loading="lazy">
-            <div class="product-overlay"><a href="products.html" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> View Details</a></div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div>
-            <h3 class="product-name">Wireless Earbuds — Active Noise Cancelling</h3>
-            <div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(11,234)</span></div>
-            <div class="product-price"><span class="price-current">$22.99</span><span class="price-original">$41.99</span></div>
-            <a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a>
-          </div>
-        </div>
-
-      </div>
-      <div class="section-cta">
+      <!-- Products auto-rendered -->
+      <div id="featuredGrid" class="products-grid" data-product-grid="featured" data-limit="8"></div>
+      <div class="section-cta reveal">
         <a href="products.html" class="btn btn-outline btn-lg"><i class="fas fa-arrow-right"></i> View All Products</a>
       </div>
     </div>
   </section>
 
-  <!-- CATEGORIES SECTION -->
-  <section class="section categories-section" id="categories">
+  <!-- WHY US -->
+  <section class="section" aria-labelledby="why-heading">
     <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-th-large"></i> Browse</div>
-        <h2 class="section-title">🛍️ Shop by Category</h2>
-        <p class="section-subtitle">Everything from fashion to fitness — all in one place</p>
-      </div>
-      <div class="category-grid">
-        <a href="products.html?cat=women" class="category-card reveal">
-          <div class="category-icon" style="background:linear-gradient(135deg,#ff6b9d,#c44569)"><i class="fas fa-female"></i></div>
-          <h3>Women's Fashion</h3>
-          <p>Dresses, tops, jeans, skirts & more</p>
-          <span class="category-count">2,400+ Products</span>
-        </a>
-        <a href="products.html?cat=men" class="category-card reveal">
-          <div class="category-icon" style="background:linear-gradient(135deg,#4facfe,#00f2fe)"><i class="fas fa-male"></i></div>
-          <h3>Men's Fashion</h3>
-          <p>T-shirts, hoodies, jeans, sneakers</p>
-          <span class="category-count">1,800+ Products</span>
-        </a>
-        <a href="products.html?cat=kids" class="category-card reveal">
-          <div class="category-icon" style="background:linear-gradient(135deg,#f6d365,#fda085)"><i class="fas fa-child"></i></div>
-          <h3>Kids & Toys</h3>
-          <p>Clothes, shoes, bags, educational toys</p>
-          <span class="category-count">1,200+ Products</span>
-        </a>
-        <a href="products.html?cat=tech" class="category-card reveal">
-          <div class="category-icon" style="background:linear-gradient(135deg,#a18cd1,#fbc2eb)"><i class="fas fa-mobile-alt"></i></div>
-          <h3>Electronics & Tech</h3>
-          <p>Phones, earbuds, smartwatches, gaming</p>
-          <span class="category-count">3,100+ Products</span>
-        </a>
-        <a href="products.html?cat=beauty" class="category-card reveal">
-          <div class="category-icon" style="background:linear-gradient(135deg,#f093fb,#f5576c)"><i class="fas fa-spa"></i></div>
-          <h3>Beauty & Skincare</h3>
-          <p>Makeup, skincare, hair tools & accessories</p>
-          <span class="category-count">2,000+ Products</span>
-        </a>
-        <a href="products.html?cat=home" class="category-card reveal">
-          <div class="category-icon" style="background:linear-gradient(135deg,#43e97b,#38f9d7)"><i class="fas fa-home"></i></div>
-          <h3>Home & Kitchen</h3>
-          <p>Air fryers, decor, storage, lamps</p>
-          <span class="category-count">1,600+ Products</span>
-        </a>
-        <a href="products.html?cat=shoes" class="category-card reveal">
-          <div class="category-icon" style="background:linear-gradient(135deg,#fa709a,#fee140)"><i class="fas fa-shoe-prints"></i></div>
-          <h3>Shoes & Footwear</h3>
-          <p>Sneakers, heels, boots, sandals</p>
-          <span class="category-count">900+ Products</span>
-        </a>
-        <a href="products.html?cat=fitness" class="category-card reveal">
-          <div class="category-icon" style="background:linear-gradient(135deg,#30cfd0,#667eea)"><i class="fas fa-dumbbell"></i></div>
-          <h3>Fitness & Health</h3>
-          <p>Yoga mats, equipment, supplements</p>
-          <span class="category-count">700+ Products</span>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- WHY MEOWMEOW -->
-  <section class="section features-section">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-shield-alt"></i> Why Us</div>
-        <h2 class="section-title">💎 Why Shop Through MeowMeow?</h2>
-        <p class="section-subtitle">We do the research. You get the best deal.</p>
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-shield-halved"></i> Why ShopLux</div>
+        <h2 id="why-heading" class="section-title">Shop With Confidence</h2>
+        <p class="section-subtitle">We compare the best so you don't have to</p>
       </div>
       <div class="features-grid">
         <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-search"></i></div>
-          <h3>Curated Picks</h3>
-          <p>Every product is hand-selected based on real reviews, ratings, and value for money.</p>
-        </div>
-        <div class="feature-card reveal">
           <div class="feature-icon"><i class="fas fa-tags"></i></div>
-          <h3>Best Prices</h3>
-          <p>We compare across Amazon, Daraz, Temu & AliExpress — you always get the lowest price.</p>
+          <h3>Lowest Price Guarantee</h3>
+          <p>We compare prices across Amazon, Daraz, AliExpress & Temu to surface the best deals every day.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
-          <h3>Trusted Sellers</h3>
-          <p>Only verified marketplaces with buyer protection, easy returns, and secure checkout.</p>
+          <div class="feature-icon"><i class="fas fa-star"></i></div>
+          <h3>Verified Reviews</h3>
+          <p>Real ratings from real buyers. No fake reviews — ever. We show you the honest picture.</p>
         </div>
         <div class="feature-card reveal">
-          <div class="feature-icon"><i class="fas fa-bolt"></i></div>
-          <h3>Daily Updates</h3>
-          <p>Hot deals refresh every 24 hours. Our team monitors prices around the clock for you.</p>
+          <div class="feature-icon"><i class="fas fa-shield-halved"></i></div>
+          <h3>Buyer Protection</h3>
+          <p>Shop with confidence through trusted platforms with buyer protection policies.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-truck-fast"></i></div>
+          <h3>Fast Worldwide Shipping</h3>
+          <p>Most products ship globally with express options available. Track orders in real time.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-rotate-left"></i></div>
+          <h3>Easy Returns</h3>
+          <p>30-day returns on most items. We guide you through every return step-by-step.</p>
+        </div>
+        <div class="feature-card reveal">
+          <div class="feature-icon"><i class="fas fa-headset"></i></div>
+          <h3>24/7 Support</h3>
+          <p>Our team is always here. Email, chat, or browse our help center anytime.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- TRENDING PRODUCTS -->
-  <section class="section trending-section">
+  <!-- NEW ARRIVALS -->
+  <section class="section section-alt" id="new" aria-labelledby="new-heading">
     <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-chart-line"></i> Trending</div>
-        <h2 class="section-title">📈 What's Trending Now</h2>
-        <p class="section-subtitle">The most-clicked products this week</p>
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-sparkles"></i> Just In</div>
+        <h2 id="new-heading" class="section-title">✨ New Arrivals</h2>
+        <p class="section-subtitle">Fresh products added this week</p>
       </div>
-      <div class="trending-grid">
-        <div class="trending-main reveal">
-          <img src="https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=600&h=500&fit=crop&auto=format" alt="Women Fashion" loading="lazy">
-          <div class="trending-overlay">
-            <span class="trending-tag">👗 Women's Fashion</span>
-            <h3>Summer Dresses & Tops Collection</h3>
-            <p>Dozens of styles from $8.99 — Perfect for every occasion</p>
-            <a href="products.html?cat=women" class="btn btn-primary">Shop Women →</a>
-          </div>
+      <div id="newGrid" class="products-grid" data-product-grid="new" data-limit="6"></div>
+    </div>
+  </section>
+
+  <!-- DEALS / SALE -->
+  <section class="section" id="deals" aria-labelledby="deals-heading">
+    <div class="container">
+      <div class="section-header reveal">
+        <div class="section-badge"><i class="fas fa-percent"></i> Sale</div>
+        <h2 id="deals-heading" class="section-title">💸 Best Deals</h2>
+        <p class="section-subtitle">Up to 70% OFF — limited time only</p>
+      </div>
+      <div id="dealsGrid" class="products-grid" data-product-grid="deals" data-limit="6"></div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="stats-strip" aria-label="Shop statistics">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-block reveal">
+          <span class="stat-big" data-count="55000" data-suffix="+">0+</span>
+          <span class="stat-desc">Products Listed</span>
         </div>
-        <div class="trending-small">
-          <div class="trending-item reveal">
-            <img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=300&h=200&fit=crop&auto=format" alt="Beauty" loading="lazy">
-            <div class="trending-overlay">
-              <span class="trending-tag">💄 Beauty</span>
-              <h3>Makeup Must-Haves</h3>
-              <a href="products.html?cat=beauty" class="btn btn-sm btn-outline">Shop Now →</a>
-            </div>
-          </div>
-          <div class="trending-item reveal">
-            <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f?w=300&h=200&fit=crop&auto=format" alt="Tech" loading="lazy">
-            <div class="trending-overlay">
-              <span class="trending-tag">📱 Tech</span>
-              <h3>Must-Have Gadgets</h3>
-              <a href="products.html?cat=tech" class="btn btn-sm btn-outline">Shop Now →</a>
-            </div>
-          </div>
-          <div class="trending-item reveal">
-            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=300&h=200&fit=crop&auto=format" alt="Home" loading="lazy">
-            <div class="trending-overlay">
-              <span class="trending-tag">🏠 Home</span>
-              <h3>Home Decor Trends</h3>
-              <a href="products.html?cat=home" class="btn btn-sm btn-outline">Shop Now →</a>
-            </div>
-          </div>
-          <div class="trending-item reveal">
-            <img src="https://images.unsplash.com/photo-1519748771451-a94c596fad67?w=300&h=200&fit=crop&auto=format" alt="Kids" loading="lazy">
-            <div class="trending-overlay">
-              <span class="trending-tag">🧒 Kids</span>
-              <h3>Top Toys & Games</h3>
-              <a href="products.html?cat=kids" class="btn btn-sm btn-outline">Shop Now →</a>
-            </div>
-          </div>
+        <div class="stat-block reveal">
+          <span class="stat-big" data-count="4">0</span>
+          <span class="stat-desc">Partner Platforms</span>
+        </div>
+        <div class="stat-block reveal">
+          <span class="stat-big" data-count="250000" data-suffix="+">0+</span>
+          <span class="stat-desc">Happy Shoppers</span>
+        </div>
+        <div class="stat-block reveal">
+          <span class="stat-big" data-count="4.8" data-suffix="★">0</span>
+          <span class="stat-desc">Average Rating</span>
         </div>
       </div>
     </div>
   </section>
 
   <!-- NEWSLETTER -->
-  <section class="section newsletter-section">
+  <section class="newsletter-section" aria-labelledby="nl-heading">
     <div class="container">
-      <div class="newsletter-card">
+      <div class="newsletter-card reveal">
+        <div class="nl-decor-1" aria-hidden="true"></div>
+        <div class="nl-decor-2" aria-hidden="true"></div>
         <div class="newsletter-content">
-          <h2><i class="fas fa-envelope-open-text"></i> Get Weekly Hot Deals</h2>
-          <p>Join 50,000+ savvy shoppers. Get exclusive coupons + early access to flash sales.</p>
+          <div class="nl-icon"><i class="fas fa-envelope-open-text"></i></div>
+          <h2 id="nl-heading">Get Weekly Hot Deals</h2>
+          <p>Join <strong>50,000+</strong> savvy shoppers. Get exclusive coupons + early access to flash sales.</p>
         </div>
-        <form class="newsletter-form" id="newsletterForm">
-          <div class="form-group">
-            <input type="email" id="newsletter-email" placeholder="Your best email" required aria-label="Email for newsletter">
-            <button type="submit" class="btn btn-cta btn-3d"><i class="fas fa-paper-plane"></i> Subscribe</button>
+        <form class="newsletter-form" id="newsletterForm" novalidate>
+          <div class="nl-input-wrap">
+            <i class="fas fa-envelope"></i>
+            <input type="email" name="email" placeholder="Your best email address" required aria-label="Email for newsletter"/>
+            <button type="submit" class="btn btn-cta"><i class="fas fa-paper-plane"></i> Subscribe</button>
           </div>
-          <p class="form-note"><i class="fas fa-lock"></i> Zero spam. Unsubscribe anytime.</p>
-          <small id="newsletter-msg"></small>
+          <p class="nl-note"><i class="fas fa-lock"></i> Zero spam. Unsubscribe anytime.</p>
         </form>
       </div>
     </div>
@@ -508,36 +447,34 @@
 </main>
 
 <!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-wave">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-    </svg>
+<footer class="footer" role="contentinfo">
+  <div class="footer-wave" aria-hidden="true">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path></svg>
   </div>
   <div class="footer-content">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="index.html" class="footer-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a>
-          <p>MeowMeow is an independent product discovery & comparison site. Find the best deals across fashion, electronics, beauty, home, and more — shop smarter, save more.</p>
+          <a href="index.html" class="footer-logo"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span class="logo-text">Shop<span class="logo-highlight">Lux</span></span></a>
+          <p>ShopLux is your trusted affiliate shopping hub. We compare the best deals from Amazon, Daraz, AliExpress & Temu so you can shop smarter and save more — across every category.</p>
           <div class="footer-socials">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
             <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
             <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
             <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
           </div>
         </div>
         <div class="footer-links-group">
-          <h4>Quick Links</h4>
+          <h4>Shop</h4>
           <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">Hot Deals</a></li>
-            <li><a href="products.html">Categories</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="about.html">About Us</a></li>
+            <li><a href="products.html?cat=women">Women's Fashion</a></li>
+            <li><a href="products.html?cat=men">Men's Fashion</a></li>
+            <li><a href="products.html?cat=kids">Kids & Baby</a></li>
+            <li><a href="products.html?cat=tech">Electronics</a></li>
+            <li><a href="products.html?cat=home">Home & Kitchen</a></li>
+            <li><a href="products.html?cat=beauty">Beauty</a></li>
+            <li><a href="products.html?cat=fitness">Fitness</a></li>
           </ul>
         </div>
         <div class="footer-links-group">
@@ -547,7 +484,7 @@
             <li><a href="faq.html">FAQ</a></li>
             <li><a href="contact.html">Contact Us</a></li>
             <li><a href="shipping.html">Shipping Info</a></li>
-            <li><a href="returns.html">Returns</a></li>
+            <li><a href="returns.html">Returns & Refunds</a></li>
           </ul>
         </div>
         <div class="footer-links-group">
@@ -561,97 +498,36 @@
           </ul>
         </div>
       </div>
-      <div class="footer-top-row">
-        <div class="footer-newsletter">
-          <h4>Stay Updated</h4>
-          <p>Get weekly deals, product guides, and smart shopping tips.</p>
-          <form id="footer-newsletter-form">
-            <input type="email" id="footer-newsletter-email" placeholder="Your email address" required />
-            <button type="submit">Subscribe</button>
+      <div class="footer-newsletter-row">
+        <div class="footer-nl">
+          <h4>Stay in the Loop</h4>
+          <p>Weekly deals, new arrivals & exclusive coupons.</p>
+          <form id="footerNewsletterForm" class="footer-nl-form" novalidate>
+            <input type="email" placeholder="Email address" aria-label="Footer newsletter email" required/>
+            <button type="submit" class="btn btn-cta btn-sm"><i class="fas fa-paper-plane"></i></button>
           </form>
-          <small id="footer-newsletter-msg">No spam. Unsubscribe anytime.</small>
         </div>
-        <p class="footer-disclosure">Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.</p>
+        <p class="footer-disclosure"><i class="fas fa-circle-info"></i> <strong>Affiliate Disclosure:</strong> ShopLux participates in affiliate programs including Amazon Associates, Daraz, Temu & AliExpress. We may earn a small commission at no extra cost to you.</p>
       </div>
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved.</p>
-        <p class="footer-contact">Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p>
-        <div class="footer-payments">
-          <i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-cc-apple-pay"></i><i class="fab fa-cc-amex"></i>
-        </div>
+        <p class="footer-copy">&copy; 2026 ShopLux. All rights reserved.</p>
+        <p class="footer-contact">Contact: <a href="mailto:support@shoplux.store">support@shoplux.store</a></p>
+        <div class="footer-payments payment-icons" aria-label="Payment methods"></div>
       </div>
     </div>
   </div>
 </footer>
 
 <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
-<div class="toast-container" id="toastContainer"></div>
+<div id="toastContainer"></div>
 
-<script src="js/navbar.js"></script>
+<!-- JS — CORRECT ORDER -->
+<script src="js/main.js"></script>
 <script src="js/theme.js"></script>
-<script src="js/scroll.js"></script>
+<script src="js/navbar.js"></script>
 <script src="js/search.js"></script>
 <script src="js/affiliate.js"></script>
+<script src="js/scroll.js"></script>
 <script src="js/script.js"></script>
-<script src="js/main.js"></script>
-<script>
-// Disclosure close
-const disclosureEl = document.getElementById('affiliateDisclosure');
-const disclosureBtn = document.getElementById('disclosureClose');
-if (disclosureBtn) disclosureBtn.addEventListener('click', () => disclosureEl.style.display = 'none');
-
-// Newsletter
-document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const msg = document.getElementById('newsletter-msg');
-  msg.textContent = '✅ Thank you! You\'re subscribed.';
-  msg.style.color = 'var(--color-success, #28a745)';
-  this.reset();
-});
-document.getElementById('footer-newsletter-form').addEventListener('submit', function(e) {
-  e.preventDefault();
-  const msg = document.getElementById('footer-newsletter-msg');
-  msg.textContent = '✅ Subscribed! Thanks!';
-  msg.style.color = '#6ee7b7';
-  this.reset();
-});
-
-// Countdown Timer
-(function() {
-  const now = new Date();
-  const midnight = new Date(now); midnight.setHours(24,0,0,0);
-  function tick() {
-    const diff = Math.floor((midnight - new Date()) / 1000);
-    if (diff < 0) return;
-    const h = Math.floor(diff / 3600), m = Math.floor((diff % 3600) / 60), s = diff % 60;
-    const th = document.getElementById('timer-hours'), tm = document.getElementById('timer-mins'), ts = document.getElementById('timer-secs');
-    if(th) th.textContent = String(h).padStart(2,'0');
-    if(tm) tm.textContent = String(m).padStart(2,'0');
-    if(ts) ts.textContent = String(s).padStart(2,'0');
-  }
-  tick(); setInterval(tick, 1000);
-})();
-
-// Stat counter
-document.querySelectorAll('.stat-number').forEach(el => {
-  const target = +el.dataset.count;
-  let count = 0;
-  const step = Math.ceil(target / 100);
-  const timer = setInterval(() => {
-    count = Math.min(count + step, target);
-    el.textContent = count >= 1000 ? (count/1000).toFixed(0)+'K+' : count + (el.dataset.suffix || '+');
-    if (count >= target) clearInterval(timer);
-  }, 20);
-});
-
-// Wishlist toggle
-document.querySelectorAll('.wishlist-toggle').forEach(btn => {
-  btn.addEventListener('click', function() {
-    this.querySelector('i').classList.toggle('far');
-    this.querySelector('i').classList.toggle('fas');
-    this.style.color = this.querySelector('i').classList.contains('fas') ? 'var(--color-primary, #e91e8c)' : '';
-  });
-});
-</script>
 </body>
 </html>
