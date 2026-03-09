@@ -1,288 +1,231 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8"/>
-  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <title>Blog — Shopping Guides & Product Reviews | ShopLux</title>
-  <meta name="description" content="Expert product reviews, buying guides, and money-saving tips from ShopLux. Stay ahead of trends in fashion, tech, beauty & home."/>
-  <meta name="author" content="ShopLux"/>
-  <meta property="og:title" content="Blog — Shopping Guides & Product Reviews | ShopLux"/>
-  <meta property="og:description" content="Expert product reviews, buying guides, and money-saving tips from ShopLux. Stay ahead of trends in fashion, tech, beauty & home."/>
-  <meta property="og:type" content="website"/>
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
-  <script>(function(){var t=localStorage.getItem('shoplux_theme');if(!t)t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})();</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com"/>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
-  <link rel="stylesheet" href="css/variables.css"/>
-  <link rel="stylesheet" href="css/base.css"/>
-  <link rel="stylesheet" href="css/animations.css"/>
-  <link rel="stylesheet" href="css/navbar.css"/>
-  <link rel="stylesheet" href="css/hero.css"/>
-  <link rel="stylesheet" href="css/buttons.css"/>
-  <link rel="stylesheet" href="css/cards.css"/>
-  <link rel="stylesheet" href="css/sections.css"/>
-  <link rel="stylesheet" href="css/components.css"/>
-  <link rel="stylesheet" href="css/footer.css"/>
-  <link rel="stylesheet" href="css/themes.css"/>
-  <link rel="stylesheet" href="css/responsive.css"/>
-  <link rel="stylesheet" href="css/contact.css"/>
-  <link rel="stylesheet" href="css/legal.css"/>
-  <link rel="stylesheet" href="css/cart.css"/>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="MeowMeow Blog — shopping guides, style tips, tech reviews and the best deals." />
+  <title>Blog — MeowMeow</title>
+  <link rel="icon" type="image/png" href="images/logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/buttons.css" />
+  <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/style.css" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
+  <script src="js/theme.js"></script>
 </head>
-<body>
-<div id="scrollProgress" class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
+<body data-theme="light">
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
-  <div class="nav-container">
-    <a href="index.html" class="nav-logo" aria-label="ShopLux Home">
-      <div class="logo-icon"><i class="fas fa-bolt"></i></div>
-      <span class="logo-text">Shop<span class="logo-highlight">Lux</span></span>
-    </a>
-    <div class="nav-search" id="navSearch" role="search">
-      <div class="search-wrapper">
-        <i class="fas fa-magnifying-glass search-icon" aria-hidden="true"></i>
-        <input type="search" id="searchInput" placeholder="Search dresses, earbuds, yoga mats…" autocomplete="off" aria-label="Search products"/>
-        <button class="search-clear" id="searchClear" aria-label="Clear search"><i class="fas fa-xmark"></i></button>
-        <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
-      </div>
-    </div>
-    <ul class="nav-links" role="list">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="products.html" class="nav-link">Products</a></li>
-      <li><a href="blog.html" class="nav-link">Blog</a></li>
-      <li><a href="about.html" class="nav-link">About</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="nav-btn" id="searchToggle" aria-label="Toggle search"><i class="fas fa-magnifying-glass"></i></button>
-      <button class="nav-btn" id="themeToggle" data-theme-toggle aria-label="Toggle dark mode" title="Dark mode"><i class="fas fa-sun" id="themeIcon"></i></button>
-      <a href="cart.html" class="nav-btn cart-btn-nav" aria-label="Cart"><i class="fas fa-bag-shopping"></i><span class="nav-badge" data-cart-badge style="display:none">0</span></a>
-      <button class="nav-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span class="hamburger"><span></span><span></span><span></span></span></button>
-    </div>
-  </div>
-  <div class="mobile-overlay" id="mobileOverlay"></div>
-  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
-    <div class="mobile-menu-header">
-      <a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span class="logo-text">Shop<span class="logo-highlight">Lux</span></span></a>
-      <button class="mobile-close" id="mobileClose" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
-    </div>
-    <div class="mobile-search"><input type="search" id="mobileSearchInput" placeholder="Search products…" aria-label="Mobile search"/></div>
-    <ul class="mobile-nav-links" role="list">
-      <li><a href="index.html" class="mobile-nav-link"><i class="fas fa-house"></i> Home</a></li>
-      <li><a href="products.html" class="mobile-nav-link"><i class="fas fa-bag-shopping"></i> Products</a></li>
-      <li><a href="blog.html" class="mobile-nav-link"><i class="fas fa-newspaper"></i> Blog</a></li>
-      <li><a href="about.html" class="mobile-nav-link"><i class="fas fa-circle-info"></i> About</a></li>
-      <li><a href="contact.html" class="mobile-nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
-      <li><a href="cart.html" class="mobile-nav-link"><i class="fas fa-bag-shopping"></i> Cart <span data-cart-badge style="display:none;background:var(--accent);color:#fff;border-radius:99px;padding:1px 8px;font-size:.75rem;margin-left:4px">0</span></a></li>
-    </ul>
-    <div class="mobile-theme-switch">
-      <span>Dark Mode</span>
-      <label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle" data-mobile-theme-toggle><span class="toggle-slider"></span></label>
-    </div>
-  </div>
-</nav>
-<main id="mainContent"><section class="page-header" aria-label="Page header">
-  <div class="page-header-orb"></div>
-  <div class="container">
-    <div class="page-header-content">
-      <div class="page-header-icon"><i class="fas fa-newspaper"></i></div>
-      <h1>ShopLux Blog</h1>
-      <p>Shopping guides, product reviews & money-saving tips</p>
-      <nav class="breadcrumb" aria-label="Breadcrumb">
+<main id="mainContent">
+
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <span class="section-eyebrow">Discover & Explore</span>
+      <h1>The MeowMeow <span class="text-gradient">Blog</span></h1>
+      <p>Style guides, shopping tips, honest reviews and the hottest deals — all in one place.</p>
+      <nav class="breadcrumb">
         <a href="index.html">Home</a>
-        <i class="fas fa-chevron-right" aria-hidden="true"></i>
-        <span aria-current="page">Blog</span>
+        <i class="fas fa-chevron-right"></i>
+        <span>Blog</span>
       </nav>
     </div>
-  </div>
-</section>
-  <section class="section" aria-labelledby="blog-heading">
+  </section>
+
+  <!-- Filter Bar -->
+  <section class="section" style="padding-bottom:0;">
     <div class="container">
-      <div class="section-header reveal">
-        <div class="section-badge"><i class="fas fa-pen-nib"></i> Latest Posts</div>
-        <h2 id="blog-heading" class="section-title">Shopping Guides &amp; Reviews</h2>
-        <p class="section-subtitle">Expert tips to help you shop smarter and save more</p>
-      </div>
-      <div class="blog-grid">
-      <article class="blog-card reveal">
-        <a href="blog.html" class="blog-card-img">
-          <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&h=400&fit=crop&q=80" alt="10 Must-Have Summer Dresses in 2026" loading="lazy"/>
-          <span class="blog-cat-chip">Women's Fashion</span>
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span><i class="fas fa-calendar"></i> June 10, 2026</span>
-            <span><i class="fas fa-clock"></i> 6 min read</span>
-          </div>
-          <h3><a href="blog.html">10 Must-Have Summer Dresses in 2026</a></h3>
-          <p>Floral wraps, slip dresses, midi cuts — here are the hottest styles trending right now on Amazon and AliExpress.</p>
-          <a href="blog.html" class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-      <article class="blog-card reveal">
-        <a href="blog.html" class="blog-card-img">
-          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=400&fit=crop&q=80" alt="Best Smart Watches Under $100 (2026 Edition)" loading="lazy"/>
-          <span class="blog-cat-chip">Electronics</span>
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span><i class="fas fa-calendar"></i> June 8, 2026</span>
-            <span><i class="fas fa-clock"></i> 8 min read</span>
-          </div>
-          <h3><a href="blog.html">Best Smart Watches Under $100 (2026 Edition)</a></h3>
-          <p>We compared 20 smartwatches. These 7 deliver the most features, accuracy & battery life without breaking the bank.</p>
-          <a href="blog.html" class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-      <article class="blog-card reveal">
-        <a href="blog.html" class="blog-card-img">
-          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=600&h=400&fit=crop&q=80" alt="Korean Skincare Routine: 5-Step Guide" loading="lazy"/>
-          <span class="blog-cat-chip">Beauty</span>
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span><i class="fas fa-calendar"></i> June 6, 2026</span>
-            <span><i class="fas fa-clock"></i> 5 min read</span>
-          </div>
-          <h3><a href="blog.html">Korean Skincare Routine: 5-Step Guide</a></h3>
-          <p>From double-cleansing to SPF layering — the K-beauty routine that's giving everyone glass skin in 2026.</p>
-          <a href="blog.html" class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-      <article class="blog-card reveal">
-        <a href="blog.html" class="blog-card-img">
-          <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=600&h=400&fit=crop&q=80" alt="Best Educational Toys for Ages 3–10 (2026)" loading="lazy"/>
-          <span class="blog-cat-chip">Kids & Toys</span>
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span><i class="fas fa-calendar"></i> June 4, 2026</span>
-            <span><i class="fas fa-clock"></i> 7 min read</span>
-          </div>
-          <h3><a href="blog.html">Best Educational Toys for Ages 3–10 (2026)</a></h3>
-          <p>STEM building sets, learning tablets & creative kits that are actually fun — tested and ranked.</p>
-          <a href="blog.html" class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-      <article class="blog-card reveal">
-        <a href="blog.html" class="blog-card-img">
-          <img src="https://images.unsplash.com/photo-1626074353765-517a681e40be?w=600&h=400&fit=crop&q=80" alt="Air Fryer vs Convection Oven: Which Should You Buy?" loading="lazy"/>
-          <span class="blog-cat-chip">Home & Kitchen</span>
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span><i class="fas fa-calendar"></i> June 2, 2026</span>
-            <span><i class="fas fa-clock"></i> 9 min read</span>
-          </div>
-          <h3><a href="blog.html">Air Fryer vs Convection Oven: Which Should You Buy?</a></h3>
-          <p>A detailed comparison to help you decide which kitchen appliance fits your cooking style and budget.</p>
-          <a href="blog.html" class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article>
-      <article class="blog-card reveal">
-        <a href="blog.html" class="blog-card-img">
-          <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600&h=400&fit=crop&q=80" alt="Best Home Gym Equipment for Beginners (2026)" loading="lazy"/>
-          <span class="blog-cat-chip">Fitness</span>
-        </a>
-        <div class="blog-card-body">
-          <div class="blog-meta">
-            <span><i class="fas fa-calendar"></i> May 30, 2026</span>
-            <span><i class="fas fa-clock"></i> 7 min read</span>
-          </div>
-          <h3><a href="blog.html">Best Home Gym Equipment for Beginners (2026)</a></h3>
-          <p>Start your fitness journey without leaving home. These 8 budget-friendly tools are all you need.</p>
-          <a href="blog.html" class="blog-read-more">Read Article <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </article></div>
-      <div class="text-center reveal" style="margin-top:40px;">
-        <button class="btn btn-outline btn-lg"><i class="fas fa-refresh"></i> Load More Articles</button>
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Posts</button>
+        <button class="filter-btn" data-filter="fashion">Fashion</button>
+        <button class="filter-btn" data-filter="tech">Tech</button>
+        <button class="filter-btn" data-filter="beauty">Beauty</button>
+        <button class="filter-btn" data-filter="deals">Deals</button>
+        <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+        <button class="filter-btn" data-filter="guides">Guides</button>
       </div>
     </div>
   </section>
-</main>
-<footer class="footer" role="contentinfo">
-  <div class="footer-wave" aria-hidden="true">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path></svg>
-  </div>
-  <div class="footer-content">
+
+  <!-- Blog Grid -->
+  <section class="section">
     <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <a href="index.html" class="footer-logo"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span class="logo-text">Shop<span class="logo-highlight">Lux</span></span></a>
-          <p>ShopLux is your trusted affiliate shopping hub. We compare the best deals from Amazon, Daraz, AliExpress &amp; Temu so you can shop smarter and save more.</p>
-          <div class="footer-socials">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+      <div class="blog-grid">
+
+        <!-- Post 1 -->
+        <article class="blog-card reveal" data-category="fashion">
+          <a href="#" class="blog-card-image">
+            <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?w=600&q=80" alt="Summer Fashion" loading="lazy" />
+            <span class="blog-category">Fashion</span>
+          </a>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar"></i> Jun 10, 2025</span><span><i class="fas fa-clock"></i> 5 min read</span></div>
+            <h3><a href="#">10 Summer Fashion Trends You Need to Know Right Now</a></h3>
+            <p>From breezy linen sets to bold color-blocking, here are the hottest summer styles making waves this season — all shoppable under $50.</p>
+            <a href="#" class="btn btn-ghost btn-sm">Read More <i class="fas fa-arrow-right"></i></a>
           </div>
-        </div>
-        <div class="footer-links-group">
-          <h4>Shop</h4>
-          <ul>
-            <li><a href="products.html?cat=women">Women's Fashion</a></li>
-            <li><a href="products.html?cat=men">Men's Fashion</a></li>
-            <li><a href="products.html?cat=kids">Kids &amp; Baby</a></li>
-            <li><a href="products.html?cat=tech">Electronics</a></li>
-            <li><a href="products.html?cat=home">Home &amp; Kitchen</a></li>
-            <li><a href="products.html?cat=beauty">Beauty</a></li>
-            <li><a href="products.html?cat=fitness">Fitness</a></li>
-          </ul>
-        </div>
-        <div class="footer-links-group">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="help.html">Help Center</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="shipping.html">Shipping Info</a></li>
-            <li><a href="returns.html">Returns &amp; Refunds</a></li>
-          </ul>
-        </div>
-        <div class="footer-links-group">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="cookie.html">Cookie Policy</a></li>
-            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
-            <li><a href="dmca.html">DMCA</a></li>
-          </ul>
-        </div>
+        </article>
+
+        <!-- Post 2 -->
+        <article class="blog-card reveal reveal-delay-1" data-category="tech">
+          <a href="#" class="blog-card-image">
+            <img src="https://images.unsplash.com/photo-1484704849700-f032a568e944?w=600&q=80" alt="Tech Gadgets" loading="lazy" />
+            <span class="blog-category">Tech</span>
+          </a>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar"></i> Jun 7, 2025</span><span><i class="fas fa-clock"></i> 7 min read</span></div>
+            <h3><a href="#">Best Wireless Earbuds Under $30 — Tested & Ranked</a></h3>
+            <p>We tested 12 budget earbuds so you don't have to. Here's our definitive ranking of the best sound quality for the price.</p>
+            <a href="#" class="btn btn-ghost btn-sm">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Post 3 -->
+        <article class="blog-card reveal reveal-delay-2" data-category="beauty">
+          <a href="#" class="blog-card-image">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=80" alt="Skincare" loading="lazy" />
+            <span class="blog-category">Beauty</span>
+          </a>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar"></i> Jun 3, 2025</span><span><i class="fas fa-clock"></i> 6 min read</span></div>
+            <h3><a href="#">The Only Skincare Routine You'll Ever Need (On Any Budget)</a></h3>
+            <p>Cleanse, treat, moisturize, protect. We break down the science-backed routine that actually works — with product picks for every budget.</p>
+            <a href="#" class="btn btn-ghost btn-sm">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Post 4 -->
+        <article class="blog-card reveal" data-category="deals">
+          <a href="#" class="blog-card-image">
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80" alt="Shopping Deals" loading="lazy" />
+            <span class="blog-category">Deals</span>
+          </a>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar"></i> May 28, 2025</span><span><i class="fas fa-clock"></i> 4 min read</span></div>
+            <h3><a href="#">25 Amazon Finds That Went Viral for a Reason</a></h3>
+            <p>These products have millions of five-star reviews and you'll understand why the moment you try them. Here's our curated list.</p>
+            <a href="#" class="btn btn-ghost btn-sm">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Post 5 -->
+        <article class="blog-card reveal reveal-delay-1" data-category="lifestyle">
+          <a href="#" class="blog-card-image">
+            <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&q=80" alt="Home Decor" loading="lazy" />
+            <span class="blog-category">Lifestyle</span>
+          </a>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar"></i> May 22, 2025</span><span><i class="fas fa-clock"></i> 5 min read</span></div>
+            <h3><a href="#">Transform Your Home Without Breaking the Bank</a></h3>
+            <p>Small upgrades, big impact. Discover the affordable home decor pieces that interior designers swear by — all under $40.</p>
+            <a href="#" class="btn btn-ghost btn-sm">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Post 6 -->
+        <article class="blog-card reveal reveal-delay-2" data-category="guides">
+          <a href="#" class="blog-card-image">
+            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80" alt="Fitness" loading="lazy" />
+            <span class="blog-category">Guides</span>
+          </a>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar"></i> May 18, 2025</span><span><i class="fas fa-clock"></i> 8 min read</span></div>
+            <h3><a href="#">Complete Home Gym Setup Guide for Under $200</a></h3>
+            <p>You don't need an expensive gym membership. Here's exactly what to buy to build a fully functional home gym on a tight budget.</p>
+            <a href="#" class="btn btn-ghost btn-sm">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Post 7 -->
+        <article class="blog-card reveal" data-category="fashion">
+          <a href="#" class="blog-card-image">
+            <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=600&q=80" alt="Men's Fashion" loading="lazy" />
+            <span class="blog-category">Fashion</span>
+          </a>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar"></i> May 14, 2025</span><span><i class="fas fa-clock"></i> 5 min read</span></div>
+            <h3><a href="#">Men's Capsule Wardrobe: 10 Pieces for Every Occasion</a></h3>
+            <p>Build a versatile wardrobe that works from the office to the weekend with just 10 essential pieces — curated and affordable.</p>
+            <a href="#" class="btn btn-ghost btn-sm">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Post 8 -->
+        <article class="blog-card reveal reveal-delay-1" data-category="deals">
+          <a href="#" class="blog-card-image">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80" alt="Tech Deals" loading="lazy" />
+            <span class="blog-category">Deals</span>
+          </a>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar"></i> May 10, 2025</span><span><i class="fas fa-clock"></i> 6 min read</span></div>
+            <h3><a href="#">Daraz Mega Sale Survival Guide — Get the Best Deals</a></h3>
+            <p>Don't get overwhelmed. Here's our expert strategy for navigating Daraz's biggest sale of the year and actually saving money.</p>
+            <a href="#" class="btn btn-ghost btn-sm">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
+        <!-- Post 9 -->
+        <article class="blog-card reveal reveal-delay-2" data-category="beauty">
+          <a href="#" class="blog-card-image">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80" alt="Makeup" loading="lazy" />
+            <span class="blog-category">Beauty</span>
+          </a>
+          <div class="blog-card-body">
+            <div class="blog-meta"><span><i class="fas fa-calendar"></i> May 5, 2025</span><span><i class="fas fa-clock"></i> 4 min read</span></div>
+            <h3><a href="#">Drugstore Makeup Dupes That Beat the Luxury Originals</a></h3>
+            <p>Why pay $60 for a foundation when the $12 version is objectively better? We tested side by side and the results surprised us.</p>
+            <a href="#" class="btn btn-ghost btn-sm">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+
       </div>
-      <div class="footer-newsletter-row">
-        <div class="footer-nl">
-          <h4>Stay in the Loop</h4>
-          <p>Weekly deals, new arrivals &amp; exclusive coupons.</p>
-          <form id="footerNewsletterForm" class="footer-nl-form newsletter-form" novalidate>
-            <input type="email" placeholder="Email address" aria-label="Newsletter email" required/>
-            <button type="submit" class="btn btn-cta btn-sm"><i class="fas fa-paper-plane"></i></button>
-          </form>
-        </div>
-        <p class="footer-disclosure"><i class="fas fa-circle-info"></i> <strong>Affiliate Disclosure:</strong> ShopLux participates in affiliate programs including Amazon Associates, Daraz, Temu &amp; AliExpress. We may earn a small commission at no extra cost to you.</p>
-      </div>
-      <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 ShopLux. All rights reserved.</p>
-        <p class="footer-contact">Contact: <a href="mailto:support@shoplux.store">support@shoplux.store</a></p>
-        <div class="footer-payments payment-icons" aria-label="Payment methods"></div>
+
+      <!-- Load More -->
+      <div style="text-align:center; margin-top:3rem;">
+        <button class="btn btn-outline btn-lg" id="loadMoreBtn">Load More Posts <i class="fas fa-plus"></i></button>
       </div>
     </div>
-  </div>
-</footer>
-<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
-<div id="toastContainer"></div>
-<script src="js/main.js"></script>
-<script src="js/theme.js"></script>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section" style="background: var(--bg-secondary);">
+    <div class="container">
+      <div class="newsletter-card reveal">
+        <span class="section-eyebrow">Stay in the Loop</span>
+        <h2>Get the Best Deals & Stories <span class="text-gradient">First</span></h2>
+        <p>Join 50,000+ savvy shoppers who get our weekly roundup of deals, style tips, and honest reviews.</p>
+        <form class="newsletter-form" id="blogNewsletterForm">
+          <input type="email" placeholder="Enter your email address..." required />
+          <button type="submit" class="btn btn-cta">Subscribe <i class="fas fa-arrow-right"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+<div class="toast-container" id="toastContainer"></div>
+
+<script src="js/components.js"></script>
 <script src="js/navbar.js"></script>
-<script src="js/search.js"></script>
-<script src="js/affiliate.js"></script>
 <script src="js/scroll.js"></script>
-<script src="js/script.js"></script>
+<script src="js/search.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/affiliate.js"></script>
+<script src="js/main.js"></script>
+<script src="js/chatbot.js"></script>
 </body>
 </html>
