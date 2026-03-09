@@ -1,78 +1,94 @@
 /* ============================================================
-   THEME.JS — LIGHT/DARK THEME TOGGLE
+   THEME.JS — DARK / LIGHT MODE SYSTEM
+   MeowMeow Premium Affiliate Shopping Platform
    ============================================================ */
 
-(function() {
+(function () {
   'use strict';
 
   const STORAGE_KEY = 'meowmeow-theme';
+  const HTML = document.documentElement;
 
-  function getPreferredTheme() {
-    const saved = localStorage.getItem(STORAGE_KEY);
-    if (saved) return saved;
+  /* ===== GET PREFERRED THEME ===== */
+  function getPreferred() {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored === 'dark' || stored === 'light') return stored;
     return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
+  /* ===== APPLY THEME ===== */
   function applyTheme(theme) {
-    document.body.setAttribute('data-theme', theme);
+    HTML.setAttribute('data-theme', theme);
     localStorage.setItem(STORAGE_KEY, theme);
 
-    // Update all theme icons
-    document.querySelectorAll('[id="themeIcon"]').forEach(icon => {
+    // Update all toggle icons
+    const icon = document.getElementById('themeIcon');
+    if (icon) {
       icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    }
+
+    // Update all toggle checkboxes
+    ['settingsThemeToggle', 'mobileThemeToggle'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.checked = (theme === 'dark');
     });
 
-    // Update mobile toggle
-    const mobileToggle = document.getElementById('mobileThemeToggle');
-    if (mobileToggle) mobileToggle.checked = (theme === 'dark');
-
-    // Update settings panel toggle
-    const settingsToggle = document.getElementById('settingsThemeToggle');
-    if (settingsToggle) settingsToggle.checked = (theme === 'dark');
-
-    // Dispatch event for other JS to listen
-    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
+    // Dispatch event
+    document.dispatchEvent(new CustomEvent('theme-changed', { detail: { theme } }));
   }
 
+  /* ===== TOGGLE THEME ===== */
   function toggleTheme() {
-    const current = document.body.getAttribute('data-theme') || 'light';
-    applyTheme(current === 'light' ? 'dark' : 'light');
+    const current = HTML.getAttribute('data-theme') || 'light';
+    applyTheme(current === 'dark' ? 'light' : 'dark');
   }
 
-  // Initialize
-  applyTheme(getPreferredTheme());
+  /* ===== INIT ===== */
+  function init() {
+    // Apply immediately (before render to avoid flash)
+    applyTheme(getPreferred());
 
-  // Desktop toggle
-  document.addEventListener('DOMContentLoaded', function() {
-    const toggle = document.getElementById('themeToggle');
-    if (toggle) toggle.addEventListener('click', toggleTheme);
+    // Main toggle button
+    const btn = document.getElementById('themeToggle');
+    if (btn) btn.addEventListener('click', toggleTheme);
 
-    const mobileToggle = document.getElementById('mobileThemeToggle');
-    if (mobileToggle) {
-      mobileToggle.addEventListener('change', function() {
-        applyTheme(this.checked ? 'dark' : 'light');
-      });
-    }
-
+    // Settings panel toggle
     const settingsToggle = document.getElementById('settingsThemeToggle');
     if (settingsToggle) {
-      settingsToggle.addEventListener('change', function() {
-        applyTheme(this.checked ? 'dark' : 'light');
+      settingsToggle.addEventListener('change', () => {
+        applyTheme(settingsToggle.checked ? 'dark' : 'light');
       });
     }
-  });
 
-  // System preference changes
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+    // Mobile menu toggle
+    const mobileToggle = document.getElementById('mobileThemeToggle');
+    if (mobileToggle) {
+      mobileToggle.addEventListener('change', () => {
+        applyTheme(mobileToggle.checked ? 'dark' : 'light');
+      });
+    }
+
+    // System preference change listener
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
       if (!localStorage.getItem(STORAGE_KEY)) {
         applyTheme(e.matches ? 'dark' : 'light');
       }
     });
   }
 
-  // Expose globally
+  // Run immediately to avoid FOUC
+  const initialTheme = localStorage.getItem(STORAGE_KEY) ||
+    (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  HTML.setAttribute('data-theme', initialTheme);
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+
+  // Public API
   window.toggleTheme = toggleTheme;
-  window.applyTheme = applyTheme;
+  window.applyTheme  = applyTheme;
 
 })();
