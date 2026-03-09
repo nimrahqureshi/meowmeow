@@ -1,95 +1,119 @@
 /* =============================================
-   MEOWMEOW — DESIGN TOKENS & VARIABLES
+   MEOWMEOW — DESIGN TOKENS v2.0
+   Aesthetic: Luxury Editorial × Playful Energy
    ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
 :root {
   /* ── BRAND PALETTE ── */
-  --rose:        #FF4F7B;
-  --rose-dark:   #E63366;
-  --rose-light:  rgba(255,79,123,0.12);
-  --violet:      #6C3DE8;
-  --violet-dark: #5429C9;
-  --violet-light:rgba(108,61,232,0.12);
-  --amber:       #F7A928;
+  --rose:        #FF3366;
+  --rose-dark:   #CC1144;
+  --rose-light:  rgba(255,51,102,0.12);
+
+  --gold:        #FFB800;
+  --gold-dark:   #E6A500;
+  --gold-light:  rgba(255,184,0,0.15);
+
+  --violet:      #6C2BD9;
+  --violet-dark: #5218B8;
+  --violet-light:rgba(108,43,217,0.12);
+
   --teal:        #00C9A7;
-  --crimson:     #EF233C;
-  --ocean:       #0EA5E9;
+  --teal-dark:   #00A88C;
+  --teal-light:  rgba(0,201,167,0.12);
 
-  /* ── GRADIENTS ── */
-  --grad-primary:  linear-gradient(135deg,#6C3DE8 0%,#FF4F7B 100%);
-  --grad-cta:      linear-gradient(135deg,#FF4F7B 0%,#F7A928 100%);
-  --grad-teal:     linear-gradient(135deg,#00C9A7 0%,#0EA5E9 100%);
-  --grad-dark:     linear-gradient(135deg,#0F0C29 0%,#302B63 50%,#24243E 100%);
-  --grad-card:     linear-gradient(135deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02));
-  --grad-shimmer:  linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.4) 50%,transparent 100%);
+  /* ── SEMANTIC ALIASES ── */
+  --accent:        var(--rose);
+  --accent-hover:  var(--rose-dark);
+  --accent-light:  var(--rose-light);
 
-  /* ── LIGHT THEME BG ── */
-  --bg-primary:   #FFFFFF;
-  --bg-secondary: #F8F9FE;
-  --bg-tertiary:  #F0F2FA;
+  --cta:           var(--gold);
+  --cta-hover:     var(--gold-dark);
+  --cta-light:     var(--gold-light);
+
+  --success:       #10B981;
+  --success-light: rgba(16,185,129,0.15);
+  --warning:       #F59E0B;
+  --warning-light: rgba(245,158,11,0.15);
+  --danger:        #EF4444;
+  --danger-light:  rgba(239,68,68,0.15);
+  --info:          #3B82F6;
+  --info-light:    rgba(59,130,246,0.15);
+
+  /* ── LIGHT THEME BACKGROUNDS ── */
+  --bg-primary:   #FAFAFA;
+  --bg-secondary: #FFFFFF;
+  --bg-tertiary:  #F4F4F8;
   --bg-card:      #FFFFFF;
   --bg-glass:     rgba(255,255,255,0.82);
-  --bg-glass-border: rgba(255,255,255,0.25);
+  --bg-glass-border: rgba(255,255,255,0.5);
 
-  /* ── TEXT ── */
-  --text-primary:   #0A0E1A;
-  --text-secondary: #3D4466;
-  --text-tertiary:  #8890B5;
-  --text-on-dark:   #FFFFFF;
-
-  /* ── SEMANTIC ── */
-  --success:       #12B886;
-  --success-light: rgba(18,184,134,0.12);
-  --warning:       #F7A928;
-  --warning-light: rgba(247,169,40,0.12);
-  --danger:        #EF233C;
-  --danger-light:  rgba(239,35,60,0.12);
-  --info:          #0EA5E9;
-  --info-light:    rgba(14,165,233,0.12);
+  /* ── LIGHT THEME TEXT ── */
+  --text-primary:   #0D0D14;
+  --text-secondary: #4A4A6A;
+  --text-tertiary:  #9898B2;
+  --text-white:     #FFFFFF;
 
   /* ── BORDERS ── */
-  --border:        #E8EAFF;
-  --border-strong: #C5CAE9;
+  --border:       #EAEAEF;
+  --border-focus: var(--accent);
+
+  /* ── TYPOGRAPHY ── */
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body:    'DM Sans', system-ui, sans-serif;
+  --font-mono:    'DM Mono', 'Courier New', monospace;
+
+  /* ── RADIUS ── */
+  --radius-xs:   4px;
+  --radius-sm:   8px;
+  --radius-md:   12px;
+  --radius-lg:   18px;
+  --radius-xl:   24px;
+  --radius-2xl:  32px;
+  --radius-full: 9999px;
+
+  /* ── SHADOWS ── */
+  --shadow-xs:  0 1px 3px rgba(0,0,0,0.06);
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.08);
+  --shadow-md:  0 6px 20px rgba(0,0,0,0.10);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,0.14);
+  --shadow-xl:  0 24px 60px rgba(0,0,0,0.18);
+  --shadow-2xl: 0 40px 80px rgba(0,0,0,0.22);
+  --shadow-3d-rose:   0 6px 0 var(--rose-dark), 0 8px 20px rgba(255,51,102,0.3);
+  --shadow-3d-gold:   0 6px 0 var(--gold-dark), 0 8px 20px rgba(255,184,0,0.3);
+  --shadow-3d-violet: 0 6px 0 var(--violet-dark), 0 8px 20px rgba(108,43,217,0.3);
+  --shadow-glow-rose:   0 0 30px rgba(255,51,102,0.4);
+  --shadow-glow-gold:   0 0 30px rgba(255,184,0,0.4);
+  --shadow-glow-teal:   0 0 30px rgba(0,201,167,0.4);
+  --shadow-glow-violet: 0 0 30px rgba(108,43,217,0.4);
+
+  /* ── GRADIENTS ── */
+  --gradient-rose:    linear-gradient(135deg, #FF3366 0%, #FF6B9D 100%);
+  --gradient-gold:    linear-gradient(135deg, #FFB800 0%, #FFD566 100%);
+  --gradient-violet:  linear-gradient(135deg, #6C2BD9 0%, #A78BFA 100%);
+  --gradient-teal:    linear-gradient(135deg, #00C9A7 0%, #56EEE8 100%);
+  --gradient-fire:    linear-gradient(135deg, #FF3366 0%, #FFB800 100%);
+  --gradient-aurora:  linear-gradient(135deg, #6C2BD9 0%, #FF3366 50%, #FFB800 100%);
+  --gradient-dark:    linear-gradient(135deg, #0D0D14 0%, #1A1A2E 100%);
+  --gradient-mesh:    radial-gradient(at 20% 50%, rgba(255,51,102,0.15) 0px, transparent 50%),
+                      radial-gradient(at 80% 20%, rgba(108,43,217,0.12) 0px, transparent 50%),
+                      radial-gradient(at 60% 80%, rgba(255,184,0,0.10) 0px, transparent 50%);
 
   /* ── NAVBAR ── */
   --navbar-height: 72px;
-  --navbar-bg:     rgba(255,255,255,0.88);
+  --navbar-bg:     rgba(250,250,250,0.92);
   --navbar-blur:   20px;
 
   /* ── FOOTER ── */
-  --footer-bg:   #06040F;
-  --footer-text: #A8B0D8;
-
-  /* ── TYPOGRAPHY ── */
-  --font-heading: 'Syne', 'Plus Jakarta Sans', system-ui, sans-serif;
-  --font-body:    'DM Sans', 'Outfit', system-ui, sans-serif;
-  --font-mono:    'JetBrains Mono', monospace;
-
-  /* ── RADIUS ── */
-  --r-xs:   4px;
-  --r-sm:   8px;
-  --r-md:   12px;
-  --r-lg:   18px;
-  --r-xl:   24px;
-  --r-2xl:  32px;
-  --r-full: 9999px;
-
-  /* ── SHADOWS ── */
-  --shadow-xs:  0 1px 3px rgba(10,14,26,0.06);
-  --shadow-sm:  0 4px 12px rgba(10,14,26,0.08);
-  --shadow-md:  0 8px 24px rgba(10,14,26,0.12);
-  --shadow-lg:  0 16px 40px rgba(10,14,26,0.16);
-  --shadow-xl:  0 24px 64px rgba(10,14,26,0.22);
-  --shadow-2xl: 0 40px 80px rgba(10,14,26,0.30);
-  --shadow-glow-rose:   0 0 32px rgba(255,79,123,0.35);
-  --shadow-glow-violet: 0 0 32px rgba(108,61,232,0.35);
-  --shadow-glow-teal:   0 0 32px rgba(0,201,167,0.35);
-  --shadow-3d:  0 6px 0 rgba(0,0,0,0.12), 0 8px 16px rgba(0,0,0,0.15);
+  --footer-bg:   #0D0D14;
+  --footer-text: #9898B2;
 
   /* ── TRANSITIONS ── */
-  --t-fast:   0.18s ease;
-  --t-normal: 0.3s ease;
-  --t-slow:   0.5s cubic-bezier(0.4,0,0.2,1);
-  --t-bounce: cubic-bezier(0.34,1.56,0.64,1);
+  --t-fast:   0.18s cubic-bezier(0.4,0,0.2,1);
+  --t-normal: 0.28s cubic-bezier(0.4,0,0.2,1);
+  --t-slow:   0.45s cubic-bezier(0.4,0,0.2,1);
+  --t-bounce: 0.5s cubic-bezier(0.34,1.56,0.64,1);
 
   /* ── Z-INDEX ── */
   --z-base:     1;
@@ -103,25 +127,29 @@
 
 /* ── DARK THEME ── */
 [data-theme="dark"] {
-  --bg-primary:   #07050F;
-  --bg-secondary: #10091E;
-  --bg-tertiary:  #1A1230;
-  --bg-card:      #130E24;
-  --bg-glass:     rgba(10,7,20,0.88);
-  --bg-glass-border: rgba(108,61,232,0.2);
+  --bg-primary:   #0D0D14;
+  --bg-secondary: #13131F;
+  --bg-tertiary:  #1C1C2E;
+  --bg-card:      #16162A;
+  --bg-glass:     rgba(13,13,20,0.88);
+  --bg-glass-border: rgba(255,255,255,0.08);
 
-  --text-primary:   #F0F2FF;
-  --text-secondary: #B8BDE8;
-  --text-tertiary:  #6B7299;
+  --text-primary:   #F0F0FF;
+  --text-secondary: #B8B8D4;
+  --text-tertiary:  #6666AA;
 
-  --border:        rgba(108,61,232,0.2);
-  --border-strong: rgba(108,61,232,0.4);
+  --border:       #2A2A45;
 
-  --navbar-bg: rgba(7,5,15,0.92);
+  --shadow-xs:  0 1px 3px rgba(0,0,0,0.4);
+  --shadow-sm:  0 2px 8px rgba(0,0,0,0.5);
+  --shadow-md:  0 6px 20px rgba(0,0,0,0.6);
+  --shadow-lg:  0 12px 40px rgba(0,0,0,0.7);
+  --shadow-xl:  0 24px 60px rgba(0,0,0,0.8);
 
-  --shadow-sm:  0 4px 12px rgba(0,0,0,0.4);
-  --shadow-md:  0 8px 24px rgba(0,0,0,0.5);
-  --shadow-lg:  0 16px 40px rgba(0,0,0,0.6);
-  --shadow-xl:  0 24px 64px rgba(0,0,0,0.7);
-  --shadow-2xl: 0 40px 80px rgba(0,0,0,0.8);
+  --navbar-bg:  rgba(13,13,20,0.95);
+
+  --gradient-mesh:
+    radial-gradient(at 20% 50%, rgba(255,51,102,0.2) 0px, transparent 50%),
+    radial-gradient(at 80% 20%, rgba(108,43,217,0.18) 0px, transparent 50%),
+    radial-gradient(at 60% 80%, rgba(255,184,0,0.12) 0px, transparent 50%);
 }
