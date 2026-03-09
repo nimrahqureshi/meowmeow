@@ -1,470 +1,291 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>All Products | MeowMeow — Fashion, Tech, Beauty, Home & More</title>
-  <meta name="description" content="Browse thousands of affiliate-curated products — women's fashion, men's clothing, kids, electronics, beauty, home & more from Amazon, Daraz, Temu & AliExpress." />
-  <meta name="keywords" content="affiliate products, women fashion, men fashion, kids clothes, electronics, beauty, home deals, online shopping" />
-  <meta property="og:title" content="All Products | MeowMeow"><meta property="og:type" content="website">
-  <link rel="icon" type="image/png" href="images/logo.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link rel="stylesheet" href="css/variables.css" /><link rel="stylesheet" href="css/base.css" /><link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/hero.css" /><link rel="stylesheet" href="css/sections.css" /><link rel="stylesheet" href="css/cards.css" />
-  <link rel="stylesheet" href="css/buttons.css" /><link rel="stylesheet" href="css/footer.css" /><link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/themes.css" /><link rel="stylesheet" href="css/responsive.css" /><link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/cart.css" /><link rel="stylesheet" href="css/components.css" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <title>All Products — Shop Every Category | ShopLux</title>
+  <meta name="description" content="Browse 55,000+ products across women's fashion, men's fashion, kids, electronics, home, beauty & fitness. Best prices from Amazon, Daraz, AliExpress & Temu."/>
+  <meta name="author" content="ShopLux"/>
+  <meta property="og:title" content="All Products — Shop Every Category | ShopLux"/>
+  <meta property="og:description" content="Browse 55,000+ products across women's fashion, men's fashion, kids, electronics, home, beauty & fitness. Best prices from Amazon, Daraz, AliExpress & Temu."/>
+  <meta property="og:type" content="website"/>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>"/>
+  <script>(function(){var t=localStorage.getItem('shoplux_theme');if(!t)t=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';document.documentElement.setAttribute('data-theme',t)})();</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700;0,9..40,800;1,9..40,400&family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link rel="stylesheet" href="css/variables.css"/>
+  <link rel="stylesheet" href="css/base.css"/>
+  <link rel="stylesheet" href="css/animations.css"/>
+  <link rel="stylesheet" href="css/navbar.css"/>
+  <link rel="stylesheet" href="css/hero.css"/>
+  <link rel="stylesheet" href="css/buttons.css"/>
+  <link rel="stylesheet" href="css/cards.css"/>
+  <link rel="stylesheet" href="css/sections.css"/>
+  <link rel="stylesheet" href="css/components.css"/>
+  <link rel="stylesheet" href="css/footer.css"/>
+  <link rel="stylesheet" href="css/themes.css"/>
+  <link rel="stylesheet" href="css/responsive.css"/>
+  <link rel="stylesheet" href="css/contact.css"/>
+  <link rel="stylesheet" href="css/legal.css"/>
+  <link rel="stylesheet" href="css/cart.css"/>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
 </head>
-<body data-theme="light">
-<div class="scroll-progress" id="scrollProgress"></div>
+<body>
+<div id="scrollProgress" class="scroll-progress" role="progressbar" aria-label="Page scroll progress"></div>
 
-<!-- NAVBAR -->
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
   <div class="nav-container">
-    <a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a>
-    <div class="nav-search" id="navSearch"><div class="search-wrapper"><i class="fas fa-search search-icon"></i><input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" /><button class="search-clear" id="searchClear"><i class="fas fa-times"></i></button><div class="search-results" id="searchResults"></div></div></div>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="nav-link">Home</a></li><li><a href="products.html" class="nav-link active">Products</a></li>
-      <li><a href="blog.html" class="nav-link">Blog</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="contact.html" class="nav-link">Contact</a></li>
+    <a href="index.html" class="nav-logo" aria-label="ShopLux Home">
+      <div class="logo-icon"><i class="fas fa-bolt"></i></div>
+      <span class="logo-text">Shop<span class="logo-highlight">Lux</span></span>
+    </a>
+    <div class="nav-search" id="navSearch" role="search">
+      <div class="search-wrapper">
+        <i class="fas fa-magnifying-glass search-icon" aria-hidden="true"></i>
+        <input type="search" id="searchInput" placeholder="Search dresses, earbuds, yoga mats…" autocomplete="off" aria-label="Search products"/>
+        <button class="search-clear" id="searchClear" aria-label="Clear search"><i class="fas fa-xmark"></i></button>
+        <div class="search-results" id="searchResults" role="listbox" aria-label="Search results"></div>
+      </div>
+    </div>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
     <div class="nav-actions">
-      <button class="nav-btn search-toggle" id="searchToggle"><i class="fas fa-search"></i></button>
-      <a href="cart.html" class="nav-btn cart-btn"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></a>
-      <button class="nav-btn theme-toggle" id="themeToggle"><i class="fas fa-sun" id="themeIcon"></i></button>
-      <button class="nav-btn menu-toggle" id="menuToggle"><span class="hamburger"><span></span><span></span><span></span></span></button>
+      <button class="nav-btn" id="searchToggle" aria-label="Toggle search"><i class="fas fa-magnifying-glass"></i></button>
+      <button class="nav-btn" id="themeToggle" data-theme-toggle aria-label="Toggle dark mode" title="Dark mode"><i class="fas fa-sun" id="themeIcon"></i></button>
+      <a href="cart.html" class="nav-btn cart-btn-nav" aria-label="Cart"><i class="fas fa-bag-shopping"></i><span class="nav-badge" data-cart-badge style="display:none">0</span></a>
+      <button class="nav-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false"><span class="hamburger"><span></span><span></span><span></span></span></button>
     </div>
   </div>
   <div class="mobile-overlay" id="mobileOverlay"></div>
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-header"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a><button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button></div>
-    <ul class="mobile-nav-links"><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li><li><a href="cart.html">Cart</a></li></ul>
-    <div class="mobile-theme-switch"><span>Dark Mode</span><label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle"><span class="toggle-slider"></span></label></div>
+  <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Mobile navigation">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span class="logo-text">Shop<span class="logo-highlight">Lux</span></span></a>
+      <button class="mobile-close" id="mobileClose" aria-label="Close menu"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="mobile-search"><input type="search" id="mobileSearchInput" placeholder="Search products…" aria-label="Mobile search"/></div>
+    <ul class="mobile-nav-links" role="list">
+      <li><a href="index.html" class="mobile-nav-link"><i class="fas fa-house"></i> Home</a></li>
+      <li><a href="products.html" class="mobile-nav-link"><i class="fas fa-bag-shopping"></i> Products</a></li>
+      <li><a href="blog.html" class="mobile-nav-link"><i class="fas fa-newspaper"></i> Blog</a></li>
+      <li><a href="about.html" class="mobile-nav-link"><i class="fas fa-circle-info"></i> About</a></li>
+      <li><a href="contact.html" class="mobile-nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
+      <li><a href="cart.html" class="mobile-nav-link"><i class="fas fa-bag-shopping"></i> Cart <span data-cart-badge style="display:none;background:var(--accent);color:#fff;border-radius:99px;padding:1px 8px;font-size:.75rem;margin-left:4px">0</span></a></li>
+    </ul>
+    <div class="mobile-theme-switch">
+      <span>Dark Mode</span>
+      <label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle" data-mobile-theme-toggle><span class="toggle-slider"></span></label>
+    </div>
   </div>
 </nav>
 
 <main id="mainContent">
-  <section class="page-header">
-    <div class="container">
-      <h1>🛍️ All Products</h1>
-      <p>Browse thousands of curated affiliate deals from Amazon, Daraz, Temu & AliExpress</p>
-      <div class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>All Products</span></div>
+<section class="page-header" aria-label="Page header">
+  <div class="page-header-orb"></div>
+  <div class="container">
+    <div class="page-header-content">
+      <div class="page-header-icon"><i class="fas fa-bag-shopping"></i></div>
+      <h1>All Products</h1>
+      <p>Browse our complete catalog across every category</p>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="index.html">Home</a>
+        <i class="fas fa-chevron-right" aria-hidden="true"></i>
+        <span aria-current="page">Products</span>
+      </nav>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Filter Bar -->
-  <section class="section" style="padding-top:24px;padding-bottom:0;">
+  <section class="section" aria-labelledby="products-heading">
     <div class="container">
-      <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="women">👗 Women</button>
-        <button class="filter-btn" data-filter="men">👔 Men</button>
-        <button class="filter-btn" data-filter="kids">🧒 Kids</button>
-        <button class="filter-btn" data-filter="shoes">👟 Shoes</button>
-        <button class="filter-btn" data-filter="bags">👜 Bags</button>
-        <button class="filter-btn" data-filter="jewelry">💍 Jewelry</button>
-        <button class="filter-btn" data-filter="tech">📱 Tech</button>
-        <button class="filter-btn" data-filter="beauty">💄 Beauty</button>
-        <button class="filter-btn" data-filter="home">🏠 Home</button>
-        <button class="filter-btn" data-filter="fitness">🏋️ Fitness</button>
+
+      <!-- FILTER BAR -->
+      <div class="shop-controls reveal">
+        <div class="filter-pills" role="group" aria-label="Filter by category">
+          <button class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-btn" data-filter="women" aria-pressed="false">👗 Women</button>
+          <button class="filter-btn" data-filter="men" aria-pressed="false">👔 Men</button>
+          <button class="filter-btn" data-filter="kids" aria-pressed="false">🧒 Kids</button>
+          <button class="filter-btn" data-filter="tech" aria-pressed="false">📱 Electronics</button>
+          <button class="filter-btn" data-filter="home" aria-pressed="false">🏠 Home</button>
+          <button class="filter-btn" data-filter="beauty" aria-pressed="false">💄 Beauty</button>
+          <button class="filter-btn" data-filter="fitness" aria-pressed="false">💪 Fitness</button>
+        </div>
+        <div class="shop-controls-right">
+          <span id="resultCount" class="result-count" aria-live="polite"></span>
+          <select id="sortSelect" class="sort-select" aria-label="Sort products">
+            <option value="default">Sort: Featured</option>
+            <option value="price-asc">Price: Low → High</option>
+            <option value="price-desc">Price: High → Low</option>
+            <option value="rating">Top Rated</option>
+          </select>
+          <div class="view-toggle" role="group" aria-label="View mode">
+            <button id="viewGrid" class="view-btn active" aria-label="Grid view" aria-pressed="true"><i class="fas fa-grid-2"></i></button>
+            <button id="viewList" class="view-btn" aria-label="List view" aria-pressed="false"><i class="fas fa-list"></i></button>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ===== WOMEN'S FASHION ===== -->
-  <section class="section products-category-section" id="women">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-female"></i> Women</div>
-        <h2 class="section-title">👗 Women's Fashion</h2>
-        <p class="section-subtitle">Dresses, tops, jeans, skirts, jackets, handbags, jewelry & more</p>
+      <!-- SUBCATEGORY CHIPS -->
+      <div class="subcategory-bar reveal" aria-label="Sub-categories">
+        <div class="sub-chips">
+          <span class="sub-chip-group-label">Women:</span>
+          <a href="?sub=dresses" class="sub-chip">Dresses</a>
+          <a href="?sub=tops" class="sub-chip">Tops &amp; T-shirts</a>
+          <a href="?sub=jeans" class="sub-chip">Jeans &amp; Pants</a>
+          <a href="?sub=skirts" class="sub-chip">Skirts</a>
+          <a href="?sub=hoodies" class="sub-chip">Jackets &amp; Hoodies</a>
+          <a href="?sub=handbags" class="sub-chip">Handbags</a>
+          <a href="?sub=shoes" class="sub-chip">Shoes &amp; Sandals</a>
+          <a href="?sub=jewelry" class="sub-chip">Jewelry</a>
+          <a href="?sub=watches" class="sub-chip">Watches</a>
+          <a href="?sub=makeup" class="sub-chip">Makeup</a>
+          <a href="?sub=skincare" class="sub-chip">Skincare</a>
+          <span class="sub-chip-group-label">Men:</span>
+          <a href="?sub=tshirts" class="sub-chip">T-shirts</a>
+          <a href="?sub=shirts" class="sub-chip">Shirts</a>
+          <a href="?sub=hoodies" class="sub-chip">Hoodies</a>
+          <a href="?sub=jackets" class="sub-chip">Jackets</a>
+          <a href="?sub=jeans" class="sub-chip">Jeans</a>
+          <a href="?sub=sneakers" class="sub-chip">Sneakers</a>
+          <a href="?sub=boots" class="sub-chip">Boots</a>
+          <a href="?sub=sunglasses" class="sub-chip">Sunglasses</a>
+          <a href="?sub=wallets" class="sub-chip">Wallets</a>
+          <a href="?sub=beard" class="sub-chip">Beard Trimmers</a>
+          <a href="?sub=grooming" class="sub-chip">Grooming Kits</a>
+          <span class="sub-chip-group-label">Kids:</span>
+          <a href="?sub=baby" class="sub-chip">Baby Clothes</a>
+          <a href="?sub=school-bags" class="sub-chip">School Bags</a>
+          <a href="?sub=toys" class="sub-chip">Toys</a>
+          <a href="?sub=educational" class="sub-chip">Educational Toys</a>
+          <span class="sub-chip-group-label">Tech:</span>
+          <a href="?sub=phones" class="sub-chip">Smartphones</a>
+          <a href="?sub=earbuds" class="sub-chip">Earbuds</a>
+          <a href="?sub=headphones" class="sub-chip">Headphones</a>
+          <a href="?sub=smartwatches" class="sub-chip">Smart Watches</a>
+          <a href="?sub=gaming" class="sub-chip">Gaming</a>
+          <a href="?sub=power" class="sub-chip">Power Banks</a>
+          <a href="?sub=chargers" class="sub-chip">Chargers</a>
+          <a href="?sub=cases" class="sub-chip">Phone Cases</a>
+          <span class="sub-chip-group-label">Home:</span>
+          <a href="?sub=air-fryer" class="sub-chip">Air Fryer</a>
+          <a href="?sub=blender" class="sub-chip">Blender</a>
+          <a href="?sub=storage" class="sub-chip">Storage Boxes</a>
+          <a href="?sub=decor" class="sub-chip">Home Decor</a>
+          <a href="?sub=lamps" class="sub-chip">Lamps</a>
+          <a href="?sub=wall-art" class="sub-chip">Wall Art</a>
+          <a href="?sub=bedsheets" class="sub-chip">Bedsheets</a>
+          <span class="sub-chip-group-label">Beauty:</span>
+          <a href="?sub=skincare" class="sub-chip">Skincare</a>
+          <a href="?sub=makeup" class="sub-chip">Makeup</a>
+          <a href="?sub=hair-tools" class="sub-chip">Hair Tools</a>
+          <span class="sub-chip-group-label">Fitness:</span>
+          <a href="?sub=equipment" class="sub-chip">Fitness Equipment</a>
+          <a href="?sub=yoga" class="sub-chip">Yoga Mats</a>
+          <a href="?sub=massagers" class="sub-chip">Massagers</a>
+          <a href="?sub=supplements" class="sub-chip">Supplements</a>
+        </div>
       </div>
-      <div class="product-grid" id="womenGrid">
 
-        <div class="product-card reveal" data-category="women">
-          <div class="product-badges"><span class="badge badge-sale">-45%</span><span class="badge badge-hot">🔥</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop" alt="Floral Dress" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">Boho Floral Summer Dress</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(2,341)</span></div><div class="product-price"><span class="price-current">$19.99</span><span class="price-original">$36.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
+      <!-- PRODUCTS GRID — auto-rendered by affiliate.js -->
+      <div id="productsGrid" class="products-grid" data-product-grid="all" data-limit="40"></div>
 
-        <div class="product-card reveal" data-category="women">
-          <div class="product-badges"><span class="badge badge-new">✨ New</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=400&h=400&fit=crop" alt="Women Top" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">Casual Ribbed Crop Top</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div><span class="rating-count">(879)</span></div><div class="product-price"><span class="price-current">$9.99</span><span class="price-original">$18.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="women bags">
-          <div class="product-badges"><span class="badge badge-hot">💎 Premium</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop" alt="Handbag" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div><h3 class="product-name">Luxury PU Leather Tote Bag</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(5,788)</span></div><div class="product-price"><span class="price-current">$27.99</span><span class="price-original">$55.00</span></div><a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="women jewelry">
-          <div class="product-badges"><span class="badge badge-sale">-40%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1573408301185-9519eb26a7d6?w=400&h=400&fit=crop" alt="Jewelry" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">Gold Layered Necklace Set</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(3,109)</span></div><div class="product-price"><span class="price-current">$11.99</span><span class="price-original">$19.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="women shoes">
-          <div class="product-badges"><span class="badge badge-sale">-30%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=400&h=400&fit=crop" alt="Women Shoes" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">Block Heel Strap Sandals</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(1,456)</span></div><div class="product-price"><span class="price-current">$16.99</span><span class="price-original">$24.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="women">
-          <div class="product-badges"><span class="badge badge-sale">-35%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1511943584641-7d2f3b09de42?w=400&h=400&fit=crop" alt="Skirt" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">High-Waist Pleated Midi Skirt</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div><span class="rating-count">(988)</span></div><div class="product-price"><span class="price-current">$14.99</span><span class="price-original">$22.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== MEN'S FASHION ===== -->
-  <section class="section products-category-section" id="men" style="background:var(--bg-secondary)">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-male"></i> Men</div>
-        <h2 class="section-title">👔 Men's Fashion</h2>
-        <p class="section-subtitle">T-shirts, hoodies, jeans, sneakers, jackets & accessories</p>
-      </div>
-      <div class="product-grid" id="menGrid">
-
-        <div class="product-card reveal" data-category="men">
-          <div class="product-badges"><span class="badge badge-sale">-40%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1581803118522-7b72a50f7e9f?w=400&h=400&fit=crop" alt="Men T-Shirt" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div><h3 class="product-name">Classic Crew-Neck Cotton T-Shirt</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(7,234)</span></div><div class="product-price"><span class="price-current">$8.99</span><span class="price-original">$14.99</span></div><a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="men shoes">
-          <div class="product-badges"><span class="badge badge-sale">-35%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop" alt="Sneakers" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">Lightweight Casual Sneakers</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(4,567)</span></div><div class="product-price"><span class="price-current">$32.99</span><span class="price-original">$59.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="men">
-          <div class="product-badges"><span class="badge badge-hot">🔥 Trending</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1614975059251-992f11792b9f?w=400&h=400&fit=crop" alt="Hoodie" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">Oversized Fleece Pullover Hoodie</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(3,012)</span></div><div class="product-price"><span class="price-current">$22.99</span><span class="price-original">$39.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="men">
-          <div class="product-badges"><span class="badge badge-sale">-30%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&h=400&fit=crop" alt="Men Watch" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">Men's Luxury Steel Quartz Watch</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(2,880)</span></div><div class="product-price"><span class="price-current">$19.99</span><span class="price-original">$28.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="men">
-          <div class="product-badges"><span class="badge badge-new">✨ New</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1491553895911-0055eca6402d?w=400&h=400&fit=crop" alt="Men Boots" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div><h3 class="product-name">Leather Ankle Chelsea Boots</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(1,778)</span></div><div class="product-price"><span class="price-current">$42.99</span><span class="price-original">$69.99</span></div><a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="men">
-          <div class="product-badges"><span class="badge badge-sale">-25%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=400&h=400&fit=crop" alt="Sunglasses" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">Retro Polarized Sunglasses</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div><span class="rating-count">(2,109)</span></div><div class="product-price"><span class="price-current">$12.99</span><span class="price-original">$17.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
+      <!-- LOAD MORE -->
+      <div class="text-center reveal" style="margin-top:40px;">
+        <button class="btn btn-outline btn-lg load-more-btn" data-target="productsGrid">
+          <i class="fas fa-plus"></i> Load More Products
+        </button>
       </div>
     </div>
   </section>
-
-  <!-- ===== KIDS & TOYS ===== -->
-  <section class="section products-category-section" id="kids">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-child"></i> Kids</div>
-        <h2 class="section-title">🧒 Kids & Toys</h2>
-        <p class="section-subtitle">Baby clothes, school bags, educational toys, shoes & accessories</p>
-      </div>
-      <div class="product-grid" id="kidsGrid">
-
-        <div class="product-card reveal" data-category="kids">
-          <div class="product-badges"><span class="badge badge-sale">-30%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=400&fit=crop" alt="Kids Toys" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-store"></i> Daraz</div><h3 class="product-name">STEM Building Blocks Set (120pcs)</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(1,204)</span></div><div class="product-price"><span class="price-current">$14.99</span><span class="price-original">$21.99</span></div><a href="https://daraz.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="kids">
-          <div class="product-badges"><span class="badge badge-new">✨ New</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1519748771451-a94c596fad67?w=400&h=400&fit=crop" alt="Kids Clothes" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">Cute Cartoon Print Kids T-Shirt</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(666)</span></div><div class="product-price"><span class="price-current">$6.99</span><span class="price-original">$11.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="kids">
-          <div class="product-badges"><span class="badge badge-hot">🔥 Popular</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400&h=400&fit=crop" alt="School Bag" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div><h3 class="product-name">Waterproof Kids School Backpack</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(2,340)</span></div><div class="product-price"><span class="price-current">$18.99</span><span class="price-original">$29.99</span></div><a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="kids">
-          <div class="product-badges"><span class="badge badge-sale">-40%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1575461369992-a45819f0b7e3?w=400&h=400&fit=crop" alt="Remote Control Car" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">RC Stunt Car — 360° Flip Remote</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(3,890)</span></div><div class="product-price"><span class="price-current">$24.99</span><span class="price-original">$41.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== ELECTRONICS & TECH ===== -->
-  <section class="section products-category-section" id="tech" style="background:var(--bg-secondary)">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-mobile-alt"></i> Tech</div>
-        <h2 class="section-title">📱 Electronics & Tech</h2>
-        <p class="section-subtitle">Smartphones, earbuds, smartwatches, gaming, power banks & more</p>
-      </div>
-      <div class="product-grid" id="techGrid">
-
-        <div class="product-card reveal" data-category="tech">
-          <div class="product-badges"><span class="badge badge-sale">-45%</span><span class="badge badge-hot">🔥</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop" alt="Earbuds" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div><h3 class="product-name">Wireless ANC Earbuds — 30hr Battery</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(11,234)</span></div><div class="product-price"><span class="price-current">$22.99</span><span class="price-original">$41.99</span></div><a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="tech">
-          <div class="product-badges"><span class="badge badge-sale">-40%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop" alt="Smart Watch" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">Fitness Smart Watch — Health Tracker</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(8,512)</span></div><div class="product-price"><span class="price-current">$29.99</span><span class="price-original">$49.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="tech">
-          <div class="product-badges"><span class="badge badge-hot">🔥 Gaming</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1527814050087-3793815479db?w=400&h=400&fit=crop" alt="Gaming Mouse" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">RGB Gaming Mouse — 7200 DPI</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(6,789)</span></div><div class="product-price"><span class="price-current">$15.99</span><span class="price-original">$27.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="tech">
-          <div class="product-badges"><span class="badge badge-sale">-35%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=400&h=400&fit=crop" alt="Power Bank" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div><h3 class="product-name">20,000mAh Slim Power Bank — Fast Charge</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(14,567)</span></div><div class="product-price"><span class="price-current">$24.99</span><span class="price-original">$38.99</span></div><a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="tech">
-          <div class="product-badges"><span class="badge badge-new">✨ New</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1541807084-5c52b6b3adef?w=400&h=400&fit=crop" alt="Mechanical Keyboard" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">RGB Mechanical Gaming Keyboard</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(4,321)</span></div><div class="product-price"><span class="price-current">$39.99</span><span class="price-original">$65.00</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="tech">
-          <div class="product-badges"><span class="badge badge-hot">🔥</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&h=400&fit=crop" alt="Headphones" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">Over-Ear Wireless Headphones — Hi-Fi</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(7,890)</span></div><div class="product-price"><span class="price-current">$34.99</span><span class="price-original">$59.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== BEAUTY & SKINCARE ===== -->
-  <section class="section products-category-section" id="beauty">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-spa"></i> Beauty</div>
-        <h2 class="section-title">💄 Beauty & Skincare</h2>
-        <p class="section-subtitle">Makeup, skincare sets, hair tools & accessories</p>
-      </div>
-      <div class="product-grid" id="beautyGrid">
-
-        <div class="product-card reveal" data-category="beauty">
-          <div class="product-badges"><span class="badge badge-new">✨ New</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop" alt="Skincare" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">Vitamin C Brightening Skincare Set</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div><span class="rating-count">(987)</span></div><div class="product-price"><span class="price-current">$24.99</span><span class="price-original">$44.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="beauty">
-          <div class="product-badges"><span class="badge badge-sale">-50%</span><span class="badge badge-hot">🔥</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=400&h=400&fit=crop" alt="Makeup" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">Complete Makeup Starter Kit — 18pcs</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(4,567)</span></div><div class="product-price"><span class="price-current">$17.99</span><span class="price-original">$35.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="beauty">
-          <div class="product-badges"><span class="badge badge-hot">🔥 Trending</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&h=400&fit=crop" alt="Hair Tools" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div><h3 class="product-name">Ionic Hair Dryer — Professional Salon</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(9,012)</span></div><div class="product-price"><span class="price-current">$28.99</span><span class="price-original">$49.99</span></div><a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="beauty">
-          <div class="product-badges"><span class="badge badge-sale">-35%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&h=400&fit=crop" alt="Face Mask" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">Korean Sheet Face Mask — 10pcs Box</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(6,234)</span></div><div class="product-price"><span class="price-current">$11.99</span><span class="price-original">$18.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== HOME & KITCHEN ===== -->
-  <section class="section products-category-section" id="home" style="background:var(--bg-secondary)">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-home"></i> Home</div>
-        <h2 class="section-title">🏠 Home & Kitchen</h2>
-        <p class="section-subtitle">Air fryers, blenders, storage, lamps, wall art, bedsheets & decor</p>
-      </div>
-      <div class="product-grid" id="homeGrid">
-
-        <div class="product-card reveal" data-category="home">
-          <div class="product-badges"><span class="badge badge-hot">🔥 Best Seller</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1585515320310-259814833e62?w=400&h=400&fit=crop" alt="Air Fryer" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">5.5L Digital Air Fryer — Touch Screen</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(12,456)</span></div><div class="product-price"><span class="price-current">$49.99</span><span class="price-original">$89.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="home">
-          <div class="product-badges"><span class="badge badge-sale">-40%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=400&h=400&fit=crop" alt="Blender" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div><h3 class="product-name">1500W High-Speed Blender</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(7,890)</span></div><div class="product-price"><span class="price-current">$44.99</span><span class="price-original">$74.99</span></div><a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="home">
-          <div class="product-badges"><span class="badge badge-new">✨ New</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=400&h=400&fit=crop" alt="Home Decor" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">Modern LED Table Lamp — Touch Dimmer</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(3,234)</span></div><div class="product-price"><span class="price-current">$19.99</span><span class="price-original">$34.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="home">
-          <div class="product-badges"><span class="badge badge-sale">-30%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=400&h=400&fit=crop" alt="Bedsheet" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">Luxury 1000TC Microfiber Bedsheet Set</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(5,678)</span></div><div class="product-price"><span class="price-current">$29.99</span><span class="price-original">$42.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== FITNESS ===== -->
-  <section class="section products-category-section" id="fitness">
-    <div class="container">
-      <div class="section-header">
-        <div class="section-badge"><i class="fas fa-dumbbell"></i> Fitness</div>
-        <h2 class="section-title">🏋️ Fitness & Health</h2>
-        <p class="section-subtitle">Yoga mats, resistance bands, massagers, supplements & equipment</p>
-      </div>
-      <div class="product-grid" id="fitnessGrid">
-
-        <div class="product-card reveal" data-category="fitness">
-          <div class="product-badges"><span class="badge badge-hot">🔥 Trending</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=400&h=400&fit=crop" alt="Yoga Mat" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div><h3 class="product-name">Non-Slip Extra Thick Yoga Mat — 6mm</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(9,456)</span></div><div class="product-price"><span class="price-current">$16.99</span><span class="price-original">$28.99</span></div><a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="fitness">
-          <div class="product-badges"><span class="badge badge-sale">-40%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400&h=400&fit=crop" alt="Massager" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div><h3 class="product-name">Deep Tissue Percussion Massage Gun</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div><span class="rating-count">(7,123)</span></div><div class="product-price"><span class="price-current">$34.99</span><span class="price-original">$58.99</span></div><a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="fitness">
-          <div class="product-badges"><span class="badge badge-new">✨ New</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1598289431512-b97b0917affc?w=400&h=400&fit=crop" alt="Resistance Bands" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div><h3 class="product-name">Resistance Bands Set — 5 Levels</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div><span class="rating-count">(4,890)</span></div><div class="product-price"><span class="price-current">$12.99</span><span class="price-original">$21.99</span></div><a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-        <div class="product-card reveal" data-category="fitness">
-          <div class="product-badges"><span class="badge badge-sale">-30%</span></div>
-          <button class="wishlist-toggle"><i class="far fa-heart"></i></button>
-          <div class="product-image"><img src="https://images.unsplash.com/photo-1576678927484-cc907957088c?w=400&h=400&fit=crop" alt="Jump Rope" loading="lazy"><div class="product-overlay"><a href="#" class="btn btn-sm btn-primary"><i class="fas fa-eye"></i> Quick View</a></div></div>
-          <div class="product-info"><div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div><h3 class="product-name">Smart Digital Jump Rope — Calorie Counter</h3><div class="product-rating"><div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div><span class="rating-count">(2,345)</span></div><div class="product-price"><span class="price-current">$13.99</span><span class="price-original">$19.99</span></div><a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now</a></div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
 </main>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-wave"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path></svg></div>
-  <div class="footer-content"><div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand"><a href="index.html" class="footer-logo"><div class="logo-icon"><i class="fas fa-paw"></i></div><span class="logo-text">Meow<span class="logo-highlight">Meow</span></span></a><p>MeowMeow is an independent product discovery & comparison website helping you find the best online deals.</p><div class="footer-socials"><a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a><a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a><a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a><a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a><a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a></div></div>
-      <div class="footer-links-group"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About</a></li></ul></div>
-      <div class="footer-links-group"><h4>Support</h4><ul><li><a href="help.html">Help Center</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact Us</a></li><li><a href="shipping.html">Shipping Info</a></li><li><a href="returns.html">Returns</a></li></ul></div>
-      <div class="footer-links-group"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookie.html">Cookie Policy</a></li><li><a href="disclosure.html">Affiliate Disclosure</a></li><li><a href="dmca.html">DMCA</a></li></ul></div>
+<footer class="footer" role="contentinfo">
+  <div class="footer-wave" aria-hidden="true">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path></svg>
+  </div>
+  <div class="footer-content">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo"><div class="logo-icon"><i class="fas fa-bolt"></i></div><span class="logo-text">Shop<span class="logo-highlight">Lux</span></span></a>
+          <p>ShopLux is your trusted affiliate shopping hub. We compare the best deals from Amazon, Daraz, AliExpress &amp; Temu so you can shop smarter and save more.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+        <div class="footer-links-group">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="products.html?cat=women">Women's Fashion</a></li>
+            <li><a href="products.html?cat=men">Men's Fashion</a></li>
+            <li><a href="products.html?cat=kids">Kids &amp; Baby</a></li>
+            <li><a href="products.html?cat=tech">Electronics</a></li>
+            <li><a href="products.html?cat=home">Home &amp; Kitchen</a></li>
+            <li><a href="products.html?cat=beauty">Beauty</a></li>
+            <li><a href="products.html?cat=fitness">Fitness</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="help.html">Help Center</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns &amp; Refunds</a></li>
+          </ul>
+        </div>
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="cookie.html">Cookie Policy</a></li>
+            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+            <li><a href="dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-newsletter-row">
+        <div class="footer-nl">
+          <h4>Stay in the Loop</h4>
+          <p>Weekly deals, new arrivals &amp; exclusive coupons.</p>
+          <form id="footerNewsletterForm" class="footer-nl-form newsletter-form" novalidate>
+            <input type="email" placeholder="Email address" aria-label="Newsletter email" required/>
+            <button type="submit" class="btn btn-cta btn-sm"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+        <p class="footer-disclosure"><i class="fas fa-circle-info"></i> <strong>Affiliate Disclosure:</strong> ShopLux participates in affiliate programs including Amazon Associates, Daraz, Temu &amp; AliExpress. We may earn a small commission at no extra cost to you.</p>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 ShopLux. All rights reserved.</p>
+        <p class="footer-contact">Contact: <a href="mailto:support@shoplux.store">support@shoplux.store</a></p>
+        <div class="footer-payments payment-icons" aria-label="Payment methods"></div>
+      </div>
     </div>
-    <div class="footer-top-row"><div class="footer-newsletter"><h4>Stay Updated</h4><p>Get weekly deals, product guides, and smart shopping tips.</p><form id="newsletter-form"><input type="email" id="newsletter-email" placeholder="Your email address" required /><button type="submit">Subscribe</button></form><small id="newsletter-msg">No spam. Unsubscribe anytime.</small></div><p class="footer-disclosure">Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.</p></div>
-    <div class="footer-bottom"><p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved.</p><p class="footer-contact">Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p><div class="footer-payments"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-cc-apple-pay"></i><i class="fab fa-cc-amex"></i></div></div>
-  </div></div>
+  </div>
 </footer>
-
 <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
-<div class="toast-container" id="toastContainer"></div>
-
-<script src="js/navbar.js"></script><script src="js/theme.js"></script><script src="js/scroll.js"></script><script src="js/search.js"></script><script src="js/affiliate.js"></script><script src="js/script.js"></script><script src="js/main.js"></script>
-<script>
-// Category Filter
-const filterBtns = document.querySelectorAll('.filter-btn');
-const allCards = document.querySelectorAll('.product-card');
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', function() {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    this.classList.add('active');
-    const filter = this.dataset.filter;
-    allCards.forEach(card => {
-      if (filter === 'all' || card.dataset.category.includes(filter)) {
-        card.style.display = '';
-        card.closest('.products-category-section').style.display = '';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  });
-});
-
-// Wishlist toggle
-document.querySelectorAll('.wishlist-toggle').forEach(btn => {
-  btn.addEventListener('click', function() {
-    this.querySelector('i').classList.toggle('far');
-    this.querySelector('i').classList.toggle('fas');
-  });
-});
-
-// Newsletter
-const nf = document.getElementById('newsletter-form');
-if(nf) nf.addEventListener('submit', function(e) {
-  e.preventDefault();
-  document.getElementById('newsletter-msg').textContent = '✅ Subscribed!';
-  this.reset();
-});
-</script>
+<div id="toastContainer"></div>
+<script src="js/main.js"></script>
+<script src="js/theme.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/search.js"></script>
+<script src="js/affiliate.js"></script>
+<script src="js/scroll.js"></script>
+<script src="js/script.js"></script>
 </body>
 </html>
