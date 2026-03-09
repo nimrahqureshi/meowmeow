@@ -1,88 +1,67 @@
-/* =============================================
-   NAVBAR.JS — MOBILE MENU & SCROLL EFFECTS
-   ============================================= */
-'use strict';
+/* ============================
+   NAVBAR.JS — SCROLL + MOBILE MENU + ACTIVE LINKS
+   ============================ */
 
-(function() {
-  const navbar       = document.getElementById('navbar');
-  const menuToggle   = document.getElementById('menuToggle');
-  const mobileMenu   = document.getElementById('mobileMenu');
-  const mobileOverlay= document.getElementById('mobileOverlay');
-  const mobileClose  = document.getElementById('mobileClose');
+(function () {
+  'use strict';
 
-  /* ── SCROLL EFFECT ── */
+  const navbar   = document.getElementById('navbar');
+  const toggle   = document.getElementById('menuToggle');
+  const menu     = document.getElementById('mobileMenu');
+  const overlay  = document.getElementById('mobileOverlay');
+  const closeBtn = document.getElementById('mobileClose');
+
+  /* ── Transparent → Solid on scroll ─────────────── */
   function handleScroll() {
     if (!navbar) return;
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-
-    // Update active nav link
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
-    const scrollPos = window.scrollY + navbar.offsetHeight + 20;
-
-    sections.forEach(section => {
-      if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-        const id = section.id;
-        navLinks.forEach(link => {
-          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-        });
-      }
-    });
-  }
-
-  /* ── MOBILE MENU ── */
-  function open() {
-    if (!mobileMenu) return;
-    mobileMenu.classList.add('active');
-    mobileOverlay && mobileOverlay.classList.add('active');
-    menuToggle && menuToggle.classList.add('active');
-    document.body.classList.add('menu-open');
-    mobileMenu.querySelector('a, button')?.focus();
-  }
-
-  function close() {
-    mobileMenu && mobileMenu.classList.remove('active');
-    mobileOverlay && mobileOverlay.classList.remove('active');
-    menuToggle && menuToggle.classList.remove('active');
-    document.body.classList.remove('menu-open');
-  }
-
-  menuToggle   && menuToggle.addEventListener('click', () => mobileMenu?.classList.contains('active') ? close() : open());
-  mobileClose  && mobileClose.addEventListener('click', close);
-  mobileOverlay && mobileOverlay.addEventListener('click', close);
-
-  // Close on nav link click
-  document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-    link.addEventListener('click', close);
-  });
-
-  // Keyboard
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { close(); }
-    if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-      e.preventDefault();
-      document.getElementById('searchInput')?.focus();
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
     }
-    if (e.key === 't' && !e.ctrlKey && !e.metaKey &&
-        e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
-      window.ThemeManager?.toggle();
-    }
-  });
-
-  /* ── SMOOTH SCROLL ── */
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href === '#' || !href) return;
-      const target = document.querySelector(href);
-      if (!target) return;
-      e.preventDefault();
-      const offset = target.offsetTop - (navbar?.offsetHeight || 70) - 10;
-      window.scrollTo({ top: offset, behavior: 'smooth' });
-    });
-  });
-
-  /* ── INIT ── */
+  }
   window.addEventListener('scroll', handleScroll, { passive: true });
-  document.addEventListener('DOMContentLoaded', handleScroll);
+  handleScroll(); // run on load
+
+  /* ── Mobile menu open ───────────────────────────── */
+  function openMenu() {
+    if (!menu || !overlay) return;
+    menu.classList.add('active');
+    overlay.classList.add('active');
+    if (toggle) toggle.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  /* ── Mobile menu close ──────────────────────────── */
+  function closeMenu() {
+    if (!menu || !overlay) return;
+    menu.classList.remove('active');
+    overlay.classList.remove('active');
+    if (toggle) toggle.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  if (toggle)   toggle.addEventListener('click', openMenu);
+  if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+  if (overlay)  overlay.addEventListener('click', closeMenu);
+
+  /* ── Keyboard: Escape closes menu ──────────────── */
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeMenu();
+  });
+
+  /* ── Close mobile menu when a mobile nav link is clicked ── */
+  document.querySelectorAll('.mobile-nav-links a').forEach(function (link) {
+    link.addEventListener('click', closeMenu);
+  });
+
+  /* ── Active nav link (highlight current page) ─── */
+  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.nav-link, .mobile-nav-links a').forEach(function (link) {
+    var href = link.getAttribute('href');
+    if (href && (href === currentPage || href === './' + currentPage)) {
+      link.classList.add('active');
+    }
+  });
+
 })();
