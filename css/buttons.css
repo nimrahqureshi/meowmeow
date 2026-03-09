@@ -1,52 +1,40 @@
-/* ============================
-   BUTTONS — PROFESSIONAL 3D STYLE
-   ============================ */
+/* =============================================
+   BUTTONS.CSS — COMPLETE BUTTON SYSTEM
+   ============================================= */
 
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  padding: 12px 28px;
+  padding: 12px 26px;
   border-radius: var(--radius-full);
-  font-family: var(--font-body);
-  font-weight: 700;
+  font-family: var(--font-heading);
+  font-weight: 600;
   font-size: 0.9rem;
+  letter-spacing: 0.01em;
   text-decoration: none;
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+  transition: all var(--transition);
   border: 2px solid transparent;
   position: relative;
   overflow: hidden;
   white-space: nowrap;
-  letter-spacing: 0.2px;
   user-select: none;
+  -webkit-user-select: none;
 }
 
-.btn::before {
-  content: '';
-  position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent);
-  opacity: 0;
-  transition: opacity 0.2s;
-}
-
-.btn:hover::before { opacity: 1; }
-
-/* Shimmer effect */
-.btn::after {
-  content: '';
+/* Ripple effect */
+.btn .ripple {
   position: absolute;
-  top: 0; left: -100%;
-  width: 60%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
-  transition: left 0.5s ease;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.35);
+  transform: scale(0);
+  animation: ripple 0.6s linear;
+  pointer-events: none;
 }
 
-.btn:hover::after { left: 150%; }
-
-/* Primary */
+/* ── PRIMARY ── */
 .btn-primary {
   background: var(--gradient-primary);
   color: #fff;
@@ -54,25 +42,25 @@
   border-color: transparent;
 }
 .btn-primary:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lg), var(--shadow-glow-accent);
   color: #fff;
 }
-.btn-primary:active { transform: translateY(-1px) scale(0.99); }
+.btn-primary:active { transform: translateY(-1px); }
 
-/* CTA */
+/* ── CTA ── */
 .btn-cta {
   background: var(--gradient-cta);
   color: #fff;
   box-shadow: var(--shadow-md), var(--shadow-glow-cta);
 }
 .btn-cta:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-3px);
   box-shadow: var(--shadow-lg), var(--shadow-glow-cta);
   color: #fff;
 }
 
-/* Outline */
+/* ── OUTLINE ── */
 .btn-outline {
   background: transparent;
   color: var(--accent);
@@ -82,23 +70,48 @@
   background: var(--accent);
   color: #fff;
   transform: translateY(-3px);
-  box-shadow: var(--shadow-glow-accent);
+  box-shadow: var(--shadow-md), var(--shadow-glow-accent);
 }
 
-/* Ghost */
+/* ── OUTLINE CTA ── */
+.btn-outline-cta {
+  background: transparent;
+  color: var(--cta);
+  border-color: var(--cta);
+}
+.btn-outline-cta:hover {
+  background: var(--cta);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-md), var(--shadow-glow-cta);
+}
+
+/* ── GHOST ── */
 .btn-ghost {
-  background: var(--bg-tertiary);
-  color: var(--text-primary);
+  background: transparent;
+  color: var(--text-secondary);
   border-color: var(--border);
 }
 .btn-ghost:hover {
-  background: var(--accent-light);
-  color: var(--accent);
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  border-color: var(--border-dark);
 }
 
-/* White */
+/* ── DARK ── */
+.btn-dark {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  border-color: var(--text-primary);
+}
+.btn-dark:hover {
+  background: transparent;
+  color: var(--text-primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ── WHITE ── */
 .btn-white {
   background: #fff;
   color: var(--accent);
@@ -106,72 +119,132 @@
   font-weight: 700;
 }
 .btn-white:hover {
-  background: rgba(255,255,255,0.9);
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.7);
   transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-  color: var(--accent);
 }
 
-/* Dark */
-.btn-dark {
-  background: var(--text-primary);
+/* ── GOLD ── */
+.btn-gold {
+  background: var(--gradient-gold);
+  color: #fff;
+  box-shadow: var(--shadow-md);
+}
+.btn-gold:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg), 0 0 20px rgba(245,158,11,0.4);
   color: #fff;
 }
-.btn-dark:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-lg);
-  color: #fff;
-}
 
-/* 3D Style */
-.btn-3d {
-  box-shadow: var(--shadow-md), var(--shadow-3d);
-}
-.btn-3d:hover {
-  box-shadow: var(--shadow-lg), 0 4px 0 rgba(0,0,0,0.15), var(--shadow-glow-accent);
-  transform: translateY(-5px);
-}
-.btn-3d:active {
-  box-shadow: var(--shadow-xs), 0 1px 0 rgba(0,0,0,0.1);
-  transform: translateY(0);
-}
-
-/* Sizes */
-.btn-xs { padding: 6px 14px; font-size: 0.75rem; }
-.btn-sm { padding: 9px 20px; font-size: 0.82rem; }
-.btn-lg { padding: 16px 40px; font-size: 1rem; }
-.btn-xl { padding: 20px 52px; font-size: 1.05rem; }
+/* ── SIZES ── */
+.btn-xs  { padding: 5px 12px;  font-size: 0.75rem; }
+.btn-sm  { padding: 8px 18px;  font-size: 0.82rem; }
+.btn-lg  { padding: 15px 36px; font-size: 1rem; }
+.btn-xl  { padding: 18px 48px; font-size: 1.05rem; }
 .btn-block { width: 100%; }
 
-/* Icon */
+/* ── ICON BUTTON ── */
 .btn-icon {
-  width: 44px; height: 44px;
+  width: 42px;
+  height: 42px;
   padding: 0;
   border-radius: var(--radius-full);
-  border: 2px solid var(--border);
-  background: var(--bg-secondary);
-  color: var(--text-secondary);
+  flex-shrink: 0;
 }
-.btn-icon:hover {
-  background: var(--accent-light);
-  color: var(--accent);
-  border-color: var(--accent);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-glow-accent);
+.btn-icon-sm {
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
 }
 
-.btn-icon-sm { width: 36px; height: 36px; font-size: 0.85rem; }
-.btn-icon-lg { width: 54px; height: 54px; font-size: 1.2rem; }
-
-/* Loading state */
-.btn.loading { pointer-events: none; opacity: 0.7; }
+/* ── LOADING STATE ── */
+.btn.loading {
+  pointer-events: none;
+  opacity: 0.75;
+}
 .btn.loading i { animation: spin 0.8s linear infinite; }
-@keyframes spin { to { transform: rotate(360deg); } }
 
-/* Disabled */
+/* ── DISABLED ── */
 .btn:disabled, .btn[disabled] {
   opacity: 0.45;
   cursor: not-allowed;
   transform: none !important;
   box-shadow: none !important;
+}
+
+/* ── ADD TO CART ── */
+.btn-cart {
+  background: var(--gradient-primary);
+  color: #fff;
+  gap: 8px;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  transition: all var(--transition);
+}
+.btn-cart:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg), var(--shadow-glow-accent);
+  color: #fff;
+}
+.btn-cart.added {
+  background: var(--gradient-cta);
+}
+
+/* ── WISHLIST ── */
+.wishlist-toggle {
+  position: absolute;
+  top: 12px; right: 12px;
+  width: 36px; height: 36px;
+  background: var(--bg-card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-tertiary);
+  font-size: 0.9rem;
+  z-index: 3;
+  transition: all var(--transition);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+.wishlist-toggle:hover,
+.wishlist-toggle.active {
+  background: var(--danger-light);
+  color: var(--danger);
+  border-color: var(--danger);
+  transform: scale(1.1);
+}
+.wishlist-toggle.active i { font-weight: 900; }
+
+/* ── FILTER BUTTONS ── */
+.filter-btn {
+  padding: 8px 20px;
+  border-radius: var(--radius-full);
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.82rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all var(--transition);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-light);
+}
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  box-shadow: var(--shadow-glow-accent);
 }
