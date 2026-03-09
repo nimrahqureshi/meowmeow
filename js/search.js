@@ -1,243 +1,119 @@
-/* ================================================================
-   SEARCH.JS — LIVE PRODUCT SEARCH (real catalog, keyboard nav)
-   ShopLux v3.0
-   ================================================================ */
+/* =============================================
+   SEARCH.JS — LIVE SEARCH WITH RESULTS
+   ============================================= */
 
-(function () {
+(function() {
   'use strict';
 
-  /* ── REFS ─────────────────────────────────────────────────── */
-  const searchToggle  = document.getElementById('searchToggle');
-  const navSearch     = document.getElementById('navSearch');
-  const searchInput   = document.getElementById('searchInput');
-  const searchClear   = document.getElementById('searchClear');
-  const searchResults = document.getElementById('searchResults');
-  const mobileInput   = document.getElementById('mobileSearchInput');
+  const PRODUCTS = [
+    // Women
+    { name: 'Floral Summer Dress', cat: 'Women', price: '$19.99', img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=60&h=60&fit=crop', href: 'products.html?cat=women' },
+    { name: 'Boho Maxi Skirt', cat: 'Women', price: '$24.99', img: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=60&h=60&fit=crop', href: 'products.html?cat=women' },
+    { name: 'Leather Handbag', cat: 'Women', price: '$39.99', img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=60&h=60&fit=crop', href: 'products.html?cat=women' },
+    { name: 'Strappy Heeled Sandals', cat: 'Women', price: '$29.99', img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=60&h=60&fit=crop', href: 'products.html?cat=women' },
+    // Men
+    { name: 'Classic Denim Jacket', cat: 'Men', price: '$49.99', img: 'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=60&h=60&fit=crop', href: 'products.html?cat=men' },
+    { name: 'Slim Fit Chinos', cat: 'Men', price: '$34.99', img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=60&h=60&fit=crop', href: 'products.html?cat=men' },
+    { name: 'Running Sneakers', cat: 'Men', price: '$59.99', img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=60&h=60&fit=crop', href: 'products.html?cat=men' },
+    // Tech
+    { name: 'Wireless Earbuds Pro', cat: 'Tech', price: '$39.99', img: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=60&h=60&fit=crop', href: 'products.html?cat=tech' },
+    { name: 'Smart Watch Series 8', cat: 'Tech', price: '$129.99', img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=60&h=60&fit=crop', href: 'products.html?cat=tech' },
+    { name: 'Mechanical Keyboard', cat: 'Tech', price: '$79.99', img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=60&h=60&fit=crop', href: 'products.html?cat=tech' },
+    { name: 'Power Bank 20000mAh', cat: 'Tech', price: '$29.99', img: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=60&h=60&fit=crop', href: 'products.html?cat=tech' },
+    // Beauty
+    { name: 'Vitamin C Serum', cat: 'Beauty', price: '$18.99', img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=60&h=60&fit=crop', href: 'products.html?cat=beauty' },
+    { name: 'Matte Lipstick Set', cat: 'Beauty', price: '$14.99', img: 'https://images.unsplash.com/photo-1586495777744-4e6232bf2262?w=60&h=60&fit=crop', href: 'products.html?cat=beauty' },
+    { name: 'Hair Straightener', cat: 'Beauty', price: '$44.99', img: 'https://images.unsplash.com/photo-1562594980-47d7ee9c1e08?w=60&h=60&fit=crop', href: 'products.html?cat=beauty' },
+    // Home
+    { name: 'LED Pendant Lamp', cat: 'Home', price: '$54.99', img: 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=60&h=60&fit=crop', href: 'products.html?cat=home' },
+    { name: 'Air Fryer 4L', cat: 'Home', price: '$89.99', img: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=60&h=60&fit=crop', href: 'products.html?cat=home' },
+    { name: 'Throw Pillow Set', cat: 'Home', price: '$22.99', img: 'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=60&h=60&fit=crop', href: 'products.html?cat=home' },
+    // Kids
+    { name: 'Kids LEGO Building Set', cat: 'Kids', price: '$34.99', img: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=60&h=60&fit=crop', href: 'products.html?cat=kids' },
+    // Fitness
+    { name: 'Yoga Mat Premium', cat: 'Fitness', price: '$27.99', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=60&h=60&fit=crop', href: 'products.html?cat=fitness' },
+    { name: 'Resistance Bands Set', cat: 'Fitness', price: '$19.99', img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=60&h=60&fit=crop', href: 'products.html?cat=fitness' },
+  ];
 
-  if (!searchInput && !mobileInput) return;
+  document.addEventListener('DOMContentLoaded', () => {
 
-  let selectedIdx = -1;
+    const searchToggle = document.getElementById('searchToggle');
+    const navSearch    = document.getElementById('navSearch');
+    const searchInput  = document.getElementById('searchInput');
+    const searchClear  = document.getElementById('searchClear');
+    const searchRes    = document.getElementById('searchResults');
 
-  /* ── TOGGLE SEARCH BAR ────────────────────────────────────── */
-  searchToggle?.addEventListener('click', () => {
-    const open = navSearch?.classList.toggle('active');
-    searchToggle.setAttribute('aria-expanded', String(!!open));
-    if (open) setTimeout(() => searchInput?.focus(), 60);
-  });
+    if (!searchInput) return;
 
-  /* ── SEARCH EXECUTION ─────────────────────────────────────── */
-  function doSearch(q) {
-    q = (q || '').trim();
-    if (q.length < 2) { hideResults(); return; }
+    // Toggle mobile search
+    if (searchToggle) {
+      searchToggle.addEventListener('click', () => {
+        navSearch.classList.toggle('mobile-open');
+        if (navSearch.classList.contains('mobile-open')) searchInput.focus();
+      });
+    }
 
-    const products = window.ShopLux?.Products
-      ? ShopLux.Products.search(q)
-      : [];
+    // Input handler
+    let debounceTimer;
+    searchInput.addEventListener('input', () => {
+      clearTimeout(debounceTimer);
+      const q = searchInput.value.trim();
+      if (searchClear) searchClear.classList.toggle('visible', q.length > 0);
+      if (q.length < 2) { hideResults(); return; }
+      debounceTimer = setTimeout(() => showResults(q), 200);
+    });
 
-    renderResults(products, q);
-  }
+    // Clear button
+    if (searchClear) {
+      searchClear.addEventListener('click', () => {
+        searchInput.value = '';
+        searchClear.classList.remove('visible');
+        hideResults();
+        searchInput.focus();
+      });
+    }
 
-  /* ── RENDER RESULTS ───────────────────────────────────────── */
-  function renderResults(products, query) {
-    if (!searchResults) return;
+    // Focus / blur
+    searchInput.addEventListener('focus', () => {
+      if (searchInput.value.trim().length >= 2) showResults(searchInput.value.trim());
+    });
+    document.addEventListener('click', e => {
+      if (!navSearch?.contains(e.target)) hideResults();
+    });
 
-    const u      = window.ShopLux?.Utils;
-    const escRe  = u ? u.escapeRegex(query) : query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
-    const escHtml= u ? u.escapeHTML.bind(u)  : s => s;
-    const re     = new RegExp(`(${escRe})`, 'gi');
+    function showResults(q) {
+      if (!searchRes) return;
+      const query = q.toLowerCase();
+      const matches = PRODUCTS.filter(p =>
+        p.name.toLowerCase().includes(query) ||
+        p.cat.toLowerCase().includes(query)
+      ).slice(0, 6);
 
-    const PLATFORM_ICONS = {
-      amazon    : { icon:'fa-brands fa-amazon', color:'#ff9900', label:'Amazon' },
-      daraz     : { icon:'fas fa-store',         color:'#f85606', label:'Daraz'  },
-      aliexpress: { icon:'fas fa-globe',         color:'#ff4747', label:'AliExpress' },
-      temu      : { icon:'fas fa-tag',           color:'#f17c23', label:'Temu'   },
-    };
-
-    if (products.length === 0) {
-      searchResults.innerHTML = `
-        <div class="search-empty">
-          <div class="search-empty-icon"><i class="fas fa-magnifying-glass"></i></div>
-          <p class="search-empty-title">No results for <strong>"${escHtml(query)}"</strong></p>
-          <p class="search-empty-hint">Try: dress, sneakers, earbuds, skincare…</p>
-        </div>
-      `;
-    } else {
-      const show = products.slice(0, 9);
-      const rest = products.length - show.length;
-
-      const highlight = str => str.replace(re, '<mark>$1</mark>');
-
-      const html = show.map((p, idx) => {
-        const afUrl    = ShopLux.Products.getAffiliateUrl(p);
-        const discount = u ? u.discount(p.orig, p.price) : 0;
-        const plat     = PLATFORM_ICONS[p.platform] || PLATFORM_ICONS.amazon;
-
-        return `
-          <a class="search-result-item"
-             href="${afUrl}"
-             target="_blank"
-             rel="noopener noreferrer sponsored"
-             data-platform="${p.platform}"
-             data-idx="${idx}"
-             tabindex="-1"
-             aria-label="${escHtml(p.name)} — $${p.price.toFixed(2)} on ${plat.label}">
-            <div class="sri-img">
-              <img src="${p.img}" alt="${escHtml(p.name)}" loading="lazy"
-                   onerror="this.parentNode.innerHTML='<div class=\'sri-img-fallback\'><i class=\'fas fa-image\'></i></div>'" />
-            </div>
-            <div class="sri-body">
-              <h4 class="sri-name">${highlight(escHtml(p.name))}</h4>
-              <p class="sri-meta">
-                <span class="sri-cat">${p.cat}</span>
-                <span class="sri-dot">·</span>
-                <i class="${plat.icon}" style="color:${plat.color}"></i>
-                <span>${plat.label}</span>
-              </p>
-            </div>
-            <div class="sri-price">
-              <span class="sri-current">$${p.price.toFixed(2)}</span>
-              ${discount >= 10 ? `<span class="sri-discount">-${discount}%</span>` : ''}
+      if (!matches.length) {
+        searchRes.innerHTML = `<div class="search-result-item"><div class="search-result-info"><h4>No results for "${q}"</h4><p>Try different keywords</p></div></div>`;
+      } else {
+        searchRes.innerHTML = matches.map(p => `
+          <a class="search-result-item" href="${p.href}" style="text-decoration:none">
+            <img src="${p.img}" alt="${p.name}" loading="lazy" />
+            <div class="search-result-info">
+              <h4>${highlight(p.name, query)}</h4>
+              <p>${p.cat} · ${p.price}</p>
             </div>
           </a>
-        `;
-      }).join('');
-
-      const footer = rest > 0
-        ? `<div class="search-results-footer">
-             Showing ${show.length} of ${products.length} results
-           </div>`
-        : '';
-
-      searchResults.innerHTML = html + footer;
+        `).join('');
+      }
+      searchRes.classList.add('active');
     }
 
-    searchResults.classList.add('active');
-    selectedIdx = -1;
-  }
-
-  function hideResults() {
-    searchResults?.classList.remove('active');
-    selectedIdx = -1;
-  }
-
-  /* ── DEBOUNCED INPUT ──────────────────────────────────────── */
-  const debounceSearch = window.ShopLux?.Utils
-    ? ShopLux.Utils.debounce(doSearch, 180)
-    : (() => { let t; return q => { clearTimeout(t); t = setTimeout(() => doSearch(q), 180); }; })();
-
-  if (searchInput) {
-    searchInput.addEventListener('input', () => {
-      const q = searchInput.value;
-      searchClear?.classList.toggle('visible', q.length > 0);
-      debounceSearch(q);
-    });
-
-    searchInput.addEventListener('focus', () => {
-      if (searchInput.value.trim().length >= 2) doSearch(searchInput.value);
-    });
-  }
-
-  /* mobile search */
-  mobileInput?.addEventListener('input', () => debounceSearch(mobileInput.value));
-
-  /* ── CLEAR ────────────────────────────────────────────────── */
-  searchClear?.addEventListener('click', () => {
-    if (searchInput) { searchInput.value = ''; searchInput.focus(); }
-    searchClear.classList.remove('visible');
-    hideResults();
-  });
-
-  /* ── KEYBOARD NAVIGATION ──────────────────────────────────── */
-  searchInput?.addEventListener('keydown', function (e) {
-    if (!searchResults?.classList.contains('active')) return;
-
-    const items = searchResults.querySelectorAll('.search-result-item');
-    if (!items.length) return;
-
-    switch (e.key) {
-      case 'ArrowDown':
-        e.preventDefault();
-        selectedIdx = Math.min(selectedIdx + 1, items.length - 1);
-        _highlightItem(items);
-        break;
-
-      case 'ArrowUp':
-        e.preventDefault();
-        if (selectedIdx <= 0) { selectedIdx = -1; searchInput.focus(); }
-        else { selectedIdx--; _highlightItem(items); }
-        break;
-
-      case 'Enter':
-        e.preventDefault();
-        if (selectedIdx >= 0 && items[selectedIdx]) {
-          items[selectedIdx].click();
-        } else if (items[0]) {
-          items[0].click();
-        }
-        break;
-
-      case 'Escape':
-        hideResults();
-        navSearch?.classList.remove('active');
-        searchInput.blur();
-        break;
+    function hideResults() {
+      if (searchRes) searchRes.classList.remove('active');
     }
-  });
 
-  function _highlightItem(items) {
-    items.forEach((item, i) => {
-      const on = i === selectedIdx;
-      item.classList.toggle('focused', on);
-      if (on) item.scrollIntoView({ block: 'nearest' });
-    });
-  }
-
-  /* ── CLOSE ON OUTSIDE CLICK ───────────────────────────────── */
-  document.addEventListener('click', function (e) {
-    const inSearch  = navSearch?.contains(e.target);
-    const isToggle  = searchToggle?.contains(e.target);
-    if (!inSearch && !isToggle) {
-      hideResults();
-      if (window.innerWidth < 1100) {
-        navSearch?.classList.remove('active');
-        searchToggle?.setAttribute('aria-expanded', 'false');
-      }
+    function highlight(text, query) {
+      const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
+      return text.replace(re, '<mark style="background:var(--rose-light);color:var(--accent);padding:0 2px;border-radius:3px">$1</mark>');
     }
-  });
 
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') {
-      hideResults();
-      navSearch?.classList.remove('active');
-    }
   });
-
-  /* ── INJECT SEARCH STYLES (once) ─────────────────────────── */
-  if (!document.getElementById('shoplux-search-styles')) {
-    const s = document.createElement('style');
-    s.id = 'shoplux-search-styles';
-    s.textContent = `
-      .search-result-item mark {
-        background:color-mix(in srgb,var(--accent,#c026d3) 18%,transparent);
-        color:var(--accent,#c026d3);
-        padding:0 2px;border-radius:3px;font-weight:700;
-      }
-      .search-result-item.focused,
-      .search-result-item:focus-visible {
-        outline:none;
-        background:var(--surface-hover,rgba(192,38,211,.06));
-        box-shadow:inset 3px 0 0 var(--accent,#c026d3);
-      }
-      .search-empty { text-align:center;padding:32px 16px; }
-      .search-empty-icon { font-size:2.5rem;color:var(--text-tertiary,#aaa);margin-bottom:12px; }
-      .search-empty-title { font-size:.9rem;font-weight:600;color:var(--text-primary,#111); }
-      .search-empty-hint  { font-size:.8rem;color:var(--text-tertiary,#999);margin-top:6px; }
-      .search-results-footer {
-        text-align:center;padding:10px 16px;font-size:.78rem;
-        color:var(--text-tertiary,#999);border-top:1px solid var(--border,#e5e7eb);
-      }
-    `;
-    document.head.appendChild(s);
-  }
 
 })();
