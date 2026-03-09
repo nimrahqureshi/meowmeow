@@ -1,52 +1,78 @@
-/* =============================================
-   THEME.JS — DARK/LIGHT MODE TOGGLE
-   ============================================= */
+/* ============================================================
+   THEME.JS — LIGHT/DARK THEME TOGGLE
+   ============================================================ */
 
 (function() {
   'use strict';
 
-  function getTheme() {
-    return localStorage.getItem('mm-theme') ||
-      (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const STORAGE_KEY = 'meowmeow-theme';
+
+  function getPreferredTheme() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) return saved;
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
   }
 
   function applyTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
     document.body.setAttribute('data-theme', theme);
-    localStorage.setItem('mm-theme', theme);
-    updateIcons(theme);
+    localStorage.setItem(STORAGE_KEY, theme);
+
+    // Update all theme icons
+    document.querySelectorAll('[id="themeIcon"]').forEach(icon => {
+      icon.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    });
+
+    // Update mobile toggle
+    const mobileToggle = document.getElementById('mobileThemeToggle');
+    if (mobileToggle) mobileToggle.checked = (theme === 'dark');
+
+    // Update settings panel toggle
+    const settingsToggle = document.getElementById('settingsThemeToggle');
+    if (settingsToggle) settingsToggle.checked = (theme === 'dark');
+
+    // Dispatch event for other JS to listen
+    window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
   }
 
-  function updateIcons(theme) {
-    const icon   = document.getElementById('themeIcon');
-    const mobile = document.getElementById('mobileThemeToggle');
-    if (icon) {
-      icon.classList.toggle('fa-sun',  theme === 'light');
-      icon.classList.toggle('fa-moon', theme === 'dark');
-    }
-    if (mobile) mobile.checked = (theme === 'dark');
-  }
-
-  function toggle() {
+  function toggleTheme() {
     const current = document.body.getAttribute('data-theme') || 'light';
     applyTheme(current === 'light' ? 'dark' : 'light');
   }
 
-  // Apply immediately (before render) to avoid flash
-  applyTheme(getTheme());
+  // Initialize
+  applyTheme(getPreferredTheme());
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const btn    = document.getElementById('themeToggle');
-    const mobile = document.getElementById('mobileThemeToggle');
+  // Desktop toggle
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggle = document.getElementById('themeToggle');
+    if (toggle) toggle.addEventListener('click', toggleTheme);
 
-    if (btn)    btn.addEventListener('click', toggle);
-    if (mobile) mobile.addEventListener('change', () => {
-      applyTheme(mobile.checked ? 'dark' : 'light');
-    });
+    const mobileToggle = document.getElementById('mobileThemeToggle');
+    if (mobileToggle) {
+      mobileToggle.addEventListener('change', function() {
+        applyTheme(this.checked ? 'dark' : 'light');
+      });
+    }
 
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-      if (!localStorage.getItem('mm-theme')) applyTheme(e.matches ? 'dark' : 'light');
-    });
+    const settingsToggle = document.getElementById('settingsThemeToggle');
+    if (settingsToggle) {
+      settingsToggle.addEventListener('change', function() {
+        applyTheme(this.checked ? 'dark' : 'light');
+      });
+    }
   });
+
+  // System preference changes
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (!localStorage.getItem(STORAGE_KEY)) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  }
+
+  // Expose globally
+  window.toggleTheme = toggleTheme;
+  window.applyTheme = applyTheme;
 
 })();
