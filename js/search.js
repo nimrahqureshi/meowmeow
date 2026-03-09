@@ -1,119 +1,172 @@
-/* =============================================
-   SEARCH.JS — LIVE SEARCH WITH RESULTS
-   ============================================= */
+/* ============================================================
+   SEARCH.JS — LIVE PRODUCT SEARCH
+   ============================================================ */
 
 (function() {
   'use strict';
 
-  const PRODUCTS = [
-    // Women
-    { name: 'Floral Summer Dress', cat: 'Women', price: '$19.99', img: 'https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=60&h=60&fit=crop', href: 'products.html?cat=women' },
-    { name: 'Boho Maxi Skirt', cat: 'Women', price: '$24.99', img: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=60&h=60&fit=crop', href: 'products.html?cat=women' },
-    { name: 'Leather Handbag', cat: 'Women', price: '$39.99', img: 'https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=60&h=60&fit=crop', href: 'products.html?cat=women' },
-    { name: 'Strappy Heeled Sandals', cat: 'Women', price: '$29.99', img: 'https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=60&h=60&fit=crop', href: 'products.html?cat=women' },
-    // Men
-    { name: 'Classic Denim Jacket', cat: 'Men', price: '$49.99', img: 'https://images.unsplash.com/photo-1559128010-7c1ad6e1b6a5?w=60&h=60&fit=crop', href: 'products.html?cat=men' },
-    { name: 'Slim Fit Chinos', cat: 'Men', price: '$34.99', img: 'https://images.unsplash.com/photo-1542272604-787c3835535d?w=60&h=60&fit=crop', href: 'products.html?cat=men' },
-    { name: 'Running Sneakers', cat: 'Men', price: '$59.99', img: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=60&h=60&fit=crop', href: 'products.html?cat=men' },
-    // Tech
-    { name: 'Wireless Earbuds Pro', cat: 'Tech', price: '$39.99', img: 'https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=60&h=60&fit=crop', href: 'products.html?cat=tech' },
-    { name: 'Smart Watch Series 8', cat: 'Tech', price: '$129.99', img: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=60&h=60&fit=crop', href: 'products.html?cat=tech' },
-    { name: 'Mechanical Keyboard', cat: 'Tech', price: '$79.99', img: 'https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=60&h=60&fit=crop', href: 'products.html?cat=tech' },
-    { name: 'Power Bank 20000mAh', cat: 'Tech', price: '$29.99', img: 'https://images.unsplash.com/photo-1585386959984-a4155224a1ad?w=60&h=60&fit=crop', href: 'products.html?cat=tech' },
-    // Beauty
-    { name: 'Vitamin C Serum', cat: 'Beauty', price: '$18.99', img: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=60&h=60&fit=crop', href: 'products.html?cat=beauty' },
-    { name: 'Matte Lipstick Set', cat: 'Beauty', price: '$14.99', img: 'https://images.unsplash.com/photo-1586495777744-4e6232bf2262?w=60&h=60&fit=crop', href: 'products.html?cat=beauty' },
-    { name: 'Hair Straightener', cat: 'Beauty', price: '$44.99', img: 'https://images.unsplash.com/photo-1562594980-47d7ee9c1e08?w=60&h=60&fit=crop', href: 'products.html?cat=beauty' },
-    // Home
-    { name: 'LED Pendant Lamp', cat: 'Home', price: '$54.99', img: 'https://images.unsplash.com/photo-1524484485831-a92ffc0de03f?w=60&h=60&fit=crop', href: 'products.html?cat=home' },
-    { name: 'Air Fryer 4L', cat: 'Home', price: '$89.99', img: 'https://images.unsplash.com/photo-1570222094114-d054a817e56b?w=60&h=60&fit=crop', href: 'products.html?cat=home' },
-    { name: 'Throw Pillow Set', cat: 'Home', price: '$22.99', img: 'https://images.unsplash.com/photo-1567016432779-094069958ea5?w=60&h=60&fit=crop', href: 'products.html?cat=home' },
+  // Full product catalog for search
+  const catalog = [
+    // Women's Fashion
+    { name: "Women's Floral Boho Dress", price: "$19.99", cat: "Women's Fashion", img: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=80&h=80&fit=crop" },
+    { name: "High-Waist Skinny Jeans", price: "$28.99", cat: "Women's Fashion", img: "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=80&h=80&fit=crop" },
+    { name: "Mini Pleated Skirt", price: "$15.99", cat: "Women's Fashion", img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=80&h=80&fit=crop" },
+    { name: "Oversized Hoodie Women", price: "$23.99", cat: "Women's Fashion", img: "https://images.unsplash.com/photo-1556821840-3a63f15732ce?w=80&h=80&fit=crop" },
+    { name: "Designer Leather Handbag", price: "$34.99", cat: "Women's Fashion", img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=80&h=80&fit=crop" },
+    { name: "Strappy High Heels", price: "$29.99", cat: "Women's Fashion", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=80&h=80&fit=crop" },
+    { name: "Gold Chain Necklace", price: "$12.99", cat: "Jewelry", img: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?w=80&h=80&fit=crop" },
+    { name: "Rose Gold Watch Women", price: "$39.99", cat: "Watches", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=80&h=80&fit=crop" },
+    // Men's Fashion
+    { name: "Men's Graphic Tee", price: "$14.99", cat: "Men's Fashion", img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=80&h=80&fit=crop" },
+    { name: "Slim Fit Shirt Men", price: "$22.99", cat: "Men's Fashion", img: "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=80&h=80&fit=crop" },
+    { name: "Men's Bomber Jacket", price: "$45.99", cat: "Men's Fashion", img: "https://images.unsplash.com/photo-1551537482-f2075a1d41f2?w=80&h=80&fit=crop" },
+    { name: "Cargo Jogger Pants", price: "$27.99", cat: "Men's Fashion", img: "https://images.unsplash.com/photo-1624378439575-d8705ad7ae80?w=80&h=80&fit=crop" },
+    { name: "White Sneakers Men", price: "$38.99", cat: "Shoes", img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=80&h=80&fit=crop" },
+    { name: "Polarized Sunglasses", price: "$18.99", cat: "Accessories", img: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=80&h=80&fit=crop" },
+    { name: "Leather Bifold Wallet", price: "$16.99", cat: "Accessories", img: "https://images.unsplash.com/photo-1627123424574-724758594e93?w=80&h=80&fit=crop" },
+    { name: "Professional Beard Trimmer", price: "$32.99", cat: "Men's Grooming", img: "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=80&h=80&fit=crop" },
+    { name: "Men's Grooming Kit 7-in-1", price: "$44.99", cat: "Men's Grooming", img: "https://images.unsplash.com/photo-1585751119414-ef2636f8aede?w=80&h=80&fit=crop" },
     // Kids
-    { name: 'Kids LEGO Building Set', cat: 'Kids', price: '$34.99', img: 'https://images.unsplash.com/photo-1587654780291-39c9404d746b?w=60&h=60&fit=crop', href: 'products.html?cat=kids' },
-    // Fitness
-    { name: 'Yoga Mat Premium', cat: 'Fitness', price: '$27.99', img: 'https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=60&h=60&fit=crop', href: 'products.html?cat=fitness' },
-    { name: 'Resistance Bands Set', cat: 'Fitness', price: '$19.99', img: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=60&h=60&fit=crop', href: 'products.html?cat=fitness' },
+    { name: "Kids Rainbow Dress", price: "$16.99", cat: "Kids", img: "https://images.unsplash.com/photo-1518831959646-742c3a14ebf7?w=80&h=80&fit=crop" },
+    { name: "Boys Cartoon T-Shirt Set", price: "$12.99", cat: "Kids", img: "https://images.unsplash.com/photo-1519238263530-99bdd11df2ea?w=80&h=80&fit=crop" },
+    { name: "Kids School Backpack 20L", price: "$24.99", cat: "Kids", img: "https://images.unsplash.com/photo-1546519638700-99d7e5ed3b01?w=80&h=80&fit=crop" },
+    { name: "STEM Building Blocks 500pcs", price: "$29.99", cat: "Toys & Kids", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=80&h=80&fit=crop" },
+    { name: "Kids LED Light-Up Shoes", price: "$19.99", cat: "Kids", img: "https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=80&h=80&fit=crop" },
+    // Electronics
+    { name: "Wireless Earbuds Pro ANC", price: "$49.99", cat: "Electronics", img: "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=80&h=80&fit=crop" },
+    { name: "Over-Ear Headphones 40H", price: "$79.99", cat: "Electronics", img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=80&h=80&fit=crop" },
+    { name: "Smart Watch Fitness 7-day", price: "$89.99", cat: "Electronics", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=80&h=80&fit=crop" },
+    { name: "RGB Gaming Mouse 6400DPI", price: "$24.99", cat: "Electronics", img: "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=80&h=80&fit=crop" },
+    { name: "Mechanical Keyboard RGB", price: "$59.99", cat: "Electronics", img: "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=80&h=80&fit=crop" },
+    { name: "20000mAh Power Bank", price: "$32.99", cat: "Electronics", img: "https://images.unsplash.com/photo-1609091839311-d5365f9ff1c5?w=80&h=80&fit=crop" },
+    { name: "65W Fast Charger USB-C", price: "$18.99", cat: "Electronics", img: "https://images.unsplash.com/photo-1623126908029-58cb08a2b272?w=80&h=80&fit=crop" },
+    { name: "Shockproof Phone Case", price: "$9.99", cat: "Electronics", img: "https://images.unsplash.com/photo-1601593346740-925612772716?w=80&h=80&fit=crop" },
+    // Home & Kitchen
+    { name: "5L Digital Air Fryer", price: "$59.99", cat: "Kitchen & Home", img: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=80&h=80&fit=crop" },
+    { name: "1000W Countertop Blender", price: "$44.99", cat: "Kitchen & Home", img: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=80&h=80&fit=crop" },
+    { name: "Stackable Storage Boxes 6-set", price: "$26.99", cat: "Kitchen & Home", img: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=80&h=80&fit=crop" },
+    { name: "Bohemian Throw Pillow 4-set", price: "$22.99", cat: "Home Decor", img: "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=80&h=80&fit=crop" },
+    { name: "LED Bedside Lamp Dimmable", price: "$24.99", cat: "Home Decor", img: "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=80&h=80&fit=crop" },
+    { name: "Luxury 1000TC Bedsheet Set", price: "$34.99", cat: "Home Decor", img: "https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?w=80&h=80&fit=crop" },
+    // Beauty
+    { name: "Vitamin C Serum 30ml", price: "$22.99", cat: "Skincare", img: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=80&h=80&fit=crop" },
+    { name: "Full Glam Makeup Palette", price: "$18.99", cat: "Makeup", img: "https://images.unsplash.com/photo-1512496015851-a90fb38ba796?w=80&h=80&fit=crop" },
+    { name: "Curling Iron Ceramic 28mm", price: "$28.99", cat: "Hair Tools", img: "https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=80&h=80&fit=crop" },
+    // Sports & Fitness
+    { name: "Resistance Bands Set 5-pack", price: "$16.99", cat: "Fitness", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=80&h=80&fit=crop" },
+    { name: "Non-slip Yoga Mat 6mm", price: "$24.99", cat: "Fitness", img: "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=80&h=80&fit=crop" },
+    { name: "Percussion Massage Gun 6-speed", price: "$69.99", cat: "Fitness", img: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=80&h=80&fit=crop" },
+    { name: "Whey Protein Powder 2lb", price: "$34.99", cat: "Supplements", img: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=80&h=80&fit=crop" }
   ];
 
-  document.addEventListener('DOMContentLoaded', () => {
+  const searchToggle  = document.getElementById('searchToggle');
+  const navSearch     = document.getElementById('navSearch');
+  const searchInput   = document.getElementById('searchInput');
+  const searchClear   = document.getElementById('searchClear');
+  const searchResults = document.getElementById('searchResults');
 
-    const searchToggle = document.getElementById('searchToggle');
-    const navSearch    = document.getElementById('navSearch');
-    const searchInput  = document.getElementById('searchInput');
-    const searchClear  = document.getElementById('searchClear');
-    const searchRes    = document.getElementById('searchResults');
-
-    if (!searchInput) return;
-
-    // Toggle mobile search
-    if (searchToggle) {
-      searchToggle.addEventListener('click', () => {
-        navSearch.classList.toggle('mobile-open');
-        if (navSearch.classList.contains('mobile-open')) searchInput.focus();
-      });
-    }
-
-    // Input handler
-    let debounceTimer;
-    searchInput.addEventListener('input', () => {
-      clearTimeout(debounceTimer);
-      const q = searchInput.value.trim();
-      if (searchClear) searchClear.classList.toggle('visible', q.length > 0);
-      if (q.length < 2) { hideResults(); return; }
-      debounceTimer = setTimeout(() => showResults(q), 200);
-    });
-
-    // Clear button
-    if (searchClear) {
-      searchClear.addEventListener('click', () => {
-        searchInput.value = '';
-        searchClear.classList.remove('visible');
-        hideResults();
-        searchInput.focus();
-      });
-    }
-
-    // Focus / blur
-    searchInput.addEventListener('focus', () => {
-      if (searchInput.value.trim().length >= 2) showResults(searchInput.value.trim());
-    });
-    document.addEventListener('click', e => {
-      if (!navSearch?.contains(e.target)) hideResults();
-    });
-
-    function showResults(q) {
-      if (!searchRes) return;
-      const query = q.toLowerCase();
-      const matches = PRODUCTS.filter(p =>
-        p.name.toLowerCase().includes(query) ||
-        p.cat.toLowerCase().includes(query)
-      ).slice(0, 6);
-
-      if (!matches.length) {
-        searchRes.innerHTML = `<div class="search-result-item"><div class="search-result-info"><h4>No results for "${q}"</h4><p>Try different keywords</p></div></div>`;
-      } else {
-        searchRes.innerHTML = matches.map(p => `
-          <a class="search-result-item" href="${p.href}" style="text-decoration:none">
-            <img src="${p.img}" alt="${p.name}" loading="lazy" />
-            <div class="search-result-info">
-              <h4>${highlight(p.name, query)}</h4>
-              <p>${p.cat} · ${p.price}</p>
-            </div>
-          </a>
-        `).join('');
-      }
-      searchRes.classList.add('active');
-    }
-
-    function hideResults() {
-      if (searchRes) searchRes.classList.remove('active');
-    }
-
-    function highlight(text, query) {
-      const re = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')})`, 'gi');
-      return text.replace(re, '<mark style="background:var(--rose-light);color:var(--accent);padding:0 2px;border-radius:3px">$1</mark>');
-    }
-
+  // Toggle search bar (mobile)
+  searchToggle?.addEventListener('click', () => {
+    navSearch?.classList.toggle('active');
+    if (navSearch?.classList.contains('active')) searchInput?.focus();
   });
+
+  // Input handler
+  searchInput?.addEventListener('input', debounce(function() {
+    const q = this.value.trim().toLowerCase();
+    searchClear?.classList.toggle('visible', q.length > 0);
+    if (q.length >= 2) {
+      const results = catalog.filter(p =>
+        p.name.toLowerCase().includes(q) ||
+        p.cat.toLowerCase().includes(q)
+      ).slice(0, 8);
+      renderResults(results, q);
+    } else {
+      hideResults();
+    }
+  }, 200));
+
+  searchInput?.addEventListener('focus', function() {
+    if (this.value.trim().length >= 2) {
+      const q = this.value.trim().toLowerCase();
+      const results = catalog.filter(p =>
+        p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q)
+      ).slice(0, 8);
+      renderResults(results, q);
+    }
+  });
+
+  searchInput?.addEventListener('blur', () => setTimeout(hideResults, 220));
+
+  searchClear?.addEventListener('click', () => {
+    if (searchInput) searchInput.value = '';
+    searchClear?.classList.remove('visible');
+    hideResults();
+    searchInput?.focus();
+  });
+
+  function renderResults(results, query) {
+    if (!searchResults) return;
+
+    if (!results.length) {
+      searchResults.innerHTML = `
+        <div class="search-result-item" style="opacity:0.6;cursor:default">
+          <div class="search-result-info">
+            <h4>No products found</h4>
+            <p>Try different keywords</p>
+          </div>
+        </div>`;
+    } else {
+      const escaped = query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      searchResults.innerHTML = results.map(p => {
+        const hl = p.name.replace(new RegExp(`(${escaped})`, 'gi'),
+          '<mark style="background:var(--accent-light);color:var(--accent);padding:0 2px;border-radius:3px">$1</mark>');
+        return `
+          <div class="search-result-item" onclick="window.location='products.html'">
+            <img src="${p.img}" alt="${p.name}" loading="lazy">
+            <div class="search-result-info">
+              <h4>${hl}</h4>
+              <p>${p.cat} • <span class="price">${p.price}</span></p>
+            </div>
+          </div>`;
+      }).join('');
+    }
+
+    searchResults.classList.add('active');
+  }
+
+  function hideResults() {
+    searchResults?.classList.remove('active');
+  }
+
+  function debounce(fn, delay) {
+    let timer;
+    return function(...args) {
+      clearTimeout(timer);
+      timer = setTimeout(() => fn.apply(this, args), delay);
+    };
+  }
+
+  // Keyboard nav in results
+  searchInput?.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      hideResults();
+      navSearch?.classList.remove('active');
+    }
+    if (e.key === 'Enter') {
+      window.location = 'products.html';
+    }
+  });
+
+  // Mobile search in menu
+  const mobileSearchInput = document.getElementById('mobileSearchInput');
+  mobileSearchInput?.addEventListener('input', function() {
+    if (this.value.length >= 2) {
+      searchInput.value = this.value;
+      window.location = 'products.html';
+    }
+  });
+
+  window.searchCatalog = catalog;
 
 })();
