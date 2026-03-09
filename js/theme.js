@@ -1,84 +1,70 @@
-/* =============================================
-   THEME.JS — DARK / LIGHT MODE
-   ============================================= */
-'use strict';
+/* ============================
+   THEME.JS — DARK / LIGHT TOGGLE
+   ============================ */
 
-(function() {
-  const STORAGE_KEY = 'trendshop-theme';
-  const body = document.documentElement;
+(function () {
+  'use strict';
 
-  function getPreferred() {
-    const saved = localStorage.getItem(STORAGE_KEY);
+  var STORAGE_KEY = 'meowmeow-theme';
+  var body              = document.documentElement; // apply on <html> so CSS vars cascade
+  var themeToggle       = document.getElementById('themeToggle');
+  var themeIcon         = document.getElementById('themeIcon');
+  var mobileThemeToggle = document.getElementById('mobileThemeToggle');
+
+  /* ── Get saved theme or system preference ──── */
+  function getSavedTheme() {
+    var saved = localStorage.getItem(STORAGE_KEY);
     if (saved) return saved;
-    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches
+      ? 'dark' : 'light';
   }
 
-  function apply(theme) {
+  /* ── Apply theme ────────────────────────────── */
+  function applyTheme(theme) {
+    body.setAttribute('data-theme', theme);
     document.body.setAttribute('data-theme', theme);
-    document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem(STORAGE_KEY, theme);
-    updateUI(theme);
-  }
 
-  function toggle() {
-    const current = document.body.getAttribute('data-theme') || 'light';
-    apply(current === 'light' ? 'dark' : 'light');
-  }
-
-  function updateUI(theme) {
-    const isDark = theme === 'dark';
-
-    // Desktop theme button icon
-    document.querySelectorAll('#themeToggle, #themeBtn').forEach(btn => {
-      const icon = btn.querySelector('i');
-      if (icon) {
-        icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+    // Update desktop icon
+    if (themeIcon) {
+      if (theme === 'dark') {
+        themeIcon.className = 'fas fa-sun';   // show sun so user can switch to light
+      } else {
+        themeIcon.className = 'fas fa-moon';  // show moon so user can switch to dark
       }
-      btn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-      btn.title = isDark ? 'Light Mode' : 'Dark Mode';
-    });
+    }
 
-    // Mobile toggle switch
-    const mobileToggle = document.getElementById('mobileThemeToggle');
-    if (mobileToggle) mobileToggle.checked = isDark;
-
-    // Meta theme-color
-    const metaTheme = document.querySelector('meta[name="theme-color"]');
-    if (metaTheme) {
-      metaTheme.content = isDark ? '#0A0A16' : '#FFFFFF';
+    // Update mobile toggle
+    if (mobileThemeToggle) {
+      mobileThemeToggle.checked = (theme === 'dark');
     }
   }
 
-  // Event Listeners
-  document.addEventListener('DOMContentLoaded', () => {
-    // Init
-    const initial = getPreferred();
-    apply(initial);
+  /* ── Toggle ─────────────────────────────────── */
+  function toggleTheme() {
+    var current = body.getAttribute('data-theme') || 'light';
+    applyTheme(current === 'light' ? 'dark' : 'light');
+  }
 
-    // Desktop button
-    document.querySelectorAll('#themeToggle, #themeBtn').forEach(btn => {
-      btn.addEventListener('click', toggle);
+  /* ── Bind events ────────────────────────────── */
+  if (themeToggle) themeToggle.addEventListener('click', toggleTheme);
+
+  if (mobileThemeToggle) {
+    mobileThemeToggle.addEventListener('change', function () {
+      applyTheme(this.checked ? 'dark' : 'light');
     });
+  }
 
-    // Mobile toggle
-    const mobileToggle = document.getElementById('mobileThemeToggle');
-    if (mobileToggle) {
-      mobileToggle.addEventListener('change', function() {
-        apply(this.checked ? 'dark' : 'light');
-      });
-    }
-
-    // System change listener
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+  /* ── System preference changes ─────────────── */
+  if (window.matchMedia) {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
       if (!localStorage.getItem(STORAGE_KEY)) {
-        apply(e.matches ? 'dark' : 'light');
+        applyTheme(e.matches ? 'dark' : 'light');
       }
     });
-  });
+  }
 
-  // Apply immediately to prevent flash
-  apply(getPreferred());
+  /* ── Init ───────────────────────────────────── */
+  applyTheme(getSavedTheme());
 
-  // Expose
-  window.ThemeManager = { toggle, apply, current: () => document.body.getAttribute('data-theme') };
 })();
