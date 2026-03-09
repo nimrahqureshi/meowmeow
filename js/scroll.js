@@ -1,131 +1,215 @@
-/* =============================================
-   SCROLL.JS — SCROLL PROGRESS, BACK-TO-TOP, REVEAL
-   ============================================= */
+/* ============================================================
+   SCROLL.JS — SCROLL EFFECTS, BACK TO TOP, REVEAL
+   ============================================================ */
 
 (function() {
   'use strict';
 
-  document.addEventListener('DOMContentLoaded', () => {
+  // ===== SCROLL PROGRESS BAR =====
+  const progressBar = document.getElementById('scrollProgress');
 
-    const progressBar = document.getElementById('scrollProgress');
-    const backToTop   = document.getElementById('backToTop');
+  function updateProgress() {
+    if (!progressBar) return;
+    const scrollTop    = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const percent = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+    progressBar.style.width = Math.min(percent, 100) + '%';
+  }
 
-    // ── SCROLL HANDLER ──
-    function onScroll() {
-      const scrollTop = window.pageYOffset;
-      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  // ===== BACK TO TOP =====
+  const backToTop = document.getElementById('backToTop');
 
-      // Progress bar
-      if (progressBar) {
-        progressBar.style.width = (scrollTop / docHeight * 100) + '%';
-      }
-
-      // Back to top
-      if (backToTop) {
-        backToTop.classList.toggle('visible', scrollTop > 400);
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-
-    // Back to top click
-    if (backToTop) {
-      backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-    }
-
-    // ── SCROLL REVEAL ──
-    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-
-    if ('IntersectionObserver' in window && revealEls.length) {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-      revealEls.forEach(el => observer.observe(el));
+  function handleBackToTop() {
+    if (!backToTop) return;
+    if (window.pageYOffset > 350) {
+      backToTop.classList.add('visible');
     } else {
-      revealEls.forEach(el => el.classList.add('revealed'));
+      backToTop.classList.remove('visible');
+    }
+  }
+
+  backToTop?.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // ===== SCROLL REVEAL =====
+  function initReveal() {
+    const elements = document.querySelectorAll(
+      '.product-card, .category-card, .blog-card, .review-card, .feature-card, .help-card, .team-member, .faq-item, .contact-item, .info-section, .reveal'
+    );
+
+    if (!('IntersectionObserver' in window)) {
+      elements.forEach(el => { el.style.opacity = '1'; el.style.transform = 'none'; });
+      return;
     }
 
-    // ── COUNTER ANIMATION ──
-    const counters = document.querySelectorAll('[data-count]');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry, i) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = el.dataset.delay || (i % 5) * 80;
+          setTimeout(() => {
+            el.style.opacity = '1';
+            el.style.transform = 'translateY(0)';
+            el.classList.add('revealed');
+          }, delay);
+          observer.unobserve(el);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
 
-    if ('IntersectionObserver' in window && counters.length) {
-      const cObs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (!entry.isIntersecting) return;
-          const el     = entry.target;
-          const target = +el.getAttribute('data-count');
-          const duration = 1800;
-          const start  = performance.now();
+    elements.forEach(function(el, i) {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(28px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  }
 
-          function tick(now) {
-            const elapsed = now - start;
-            const progress = Math.min(elapsed / duration, 1);
-            const ease = 1 - Math.pow(1 - progress, 3); // cubic ease-out
-            el.textContent = Math.floor(ease * target).toLocaleString();
-            if (progress < 1) requestAnimationFrame(tick);
-            else el.textContent = target.toLocaleString();
-          }
+  // ===== COUNTER ANIMATION =====
+  function initCounters() {
+    const counters = document.querySelectorAll('.stat-number[data-count]');
+    if (!counters.length) return;
 
-          requestAnimationFrame(tick);
-          cObs.unobserve(el);
-        });
-      }, { threshold: 0.5 });
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        const el     = entry.target;
+        const target = parseInt(el.getAttribute('data-count'), 10);
+        const suffix = el.dataset.suffix || '';
+        let current  = 0;
+        const step   = target / 70;
 
-      counters.forEach(el => cObs.observe(el));
-    }
+        const tick = () => {
+          current = Math.min(current + step, target);
+          el.textContent = Math.round(current).toLocaleString() + suffix;
+          if (current < target) requestAnimationFrame(tick);
+        };
 
-    // ── COUNTDOWN TIMER ──
+        requestAnimationFrame(tick);
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    counters.forEach(el => observer.observe(el));
+  }
+
+  // ===== COUNTDOWN TIMER =====
+  function initCountdown() {
     const hoursEl = document.getElementById('timer-hours');
     const minsEl  = document.getElementById('timer-mins');
     const secsEl  = document.getElementById('timer-secs');
 
-    if (hoursEl && minsEl && secsEl) {
-      // Get end time from storage or set 24h from now
-      let endTime = +localStorage.getItem('mm-deal-end');
-      if (!endTime || endTime < Date.now()) {
-        endTime = Date.now() + 24 * 60 * 60 * 1000;
-        localStorage.setItem('mm-deal-end', endTime);
+    if (!hoursEl || !minsEl || !secsEl) return;
+
+    // Parse stored end time or set new one
+    let endTime = parseInt(sessionStorage.getItem('dealEnd') || '0', 10);
+    const now   = Date.now();
+    if (!endTime || endTime < now) {
+      endTime = now + 23 * 3600 * 1000 + 59 * 60 * 1000 + 59 * 1000;
+      sessionStorage.setItem('dealEnd', endTime.toString());
+    }
+
+    function update() {
+      const diff = Math.max(0, endTime - Date.now());
+      const h = Math.floor(diff / 3600000);
+      const m = Math.floor((diff % 3600000) / 60000);
+      const s = Math.floor((diff % 60000) / 1000);
+
+      hoursEl.textContent = String(h).padStart(2, '0');
+      minsEl.textContent  = String(m).padStart(2, '0');
+      secsEl.textContent  = String(s).padStart(2, '0');
+
+      if (diff === 0) {
+        sessionStorage.removeItem('dealEnd');
+        endTime = Date.now() + 24 * 3600 * 1000;
+        sessionStorage.setItem('dealEnd', endTime.toString());
       }
+    }
 
-      function updateTimer() {
-        const diff = Math.max(0, endTime - Date.now());
-        const h = Math.floor(diff / 3600000);
-        const m = Math.floor((diff % 3600000) / 60000);
-        const s = Math.floor((diff % 60000) / 1000);
+    update();
+    setInterval(update, 1000);
+  }
 
-        hoursEl.textContent = String(h).padStart(2, '0');
-        minsEl.textContent  = String(m).padStart(2, '0');
-        secsEl.textContent  = String(s).padStart(2, '0');
+  // ===== PARALLAX SHAPES =====
+  function initParallax() {
+    const hero = document.querySelector('.hero');
+    if (!hero || window.innerWidth < 768) return;
 
-        if (diff === 0) {
-          endTime = Date.now() + 24 * 60 * 60 * 1000;
-          localStorage.setItem('mm-deal-end', endTime);
+    window.addEventListener('mousemove', function(e) {
+      if (window.innerWidth < 768) return;
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+      document.querySelectorAll('.shape').forEach((shape, i) => {
+        const speed = (i + 1) * 4;
+        shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+      });
+    });
+  }
+
+  // ===== LAZY IMAGES =====
+  function initLazyImages() {
+    if (!('IntersectionObserver' in window)) return;
+
+    const imgs = document.querySelectorAll('img[data-src]');
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+          observer.unobserve(img);
         }
+      });
+    });
+
+    imgs.forEach(img => observer.observe(img));
+  }
+
+  // ===== STICKY SECTION HEADERS =====
+  function initStickyFilter() {
+    const filterBar = document.querySelector('.filter-bar.sticky');
+    if (!filterBar) return;
+    const top = filterBar.getBoundingClientRect().top + window.pageYOffset;
+
+    window.addEventListener('scroll', function() {
+      if (window.pageYOffset > top - 80) {
+        filterBar.classList.add('stuck');
+      } else {
+        filterBar.classList.remove('stuck');
       }
+    }, { passive: true });
+  }
 
-      updateTimer();
-      setInterval(updateTimer, 1000);
-    }
+  // ===== THROTTLE =====
+  function throttle(fn, limit) {
+    let inThrottle;
+    return function() {
+      if (!inThrottle) {
+        fn.apply(this, arguments);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    };
+  }
 
-    // ── PARALLAX HERO (desktop only) ──
-    if (window.innerWidth > 768) {
-      const blobs = document.querySelectorAll('.hero-blob');
-      window.addEventListener('mousemove', e => {
-        const cx = (e.clientX / window.innerWidth  - 0.5) * 2;
-        const cy = (e.clientY / window.innerHeight - 0.5) * 2;
-        blobs.forEach((b, i) => {
-          const speed = (i + 1) * 12;
-          b.style.transform = `translate(${cx * speed}px, ${cy * speed}px)`;
-        });
-      }, { passive: true });
-    }
+  // ===== SCROLL LISTENER =====
+  window.addEventListener('scroll', throttle(function() {
+    updateProgress();
+    handleBackToTop();
+  }, 16), { passive: true });
 
+  // ===== INIT =====
+  document.addEventListener('DOMContentLoaded', function() {
+    updateProgress();
+    handleBackToTop();
+    initReveal();
+    initCounters();
+    initCountdown();
+    initParallax();
+    initLazyImages();
+    initStickyFilter();
   });
 
 })();
