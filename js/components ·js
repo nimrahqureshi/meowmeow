@@ -1,0 +1,281 @@
+/* =============================================
+   COMPONENTS.JS — Shared HTML Injector
+   Injects navbar, footer, and cookie banner
+   ============================================= */
+
+(function() {
+  'use strict';
+
+  // ── ANNOUNCEMENT BAR HTML ──
+  const ANNOUNCEMENT = `
+  <div class="announcement-bar" id="annBar">
+    🔥 <strong>Flash Sale:</strong> Up to 70% OFF on top brands! &nbsp;
+    <a href="products.html">Shop Now →</a>
+    <button class="ann-close" id="annClose" aria-label="Close">✕</button>
+  </div>`;
+
+  // ── NAVBAR HTML ──
+  const NAVBAR = `
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+
+      <a href="index.html" class="nav-logo" aria-label="MeowMeow Home">
+        <div class="logo-icon"><i class="fas fa-paw"></i></div>
+        <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+      </a>
+
+      <div class="nav-search" id="navSearch">
+        <div class="search-wrapper">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" id="searchInput" placeholder="Search 25,000+ products…" autocomplete="off" aria-label="Search products" />
+          <button class="search-clear" id="searchClear" aria-label="Clear search"><i class="fas fa-times"></i></button>
+          <div class="search-results" id="searchResults" role="listbox"></div>
+        </div>
+      </div>
+
+      <ul class="nav-links" role="navigation">
+        <li><a href="index.html"    class="nav-link">Home</a></li>
+        <li><a href="products.html" class="nav-link">Products</a></li>
+        <li><a href="blog.html"     class="nav-link">Blog</a></li>
+        <li><a href="about.html"    class="nav-link">About</a></li>
+        <li><a href="contact.html"  class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="nav-btn search-toggle" id="searchToggle" aria-label="Toggle search">
+          <i class="fas fa-search"></i>
+        </button>
+        <a href="cart.html" class="nav-btn cart-btn" aria-label="Cart">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-badge" id="cartCount">0</span>
+        </a>
+        <button class="nav-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+          <i class="fas fa-sun" id="themeIcon"></i>
+        </button>
+        <button class="nav-btn menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
+          <span class="hamburger"><span></span><span></span><span></span></span>
+        </button>
+      </div>
+    </div>
+
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+      <div class="mobile-menu-header">
+        <a href="index.html" class="nav-logo">
+          <div class="logo-icon"><i class="fas fa-paw"></i></div>
+          <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+        </a>
+        <button class="mobile-close" id="mobileClose" aria-label="Close menu"><i class="fas fa-times"></i></button>
+      </div>
+      <ul class="mobile-nav-links">
+        <li><a href="index.html"><i class="fas fa-home fa-fw"></i> Home</a></li>
+        <li><a href="products.html"><i class="fas fa-th-large fa-fw"></i> Products</a></li>
+        <li><a href="blog.html"><i class="fas fa-blog fa-fw"></i> Blog</a></li>
+        <li><a href="about.html"><i class="fas fa-heart fa-fw"></i> About</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope fa-fw"></i> Contact</a></li>
+        <li><a href="cart.html"><i class="fas fa-shopping-cart fa-fw"></i> Cart <span class="cart-badge" style="position:relative;top:0;right:0;margin-left:4px;" id="mobileCartCount">0</span></a></li>
+        <li><a href="help.html"><i class="fas fa-question-circle fa-fw"></i> Help Center</a></li>
+      </ul>
+      <div class="mobile-theme-switch">
+        <span>Dark Mode</span>
+        <label class="toggle-switch">
+          <input type="checkbox" id="mobileThemeToggle">
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+  </nav>`;
+
+  // ── FOOTER HTML ──
+  const FOOTER = `
+  <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 80" preserveAspectRatio="none">
+        <path d="M0,40 C150,80 350,0 600,40 C850,80 1050,0 1200,40 L1200,80 L0,80 Z"></path>
+      </svg>
+    </div>
+    <div class="footer-body">
+      <div class="container">
+        <div class="footer-grid">
+
+          <div class="footer-brand">
+            <a href="index.html" class="footer-logo nav-logo">
+              <div class="logo-icon"><i class="fas fa-paw"></i></div>
+              <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+            </a>
+            <p>MeowMeow is your independent product discovery companion. We curate top-rated deals across fashion, tech, beauty, home & more from Amazon, Daraz, Temu & AliExpress — so you shop smarter.</p>
+            <div class="footer-socials">
+              <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+              <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+              <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+              <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+            </div>
+          </div>
+
+          <div class="footer-links">
+            <h4>Shop</h4>
+            <ul>
+              <li><a href="products.html">Hot Deals</a></li>
+              <li><a href="products.html?cat=women">Women's Fashion</a></li>
+              <li><a href="products.html?cat=men">Men's Fashion</a></li>
+              <li><a href="products.html?cat=tech">Electronics</a></li>
+              <li><a href="products.html?cat=beauty">Beauty</a></li>
+              <li><a href="products.html?cat=home">Home & Living</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4>Support</h4>
+            <ul>
+              <li><a href="help.html">Help Center</a></li>
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="contact.html">Contact Us</a></li>
+              <li><a href="shipping.html">Shipping Info</a></li>
+              <li><a href="returns.html">Returns</a></li>
+              <li><a href="blog.html">Blog</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-links">
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="privacy.html">Privacy Policy</a></li>
+              <li><a href="terms.html">Terms of Service</a></li>
+              <li><a href="cookie.html">Cookie Policy</a></li>
+              <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+              <li><a href="dmca.html">DMCA</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="footer-newsletter">
+          <div class="newsletter-text">
+            <h4>📬 Get Weekly Hot Deals</h4>
+            <p>Join 50,000+ savvy shoppers. Exclusive coupons + flash sale alerts.</p>
+          </div>
+          <div class="newsletter-form">
+            <form id="footer-newsletter-form" novalidate>
+              <input type="email" id="newsletter-email" placeholder="your@email.com" required aria-label="Email address" />
+              <button type="submit"><i class="fas fa-paper-plane"></i> Subscribe</button>
+            </form>
+            <small id="newsletter-msg">🔒 No spam. Unsubscribe anytime.</small>
+          </div>
+          <p class="footer-disclosure">
+            Disclosure: MeowMeow participates in affiliate programs (Amazon, Daraz, Temu, AliExpress). We earn commissions at no extra cost to you.
+          </p>
+        </div>
+
+        <div class="footer-bottom">
+          <p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved.</p>
+          <p class="footer-contact">Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p>
+          <div class="footer-payments" aria-label="Accepted payment methods">
+            <i class="fab fa-cc-visa" title="Visa"></i>
+            <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+            <i class="fab fa-cc-paypal" title="PayPal"></i>
+            <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+            <i class="fab fa-cc-amex" title="Amex"></i>
+            <i class="fab fa-google-pay" title="Google Pay"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </footer>`;
+
+  // ── COOKIE BANNER ──
+  const COOKIE = `
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-label="Cookie consent">
+    <p>🍪 We use cookies to enhance your experience. By continuing, you agree to our <a href="cookie.html">Cookie Policy</a>.</p>
+    <div class="cookie-banner-actions">
+      <button class="btn btn-ghost btn-sm" id="cookieDecline">Decline</button>
+      <button class="btn btn-primary btn-sm" id="cookieAccept">Accept All</button>
+    </div>
+  </div>`;
+
+  // ── INJECT ──
+  function inject() {
+    const body = document.body;
+
+    // Announcement bar (before everything)
+    if (!sessionStorage.getItem('ann-closed')) {
+      body.insertAdjacentHTML('afterbegin', ANNOUNCEMENT);
+    }
+
+    // Navbar
+    body.insertAdjacentHTML('afterbegin', NAVBAR);
+
+    // Footer & cookie (before closing body)
+    body.insertAdjacentHTML('beforeend', FOOTER);
+
+    // Cookie banner
+    if (!localStorage.getItem('cookie-consent')) {
+      body.insertAdjacentHTML('beforeend', COOKIE);
+    }
+
+    // Set active nav link
+    const path = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === path || (path === '' && href === 'index.html')) {
+        link.classList.add('active');
+      }
+    });
+
+    // Announcement close
+    const annClose = document.getElementById('annClose');
+    if (annClose) {
+      annClose.addEventListener('click', () => {
+        const bar = document.getElementById('annBar');
+        if (bar) { bar.remove(); sessionStorage.setItem('ann-closed', '1'); }
+      });
+    }
+
+    // Cookie handlers
+    const cookieAccept  = document.getElementById('cookieAccept');
+    const cookieDecline = document.getElementById('cookieDecline');
+    function closeCookie() {
+      const banner = document.getElementById('cookieBanner');
+      if (banner) banner.remove();
+    }
+    if (cookieAccept) {
+      cookieAccept.addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', 'accepted');
+        closeCookie();
+      });
+    }
+    if (cookieDecline) {
+      cookieDecline.addEventListener('click', () => {
+        localStorage.setItem('cookie-consent', 'declined');
+        closeCookie();
+      });
+    }
+
+    // Newsletter form
+    const nlForm = document.getElementById('footer-newsletter-form');
+    const nlMsg  = document.getElementById('newsletter-msg');
+    if (nlForm) {
+      nlForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('newsletter-email').value;
+        if (email && nlMsg) {
+          nlMsg.textContent = '✅ Subscribed! Check your inbox.';
+          nlMsg.style.color = 'var(--teal)';
+          document.getElementById('newsletter-email').value = '';
+          setTimeout(() => {
+            nlMsg.textContent = '🔒 No spam. Unsubscribe anytime.';
+            nlMsg.style.color = '';
+          }, 4000);
+        }
+      });
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', inject);
+  } else {
+    inject();
+  }
+
+})();
