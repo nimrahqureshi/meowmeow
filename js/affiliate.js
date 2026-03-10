@@ -1,55 +1,41 @@
-/* =============================================
-   AFFILIATE.JS — LINK TAGGING & TRACKING
-   ============================================= */
+/* AFFILIATE.JS — Auto-tag affiliate links */
 'use strict';
-
-(function() {
-  const config = {
-    amazon:     { param: 'tag',          value: 'trendshop-21' },
-    daraz:      { param: 'aff_id',       value: 'TREND456' },
-    temu:       { param: 'aff_id',       value: 'TRENDSHOP' },
-    aliexpress: { param: 'aff_platform', value: 'trendshop' },
-  };
-
-  function tagLinks() {
-    document.querySelectorAll('a[href^="http"]').forEach(link => {
-      try {
-        const url = new URL(link.href);
-        for (const [platform, cfg] of Object.entries(config)) {
-          if (url.hostname.includes(platform)) {
-            if (!url.searchParams.has(cfg.param)) {
-              url.searchParams.set(cfg.param, cfg.value);
-              link.href = url.toString();
-            }
-            link.setAttribute('target', '_blank');
-            link.setAttribute('rel', 'noopener noreferrer sponsored');
-            break;
-          }
+(function(){
+  const IDS={amazon:'meowmeow-21',daraz:'MEOW123',temu:'MEOWAFF',aliexpress:'meowmeow_site'};
+  const RULES=[
+    {domains:['amazon.com','amazon.co.uk','amazon.ca','amazon.in','amazon.com.au','amazon.de','amazon.com.pk'],
+     apply:u=>{const url=new URL(u);url.searchParams.set('tag',IDS.amazon);return url.toString();}},
+    {domains:['daraz.pk','daraz.com','daraz.lk','daraz.com.bd'],
+     apply:u=>{const url=new URL(u);url.searchParams.set('ref',IDS.daraz);return url.toString();}},
+    {domains:['temu.com'],
+     apply:u=>{const url=new URL(u);url.searchParams.set('refer_code',IDS.temu);return url.toString();}},
+    {domains:['aliexpress.com','s.click.aliexpress.com'],
+     apply:u=>{const url=new URL(u);url.searchParams.set('aff_id',IDS.aliexpress);return url.toString();}}
+  ];
+  function tag(a){
+    try{
+      const href=a.href;
+      if(!href||/^(javascript|mailto|#|tel)/i.test(href))return;
+      const host=new URL(href).hostname.replace(/^www\./,'');
+      for(const r of RULES){
+        if(r.domains.some(d=>host===d||host.endsWith('.'+d))){
+          a.href=r.apply(href);
+          a.setAttribute('target','_blank');
+          a.setAttribute('rel','noopener noreferrer sponsored');
+          a.dataset.affiliate='true';
+          break;
         }
-      } catch { /* skip */ }
-    });
+      }
+    }catch(e){}
   }
-
-  function trackClicks() {
-    document.addEventListener('click', e => {
-      const link = e.target.closest('a[rel*="sponsored"]');
-      if (!link) return;
-      try {
-        const url = new URL(link.href);
-        let platform = 'unknown';
-        for (const p in config) if (url.hostname.includes(p)) { platform = p; break; }
-        const product = link.closest('.product-card')?.querySelector('.product-name')?.textContent || link.textContent.trim();
-        console.log(`[Affiliate] ${platform} | ${product}`);
-        if (typeof gtag === 'function') gtag('event', 'affiliate_click', { affiliate_platform: platform, item_name: product });
-      } catch { /* skip */ }
-    });
-  }
-
-  document.addEventListener('DOMContentLoaded', () => {
-    tagLinks();
-    trackClicks();
-    // Re-tag dynamically added links
-    const observer = new MutationObserver(() => tagLinks());
-    observer.observe(document.body, { childList: true, subtree: true });
-  });
+  function tagAll(){document.querySelectorAll('a[href]:not([data-affiliate])').forEach(tag);}
+  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',tagAll):tagAll();
+  new MutationObserver(ms=>{
+    ms.forEach(m=>{m.addedNodes.forEach(n=>{
+      if(n.nodeType===1){
+        if(n.tagName==='A')tag(n);
+        n.querySelectorAll?.('a[href]:not([data-affiliate])').forEach(tag);
+      }
+    });});
+  }).observe(document.body||document.documentElement,{childList:true,subtree:true});
 })();
