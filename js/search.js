@@ -1,120 +1,69 @@
-/* =============================================
-   SEARCH.JS — LIVE SEARCH WITH RESULTS
-   ============================================= */
+/* SEARCH.JS */
 'use strict';
+document.addEventListener('DOMContentLoaded',function(){
+  const input=document.getElementById('searchInput');
+  const results=document.getElementById('searchResults');
+  const clear=document.getElementById('searchClear');
+  const toggle=document.getElementById('searchToggle');
+  const navSearch=document.getElementById('navSearch');
+  if(!input)return;
 
-(function() {
-  const searchInput   = document.getElementById('searchInput');
-  const searchClear   = document.getElementById('searchClear');
-  const searchResults = document.getElementById('searchResults');
-  const mobileSearchInput = document.getElementById('mobileSearchInput');
+  // Product data — populated from PRODUCTS global if available
+  function getProducts(){return window.PRODUCTS&&Array.isArray(window.PRODUCTS)?window.PRODUCTS:[];}
 
-  if (!searchInput) return;
-
-  function escapeRegex(str) { return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); }
-
-  function highlight(text, query) {
-    if (!query) return text;
-    const re = new RegExp(`(${escapeRegex(query)})`, 'gi');
-    return text.replace(re, '<mark style="background:var(--accent-light);color:var(--accent);border-radius:2px;padding:0 2px;">$1</mark>');
+  function hl(text,q){
+    const r=new RegExp('('+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');
+    return text.replace(r,'<strong style="color:var(--accent)">$1</strong>');
   }
 
-  function search(query) {
-    const q = query.trim().toLowerCase();
-    if (q.length < 2) { hideResults(); return; }
-
-    const products = window.PRODUCTS || [];
-    const results = products.filter(p =>
-      p.name.toLowerCase().includes(q) ||
-      p.category.toLowerCase().includes(q) ||
-      p.sub.toLowerCase().includes(q) ||
-      p.store.toLowerCase().includes(q)
-    ).slice(0, 8);
-
-    renderResults(results, q);
-  }
-
-  function renderResults(results, query) {
-    if (!searchResults) return;
-
-    if (results.length === 0) {
-      searchResults.innerHTML = `
-        <div class="search-no-results">
-          <i class="fas fa-search" style="font-size:2rem;margin-bottom:10px;opacity:0.4;display:block;"></i>
-          <strong>No results for "${query}"</strong>
-          <p>Try different keywords or browse our categories</p>
-        </div>`;
-    } else {
-      searchResults.innerHTML = results.map(p => `
-        <div class="search-result-item" onclick="location.href='${p.link || '#'}'" tabindex="0" role="button" aria-label="${p.name}">
-          <img src="${p.image}" alt="${p.name}" loading="lazy" onerror="this.src='https://via.placeholder.com/44x44/f3f4f6/9ca3af?text=?'">
-          <div class="search-result-info">
-            <h4>${highlight(p.name, query)}</h4>
-            <p>${p.category} · ${p.store}</p>
-          </div>
-          <span class="search-result-price">${p.price}</span>
+  function renderResults(q){
+    if(!q||q.length<2){close();return;}
+    const ps=getProducts();
+    const matches=ps.filter(p=>
+      p.name.toLowerCase().includes(q.toLowerCase())||
+      (p.category||'').toLowerCase().includes(q.toLowerCase())
+    ).slice(0,7);
+    if(!matches.length){
+      results.innerHTML=`<div class="search-no-results"><i class="fas fa-search"></i> No results for "<strong>${q}</strong>"</div>`;
+    }else{
+      results.innerHTML=matches.map(p=>`
+        <div class="search-result-item" data-link="${p.link||'products.html'}">
+          <img src="${p.image||''}" alt="${p.name}" loading="lazy" onerror="this.src='https://placehold.co/42x42/F3F4F6/9CA3AF?text=?'">
+          <div><div class="result-name">${hl(p.name,q)}</div><div class="result-price">$${p.price}</div></div>
         </div>`).join('');
-
-      // Add keyboard nav to results
-      searchResults.querySelectorAll('.search-result-item').forEach(item => {
-        item.addEventListener('keydown', e => {
-          if (e.key === 'Enter') item.click();
+      results.querySelectorAll('.search-result-item').forEach(it=>{
+        it.addEventListener('click',function(){
+          if(this.dataset.link&&this.dataset.link!=='#')window.open(this.dataset.link,'_blank','noopener');
+          close();input.value='';
         });
       });
     }
-
-    searchResults.classList.add('active');
+    results.classList.add('open');results.style.display='block';
   }
 
-  function hideResults() {
-    searchResults && searchResults.classList.remove('active');
+  function close(){
+    if(results){results.classList.remove('open');results.style.display='none';}
   }
 
-  function toggleClear(visible) {
-    searchClear && searchClear.classList.toggle('visible', visible);
-  }
-
-  /* ── INPUT EVENTS ── */
-  let debounceTimer;
-  searchInput.addEventListener('input', function() {
-    const val = this.value;
-    toggleClear(val.length > 0);
-    clearTimeout(debounceTimer);
-    debounceTimer = setTimeout(() => search(val), 180);
+  let dt;
+  input.addEventListener('input',function(){
+    const v=this.value.trim();
+    if(clear)clear.style.display=v?'block':'none';
+    clearTimeout(dt);dt=setTimeout(()=>renderResults(v),220);
   });
-
-  searchInput.addEventListener('focus', function() {
-    if (this.value.trim().length >= 2) search(this.value);
-  });
-
-  searchInput.addEventListener('blur', () => {
-    setTimeout(hideResults, 220);
-  });
-
-  searchClear && searchClear.addEventListener('click', () => {
-    searchInput.value = '';
-    searchInput.focus();
-    toggleClear(false);
-    hideResults();
-  });
-
-  // Keyboard navigation in results
-  searchInput.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { hideResults(); searchInput.blur(); }
-    if (e.key === 'ArrowDown') {
-      const first = searchResults?.querySelector('.search-result-item');
-      first?.focus();
+  clear?.addEventListener('click',()=>{input.value='';clear.style.display='none';close();input.focus();});
+  toggle?.addEventListener('click',()=>{
+    if(navSearch){
+      const vis=navSearch.style.display==='block';
+      navSearch.style.display=vis?'':'block';
+      if(!vis)input.focus();
     }
   });
-
-  /* ── MOBILE SEARCH ── */
-  if (mobileSearchInput) {
-    mobileSearchInput.addEventListener('input', function() {
-      // Sync with desktop search
-      if (searchInput) {
-        searchInput.value = this.value;
-        searchInput.dispatchEvent(new Event('input'));
-      }
-    });
-  }
-})();
+  document.addEventListener('click',e=>{
+    if(!e.target.closest('#navSearch')&&!e.target.closest('#searchToggle'))close();
+  });
+  input.addEventListener('keydown',e=>{
+    if(e.key==='Escape'){close();input.blur();}
+    if(e.key==='Enter'){const f=results?.querySelector('.search-result-item');if(f)f.click();}
+  });
+});
