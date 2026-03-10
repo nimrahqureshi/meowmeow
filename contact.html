@@ -1,502 +1,169 @@
 <!DOCTYPE html>
-<html lang="en">
- <head>
-  <!-- Basic Meta -->
+<html lang="en" data-theme="light">
+<head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <!-- Title -->
-   <title>Contact Us | MeowMeow</title>
-  
-  <!-- SEO -->   
-  <meta name="description" content="MeowMeow - Discover the best pet products, fashion, toys, cosmetics, shoes, jewelry, and more. We compare top deals from Amazon, Daraz, Temu & AliExpress." />
-  <meta name="keywords" content="affiliate store, pet products, fashion deals, toys, cosmetics, jewelry, shoes, Amazon affiliate, Daraz deals, Temu products" />
-  <meta name="author" content="MeowMeow" />
-
-  <!-- Open Graph (Social Media Sharing) -->
-  <meta property="og:title" content="MeowMeow | Best Online Deals">
-  <meta property="og:description" content="Discover and compare the best deals from Amazon, Daraz, Temu and AliExpress with MeowMeow.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://meowmeow-livid.vercel.app/">
-  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="images/logo.png" />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
-  <!-- Font Awesome -->
+  <title>Contact Us – MeowMeow Store</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-  <!-- CSS FILES (ORDER MATTERS) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/cards.css" />
   <link rel="stylesheet" href="css/buttons.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/themes.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/cart.css" />
   <link rel="stylesheet" href="css/components.css" />
   <link rel="stylesheet" href="css/contact.css" />
-  <link rel="stylesheet" href="css/legal.css" />
-
-   <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8QLN8M6LJ3');
-</script>
-  
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/themes.css" />
 </head>
-<body data-theme="light"><!-- JS FILES -->
-<script src="js/navbar.js"></script>
-<script src="js/theme.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/search.js"></script>
-<script src="js/script.js"></script>
-<script src="js/affiliate.js"></script>
-</body>
+<body>
 
-<!-- ====== SCROLL PROGRESS BAR ====== -->
-<div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- ====== NAVBAR ====== -->
+<!-- NAVBAR -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
-
-    <!-- Logo -->
     <a href="index.html" class="nav-logo">
-      <div class="logo-icon">
-        <i class="fas fa-paw"></i>
-      </div>
-      <span class="logo-text">
-        Meow<span class="logo-highlight">Meow</span>
-      </span>
+      <div class="logo-icon"><i class="fas fa-cat"></i></div>
+      <span class="logo-text"><span class="logo-highlight">Meow</span>Meow</span>
     </a>
-
-    <!-- Search Bar -->
-    <div class="nav-search" id="navSearch">
-      <div class="search-wrapper">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text"
-               id="searchInput"
-               placeholder="Search products..."
-               autocomplete="off" />
-        <button class="search-clear" id="searchClear">
-          <i class="fas fa-times"></i>
-        </button>
-        <div class="search-results" id="searchResults"></div>
-      </div>
-    </div>
-
-    <!-- Desktop Nav Links -->
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="products.html" class="nav-link">Products</a></li>
-      <li><a href="blog.html" class="nav-link">Blog</a></li>
-      <li><a href="about.html" class="nav-link">About</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
+      <li><a href="products.html" class="nav-link"><i class="fas fa-store"></i> Products</a></li>
+      <li><a href="blog.html" class="nav-link"><i class="fas fa-blog"></i> Blog</a></li>
+      <li><a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i> Contact</a></li>
     </ul>
-
-    <!-- Nav Actions -->
     <div class="nav-actions">
-
-      <!-- Search Toggle (Mobile) -->
-      <button class="nav-btn search-toggle" id="searchToggle">
-        <i class="fas fa-search"></i>
-      </button>
-
-      <!-- Cart -->
-      <a href="cart.html" class="nav-btn cart-btn">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-badge" id="cartCount">0</span>
-      </a>
-
-      <!-- Theme Toggle -->
-      <button class="nav-btn theme-toggle" id="themeToggle">
-        <i class="fas fa-sun" id="themeIcon"></i>
-      </button>
-
-      <!-- Mobile Menu Button -->
-      <button class="nav-btn menu-toggle" id="menuToggle">
-        <span class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </button>
-
+      <button class="nav-btn" id="themeToggle"><i class="fas fa-sun" id="themeIcon"></i></button>
+      <a href="cart.html" class="nav-btn"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></a>
+      <button class="nav-btn menu-toggle" id="menuToggle"><div class="hamburger"><span></span><span></span><span></span></div></button>
     </div>
-  </div>
-
-  <!-- ====== MOBILE OVERLAY ====== -->
-  <div class="mobile-overlay" id="mobileOverlay"></div>
-
-  <!-- ====== MOBILE MENU ====== -->
-  <div class="mobile-menu" id="mobileMenu">
-
-    <div class="mobile-menu-header">
-      <a href="index.html" class="nav-logo">
-        <div class="logo-icon">
-          <i class="fas fa-paw"></i>
-        </div>
-        <span class="logo-text">
-          Meow<span class="logo-highlight">Meow</span>
-        </span>
-      </a>
-      <button class="mobile-close" id="mobileClose">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-
-    <ul class="mobile-nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="cart.html">Cart</a></li>
-    </ul>
-
-    <div class="mobile-theme-switch">
-      <span>Dark Mode</span>
-      <label class="toggle-switch">
-        <input type="checkbox" id="mobileThemeToggle">
-        <span class="toggle-slider"></span>
-      </label>
-    </div>
-
   </div>
 </nav>
+<div class="mobile-overlay" id="mobileOverlay"></div>
+<div class="mobile-menu" id="mobileMenu">
+  <div class="mobile-menu-header"><a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cat"></i></div><span class="logo-text">MeowMeow</span></a><button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button></div>
+  <ul class="mobile-nav-links"><li><a href="index.html"><i class="fas fa-home"></i> Home</a></li><li><a href="products.html"><i class="fas fa-store"></i> Products</a></li><li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li><li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li></ul>
+  <div class="mobile-theme-switch"><span><i class="fas fa-moon"></i> Dark Mode</span><label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle" /><span class="toggle-slider"></span></label></div>
+</div>
 
-<main id="mainContent">
-<!-- ====== QUICK VIEW MODAL ====== -->
-<div id="quickViewModal" style="display:none;position:fixed;inset:0;z-index:3000;align-items:center;justify-content:center;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);padding:20px">
-  <div style="background:var(--bg-card);border-radius:20px;max-width:800px;width:100%;position:relative;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35);max-height:90vh;overflow-y:auto">
-    <button id="quickViewClose" style="position:absolute;top:14px;right:14px;z-index:10;width:38px;height:38px;border-radius:50%;background:var(--bg-tertiary);color:var(--text-primary);font-size:1.1rem;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><i class="fas fa-times"></i></button>
-    <div style="display:grid;grid-template-columns:1fr 1fr">
-      <div><img id="qvImage" src="" alt="Product" style="width:100%;height:100%;min-height:280px;object-fit:cover"/></div>
-      <div style="padding:32px 28px;display:flex;flex-direction:column;gap:14px">
-        <p id="qvMarket" style="font-size:.82rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px"></p>
-        <h2 id="qvName" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);line-height:1.3"></h2>
-        <div id="qvPrice" style="font-size:1.1rem"></div>
-        <p id="qvDesc" style="color:var(--text-secondary);font-size:.9rem;line-height:1.65"></p>
-        <a id="qvLink" href="#" class="btn btn-cta btn-3d" style="margin-top:auto;text-align:center;padding:13px 20px;display:block;text-decoration:none;border-radius:10px" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now — View on Platform</a>
-      </div>
-    </div>
+<!-- Page Header -->
+<div class="page-header">
+  <div class="container">
+    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Contact</span></div>
+    <h1>Get in <span class="gradient-text">Touch</span></h1>
+    <p>We'd love to hear from you. Send us a message and we'll respond within 24 hours.</p>
   </div>
 </div>
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <h1>📬 Contact Us</h1>
-      <p>We’d love to hear from you! Whether you have a question, feedback, or just want to say hi.</p>
-      <div class="breadcrumb">
-        <a href="index.html">Home</a> <span>/</span> <span>Contact</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT GRID SECTION -->
-  <section class="section contact-section">
-    <div class="container">
-      <div class="contact-grid">
-
-        <!-- CONTACT INFO -->
-        <div class="contact-info">
-          <h2>Get In Touch</h2>
-          <p>Reach out via any method below. We aim to respond within 24 hours.</p>
-
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
-            <div>
-              <h4>Email Us</h4>
-              <p><a href="/cdn-cgi/l/email-protection#9ff0f1f3f6f1faf2faf0e8f2faf0e8dff8f2fef6f3b1fcf0f2"><span class="__cf_email__" data-cfemail="244b4a484d4a4149414b5349414b53644349454d480a474b49">[email&#160;protected]</span></a></p>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-phone"></i></div>
-            <div>
-              <h4>Call Us</h4>
-              <p><a href="tel:+15551234567">+1 (555) 123-4567</a></p>
-              <small>Mon-Fri, 9AM - 6PM EST</small>
-            </div>
-          </div>
-
-          <div class="contact-item">
-            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
-            <div>
-              <h4>Visit Us</h4>
-              <p>123 Shopping Street, Suite 500<br>Meow City, NY 10001, USA</p>
-            </div>
-          </div>
-
-          <div class="contact-socials">
-            <h4>Follow Us</h4>
-            <div class="social-links">
-              <a href="#" aria-label="Facebook" class="social-link"><i class="fab fa-facebook-f"></i></a>
-              <a href="#" aria-label="Twitter" class="social-link"><i class="fab fa-twitter"></i></a>
-              <a href="#" aria-label="Instagram" class="social-link"><i class="fab fa-instagram"></i></a>
-              <a href="#" aria-label="YouTube" class="social-link"><i class="fab fa-youtube"></i></a>
-              <a href="#" aria-label="TikTok" class="social-link"><i class="fab fa-tiktok"></i></a>
-            </div>
+<!-- Contact Section -->
+<section class="section contact-section">
+  <div class="container">
+    <div class="contact-grid">
+      <!-- Info -->
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <p>Have a question about a product, affiliate partnership, or just want to say hello? Reach out through any of the channels below.</p>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <h4>Email</h4>
+            <p>hello@meowmeowstore.com</p>
+            <small>We reply within 24 hours</small>
           </div>
         </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h4>Business Hours</h4>
+            <p>Mon – Fri: 9am – 6pm PKT</p>
+            <small>Weekend support via email</small>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <h4>Location</h4>
+            <p>Karachi, Pakistan</p>
+            <small>Serving customers worldwide</small>
+          </div>
+        </div>
+        <div class="contact-socials">
+          <h4>Follow Us</h4>
+          <div class="social-links">
+            <a href="#" class="social-link" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="social-link" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" class="social-link" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
 
-        <!-- CONTACT FORM -->
-        <form class="contact-form" id="contactForm">
-          <h2>Send a Message</h2>
-          <p>Fill out the form and we’ll get back to you as soon as possible.</p>
-
+      <!-- Form -->
+      <div class="contact-form">
+        <h2>Send a Message</h2>
+        <form id="contactForm">
           <div class="form-row">
             <div class="form-field">
-              <label for="name">Your Name <span>*</span></label>
-              <input type="text" id="name" placeholder="John Doe" required />
+              <label>First Name <span>*</span></label>
+              <input type="text" placeholder="Your first name" required />
             </div>
             <div class="form-field">
-              <label for="email">Your Email <span>*</span></label>
-              <input type="email" id="email" placeholder="john@example.com" required />
+              <label>Last Name</label>
+              <input type="text" placeholder="Your last name" />
             </div>
           </div>
-
-          <div class="form-field">
-            <label for="subject">Subject <span>*</span></label>
-            <input type="text" id="subject" placeholder="How can we help?" required />
+          <div class="form-field" style="margin-bottom:18px;">
+            <label>Email Address <span>*</span></label>
+            <input type="email" placeholder="your@email.com" required />
           </div>
-
-          <div class="form-field">
-            <label for="message">Message <span>*</span></label>
-            <textarea id="message" rows="5" placeholder="Tell us more..." required></textarea>
+          <div class="form-field" style="margin-bottom:18px;">
+            <label>Subject <span>*</span></label>
+            <input type="text" placeholder="What is this about?" required />
           </div>
-
-          <button type="submit" class="btn btn-primary btn-lg btn-3d btn-block">
-            <i class="fas fa-paper-plane"></i> Send Message
-          </button>
-
-          <p class="form-note"><i class="fas fa-lock"></i> Your information is secure. We never share your data.</p>
-        </form>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- OPTIONAL: GOOGLE MAPS EMBED -->
-  <section class="section map-section">
-    <div class="container">
-      <h2 class="section-title text-center">📍 Find Us On The Map</h2>
-      <div class="map-container">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3024.221996175586!2d-74.00613178401996!3d40.71052777932863!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25a23e28c1191%3A0x49f75d3281df052a!2s123%20Shopping%20St%2C%20New%20York%2C%20NY%2010001!5e0!3m2!1sen!2sus!4v1711672000000!5m2!1sen!2sus"
-          width="100%"
-          height="400"
-          style="border:0; border-radius: 16px;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          title="MeowMeow Office Location">
-        </iframe>
-      </div>
-    </div>
-  </section>
-
-  <!-- FREQUENTLY ASKED QUESTIONS -->
-  <section class="section light-bg">
-    <div class="container">
-      <div class="section-header center">
-        <h2>❓ Need Help? Check Our FAQs</h2>
-        <p class="section-subtitle">Quick answers to common questions</p>
-      </div>
-
-      <div class="faq-list">
-        <div class="faq-item">
-          <h3>How long does it take to get a reply?</h3>
-          <p>We aim to respond to all messages within 24 business hours. Often sooner!</p>
-        </div>
-        <div class="faq-item">
-          <h3>Do you offer phone support?</h3>
-          <p>Yes! Call us at <a href="tel:+15551234567">+1 (555) 123-4567</a> during business hours (Mon-Fri, 9AM–6PM EST).</p>
-        </div>
-        <div class="faq-item">
-          <h3>Can I suggest a product or category?</h3>
-          <p>Absolutely. We love reader suggestions! Just send us an email or use this contact form.</p>
-        </div>
-        <div class="faq-item">
-          <h3>Are you affiliated with Amazon/Daraz/Temu?</h3>
-          <p>We are an independent review site. Some links are affiliate links (which help support our free content), but we maintain full editorial control and honesty in all reviews.</p>
-        </div>
-      </div>
-
-      <div class="text-center" style="margin-top: 30px;">
-        <a href="about.html" class="btn btn-outline">Learn More About Us</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER CTA -->
-  <section class="section newsletter-section">
-    <div class="container">
-      <div class="newsletter-card">
-        <div class="newsletter-content">
-          <h2><i class="fas fa-envelope-open-text"></i> Stay Updated</h2>
-          <p>Subscribe for weekly deals, blog posts, and exclusive subscriber-only discounts.</p>
-        </div>
-        <form class="newsletter-form" id="contactNewsletterForm">
-          <div class="form-group">
-            <input type="email" placeholder="Your email address" required aria-label="Subscribe to updates">
-            <button type="submit" class="btn btn-cta btn-3d">
-              <i class="fas fa-paper-plane"></i> Subscribe
-            </button>
+          <div class="form-field" style="margin-bottom:18px;">
+            <label>Message <span>*</span></label>
+            <textarea rows="5" placeholder="Write your message here…" required></textarea>
           </div>
-          <p class="form-note"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p>
+          <button type="submit" class="btn btn-primary btn-block btn-lg"><i class="fas fa-paper-plane"></i> Send Message</button>
+          <p class="form-note"><i class="fas fa-lock"></i> Your information is kept private and never shared.</p>
         </form>
       </div>
     </div>
-  </section>
-
-</main>
-
-<!-- ====== FOOTER ====== -->
-  <!-- ====== FOOTER ====== -->
-<footer class="footer">
-  <div class="footer-wave">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-    </svg>
   </div>
-  <div class="footer-content">
-    <div class="container">
-      <div class="footer-grid">
+</section>
 
-        <!-- Brand Column -->
-        <div class="footer-brand">
-          <a href="index.html" class="footer-logo">
-            <div class="logo-icon"><i class="fas fa-paw"></i></div>
-            <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
-          </a>
-          <p>MeowMeow is your trusted affiliate shopping companion. We curate the best deals across fashion, electronics, beauty, home &amp; more from Amazon, Daraz, Temu &amp; AliExpress — so you shop smarter and save more.</p>
-          <div class="footer-socials">
-            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-          </div>
-        </div>
-
-        <!-- Shop Column -->
-        <div class="footer-links-group">
-          <h4>Shop</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="products.html">All Products</a></li>
-            <li><a href="products.html?cat=women">Women's Fashion</a></li>
-            <li><a href="products.html?cat=men">Men's Style</a></li>
-            <li><a href="products.html?cat=kids">Kids &amp; Baby</a></li>
-            <li><a href="products.html?cat=electronics">Electronics</a></li>
-            <li><a href="products.html?cat=beauty">Beauty</a></li>
-            <li><a href="products.html?cat=jewelry">Jewelry</a></li>
-            <li><a href="products.html?cat=home">Home &amp; Kitchen</a></li>
-            <li><a href="products.html?cat=sports">Sports</a></li>
-            <li><a href="products.html?cat=pets">Pets</a></li>
-            <li><a href="products.html#deals">🔥 Hot Deals</a></li>
-          </ul>
-        </div>
-
-        <!-- Support Column -->
-        <div class="footer-links-group">
-          <h4>Support</h4>
-          <ul>
-            <li><a href="help.html">Help Center</a></li>
-            <li><a href="faq.html">FAQ</a></li>
-            <li><a href="contact.html">Contact Us</a></li>
-            <li><a href="shipping.html">Shipping Info</a></li>
-            <li><a href="returns.html">Returns &amp; Refunds</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="cart.html">Cart</a></li>
-          </ul>
-        </div>
-
-        <!-- Legal Column -->
-        <div class="footer-links-group">
-          <h4>Legal</h4>
-          <ul>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="terms.html">Terms of Service</a></li>
-            <li><a href="cookie.html">Cookie Policy</a></li>
-            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
-            <li><a href="dmca.html">DMCA</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <!-- Affiliate Disclosure -->
-      <div class="footer-top-row">
-        <p class="footer-disclosure">
-          <i class="fas fa-info-circle"></i>
-          <strong>Affiliate Disclosure:</strong> MeowMeow participates in affiliate programs including Amazon Associates (tag: meowmeow-21), Daraz, Temu &amp; AliExpress. We may earn a small commission at <em>no extra cost to you</em>. <a href="disclosure.html">Learn more</a>
-        </p>
-      </div>
-
-      <!-- Footer Bottom -->
-      <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved. Made with <i class="fas fa-heart" style="color:var(--cta)"></i> for smart shoppers worldwide.</p>
-        <p class="footer-contact">Email: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p>
-        <div class="footer-payments">
-          <i class="fab fa-cc-visa" title="Visa"></i>
-          <i class="fab fa-cc-mastercard" title="Mastercard"></i>
-          <i class="fab fa-cc-paypal" title="PayPal"></i>
-          <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
-          <i class="fab fa-cc-amex" title="American Express"></i>
-        </div>
-      </div>
-
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-wave"><svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80 Z"/></svg></div>
+  <div class="container footer-content">
+    <div class="footer-grid">
+      <div class="footer-brand"><a href="index.html" class="footer-logo"><div class="logo-icon"><i class="fas fa-cat"></i></div><span class="logo-text">MeowMeow</span></a><p>Your trusted destination for best online deals.</p><div class="footer-socials"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-twitter"></i></a></div></div>
+      <div class="footer-links-group"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-links-group"><h4>Shop</h4><ul><li><a href="products.html">All Products</a></li><li><a href="products.html?cat=electronics">Electronics</a></li></ul></div>
+      <div class="footer-links-group"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="disclosure.html">Disclosure</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-disclosure">⚠️ Affiliate Disclosure: We earn from qualifying purchases.</div>
+      <div class="footer-copy">© 2026 MeowMeow Store. All Rights Reserved.</div>
     </div>
   </div>
 </footer>
 
-<!-- Back to Top -->
-<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
-
-<!-- Toast Container -->
 <div class="toast-container" id="toastContainer"></div>
+<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
 
-<!-- ====== BACK TO TOP ====== -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- ====== TOAST NOTIFICATION ====== -->
-  <div class="toast-container" id="toastContainer"></div>
-
-  <!-- JS Files -->
-  <!-- JS FILES
-<!-- ====== JS FILES ====== -->
-<script src="js/navbar.js"></script>
+<script src="js/main.js"></script>
 <script src="js/theme.js"></script>
+<script src="js/navbar.js"></script>
 <script src="js/scroll.js"></script>
-<script src="js/search.js"></script>
-<script src="js/script.js"></script>
-<script src="js/affiliate.js"></script>
+<script src="js/products-data.js"></script>
+<script>
+  document.getElementById('contactForm')?.addEventListener('submit', function(e) {
+    e.preventDefault();
+    showToast('📬 Message sent! We\'ll reply within 24 hours.', 'success');
+    this.reset();
+  });
+</script>
 </body>
 </html>
