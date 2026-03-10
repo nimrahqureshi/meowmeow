@@ -3,9 +3,7 @@
   --bg-primary: #FFFFFF;
   --bg-secondary: #F9FAFB;
   --bg-tertiary: #F3F4F6;
-  --bg-glass: rgba(255, 255, 255, 0.85);
   --bg-card: #FFFFFF;
-  
   --text-primary: #111827;
   --text-secondary: #4B5563;
   --text-tertiary: #9CA3AF;
@@ -40,14 +38,15 @@
   --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
   --shadow-lg: 0 10px 24px rgba(0,0,0,0.12);
   --shadow-xl: 0 20px 40px rgba(0,0,0,0.16);
-  --shadow-glow-accent: 0 0 20px rgba(124, 58, 237, 0.3);
-  --shadow-glow-cta: 0 0 20px rgba(236, 72, 153, 0.3);
+  --shadow-3d: 0 6px 0 rgba(0,0,0,0.10);
+  --shadow-glow-accent: 0 0 20px rgba(124, 58, 237, 0.30);
+  --shadow-glow-cta: 0 0 20px rgba(236, 72, 153, 0.30);
   
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-heading: 'Poppins', Inter, sans-serif;
   
   --navbar-height: 72px;
-  --navbar-bg: rgba(255, 255, 255, 0.85);
+  --navbar-bg: rgba(255, 255, 255, 0.94);
   --footer-bg: #111827;
   --footer-text: #D1D5DB;
   
@@ -60,30 +59,26 @@
   --bg-primary: #0F172A;
   --bg-secondary: #1E293B;
   --bg-tertiary: #334155;
-  --bg-glass: rgba(15, 23, 42, 0.97);
   --bg-card: #1E293B;
-  
   --text-primary: #F9FAFB;
   --text-secondary: #CBD5E1;
   --text-tertiary: #94A3B8;
   
   --accent: #A78BFA;
   --accent-hover: #C4B5FD;
-  --accent-light: rgba(167, 139, 250, 0.2);
+  --accent-light: rgba(167, 139, 250, 0.20);
   
   --cta: #F9A8D4;
   --cta-hover: #FBCFE8;
-  --cta-light: rgba(249, 168, 212, 0.2);
+  --cta-light: rgba(249, 168, 212, 0.20);
   
   --border: #334155;
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
-  --shadow-lg: 0 10px 24px rgba(0,0,0,0.6);
-  --shadow-xl: 0 20px 40px rgba(0,0,0,0.7);
-  --shadow-glow-accent: 0 0 24px rgba(167, 139, 250, 0.45);
-  --shadow-glow-cta: 0 0 24px rgba(249, 168, 212, 0.45);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.40);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.50);
+  --shadow-lg: 0 10px 24px rgba(0,0,0,0.60);
+  --shadow-xl: 0 20px 40px rgba(0,0,0,0.70);
   
-  --navbar-bg: rgba(15, 23, 42, 0.95);
+  --navbar-bg: rgba(15, 23, 42, 0.99);
   --footer-bg: #020617;
   --footer-text: #94A3B8;
 }
