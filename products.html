@@ -1,638 +1,456 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
+  <!-- Basic Meta -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Products – MeowMeow</title>
-  <meta name="description" content="Browse 1200+ curated products across fashion, electronics, beauty, home, kids, and fitness. Best deals updated daily." />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐾</text></svg>" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Title -->
+  <title>Products | MeowMeow</title></title>
+
+  <!-- SEO -->   
+  <meta name="description" content="MeowMeow - Discover the best pet products, fashion, toys, cosmetics, shoes, jewelry, and more. We compare top deals from Amazon, Daraz, Temu & AliExpress." />
+  <meta name="keywords" content="affiliate store, pet products, fashion deals, toys, cosmetics, jewelry, shoes, Amazon affiliate, Daraz deals, Temu products" />
+  <meta name="author" content="MeowMeow" />
+
+  <!-- Open Graph (Social Media Sharing) -->
+  <meta property="og:title" content="MeowMeow | Best Online Deals">
+  <meta property="og:description" content="Discover and compare the best deals from Amazon, Daraz, Temu and AliExpress with MeowMeow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meowmeow-livid.vercel.app/">
+  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS FILES (ORDER MATTERS) -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/buttons.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/style.css" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/legal.css" />
+
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8QLN8M6LJ3');
+</script>
+  
 </head>
-<body>
+<body data-theme="light">
+  <!-- ====== SCROLL PROGRESS BAR ====== -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- Promo Strip -->
-<div class="promo-strip" id="promoStrip">
-  <p><i class="fas fa-tag"></i> Free shipping on orders over $49 · Use code <strong>MEOW10</strong> for 10% off! <a href="#">Shop Now →</a></p>
-  <button class="promo-close" id="promoClose" aria-label="Close"><i class="fas fa-times"></i></button>
-</div>
-
-<!-- Navbar -->
-<nav class="navbar navbar-scrolled" id="navbar">
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar" id="navbar">
   <div class="nav-container">
-    <a href="index.html" class="nav-logo"><i class="fas fa-paw"></i><span>Meow<strong>Meow</strong></span></a>
+
+    <!-- Logo -->
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">
+        <i class="fas fa-paw"></i>
+      </div>
+      <span class="logo-text">
+        Meow<span class="logo-highlight">Meow</span>
+      </span>
+    </a>
+
+    <!-- Search Bar -->
     <div class="nav-search" id="navSearch">
-      <i class="fas fa-search search-icon"></i>
-      <input type="text" id="searchInput" placeholder="Search products…" autocomplete="off" />
-      <div class="search-results" id="searchResults"></div>
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text"
+               id="searchInput"
+               placeholder="Search products..."
+               autocomplete="off" />
+        <button class="search-clear" id="searchClear">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
     </div>
+
+    <!-- Desktop Nav Links -->
     <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+
+      <!-- Search Toggle (Mobile) -->
+      <button class="nav-btn search-toggle" id="searchToggle">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <!-- Cart -->
+      <a href="cart.html" class="nav-btn cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <!-- Theme Toggle -->
+      <button class="nav-btn theme-toggle" id="themeToggle">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="nav-btn menu-toggle" id="menuToggle">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ====== MOBILE OVERLAY ====== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ====== MOBILE MENU ====== -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <i class="fas fa-paw"></i>
+        </div>
+        <span class="logo-text">
+          Meow<span class="logo-highlight">Meow</span>
+        </span>
+      </a>
+      <button class="mobile-close" id="mobileClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="products.html" class="active">Products</a></li>
+      <li><a href="products.html">Products</a></li>
       <li><a href="blog.html">Blog</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
     </ul>
-    <div class="nav-actions">
-      <button class="nav-icon-btn" id="searchToggle" aria-label="Search"><i class="fas fa-search"></i></button>
-      <a href="cart.html" class="nav-icon-btn cart-btn"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></a>
-      <button class="nav-icon-btn theme-toggle-btn" id="themeToggle"><i class="fas fa-moon" id="themeIcon"></i></button>
-      <button class="nav-icon-btn settings-btn" id="settingsBtn"><i class="fas fa-sliders-h"></i></button>
-      <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+
+    <div class="mobile-theme-switch">
+      <span>Dark Mode</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="mobileThemeToggle">
+        <span class="toggle-slider"></span>
+      </label>
     </div>
+
   </div>
-  <div class="mobile-menu" id="mobileMenu">
-    <ul>
-      <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="products.html"><i class="fas fa-th-large"></i> Products</a></li>
-      <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
-      <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
-      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-      <li><a href="cart.html"><i class="fas fa-shopping-cart"></i> Cart <span class="cart-badge" id="cartCountMobile">0</span></a></li>
-    </ul>
-    <div class="mobile-theme-row"><span>Dark Mode</span><label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle"/><span class="toggle-slider"></span></label></div>
-  </div>
-  <div class="mobile-overlay" id="mobileOverlay"></div>
 </nav>
 
-<!-- Settings Panel -->
-<div class="settings-panel" id="settingsPanel">
-  <div class="settings-header"><h3><i class="fas fa-sliders-h"></i> Preferences</h3><button class="modal-close" id="settingsClose">×</button></div>
-  <div class="settings-body">
-    <div class="setting-row"><span><i class="fas fa-moon"></i> Dark Mode</span><label class="toggle-switch"><input type="checkbox" id="settingsThemeToggle"/><span class="toggle-slider"></span></label></div>
-    <div class="setting-row"><span><i class="fas fa-text-height"></i> Font Size</span><div class="font-size-ctrl"><button id="fontDecrease">A-</button><span id="fontSizeLabel">16px</span><button id="fontIncrease">A+</button></div></div>
-    <div class="setting-row"><span><i class="fas fa-globe"></i> Language</span><select id="languageSelect"><option value="en">English</option><option value="ur">اردو</option><option value="zh">中文</option><option value="ar">العربية</option><option value="es">Español</option><option value="fr">Français</option></select></div>
-    <div class="setting-row column"><span><i class="fas fa-palette"></i> Accent Color</span><div class="accent-swatches" id="accentSwatches"><button class="swatch active" data-color="#6C47FF" style="background:#6C47FF"></button><button class="swatch" data-color="#FF4D8D" style="background:#FF4D8D"></button><button class="swatch" data-color="#00C9A7" style="background:#00C9A7"></button><button class="swatch" data-color="#FF6B35" style="background:#FF6B35"></button><button class="swatch" data-color="#3B82F6" style="background:#3B82F6"></button></div></div>
-    <div class="setting-row"><span><i class="fas fa-magic"></i> Animations</span><label class="toggle-switch"><input type="checkbox" id="animationsToggle" checked/><span class="toggle-slider"></span></label></div>
-  </div>
-</div>
-<div class="mobile-overlay" id="settingsOverlay"></div>
-
-<!-- Page Header -->
-<div class="page-header">
+ <main id="mainContent">
+<!-- ====== FILTER BAR ====== -->
+<div class="products-filter-bar" style="background:var(--bg-secondary);border-bottom:1px solid var(--border);padding:16px 0;position:sticky;top:72px;z-index:200">
   <div class="container">
-    <nav class="breadcrumb"><a href="index.html">Home</a><span>/</span><span>Products</span></nav>
-    <h1 class="page-header-title">All <span class="gradient-text">Products</span></h1>
-    <p class="page-header-sub">1,200+ curated deals across every category — updated daily.</p>
-  </div>
-</div>
-
-<!-- Filter Bar -->
-<section class="section" style="padding-top:2rem">
-  <div class="container">
-    <div class="filter-bar">
-      <div class="filter-tabs" id="filterTabs">
-        <button class="filter-tab active" data-filter="all">All</button>
-        <button class="filter-tab" data-filter="womens">Women's</button>
-        <button class="filter-tab" data-filter="mens">Men's</button>
-        <button class="filter-tab" data-filter="kids">Kids</button>
-        <button class="filter-tab" data-filter="electronics">Electronics</button>
-        <button class="filter-tab" data-filter="beauty">Beauty</button>
-        <button class="filter-tab" data-filter="home">Home</button>
-        <button class="filter-tab" data-filter="fitness">Fitness</button>
-      </div>
-      <div class="filter-sort">
-        <select id="sortSelect">
-          <option value="default">Sort: Featured</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-          <option value="discount">Biggest Discount</option>
-        </select>
-      </div>
+    <!-- Main Category Filters -->
+    <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px">
+      <button class="btn btn-primary btn-sm filter-btn" data-filter="all">All Products</button>
+      <button class="btn btn-ghost btn-sm filter-btn" data-filter="women"><i class="fas fa-female"></i> Women</button>
+      <button class="btn btn-ghost btn-sm filter-btn" data-filter="men"><i class="fas fa-male"></i> Men</button>
+      <button class="btn btn-ghost btn-sm filter-btn" data-filter="kids"><i class="fas fa-child"></i> Kids</button>
+      <button class="btn btn-ghost btn-sm filter-btn" data-filter="electronics"><i class="fas fa-laptop"></i> Electronics</button>
+      <button class="btn btn-ghost btn-sm filter-btn" data-filter="beauty"><i class="fas fa-spa"></i> Beauty</button>
+      <button class="btn btn-ghost btn-sm filter-btn" data-filter="jewelry"><i class="fas fa-gem"></i> Jewelry</button>
+      <button class="btn btn-ghost btn-sm filter-btn" data-filter="home"><i class="fas fa-couch"></i> Home</button>
+      <button class="btn btn-ghost btn-sm filter-btn" data-filter="sports"><i class="fas fa-dumbbell"></i> Sports</button>
+      <button class="btn btn-ghost btn-sm filter-btn" data-filter="pets"><i class="fas fa-paw"></i> Pets</button>
     </div>
-
-    <div class="products-grid" id="productsGrid">
-
-      <!-- WOMEN'S FASHION -->
-      <div class="product-card" data-category="womens">
-        <div class="product-badge badge-hot">🔥 Hot</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1590739293931-a4ad6db5e2d5?w=400&q=80" alt="Floral Midi Dress" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Floral Midi Dress"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Floral Midi Dress" data-price="$34.99" data-img="https://images.unsplash.com/photo-1590739293931-a4ad6db5e2d5?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Women's Fashion</span>
-          <h3 class="product-name">Floral Midi Dress</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(1.1k)</span></div>
-          <div class="product-price-row"><span class="product-price">$34.99</span><span class="product-original">$54.99</span><span class="product-discount">-36%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=floral+midi+dress&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Floral Midi Dress" data-price="34.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Floral Midi Dress" data-price="34.99" data-img="https://images.unsplash.com/photo-1590739293931-a4ad6db5e2d5?w=200&q=80" data-url="https://www.amazon.com/s?k=floral+midi+dress&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="womens">
-        <div class="product-badge badge-new">✨ New</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80" alt="Leather Handbag" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Structured Leather Handbag"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Structured Leather Handbag" data-price="$45.99" data-img="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Women's Fashion</span>
-          <h3 class="product-name">Structured Leather Handbag</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(890)</span></div>
-          <div class="product-price-row"><span class="product-price">$45.99</span><span class="product-original">$79.99</span><span class="product-discount">-43%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=structured+leather+handbag+women&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Structured Leather Handbag" data-price="45.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Structured Leather Handbag" data-price="45.99" data-img="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=200&q=80" data-url="https://www.amazon.com/s?k=structured+leather+handbag+women&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="womens">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1598522325074-042db73aa4e6?w=400&q=80" alt="Oversized Hoodie" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Oversized Pastel Hoodie"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Oversized Pastel Hoodie" data-price="$28.99" data-img="https://images.unsplash.com/photo-1598522325074-042db73aa4e6?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Women's Fashion</span>
-          <h3 class="product-name">Oversized Pastel Hoodie</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>(644)</span></div>
-          <div class="product-price-row"><span class="product-price">$28.99</span><span class="product-original">$44.99</span><span class="product-discount">-36%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=oversized+pastel+hoodie+women&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Oversized Pastel Hoodie" data-price="28.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Oversized Pastel Hoodie" data-price="28.99" data-img="https://images.unsplash.com/photo-1598522325074-042db73aa4e6?w=200&q=80" data-url="https://www.amazon.com/s?k=oversized+pastel+hoodie+women&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="womens">
-        <div class="product-badge badge-sale">💅 Sale</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80" alt="Women's Skinny Jeans" loading="lazy"/>
-          <button class="wishlist-btn" data-name="High-Rise Skinny Jeans"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="High-Rise Skinny Jeans" data-price="$39.99" data-img="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Women's Fashion</span>
-          <h3 class="product-name">High-Rise Skinny Jeans</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(2.3k)</span></div>
-          <div class="product-price-row"><span class="product-price">$39.99</span><span class="product-original">$69.99</span><span class="product-discount">-43%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=high+rise+skinny+jeans+women&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="High-Rise Skinny Jeans" data-price="39.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="High-Rise Skinny Jeans" data-price="39.99" data-img="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200&q=80" data-url="https://www.amazon.com/s?k=high+rise+skinny+jeans+women&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- MEN'S FASHION -->
-      <div class="product-card" data-category="mens">
-        <div class="product-badge badge-hot">🔥 Hot</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80" alt="Urban Sneakers" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Urban Runner Sneakers"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Urban Runner Sneakers" data-price="$64.99" data-img="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Men's Fashion</span>
-          <h3 class="product-name">Urban Runner Sneakers</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>(876)</span></div>
-          <div class="product-price-row"><span class="product-price">$64.99</span><span class="product-original">$99.99</span><span class="product-discount">-35%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=mens+running+sneakers&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Urban Runner Sneakers" data-price="64.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Urban Runner Sneakers" data-price="64.99" data-img="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=200&q=80" data-url="https://www.amazon.com/s?k=mens+running+sneakers&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="mens">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&q=80" alt="Oxford Shirt" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Classic Oxford Shirt"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Classic Oxford Shirt" data-price="$24.99" data-img="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Men's Fashion</span>
-          <h3 class="product-name">Classic Oxford Shirt</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(1.2k)</span></div>
-          <div class="product-price-row"><span class="product-price">$24.99</span><span class="product-original">$44.99</span><span class="product-discount">-44%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=mens+oxford+shirt&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Classic Oxford Shirt" data-price="24.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Classic Oxford Shirt" data-price="24.99" data-img="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?w=200&q=80" data-url="https://www.amazon.com/s?k=mens+oxford+shirt&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="mens">
-        <div class="product-badge badge-new">⌚ New</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80" alt="Men's Watch" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Minimalist Quartz Watch"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Minimalist Quartz Watch" data-price="$49.99" data-img="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Men's Fashion</span>
-          <h3 class="product-name">Minimalist Quartz Watch</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(3.1k)</span></div>
-          <div class="product-price-row"><span class="product-price">$49.99</span><span class="product-original">$89.99</span><span class="product-discount">-44%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=minimalist+quartz+watch+men&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Minimalist Quartz Watch" data-price="49.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Minimalist Quartz Watch" data-price="49.99" data-img="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=200&q=80" data-url="https://www.amazon.com/s?k=minimalist+quartz+watch+men&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="mens">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Slim Chinos" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Slim Fit Chino Pants"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Slim Fit Chino Pants" data-price="$32.99" data-img="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Men's Fashion</span>
-          <h3 class="product-name">Slim Fit Chino Pants</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>(780)</span></div>
-          <div class="product-price-row"><span class="product-price">$32.99</span><span class="product-original">$54.99</span><span class="product-discount">-40%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=slim+fit+chino+pants+men&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Slim Fit Chino Pants" data-price="32.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Slim Fit Chino Pants" data-price="32.99" data-img="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" data-url="https://www.amazon.com/s?k=slim+fit+chino+pants+men&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- KIDS -->
-      <div class="product-card" data-category="kids">
-        <div class="product-badge badge-new">👶 New</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=400&q=80" alt="Kids Backpack" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Dino Kids School Backpack"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Dino Kids School Backpack" data-price="$19.99" data-img="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Kids</span>
-          <h3 class="product-name">Dino Kids School Backpack</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(940)</span></div>
-          <div class="product-price-row"><span class="product-price">$19.99</span><span class="product-original">$34.99</span><span class="product-discount">-43%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=kids+school+backpack+dinosaur&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Dino Kids School Backpack" data-price="19.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Dino Kids School Backpack" data-price="19.99" data-img="https://images.unsplash.com/photo-1545558014-8692077e9b5c?w=200&q=80" data-url="https://www.amazon.com/s?k=kids+school+backpack+dinosaur&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="kids">
-        <div class="product-badge badge-hot">🧸 Top</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400&q=80" alt="Educational Toy Set" loading="lazy"/>
-          <button class="wishlist-btn" data-name="STEM Building Blocks Set"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="STEM Building Blocks Set" data-price="$27.99" data-img="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Kids</span>
-          <h3 class="product-name">STEM Building Blocks Set</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(1.7k)</span></div>
-          <div class="product-price-row"><span class="product-price">$27.99</span><span class="product-original">$49.99</span><span class="product-discount">-44%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=stem+building+blocks+kids&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="STEM Building Blocks Set" data-price="27.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="STEM Building Blocks Set" data-price="27.99" data-img="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=200&q=80" data-url="https://www.amazon.com/s?k=stem+building+blocks+kids&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="kids">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&q=80" alt="Baby Clothes Set" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Baby 5-Piece Onesie Set"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Baby 5-Piece Onesie Set" data-price="$22.99" data-img="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Kids</span>
-          <h3 class="product-name">Baby 5-Piece Onesie Set</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(2.0k)</span></div>
-          <div class="product-price-row"><span class="product-price">$22.99</span><span class="product-original">$39.99</span><span class="product-discount">-43%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=baby+onesie+set+5+pack&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Baby 5-Piece Onesie Set" data-price="22.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Baby 5-Piece Onesie Set" data-price="22.99" data-img="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=200&q=80" data-url="https://www.amazon.com/s?k=baby+onesie+set+5+pack&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- ELECTRONICS -->
-      <div class="product-card" data-category="electronics">
-        <div class="product-badge badge-hot">🔥 Hot</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80" alt="Wireless Earbuds" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Pro Wireless Earbuds"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Pro Wireless Earbuds" data-price="$29.99" data-img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Electronics</span>
-          <h3 class="product-name">Pro Wireless Earbuds</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(2.4k)</span></div>
-          <div class="product-price-row"><span class="product-price">$29.99</span><span class="product-original">$59.99</span><span class="product-discount">-50%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=wireless+earbuds&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Pro Wireless Earbuds" data-price="29.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Pro Wireless Earbuds" data-price="29.99" data-img="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&q=80" data-url="https://www.amazon.com/s?k=wireless+earbuds&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="electronics">
-        <div class="product-badge badge-new">📱 New</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400&q=80" alt="Smartwatch" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Smart Fitness Watch"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Smart Fitness Watch" data-price="$59.99" data-img="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Electronics</span>
-          <h3 class="product-name">Smart Fitness Watch</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(1.9k)</span></div>
-          <div class="product-price-row"><span class="product-price">$59.99</span><span class="product-original">$119.99</span><span class="product-discount">-50%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=smart+fitness+watch&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Smart Fitness Watch" data-price="59.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Smart Fitness Watch" data-price="59.99" data-img="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?w=200&q=80" data-url="https://www.amazon.com/s?k=smart+fitness+watch&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="electronics">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80" alt="Power Bank" loading="lazy"/>
-          <button class="wishlist-btn" data-name="20000mAh Power Bank"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="20000mAh Power Bank" data-price="$24.99" data-img="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Electronics</span>
-          <h3 class="product-name">20000mAh Power Bank</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(5.6k)</span></div>
-          <div class="product-price-row"><span class="product-price">$24.99</span><span class="product-original">$44.99</span><span class="product-discount">-44%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=20000mah+power+bank&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="20000mAh Power Bank" data-price="24.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="20000mAh Power Bank" data-price="24.99" data-img="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=200&q=80" data-url="https://www.amazon.com/s?k=20000mah+power+bank&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="electronics">
-        <div class="product-badge badge-sale">🎧 Deal</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80" alt="Headphones" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Over-Ear Noise Cancelling Headphones"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Over-Ear Noise Cancelling Headphones" data-price="$79.99" data-img="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Electronics</span>
-          <h3 class="product-name">Over-Ear Noise Cancelling Headphones</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(3.8k)</span></div>
-          <div class="product-price-row"><span class="product-price">$79.99</span><span class="product-original">$149.99</span><span class="product-discount">-47%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=noise+cancelling+headphones&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Over-Ear Noise Cancelling Headphones" data-price="79.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Over-Ear Noise Cancelling Headphones" data-price="79.99" data-img="https://images.unsplash.com/photo-1583394838336-acd977736f90?w=200&q=80" data-url="https://www.amazon.com/s?k=noise+cancelling+headphones&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- BEAUTY -->
-      <div class="product-card" data-category="beauty">
-        <div class="product-badge badge-hot">💄 Best</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80" alt="Vitamin C Serum" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Vitamin C Glow Serum"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Vitamin C Glow Serum" data-price="$18.99" data-img="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Beauty</span>
-          <h3 class="product-name">Vitamin C Glow Serum</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(3.2k)</span></div>
-          <div class="product-price-row"><span class="product-price">$18.99</span><span class="product-original">$39.99</span><span class="product-discount">-53%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=vitamin+c+serum&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Vitamin C Glow Serum" data-price="18.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Vitamin C Glow Serum" data-price="18.99" data-img="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=200&q=80" data-url="https://www.amazon.com/s?k=vitamin+c+serum&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="beauty">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80" alt="Skincare Set" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Hydrating Skincare Set 5-in-1"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Hydrating Skincare Set 5-in-1" data-price="$36.99" data-img="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Beauty</span>
-          <h3 class="product-name">Hydrating Skincare Set 5-in-1</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(1.5k)</span></div>
-          <div class="product-price-row"><span class="product-price">$36.99</span><span class="product-original">$69.99</span><span class="product-discount">-47%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=hydrating+skincare+set&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Hydrating Skincare Set 5-in-1" data-price="36.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Hydrating Skincare Set 5-in-1" data-price="36.99" data-img="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=200&q=80" data-url="https://www.amazon.com/s?k=hydrating+skincare+set&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="beauty">
-        <div class="product-badge badge-new">💋 New</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1631214524020-3c69d37e9b8a?w=400&q=80" alt="Makeup Palette" loading="lazy"/>
-          <button class="wishlist-btn" data-name="18-Color Eyeshadow Palette"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="18-Color Eyeshadow Palette" data-price="$14.99" data-img="https://images.unsplash.com/photo-1631214524020-3c69d37e9b8a?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Beauty</span>
-          <h3 class="product-name">18-Color Eyeshadow Palette</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(4.1k)</span></div>
-          <div class="product-price-row"><span class="product-price">$14.99</span><span class="product-original">$29.99</span><span class="product-discount">-50%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=18+color+eyeshadow+palette&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="18-Color Eyeshadow Palette" data-price="14.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="18-Color Eyeshadow Palette" data-price="14.99" data-img="https://images.unsplash.com/photo-1631214524020-3c69d37e9b8a?w=200&q=80" data-url="https://www.amazon.com/s?k=18+color+eyeshadow+palette&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- HOME & KITCHEN -->
-      <div class="product-card" data-category="home">
-        <div class="product-badge badge-sale">🏠 Deal</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80" alt="Air Fryer" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Digital Air Fryer 5.5L"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Digital Air Fryer 5.5L" data-price="$49.99" data-img="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Home & Kitchen</span>
-          <h3 class="product-name">Digital Air Fryer 5.5L</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(4.5k)</span></div>
-          <div class="product-price-row"><span class="product-price">$49.99</span><span class="product-original">$89.99</span><span class="product-discount">-44%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=digital+air+fryer&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Digital Air Fryer 5.5L" data-price="49.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Digital Air Fryer 5.5L" data-price="49.99" data-img="https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=200&q=80" data-url="https://www.amazon.com/s?k=digital+air+fryer&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="home">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80" alt="Storage Organizer" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Bamboo Drawer Organizer Set"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Bamboo Drawer Organizer Set" data-price="$16.99" data-img="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Home & Kitchen</span>
-          <h3 class="product-name">Bamboo Drawer Organizer Set</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(2.2k)</span></div>
-          <div class="product-price-row"><span class="product-price">$16.99</span><span class="product-original">$29.99</span><span class="product-discount">-43%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=bamboo+drawer+organizer&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Bamboo Drawer Organizer Set" data-price="16.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Bamboo Drawer Organizer Set" data-price="16.99" data-img="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=200&q=80" data-url="https://www.amazon.com/s?k=bamboo+drawer+organizer&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="home">
-        <div class="product-badge badge-new">✨ New</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=400&q=80" alt="LED Desk Lamp" loading="lazy"/>
-          <button class="wishlist-btn" data-name="LED Desk Lamp with USB Port"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="LED Desk Lamp with USB Port" data-price="$21.99" data-img="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Home & Kitchen</span>
-          <h3 class="product-name">LED Desk Lamp with USB Port</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(1.3k)</span></div>
-          <div class="product-price-row"><span class="product-price">$21.99</span><span class="product-original">$39.99</span><span class="product-discount">-45%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=led+desk+lamp+usb&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="LED Desk Lamp with USB Port" data-price="21.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="LED Desk Lamp with USB Port" data-price="21.99" data-img="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=200&q=80" data-url="https://www.amazon.com/s?k=led+desk+lamp+usb&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <!-- FITNESS -->
-      <div class="product-card" data-category="fitness">
-        <div class="product-badge badge-hot">💪 Top</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80" alt="Yoga Mat" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Premium Yoga Mat Extra Thick"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Premium Yoga Mat Extra Thick" data-price="$22.99" data-img="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Fitness</span>
-          <h3 class="product-name">Premium Yoga Mat Extra Thick</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(1.8k)</span></div>
-          <div class="product-price-row"><span class="product-price">$22.99</span><span class="product-original">$44.99</span><span class="product-discount">-49%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=yoga+mat+extra+thick&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Premium Yoga Mat Extra Thick" data-price="22.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Premium Yoga Mat Extra Thick" data-price="22.99" data-img="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=200&q=80" data-url="https://www.amazon.com/s?k=yoga+mat+extra+thick&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="fitness">
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80" alt="Resistance Bands" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Resistance Bands Set 5-Pack"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Resistance Bands Set 5-Pack" data-price="$14.99" data-img="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Fitness</span>
-          <h3 class="product-name">Resistance Bands Set 5-Pack</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(3.4k)</span></div>
-          <div class="product-price-row"><span class="product-price">$14.99</span><span class="product-original">$29.99</span><span class="product-discount">-50%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=resistance+bands+set&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Resistance Bands Set 5-Pack" data-price="14.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Resistance Bands Set 5-Pack" data-price="14.99" data-img="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=200&q=80" data-url="https://www.amazon.com/s?k=resistance+bands+set&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card" data-category="fitness">
-        <div class="product-badge badge-new">🏃 New</div>
-        <div class="product-img-wrap">
-          <img src="https://images.unsplash.com/photo-1536922645861-af9e80bf9bce?w=400&q=80" alt="Jump Rope" loading="lazy"/>
-          <button class="wishlist-btn" data-name="Speed Jump Rope Adjustable"><i class="far fa-heart"></i></button>
-          <button class="quick-view-btn" data-name="Speed Jump Rope Adjustable" data-price="$9.99" data-img="https://images.unsplash.com/photo-1536922645861-af9e80bf9bce?w=400&q=80">Quick View</button>
-        </div>
-        <div class="product-info">
-          <span class="product-category">Fitness</span>
-          <h3 class="product-name">Speed Jump Rope Adjustable</h3>
-          <div class="product-rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(6.2k)</span></div>
-          <div class="product-price-row"><span class="product-price">$9.99</span><span class="product-original">$19.99</span><span class="product-discount">-50%</span></div>
-          <div class="product-actions">
-            <a href="https://www.amazon.com/s?k=speed+jump+rope&tag=meowmeow-21" target="_blank" rel="noopener sponsored" class="btn btn-primary btn-sm affiliate-link" data-product="Speed Jump Rope Adjustable" data-price="9.99">Buy Now</a>
-            <button class="btn btn-outline btn-sm" data-add-cart data-name="Speed Jump Rope Adjustable" data-price="9.99" data-img="https://images.unsplash.com/photo-1536922645861-af9e80bf9bce?w=200&q=80" data-url="https://www.amazon.com/s?k=speed+jump+rope&tag=meowmeow-21"><i class="fas fa-cart-plus"></i></button>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end products-grid -->
-
-    <div class="affiliate-disclosure" style="margin-top:3rem">
-      <i class="fas fa-info-circle"></i>
-      <p><strong>Affiliate Disclosure:</strong> Links on this page are affiliate links. We may earn a commission when you purchase through them at no extra cost to you. <a href="disclosure.html">Full disclosure</a></p>
+    <!-- Women Subcategories -->
+    <div id="sub-women" style="display:flex;flex-wrap:wrap;gap:6px">
+      <span style="font-size:.78rem;color:var(--text-tertiary);align-self:center;font-weight:600">Women's:</span>
+      <a href="products.html?cat=women&sub=dresses" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Dresses</a>
+      <a href="products.html?cat=women&sub=tops" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Tops &amp; Blouses</a>
+      <a href="products.html?cat=women&sub=jeans" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Jeans &amp; Pants</a>
+      <a href="products.html?cat=women&sub=skirts" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Skirts</a>
+      <a href="products.html?cat=women&sub=bags" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Bags &amp; Purses</a>
+      <a href="products.html?cat=women&sub=shoes" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Shoes &amp; Heels</a>
+      <a href="products.html?cat=women&sub=hoodies" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Hoodies</a>
+      <a href="products.html?cat=jewelry" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px;color:var(--accent)"><i class="fas fa-gem"></i> Jewelry</a>
+    </div>
+    <!-- Men Subcategories -->
+    <div id="sub-men" style="display:flex;flex-wrap:wrap;gap:6px;margin-top:6px">
+      <span style="font-size:.78rem;color:var(--text-tertiary);align-self:center;font-weight:600">Men's:</span>
+      <a href="products.html?cat=men&sub=shirts" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Shirts &amp; Polos</a>
+      <a href="products.html?cat=men&sub=tshirts" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">T-Shirts</a>
+      <a href="products.html?cat=men&sub=jeans" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Jeans &amp; Chinos</a>
+      <a href="products.html?cat=men&sub=jackets" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Jackets</a>
+      <a href="products.html?cat=men&sub=sneakers" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Sneakers</a>
+      <a href="products.html?cat=men&sub=watches" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Watches</a>
+      <a href="products.html?cat=men&sub=wallets" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px">Wallets</a>
+      <a href="products.html?cat=jewelry" class="btn btn-ghost btn-sm" style="font-size:.78rem;padding:4px 10px;color:var(--accent)"><i class="fas fa-gem"></i> Men's Jewelry</a>
     </div>
   </div>
-</section>
+</div>
+<!-- ====== QUICK VIEW MODAL ====== -->
+<div id="quickViewModal" style="display:none;position:fixed;inset:0;z-index:3000;align-items:center;justify-content:center;background:rgba(0,0,0,.65);backdrop-filter:blur(6px);padding:20px">
+  <div style="background:var(--bg-card);border-radius:20px;max-width:800px;width:100%;position:relative;overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.35);max-height:90vh;overflow-y:auto">
+    <button id="quickViewClose" style="position:absolute;top:14px;right:14px;z-index:10;width:38px;height:38px;border-radius:50%;background:var(--bg-tertiary);color:var(--text-primary);font-size:1.1rem;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center"><i class="fas fa-times"></i></button>
+    <div style="display:grid;grid-template-columns:1fr 1fr">
+      <div><img id="qvImage" src="" alt="Product" style="width:100%;height:100%;min-height:280px;object-fit:cover"/></div>
+      <div style="padding:32px 28px;display:flex;flex-direction:column;gap:14px">
+        <p id="qvMarket" style="font-size:.82rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.5px"></p>
+        <h2 id="qvName" style="font-size:1.25rem;font-weight:800;color:var(--text-primary);line-height:1.3"></h2>
+        <div id="qvPrice" style="font-size:1.1rem"></div>
+        <p id="qvDesc" style="color:var(--text-secondary);font-size:.9rem;line-height:1.65"></p>
+        <a id="qvLink" href="#" class="btn btn-cta btn-3d" style="margin-top:auto;text-align:center;padding:13px 20px;display:block;text-decoration:none;border-radius:10px" target="_blank" rel="noopener noreferrer sponsored"><i class="fas fa-shopping-cart"></i> Buy Now — View on Platform</a>
+      </div>
+    </div>
+  </div>
+</div>
 
-<!-- Footer -->
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>🛍️ All Products</h1>
+      <p>Browse thousands of affiliate-curated products from Amazon, Daraz, Temu & AliExpress</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <span>All Products</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY FILTER -->
+  <section class="section" style="padding-top:30px;padding-bottom:0;">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="btn btn-primary btn-sm filter-btn active" data-filter="all">All</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="women">👗 Women</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="men">👔 Men</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="kids">🧒 Kids</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="shoes">👟 Shoes</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="bags">👜 Bags</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="jewelry">💎 Jewelry</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="watches">⌚ Watches</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="beauty">💄 Beauty</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="pets">🐾 Pets</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="toys">🎮 Toys</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="electronics">💻 Electronics</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="crafts">🎨 Crafts</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="home">🏠 Home</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="accessories">🎁 Accessories</button>
+        <button class="btn btn-ghost btn-sm filter-btn" data-filter="flowers">🌸 Flowers</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCT GRID -->
+  <section class="page-content">
+    <div class="container">
+
+      <!-- SUBCATEGORY BAR (DYNAMIC) -->
+      <div id="subcategoryBar" class="subcategory-bar" style="display: none; margin: 20px 0; padding: 20px; background: var(--bg-tertiary); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
+        <h4 id="subcategoryTitle" style="margin: 0 0 15px; color: var(--text-primary); font-family: var(--font-heading);"></h4>
+        <div id="subcategoryList" class="subcategory-list" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+      </div>
+
+      <div class="product-grid" id="productGrid">
+        <!-- All product cards stay as-is -->
+        <!-- Example Product Card (Women) -->
+        <div class="product-card" data-category="women">
+          <div class="product-badges"><span class="badge badge-sale">-45%</span></div>
+          <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop&auto=format" alt="Elegant Floral Maxi Dress" loading="lazy">
+            <div class="product-overlay">
+              <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div>
+            <h3 class="product-name">Elegant Floral Maxi Dress</h3>
+            <div class="product-rating">
+              <div class="stars" aria-label="4.5 stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+              <span class="rating-count">(2,147)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$24.99</span>
+              <span class="price-original">$44.99</span>
+            </div>
+            <div class="product-actions">
+              <button class="btn btn-cta btn-block btn-3d add-to-cart-btn" 
+                      data-name="Elegant Floral Maxi Dress" 
+                      data-price="24.99" 
+                      data-img="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=100&h=100&fit=crop">
+                <i class="fas fa-cart-plus"></i> Add to Cart
+              </button>
+              <a href="https://amazon.com/dp/WOMEN-DRESS-001" class="btn btn-outline btn-block btn-sm" target="_blank" rel="noopener noreferrer">
+                <i class="fas fa-external-link-alt"></i> Buy Now
+              </a>
+            </div>
+          </div>
+        </div>
+        <!-- Repeat for all other product cards -->
+      </div>
+
+      <!-- NO RESULTS STATE -->
+      <div id="noResults" class="empty-state" style="display: none; margin: 40px 0;">
+        <div class="empty-icon">
+          <i class="fas fa-search"></i>
+        </div>
+        <h3>No products found in this category</h3>
+        <p>Try selecting a different filter or view all products.</p>
+        <button class="btn btn-primary" onclick="document.querySelector('.filter-btn[data-filter=all]').click();">
+          Show All Products
+        </button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+ <!-- ====== FOOTER ====== -->
+   <!-- ====== FOOTER ====== -->
 <footer class="footer">
-  <div class="footer-wave"><svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg"><path d="M0,40 C360,80 1080,0 1440,40 L1440,80 L0,80 Z" fill="var(--footer-bg)"/></svg></div>
-  <div class="footer-container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-logo"><i class="fas fa-paw"></i> Meow<strong>Meow</strong></a>
-        <p>Your trusted affiliate shopping companion — curating the best deals across fashion, tech, beauty & home.</p>
-        <div class="footer-socials">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-          <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
-          <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
-          <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+  <div class="footer-wave">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+    </svg>
+  </div>
+  <div class="footer-content">
+    <div class="container">
+      <div class="footer-grid">
+
+        <!-- Brand Column -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <div class="logo-icon"><i class="fas fa-paw"></i></div>
+            <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+          </a>
+          <p>MeowMeow is your trusted affiliate shopping companion. We curate the best deals across fashion, electronics, beauty, home &amp; more from Amazon, Daraz, Temu &amp; AliExpress — so you shop smarter and save more.</p>
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+
+        <!-- Shop Column -->
+        <div class="footer-links-group">
+          <h4>Shop</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">All Products</a></li>
+            <li><a href="products.html?cat=women">Women's Fashion</a></li>
+            <li><a href="products.html?cat=men">Men's Style</a></li>
+            <li><a href="products.html?cat=kids">Kids &amp; Baby</a></li>
+            <li><a href="products.html?cat=electronics">Electronics</a></li>
+            <li><a href="products.html?cat=beauty">Beauty</a></li>
+            <li><a href="products.html?cat=jewelry">Jewelry</a></li>
+            <li><a href="products.html?cat=home">Home &amp; Kitchen</a></li>
+            <li><a href="products.html?cat=sports">Sports</a></li>
+            <li><a href="products.html?cat=pets">Pets</a></li>
+            <li><a href="products.html#deals">🔥 Hot Deals</a></li>
+          </ul>
+        </div>
+
+        <!-- Support Column -->
+        <div class="footer-links-group">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="help.html">Help Center</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns &amp; Refunds</a></li>
+            <li><a href="blog.html">Blog</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="cart.html">Cart</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal Column -->
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="cookie.html">Cookie Policy</a></li>
+            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+            <li><a href="dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Affiliate Disclosure -->
+      <div class="footer-top-row">
+        <p class="footer-disclosure">
+          <i class="fas fa-info-circle"></i>
+          <strong>Affiliate Disclosure:</strong> MeowMeow participates in affiliate programs including Amazon Associates (tag: meowmeow-21), Daraz, Temu &amp; AliExpress. We may earn a small commission at <em>no extra cost to you</em>. <a href="disclosure.html">Learn more</a>
+        </p>
+      </div>
+
+      <!-- Footer Bottom -->
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved. Made with <i class="fas fa-heart" style="color:var(--cta)"></i> for smart shoppers worldwide.</p>
+        <p class="footer-contact">Email: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p>
+        <div class="footer-payments">
+          <i class="fab fa-cc-visa" title="Visa"></i>
+          <i class="fab fa-cc-mastercard" title="Mastercard"></i>
+          <i class="fab fa-cc-paypal" title="PayPal"></i>
+          <i class="fab fa-cc-apple-pay" title="Apple Pay"></i>
+          <i class="fab fa-cc-amex" title="American Express"></i>
         </div>
       </div>
-      <div class="footer-links"><h4>Quick Links</h4><ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="blog.html">Blog</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-      <div class="footer-links"><h4>Support</h4><ul><li><a href="faq.html">FAQ</a></li><li><a href="help.html">Help Center</a></li><li><a href="shipping.html">Shipping Info</a></li><li><a href="returns.html">Returns Policy</a></li></ul></div>
-      <div class="footer-links"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy Policy</a></li><li><a href="terms.html">Terms of Service</a></li><li><a href="cookie.html">Cookie Policy</a></li><li><a href="disclosure.html">Affiliate Disclosure</a></li><li><a href="dmca.html">DMCA Policy</a></li></ul></div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2026 MeowMeow. All rights reserved. | <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p>
-      <div class="payment-icons"><i class="fab fa-cc-visa"></i><i class="fab fa-cc-mastercard"></i><i class="fab fa-cc-paypal"></i><i class="fab fa-cc-apple-pay"></i><i class="fab fa-cc-amex"></i></div>
+
     </div>
   </div>
 </footer>
 
-<div class="cookie-consent" id="cookieConsent" style="display:none">
-  <p><i class="fas fa-cookie-bite"></i> We use cookies for analytics and affiliate tracking. <a href="cookie.html">Learn more</a></p>
-  <div class="cookie-consent-actions"><button class="btn btn-primary btn-sm" id="acceptCookies">Accept All</button><button class="btn btn-ghost btn-sm" id="declineCookies">Decline</button></div>
-</div>
+<!-- Back to Top -->
 <button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
 
-<script src="js/theme.js"></script>
+<!-- Toast Container -->
+<div class="toast-container" id="toastContainer"></div>
+<!-- ====== JS FILES ====== -->
 <script src="js/navbar.js"></script>
+<script src="js/theme.js"></script>
 <script src="js/scroll.js"></script>
 <script src="js/search.js"></script>
-<script src="js/affiliate.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/component.js"></script>
-<script src="js/main.js"></script>
 <script src="js/script.js"></script>
-<script>
-  // Product filter
-  document.querySelectorAll('.filter-tab').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.filter-tab').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.dataset.filter;
-      document.querySelectorAll('.product-card').forEach(card => {
-        card.style.display = (filter === 'all' || card.dataset.category === filter) ? '' : 'none';
-      });
-    });
-  });
-  // URL param filter on load
-  const params = new URLSearchParams(window.location.search);
-  const catParam = params.get('cat');
-  if (catParam) {
-    const btn = document.querySelector(`.filter-tab[data-filter="${catParam}"]`);
-    if (btn) btn.click();
-  }
-</script>
-<div id="toastContainer" class="toast-container"></div>
-
+<script src="js/affiliate.js"></script>
 </body>
 </html>
