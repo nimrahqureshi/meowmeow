@@ -1,248 +1,556 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
+<html lang="en">
+ <head>
+  <!-- Basic Meta -->
   <meta charset="UTF-8" />
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Blog – MeowMeow Store</title>
-  <meta name="description" content="Read our latest articles on top gadgets, fashion trends, beauty reviews and the best online deals in 2026." />
+  
+  <!-- Title -->
+   <title>Blog | MeowMeow</title>
+  
+  <!-- SEO -->   
+  <meta name="description" content="MeowMeow - Discover the best pet products, fashion, toys, cosmetics, shoes, jewelry, and more. We compare top deals from Amazon, Daraz, Temu & AliExpress." />
+  <meta name="keywords" content="affiliate store, pet products, fashion deals, toys, cosmetics, jewelry, shoes, Amazon affiliate, Daraz deals, Temu products" />
+  <meta name="author" content="MeowMeow" />
+
+  <!-- Open Graph (Social Media Sharing) -->
+  <meta property="og:title" content="MeowMeow | Best Online Deals">
+  <meta property="og:description" content="Discover and compare the best deals from Amazon, Daraz, Temu and AliExpress with MeowMeow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meowmeow-livid.vercel.app/">
+  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- CSS FILES (ORDER MATTERS) -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8QLN8M6LJ3');
+</script>
+  
+  <!-- CSS FILES -->
+  <!-- CSS FILES -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/buttons.css" />
   <link rel="stylesheet" href="css/cards.css" />
   <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
   <link rel="stylesheet" href="css/sections.css" />
   <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="css/legal.css" />
   <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/themes.css" />
 </head>
-<body>
 
-<!-- NAVBAR -->
+<body data-theme="light">
+  <!-- ====== BACK TO TOP ====== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ====== TOAST CONTAINER ====== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ====== JS FILES (ORDER MATTERS) ====== -->
+</body>
+<!-- ====== SCROLL PROGRESS BAR ====== -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ====== NAVBAR ====== -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
+
+    <!-- Logo -->
     <a href="index.html" class="nav-logo">
-      <div class="logo-icon"><i class="fas fa-cat"></i></div>
-      <span class="logo-text"><span class="logo-highlight">Meow</span>Meow</span>
+      <div class="logo-icon">
+        <i class="fas fa-paw"></i>
+      </div>
+      <span class="logo-text">
+        Meow<span class="logo-highlight">Meow</span>
+      </span>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="products.html?cat=women" class="nav-link"><i class="fas fa-female"></i> Women</a></li>
-      <li><a href="products.html?cat=men" class="nav-link"><i class="fas fa-male"></i> Men</a></li>
-      <li><a href="products.html?cat=kids" class="nav-link"><i class="fas fa-child"></i> Kids</a></li>
-      <li><a href="products.html?cat=electronics" class="nav-link"><i class="fas fa-bolt"></i> Electronics</a></li>
-      <li><a href="products.html?cat=beauty" class="nav-link"><i class="fas fa-spa"></i> Beauty</a></li>
-      <li><a href="products.html" class="nav-link"><i class="fas fa-store"></i> Products</a></li>
-      <li><a href="blog.html" class="nav-link active"><i class="fas fa-blog"></i> Blog</a></li>
-      <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="nav-btn" id="themeToggle"><i class="fas fa-sun" id="themeIcon"></i></button>
-      <a href="cart.html" class="nav-btn"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></a>
-      <button class="nav-btn menu-toggle" id="menuToggle"><div class="hamburger"><span></span><span></span><span></span></div></button>
+
+    <!-- Search Bar -->
+    <div class="nav-search" id="navSearch">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text"
+               id="searchInput"
+               placeholder="Search products..."
+               autocomplete="off" />
+        <button class="search-clear" id="searchClear">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
     </div>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+
+      <!-- Search Toggle (Mobile) -->
+      <button class="nav-btn search-toggle" id="searchToggle">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <!-- Cart -->
+      <a href="cart.html" class="nav-btn cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <!-- Theme Toggle -->
+      <button class="nav-btn theme-toggle" id="themeToggle">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="nav-btn menu-toggle" id="menuToggle">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ====== MOBILE OVERLAY ====== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ====== MOBILE MENU ====== -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <i class="fas fa-paw"></i>
+        </div>
+        <span class="logo-text">
+          Meow<span class="logo-highlight">Meow</span>
+        </span>
+      </a>
+      <button class="mobile-close" id="mobileClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+
+    <div class="mobile-theme-switch">
+      <span>Dark Mode</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="mobileThemeToggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
   </div>
 </nav>
 
-<div class="mobile-overlay" id="mobileOverlay"></div>
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-header">
-    <a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cat"></i></div><span class="logo-text">MeowMeow</span></a>
-    <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
-  </div>
-  <ul class="mobile-nav-links">
-    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-    <li><a href="products.html"><i class="fas fa-store"></i> Products</a></li>
-    <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
-    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-  </ul>
-  <div class="mobile-theme-switch">
-    <span><i class="fas fa-moon"></i> Dark Mode</span>
-    <label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle" /><span class="toggle-slider"></span></label>
-  </div>
-</div>
+<main id="mainContent">
 
-<!-- Page Header -->
-<div class="page-header">
-  <div class="container">
-    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Blog</span></div>
-    <h1>Our <span class="gradient-text">Blog</span></h1>
-    <p>Tips, guides and product reviews to help you shop smarter in 2026</p>
-  </div>
-</div>
-
-<!-- Blog Posts -->
-<section class="section blog-section">
-  <div class="container">
-    <!-- Filter -->
-    <div class="filter-bar">
-      <button class="filter-btn active" data-tag="all">All</button>
-      <button class="filter-btn" data-tag="electronics"><i class="fas fa-bolt"></i> Electronics</button>
-      <button class="filter-btn" data-tag="fashion"><i class="fas fa-tshirt"></i> Fashion</button>
-      <button class="filter-btn" data-tag="beauty"><i class="fas fa-spa"></i> Beauty</button>
-      <button class="filter-btn" data-tag="deals"><i class="fas fa-tag"></i> Deals</button>
-    </div>
-
-    <div class="blog-grid">
-      <div class="blog-card" data-tag="electronics">
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1468495244123-6c6c332eeece?w=400&h=200&fit=crop" alt="Gadgets 2026" />
-          <span class="blog-category">Electronics</span>
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta"><span><i class="fas fa-calendar"></i> Jan 15, 2026</span><span><i class="fas fa-clock"></i> 5 min read</span></div>
-          <h3>Top 10 Gadgets Under $50 in 2026</h3>
-          <p>From smart home devices to wearables, here are the best budget gadgets you can buy right now on Amazon and AliExpress.</p>
-          <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="blog-card" data-tag="fashion">
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop" alt="Fashion Trends" />
-          <span class="blog-category">Fashion</span>
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta"><span><i class="fas fa-calendar"></i> Jan 10, 2026</span><span><i class="fas fa-clock"></i> 4 min read</span></div>
-          <h3>Best Fashion Trends to Follow in 2026</h3>
-          <p>Stay stylish this year with these affordable fashion picks available on AliExpress and Amazon with our exclusive affiliate links.</p>
-          <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="blog-card" data-tag="electronics">
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=200&fit=crop" alt="Earbuds" />
-          <span class="blog-category">Electronics</span>
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta"><span><i class="fas fa-calendar"></i> Jan 5, 2026</span><span><i class="fas fa-clock"></i> 6 min read</span></div>
-          <h3>Best Budget Wireless Earbuds 2026</h3>
-          <p>We tested 15 earbuds under $30. Here are the ones worth buying and the ones to avoid when shopping on Temu and AliExpress.</p>
-          <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="blog-card" data-tag="beauty">
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=400&h=200&fit=crop" alt="Skincare" />
-          <span class="blog-category">Beauty</span>
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta"><span><i class="fas fa-calendar"></i> Dec 28, 2025</span><span><i class="fas fa-clock"></i> 4 min read</span></div>
-          <h3>Top 7 Skincare Products Worth Buying Online</h3>
-          <p>These bestselling skincare items have thousands of 5-star reviews and deliver real results at a fraction of salon prices.</p>
-          <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="blog-card" data-tag="deals">
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=400&h=200&fit=crop" alt="AliExpress Deals" />
-          <span class="blog-category">Deals</span>
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta"><span><i class="fas fa-calendar"></i> Dec 20, 2025</span><span><i class="fas fa-clock"></i> 5 min read</span></div>
-          <h3>Best AliExpress Deals You Shouldn't Miss</h3>
-          <p>A curated list of the most popular AliExpress products with verified reviews and fast shipping options worldwide.</p>
-          <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
-      </div>
-
-      <div class="blog-card" data-tag="electronics">
-        <div class="blog-image">
-          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=200&fit=crop" alt="Smart Watches" />
-          <span class="blog-category">Electronics</span>
-        </div>
-        <div class="blog-content">
-          <div class="blog-meta"><span><i class="fas fa-calendar"></i> Dec 12, 2025</span><span><i class="fas fa-clock"></i> 7 min read</span></div>
-          <h3>Top Smart Watches Under $60 in 2026</h3>
-          <p>Health tracking, GPS, sleep monitoring — we compare the best affordable smartwatches so you don't have to.</p>
-          <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
-        </div>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>📝 Latest Posts</h1>
+      <p>Expert guides, trend reports, and shopping tips to help you shop smarter.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <span>Blog</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- Newsletter -->
-<section class="section newsletter-section">
-  <div class="container">
-    <div class="newsletter-card">
-      <div class="newsletter-content">
-        <h2><i class="fas fa-envelope"></i> Stay Updated</h2>
-        <p>Get the latest deals and blog articles delivered to your inbox weekly.</p>
+  <!-- BLOG GRID SECTION -->
+  <section class="section blog-section">
+    <div class="container">
+
+      <div class="blog-grid">
+
+        <!-- BLOG POST 1: Women's Shoes -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=600&h=400&fit=crop&auto=format" alt="Stylish women's shoes collection" loading="lazy">
+            <span class="blog-category">👠 Fashion</span>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> March 28, 2025</span>
+              <span><i class="far fa-clock"></i> 6 min read</span>
+            </div>
+            <h3>Best Shoes for Women in 2025: Affordable & Stylish Picks</h3>
+            <p>Whether you’re heading to the office or a weekend party, we’ve rounded up the most comfortable, trendy, and budget-friendly shoes available right now on Amazon, Daraz & Temu.</p>
+            <div class="blog-tags">
+              <span>#WomensFashion</span>
+              <span>#Shoes</span>
+              <span>#AffordableStyle</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="blog-author">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Author Sarah M." />
+            <div>
+              <strong>Sarah M.</strong>
+              <small>Fashion Editor</small>
+            </div>
+          </div>
+        </article>
+
+        <!-- BLOG POST 2: Kids Toys -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?w=600&h=400&fit=crop&auto=format" alt="Colorful educational toys for kids" loading="lazy">
+            <span class="blog-category">🧸 Parenting</span>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> March 25, 2025</span>
+              <span><i class="far fa-clock"></i> 8 min read</span>
+            </div>
+            <h3>Top 10 Educational Toys for Kids That Actually Teach While They Play</h3>
+            <p>From STEM kits to creative building blocks, discover toys that boost cognitive skills, creativity, and motor development — all under $25 and available with fast shipping.</p>
+            <div class="blog-tags">
+              <span>#KidsToys</span>
+              <span>#Parenting</span>
+              <span>#STEM</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="blog-author">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author James K." />
+            <div>
+              <strong>James K.</strong>
+              <small>Toy Expert & Dad of Two</small>
+            </div>
+          </div>
+        </article>
+
+        <!-- BLOG POST 3: Men's Watches -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=400&fit=crop&auto=format" alt="Stylish men's wrist watches" loading="lazy">
+            <span class="blog-category">⌚ Accessories</span>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> March 22, 2025</span>
+              <span><i class="far fa-clock"></i> 5 min read</span>
+            </div>
+            <h3>Best Watches for Men Under $50: Style Meets Function</h3>
+            <p>Looking sharp doesn’t have to cost a fortune. We tested 20+ budget watches and picked the top 7 that look premium, last long, and come from trusted sellers on AliExpress & Daraz.</p>
+            <div class="blog-tags">
+              <span>#MensStyle</span>
+              <span>#Watches</span>
+              <span>#BudgetFinds</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="blog-author">
+            <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Author Priya S." />
+            <div>
+              <strong>Priya S.</strong>
+              <small>Lifestyle Blogger</small>
+            </div>
+          </div>
+        </article>
+
+        <!-- BONUS POST 4: Home Decor -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=600&h=400&fit=crop&auto=format" alt="Bohemian home decor with throw pillows" loading="lazy">
+            <span class="blog-category">🏠 Home & Living</span>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> March 20, 2025</span>
+              <span><i class="far fa-clock"></i> 7 min read</span>
+            </div>
+            <h3>Transform Your Space: 15 Budget Home Decor Finds Under $20</h3>
+            <p>From faux plants to LED string lights and embroidered cushions — upgrade your room without breaking the bank. All items linked to real deals!</p>
+            <div class="blog-tags">
+              <span>#HomeDecor</span>
+              <span>#InteriorDesign</span>
+              <span>#BudgetDecor</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="blog-author">
+            <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Author Alex R." />
+            <div>
+              <strong>Alex R.</strong>
+              <small>Home Stylist</small>
+            </div>
+          </div>
+        </article>
+
+        <!-- BONUS POST 5: Beauty Tips -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&h=400&fit=crop&auto=format" alt="Makeup kit and brushes on table" loading="lazy">
+            <span class="blog-category">💄 Beauty</span>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> March 18, 2025</span>
+              <span><i class="far fa-clock"></i> 9 min read</span>
+            </div>
+            <h3>Drugstore Dupes: Luxury Makeup Look for Under $30</h3>
+            <p>We compared high-end palettes with budget finds from Temu and Amazon — and found near-identical shades, textures, and finishes. Get the glam look without the price tag.</p>
+            <div class="blog-tags">
+              <span>#Makeup</span>
+              <span>#BeautyHacks</span>
+              <span>#Dupes</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="blog-author">
+            <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Author Mia L." />
+            <div>
+              <strong>Mia L.</strong>
+              <small>Beauty Influencer</small>
+            </div>
+          </div>
+        </article>
+
+        <!-- BONUS POST 6: Pet Care -->
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?w=600&h=400&fit=crop&auto=format" alt="Golden retriever on orthopedic dog bed" loading="lazy">
+            <span class="blog-category">🐾 Pets</span>
+          </div>
+          <div class="blog-content">
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> March 15, 2025</span>
+              <span><i class="far fa-clock"></i> 6 min read</span>
+            </div>
+            <h3>Best Orthopedic Dog Beds for Senior Dogs (Tested & Reviewed)</h3>
+            <p>If your furry friend is slowing down, they deserve comfort. We tested 12 beds and ranked them by support, durability, washability, and value. Top pick costs under $35!</p>
+            <div class="blog-tags">
+              <span>#DogCare</span>
+              <span>#PetHealth</span>
+              <span>#SeniorPets</span>
+            </div>
+            <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <div class="blog-author">
+            <img src="https://randomuser.me/api/portraits/men/68.jpg" alt="Author David T." />
+            <div>
+              <strong>David T.</strong>
+              <small>Veterinary Assistant</small>
+            </div>
+          </div>
+        </article>
+
       </div>
-      <div class="newsletter-form">
-        <form id="newsletterForm">
+
+      <!-- LOAD MORE BUTTON (optional) -->
+      <div class="text-center" style="margin-top: 40px;">
+        <button class="btn btn-outline btn-lg load-more-btn">
+          <i class="fas fa-redo"></i> Load More Posts
+        </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- NEWSLETTER CTA -->
+  <section class="section newsletter-section">
+    <div class="container">
+      <div class="newsletter-card">
+        <div class="newsletter-content">
+          <h2><i class="fas fa-envelope-open-text"></i> Never Miss a Post</h2>
+          <p>Get new blog posts, exclusive deals, and shopping hacks delivered to your inbox weekly.</p>
+        </div>
+        <form class="newsletter-form" id="blogNewsletterForm">
           <div class="form-group">
-            <input type="email" placeholder="Your email address…" required />
-            <button type="submit" class="btn btn-cta">Subscribe</button>
+            <input type="email" placeholder="Your email address" required aria-label="Subscribe to blog updates">
+            <button type="submit" class="btn btn-cta btn-3d">
+              <i class="fas fa-paper-plane"></i> Subscribe
+            </button>
           </div>
           <p class="form-note"><i class="fas fa-lock"></i> No spam. Unsubscribe anytime.</p>
         </form>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer class="footer">
-  <div class="footer-wave"><svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80 Z"/></svg></div>
-  <div class="container footer-content">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-logo"><div class="logo-icon"><i class="fas fa-cat"></i></div><span class="logo-text">MeowMeow</span></a>
-        <p>Best deals from trusted platforms worldwide.</p>
-        <div class="footer-socials">
-          <a href="#"><i class="fab fa-facebook-f"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
-        </div>
-      </div>
-      <div class="footer-links-group"><h4>Company</h4><ul><li><a href="about.html">About</a></li><li><a href="blog.html">Blog</a></li><li><a href="contact.html">Contact</a></li></ul></div>
-      <div class="footer-links-group"><h4>Categories</h4><ul><li><a href="products.html?cat=electronics">Electronics</a></li><li><a href="products.html?cat=women">Women</a></li><li><a href="products.html?cat=beauty">Beauty</a></li></ul></div>
-      <div class="footer-links-group"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="disclosure.html">Disclosure</a></li></ul></div>
+</main>
+
+<!-- ====== FOOTER ====== -->
+ <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+      </svg>
     </div>
-    <div class="footer-bottom">
-      <div class="footer-disclosure">⚠️ Affiliate Disclosure: We earn from qualifying purchases.</div>
-      <div class="footer-copy">© 2026 MeowMeow Store. All Rights Reserved.</div>
+
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-grid">
+
+            <!-- Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <div class="logo-icon"><i class="fas fa-paw"></i></div>
+            <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+          </a>
+          <p>
+            MeowMeow is an independent product discovery and comparison website. 
+            We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more — so you can shop smarter and save.
+          </p>
+
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Hot Deals</a></li>
+            <li><a href="products.html">Categories</a></li>
+            <li><a href="products.html">Trending</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div class="footer-links-group">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="help.html">Help Center</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="cookie.html">Cookie Policy</a></li>
+            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+            <li><a href="dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- TOP ROW (Newsletter + Disclosure) -->
+      <div class="footer-top-row">
+
+        <p class="footer-disclosure">
+          Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.
+        </p>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="footer-bottom">
+
+        <p class="footer-copy">
+          &copy; 2026 MeowMeow. All rights reserved.
+        </p>
+
+        <p class="footer-contact">
+          Contact: <a href="/cdn-cgi/l/email-protection#254a4b494c4b4048404a5248404a52654248444c490b464a48"><span class="__cf_email__" data-cfemail="7c1312101512191119130b1119130b3c1b111d1510521f1311">[email&#160;protected]</span></a>
+        </p> 
+
+        <div class="footer-payments">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+          <i class="fab fa-cc-amex"></i>
+        </div>
+
+      </div>
     </div>
   </div>
 </footer>
 
-<div class="toast-container" id="toastContainer"></div>
-<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+  <!-- ====== BACK TO TOP ====== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-<script src="js/main.js"></script>
-<script src="js/theme.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/products-data.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // Blog filter
-    document.querySelectorAll('[data-tag]').forEach(btn => {
-      btn.addEventListener('click', function() {
-        const tag = this.dataset.tag;
-        document.querySelectorAll('[data-tag]').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-        document.querySelectorAll('.blog-card').forEach(card => {
-          card.style.display = (tag === 'all' || card.dataset.tag === tag) ? '' : 'none';
-        });
-      });
-    });
-    // Newsletter
-    document.getElementById('newsletterForm')?.addEventListener('submit', function(e) {
-      e.preventDefault();
-      showToast('🎉 Subscribed! Check your email.', 'success');
-      this.reset();
-    });
-  });
-</script>
+  <!-- ====== TOAST CONTAINER ====== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ====== JS FILES (ORDER MATTERS) ====== -->
+  <script src="js/themes.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/affiliate.js"></script>
+
 </body>
 </html>
