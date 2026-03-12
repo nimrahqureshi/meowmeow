@@ -1,110 +1,488 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
+  <!-- Basic Meta -->
   <meta charset="UTF-8" />
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MeowMeow Terms of Service — the rules governing your use of our website." />
-  <title>Terms of Service — MeowMeow</title>
+  
+  <!-- Title -->
+  <title>Terms and Conditions | MeowMeow</title>
+
+  <!-- SEO -->   
+  <meta name="description" content="MeowMeow - Discover the best pet products, fashion, toys, cosmetics, shoes, jewelry, and more. We compare top deals from Amazon, Daraz, Temu & AliExpress." />
+  <meta name="keywords" content="affiliate store, pet products, fashion deals, toys, cosmetics, jewelry, shoes, Amazon affiliate, Daraz deals, Temu products" />
+  <meta name="author" content="MeowMeow" />
+
+  <!-- Open Graph (Social Media Sharing) -->
+  <meta property="og:title" content="MeowMeow | Best Online Deals">
+  <meta property="og:description" content="Discover and compare the best deals from Amazon, Daraz, Temu and AliExpress with MeowMeow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meowmeow-livid.vercel.app/">
+  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS FILES (ORDER MATTERS) -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8QLN8M6LJ3');
+</script>
+  
+  <!-- CSS FILES -->
+  <!-- CSS FILES -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/buttons.css" />
   <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="css/legal.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
-  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/themes.css" />
 </head>
-<body data-theme="light">
+
+  <body data-theme="light">
+  <!-- ====== BACK TO TOP ====== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ====== TOAST CONTAINER ====== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ====== JS FILES (ORDER MATTERS) ====== -->
+</body>
+  <!-- ====== SCROLL PROGRESS BAR ====== -->
 <div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+
+    <!-- Logo -->
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">
+        <i class="fas fa-paw"></i>
+      </div>
+      <span class="logo-text">
+        Meow<span class="logo-highlight">Meow</span>
+      </span>
+    </a>
+
+    <!-- Search Bar -->
+    <div class="nav-search" id="navSearch">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text"
+               id="searchInput"
+               placeholder="Search products..."
+               autocomplete="off" />
+        <button class="search-clear" id="searchClear">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+
+      <!-- Search Toggle (Mobile) -->
+      <button class="nav-btn search-toggle" id="searchToggle">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <!-- Cart -->
+      <a href="cart.html" class="nav-btn cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <!-- Theme Toggle -->
+      <button class="nav-btn theme-toggle" id="themeToggle">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="nav-btn menu-toggle" id="menuToggle">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ====== MOBILE OVERLAY ====== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ====== MOBILE MENU ====== -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <i class="fas fa-paw"></i>
+        </div>
+        <span class="logo-text">
+          Meow<span class="logo-highlight">Meow</span>
+        </span>
+      </a>
+      <button class="mobile-close" id="mobileClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+
+    <div class="mobile-theme-switch">
+      <span>Dark Mode</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="mobileThemeToggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+  </div>
+</nav>
 
 <main id="mainContent">
 
+  <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <span class="section-eyebrow">Legal</span>
-      <h1>Terms of <span class="text-gradient">Service</span></h1>
-      <p>Last updated: June 1, 2025</p>
-      <nav class="breadcrumb">
-        <a href="index.html">Home</a>
-        <i class="fas fa-chevron-right"></i>
-        <span>Terms of Service</span>
-      </nav>
+      <h1>⚖️ Terms & Conditions</h1>
+      <p>Please read these terms carefully before using MeowMeow.</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <span>Terms & Conditions</span>
+      </div>
     </div>
   </section>
 
-  <section class="section">
+  <!-- TERMS CONTENT -->
+  <section class="section legal-section">
     <div class="container">
       <div class="legal-content">
 
-        <p>Please read these Terms of Service ("Terms") carefully before using MeowMeow ("the Site"). By accessing or using our Site, you agree to be bound by these Terms. If you do not agree to these Terms, do not use the Site.</p>
+        <p class="last-updated"><strong>Last Updated:</strong> April 5, 2025</p>
 
-        <h2>1. About MeowMeow</h2>
-        <p>MeowMeow is an affiliate shopping website that curates and recommends products from third-party retailers including Amazon, Daraz, Temu, and AliExpress. We do not sell products directly. When you purchase through our affiliate links, you are buying from the respective retailer, not from MeowMeow.</p>
+        <h2>1. Acceptance of Terms</h2>
+        <p>
+          By accessing or using the website <strong>meowmeow.com</strong> (“Site”), you agree to be bound by these Terms & Conditions (“Terms”). If you do not agree with any part of these Terms, you must not use our Site.
+        </p>
 
-        <h2>2. Affiliate Disclaimer</h2>
-        <p>MeowMeow participates in affiliate marketing programs. This means we may earn a commission when you click on links to partner retailers and make a purchase. This commission does not affect the price you pay. We only recommend products we believe are genuinely useful and valuable.</p>
+        <h2>2. Description of Service</h2>
+        <p>
+          MeowMeow is an affiliate product recommendation website. We do NOT sell any products directly. We research, review, and recommend products available on third-party marketplaces such as Amazon, Daraz, Temu, AliExpress, and others.
+        </p>
+        <p>
+          When you click on a product link and make a purchase, we may earn a small commission at no extra cost to you. This helps support our free content.
+        </p>
 
-        <h2>3. Accuracy of Information</h2>
-        <p>We strive to ensure that product information, prices, and availability on our site are accurate. However, prices and availability are subject to change at any time by the retailer. We do not guarantee that product information is always current, complete, or error-free. Always verify final prices and product details on the retailer's website before purchasing.</p>
-
-        <h2>4. Intellectual Property</h2>
-        <p>All content on MeowMeow — including text, graphics, logos, images, and software — is the property of MeowMeow or its content suppliers and is protected by applicable intellectual property laws. You may not reproduce, distribute, or create derivative works from our content without express written permission.</p>
-
-        <h2>5. Prohibited Uses</h2>
-        <p>You agree not to:</p>
+        <h2>3. No Responsibility for Third-Party Sellers</h2>
+        <p>
+          We are NOT responsible for:
+        </p>
         <ul>
-          <li>Use the site for any unlawful purpose</li>
-          <li>Attempt to gain unauthorized access to any part of the site</li>
-          <li>Interfere with or disrupt the site's operation</li>
-          <li>Scrape, crawl, or data-mine content from the site without permission</li>
-          <li>Use the site to transmit spam or harmful content</li>
+          <li>The quality, safety, legality, or availability of any product listed.</li>
+          <li>The actions or policies of third-party sellers or marketplaces.</li>
+          <li>Shipping, returns, refunds, warranties, or customer service related to your purchase.</li>
+          <li>Price changes, broken links, or out-of-stock items.</li>
+        </ul>
+        <p>
+          All transactions are between you and the third-party seller. Please review their terms, return policies, and privacy practices before purchasing.
+        </p>
+
+        <h2>4. User Responsibilities</h2>
+        <p>You agree to:</p>
+        <ul>
+          <li>Use the Site only for lawful purposes.</li>
+          <li>Not attempt to gain unauthorized access to any part of the Site.</li>
+          <li>Not scrape, copy, or redistribute our content without permission.</li>
+          <li>Ensure that any information you provide (e.g., via contact form) is accurate and not misleading.</li>
         </ul>
 
-        <h2>6. Third-Party Links</h2>
-        <p>Our site contains links to third-party websites. These links are provided for your convenience. We have no control over the content of those sites and are not responsible for their content, privacy practices, or any damages that may arise from your use of them.</p>
+        <h2>5. Intellectual Property</h2>
+        <p>
+          All content on this Site — including text, graphics, logos, images, and software — is the property of MeowMeow or its licensors and is protected by copyright and other intellectual property laws.
+        </p>
+        <p>
+          You may view and download content for personal use only. Any commercial use, redistribution, or modification requires our express written permission.
+        </p>
+
+        <h2>6. Affiliate Disclosure</h2>
+        <p>
+          MeowMeow participates in various affiliate marketing programs. This means we may receive commissions on purchases made through our links. These partnerships in no way influence our editorial content or product recommendations. We maintain full independence and honesty in all reviews.
+        </p>
+        <p>
+          For full transparency, see our <a href="privacy.html">Privacy Policy</a> and <a href="#">Affiliate Disclosure</a> (if separate).
+        </p>
 
         <h2>7. Disclaimer of Warranties</h2>
-        <p>THE SITE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED. WE DO NOT WARRANT THAT THE SITE WILL BE UNINTERRUPTED, ERROR-FREE, OR FREE OF VIRUSES. YOUR USE OF THE SITE IS AT YOUR SOLE RISK.</p>
+        <p>
+          The Site and its content are provided “AS IS” and “AS AVAILABLE” without warranties of any kind, either express or implied, including but not limited to:
+        </p>
+        <ul>
+          <li>Merchantability or fitness for a particular purpose.</li>
+          <li>Accuracy, completeness, or reliability of product information.</li>
+          <li>Uninterrupted or error-free access to the Site.</li>
+        </ul>
+        <p>
+          We do not guarantee that product prices, availability, or descriptions are current or correct. Always verify details on the seller’s official page before purchasing.
+        </p>
 
         <h2>8. Limitation of Liability</h2>
-        <p>TO THE FULLEST EXTENT PERMITTED BY LAW, MEOWMEOW SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE SITE OR ANY PRODUCTS PURCHASED THROUGH OUR AFFILIATE LINKS.</p>
+        <p>
+          To the fullest extent permitted by law, MeowMeow shall NOT be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of profits or revenues, whether incurred directly or indirectly, arising from:
+        </p>
+        <ul>
+          <li>Your use of or reliance on Site content.</li>
+          <li>Your purchase from a third-party seller.</li>
+          <li>Any errors, bugs, or interruptions in the Site.</li>
+        </ul>
+        <p>
+          Our total liability to you for any claim related to the Site is limited to $100 USD.
+        </p>
 
-        <h2>9. Changes to Terms</h2>
-        <p>We reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the site after changes are posted constitutes your acceptance of the modified Terms.</p>
+        <h2>9. Indemnification</h2>
+        <p>
+          You agree to indemnify and hold harmless MeowMeow, its affiliates, officers, and employees from any claim, demand, or damage arising out of your violation of these Terms or your use of the Site.
+        </p>
 
-        <h2>10. Governing Law</h2>
-        <p>These Terms are governed by and construed in accordance with applicable laws. Any disputes arising from these Terms shall be resolved through good-faith negotiation between the parties.</p>
+        <h2>10. External Links</h2>
+        <p>
+          Our Site contains links to third-party websites. These links are provided for your convenience only. We have no control over, and assume no responsibility for, the content, privacy policies, or practices of any third-party sites.
+        </p>
 
-        <h2>11. Contact</h2>
-        <p>Questions about these Terms? Contact us at <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a>.</p>
+        <h2>11. Changes to Terms</h2>
+        <p>
+          We reserve the right to modify these Terms at any time. Updated Terms will be posted here with a new “Last Updated” date. Your continued use of the Site after changes constitutes acceptance of the new Terms.
+        </p>
 
+        <h2>12. Governing Law</h2>
+        <p>
+          These Terms shall be governed by and construed in accordance with the laws of the State of New York, United States, without regard to its conflict of law provisions.
+        </p>
+
+        <h2>13. Contact Us</h2>
+        <p>
+          If you have any questions about these Terms, please contact us:
+        </p>
+        <div class="contact-info-box">
+          <p><i class="fas fa-envelope"></i> Email: <a href="/cdn-cgi/l/email-protection#d8b7b6b4b1b6bdb5bdb7afb5bdb7af98bfb5b9b1b4f6bbb7b5"><span class="__cf_email__" data-cfemail="432c2d2f2a2d262e262c342e262c3403242e222a2f6d202c2e">[email&#160;protected]</span></a></p>
+          <p><i class="fas fa-globe"></i> Website: <a href="https://meowmeow.com">https://meowmeow.com</a></p>
+        </div>
+
+        <div class="acknowledgement">
+          <p><i class="fas fa-check-circle"></i> Thank you for using MeowMeow. By continuing to browse, you acknowledge that you’ve read and agreed to these Terms.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OPTIONAL: NEWSLETTER CTA -->
+  <section class="section newsletter-section">
+    <div class="container">
+      <div class="newsletter-card">
+        <div class="newsletter-content">
+          <h2><i class="fas fa-envelope-open-text"></i> Stay in the Loop</h2>
+          <p>Get weekly updates — no spam, just value.</p>
+        </div>
+        <form class="newsletter-form" id="termsNewsletterForm">
+          <div class="form-group">
+            <input type="email" placeholder="Your email address" required aria-label="Subscribe to updates">
+            <button type="submit" class="btn btn-cta btn-3d">
+              <i class="fas fa-paper-plane"></i> Subscribe
+            </button>
+          </div>
+          <p class="form-note"><i class="fas fa-lock"></i> We respect your privacy. Unsubscribe anytime.</p>
+        </form>
       </div>
     </div>
   </section>
 
 </main>
 
-<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
-<div class="toast-container" id="toastContainer"></div>
+<!-- ====== FOOTER ====== -->
+ <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+      </svg>
+    </div>
 
-<script src="js/components.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/search.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/affiliate.js"></script>
-<script src="js/main.js"></script>
-<script src="js/chatbot.js"></script>
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-grid">
+
+            <!-- Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <div class="logo-icon"><i class="fas fa-paw"></i></div>
+            <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+          </a>
+          <p>
+            MeowMeow is an independent product discovery and comparison website. 
+            We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more — so you can shop smarter and save.
+          </p>
+
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Hot Deals</a></li>
+            <li><a href="products.html">Categories</a></li>
+            <li><a href="products.html">Trending</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div class="footer-links-group">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="help.html">Help Center</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="cookie.html">Cookie Policy</a></li>
+            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+            <li><a href="dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- TOP ROW (Newsletter + Disclosure) -->
+      <div class="footer-top-row">
+
+       
+
+        <p class="footer-disclosure">
+          Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.
+        </p>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="footer-bottom">
+
+        <p class="footer-copy">
+          &copy; 2026 MeowMeow. All rights reserved.
+        </p>
+
+        <p class="footer-contact">
+          Contact: <a href="/cdn-cgi/l/email-protection#b8d7d6d4d1d6ddd5ddd7cfd5ddd7cff8dfd5d9d1d496dbd7d5"><span class="__cf_email__" data-cfemail="f39c9d9f9a9d969e969c849e969c84b3949e929a9fdd909c9e">[email&#160;protected]</span></a>
+        </p> 
+
+        <div class="footer-payments">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+          <i class="fab fa-cc-amex"></i>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</footer>
+
+  <!-- ====== BACK TO TOP ====== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- ====== TOAST CONTAINER ====== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ====== JS FILES (ORDER MATTERS) ====== -->
+  <script src="js/themes.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/affiliate.js"></script>
+
 </body>
 </html>
