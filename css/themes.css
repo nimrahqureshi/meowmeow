@@ -1,12 +1,114 @@
-/* THEMES.CSS — Dark Mode Component Overrides */
-[data-theme="dark"] #searchInput{background:var(--bg-tertiary);color:var(--text-primary);border-color:var(--border)}
-[data-theme="dark"] .filter-btn{background:var(--bg-card);border-color:var(--border);color:var(--text-secondary)}
-[data-theme="dark"] .sort-select{background:var(--bg-card);color:var(--text-primary);border-color:var(--border)}
-[data-theme="dark"] .form-field input,[data-theme="dark"] .form-field textarea,[data-theme="dark"] .form-field select{background:var(--bg-tertiary);border-color:var(--border);color:var(--text-primary)}
-[data-theme="dark"] .qty-btn{background:var(--bg-tertiary);border-color:var(--border);color:var(--text-secondary)}
-[data-theme="dark"] .page-header{background:var(--bg-secondary)}
-[data-theme="dark"] .marketplace-bar{background:var(--bg-secondary)}
-[data-theme="dark"] .deal-timer{background:var(--bg-secondary)}
-[data-theme="dark"] .toggle-slider{background:var(--bg-tertiary);border-color:var(--border)}
-[data-theme="dark"] .toggle-slider::before{background:var(--text-tertiary)}
-[data-theme="dark"] input:checked + .toggle-slider::before{background:#fff}
+/* ============================
+   THEMES.CSS — LIGHT / DARK MODE OVERRIDES
+   ============================ */
+
+/* Light mode is already defined in variables.css as :root */
+
+/* Smooth theme transitions on all elements */
+body,
+body * {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Override for elements that need faster transitions */
+.btn,
+.nav-link,
+a {
+  transition: var(--transition-fast);
+}
+
+/* Override for animated elements (don't slow down animations) */
+.shape,
+.floating-card,
+.float-element {
+  transition: transform 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* ====== DARK MODE SPECIFIC TWEAKS ====== */
+
+[data-theme="dark"] .navbar {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
+[data-theme="dark"] .product-card,
+[data-theme="dark"] .blog-card,
+[data-theme="dark"] .review-card,
+[data-theme="dark"] .category-card {
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .floating-card {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .newsletter-form input {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .newsletter-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .footer-newsletter input {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .footer-newsletter input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .tag-success {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .alert-info {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+  border-left-color: #3b82f6;
+}
+
+[data-theme="dark"] .affiliate-disclosure {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border-left-color: #f59e0b;
+}
+
+[data-theme="dark"] .contact-form {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .summary-card {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .legal-content {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .mobile-menu {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .search-results {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .back-to-top {
+  box-shadow: var(--shadow-xl), var(--shadow-glow-accent);
+}
+
+[data-theme="dark"] .empty-state {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .page-header {
+  background: var(--bg-secondary);
+}
