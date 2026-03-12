@@ -1,418 +1,524 @@
-/* =============================================
-   COMPONENTS.JS — PRODUCTS, FILTERS, MODALS
-   ============================================= */
-'use strict';
+/* ============================
+   COMPONENT.JS — REUSABLE UI COMPONENTS
+   Quick View Modal, Filters, Accordion/FAQ,
+   Help Cards, Tooltips, Copy Button, Tabs
+   ============================ */
 
 (function() {
-  /* ── PRODUCT CARD RENDERER ── */
-  window.renderProductCard = function(product, index = 0) {
-    const discount = product.originalPrice
-      ? Math.round((1 - parseFloat(product.price.replace(/[^0-9.]/g,'')) / parseFloat(product.originalPrice.replace(/[^0-9.]/g,''))) * 100)
-      : 0;
+  'use strict';
 
-    const storeColors = { 'Amazon': '#FF9900', 'Daraz': '#F85606', 'Temu': '#FF4B00', 'AliExpress': '#FF4747' };
-    const storeColor = storeColors[product.store] || 'var(--accent)';
+  /* ─────────────────────────────
+     QUICK VIEW MODAL
+  ───────────────────────────── */
 
-    return `
-      <div class="product-card reveal reveal-delay-${(index % 4) + 1}" data-id="${product.id}" data-category="${product.category}" data-sub="${product.sub}">
-        <div class="product-badges">
-          ${product.badge ? `<span class="badge badge-${product.badge}">${product.badge === 'sale' ? `${discount}% OFF` : product.badge}</span>` : ''}
-        </div>
-        <button class="wishlist-toggle ${window.Wishlist?.has(product.id) ? 'active' : ''}"
-          data-id="${product.id}" aria-label="Add to wishlist">
-          <i class="${window.Wishlist?.has(product.id) ? 'fas' : 'far'} fa-heart"></i>
-        </button>
-        <div class="product-image">
-          <img src="${product.image}" alt="${product.name}" loading="lazy"
-            onerror="this.src='https://via.placeholder.com/400x230/f3f4f6/9ca3af?text=Image+Not+Found'">
-          <div class="product-overlay">
-            <button class="btn btn-white btn-sm quick-view-btn" data-id="${product.id}">
-              <i class="fas fa-eye"></i> Quick View
-            </button>
+  function initQuickView() {
+    // Create modal DOM once
+    if (!document.getElementById('quickViewModal')) {
+      const modal = document.createElement('div');
+      modal.id = 'quickViewModal';
+      modal.className = 'modal-overlay';
+      modal.setAttribute('role', 'dialog');
+      modal.setAttribute('aria-modal', 'true');
+      modal.setAttribute('aria-label', 'Quick view');
+      modal.innerHTML = `
+        <div class="modal-box">
+          <button class="modal-close" id="quickViewClose" aria-label="Close">
+            <i class="fas fa-times"></i>
+          </button>
+          <div class="modal-body" id="quickViewBody">
+            <!-- populated dynamically -->
           </div>
         </div>
-        <div class="product-info">
-          <div class="product-source">
-            <i class="fas ${product.storeIcon}" style="color:${storeColor}"></i>
-            <span style="color:${storeColor}">${product.store}</span>
-          </div>
-          <h3 class="product-name">${product.name}</h3>
-          <div class="product-rating">
-            <div class="stars" aria-label="${product.rating} stars">
-              ${[1,2,3,4,5].map(s => `<i class="${s <= Math.floor(product.rating) ? 'fas' : s - 0.5 <= product.rating ? 'fas fa-star-half-alt' : 'far'} fa-star"></i>`).join('')}
+      `;
+      document.body.appendChild(modal);
+
+      // Close on overlay click
+      modal.addEventListener('click', e => {
+        if (e.target === modal) closeQuickView();
+      });
+
+      // Close on Escape
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape') closeQuickView();
+      });
+
+      document.getElementById('quickViewClose')?.addEventListener('click', closeQuickView);
+    }
+
+    // Bind all quick-view buttons
+    document.querySelectorAll('.quick-view-btn:not([data-qv-bound])').forEach(btn => {
+      btn.setAttribute('data-qv-bound', '1');
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        const card = this.closest('.product-card');
+        if (!card) return;
+
+        const name        = card.querySelector('.product-name')?.textContent?.trim() || 'Product';
+        const price       = card.querySelector('.price-current')?.textContent?.trim() || '';
+        const origPrice   = card.querySelector('.price-original')?.textContent?.trim() || '';
+        const img         = card.querySelector('img')?.src || '';
+        const rating      = card.querySelector('.product-rating')?.innerHTML || '';
+        const marketplace = card.querySelector('.product-marketplace')?.textContent?.trim() || '';
+        const buyLink     = card.querySelector('a.btn-cta')?.href || '#';
+
+        document.getElementById('quickViewBody').innerHTML = `
+          <div class="qv-grid">
+            <div class="qv-image">
+              <img src="${img}" alt="${escapeHtml(name)}" />
             </div>
-            <span class="rating-count">(${product.reviews.toLocaleString()})</span>
+            <div class="qv-info">
+              <div class="product-marketplace"><i class="fas fa-globe"></i> ${escapeHtml(marketplace)}</div>
+              <h2 class="qv-title">${escapeHtml(name)}</h2>
+              <div class="product-rating">${rating}</div>
+              <div class="product-price">
+                <span class="price-current">${escapeHtml(price)}</span>
+                ${origPrice ? `<span class="price-original">${escapeHtml(origPrice)}</span>` : ''}
+              </div>
+              <div class="qv-actions">
+                <a href="${buyLink}" class="btn btn-cta btn-lg btn-3d" target="_blank" rel="noopener noreferrer sponsored">
+                  <i class="fas fa-shopping-cart"></i> Buy Now
+                </a>
+                <button class="btn btn-outline btn-lg wishlist-toggle" aria-label="Add to wishlist">
+                  <i class="far fa-heart"></i> Wishlist
+                </button>
+              </div>
+              <p class="qv-note"><i class="fas fa-shield-alt"></i> Redirects to official seller — secured checkout</p>
+            </div>
           </div>
-          <div class="product-price">
-            <span class="price-current">${product.price}</span>
-            ${product.originalPrice ? `<span class="price-original">${product.originalPrice}</span>` : ''}
-            ${discount > 0 ? `<span class="price-save">${discount}% off</span>` : ''}
-          </div>
-          <div class="product-actions">
-            <button class="btn btn-cart btn-sm add-to-cart-btn" data-id="${product.id}">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </button>
-            <a href="${product.link || '#'}" target="_blank" rel="noopener noreferrer sponsored"
-              class="btn btn-outline btn-sm" onclick="trackAffiliate('${product.store}', '${product.name}')">
-              <i class="fas fa-external-link-alt"></i> Buy
-            </a>
-          </div>
-        </div>
-      </div>`;
-  };
+        `;
 
-  /* ── CATEGORY CARD RENDERER ── */
-  window.renderCategoryCard = function(cat) {
-    return `
-      <a href="shop.html?cat=${cat.id}" class="category-card reveal" aria-label="${cat.name}">
-        <div class="category-icon" style="background:${cat.bg};color:${cat.color}">
-          <i class="fas ${cat.icon}"></i>
-        </div>
-        <h3>${cat.name}</h3>
-        <p>${cat.count}+ Products</p>
-      </a>`;
-  };
-
-  /* ── REVIEW CARD RENDERER ── */
-  window.renderReviewCard = function(review, index = 0) {
-    const stars = [1,2,3,4,5].map(s => `<i class="${s <= review.stars ? 'fas' : 'far'} fa-star"></i>`).join('');
-    return `
-      <div class="review-card reveal reveal-delay-${(index % 3) + 1}">
-        <div class="review-header">
-          <img src="${review.avatar}" alt="${review.name}" class="reviewer-avatar" loading="lazy">
-          <div class="reviewer-info">
-            <div class="reviewer-name">${review.name}</div>
-            <div class="reviewer-stars" aria-label="${review.stars} stars">${stars}</div>
-          </div>
-          ${review.verified ? '<span class="review-verified"><i class="fas fa-check-circle"></i> Verified</span>' : ''}
-        </div>
-        <p class="review-text">"${review.text}"</p>
-        <div class="review-product">
-          <i class="fas fa-tag"></i>
-          <span>${review.product}</span>
-        </div>
-      </div>`;
-  };
-
-  /* ── PRODUCT GRID INIT ── */
-  function initProductGrid(gridEl, products, limit = null) {
-    if (!gridEl) return;
-    const items = limit ? products.slice(0, limit) : products;
-    gridEl.innerHTML = items.map((p, i) => window.renderProductCard(p, i)).join('');
-    bindProductEvents(gridEl);
-  }
-
-  /* ── BIND PRODUCT EVENTS ── */
-  function bindProductEvents(container = document) {
-    // Add to Cart
-    container.querySelectorAll('.add-to-cart-btn').forEach(btn => {
-      btn.removeEventListener('click', onAddToCart);
-      btn.addEventListener('click', onAddToCart);
-    });
-
-    // Wishlist
-    container.querySelectorAll('.wishlist-toggle').forEach(btn => {
-      btn.removeEventListener('click', onWishlistToggle);
-      btn.addEventListener('click', onWishlistToggle);
-    });
-
-    // Quick View
-    container.querySelectorAll('.quick-view-btn').forEach(btn => {
-      btn.removeEventListener('click', onQuickView);
-      btn.addEventListener('click', onQuickView);
-    });
-  }
-
-  function onAddToCart(e) {
-    e.preventDefault();
-    const id = this.dataset.id;
-    const product = window.PRODUCTS?.find(p => p.id === id);
-    if (!product) return;
-    window.Cart?.add(product);
-
-    // Animate button
-    this.innerHTML = '<i class="fas fa-check"></i> Added!';
-    this.classList.add('added');
-    setTimeout(() => {
-      this.innerHTML = '<i class="fas fa-shopping-cart"></i> Add to Cart';
-      this.classList.remove('added');
-    }, 1500);
-  }
-
-  function onWishlistToggle(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const id = this.dataset.id;
-    const product = window.PRODUCTS?.find(p => p.id === id);
-    if (!product) return;
-    const added = window.Wishlist?.toggle(product);
-    if (added !== undefined) {
-      window.Wishlist.save?.();
-      this.classList.toggle('active', added);
-      const icon = this.querySelector('i');
-      if (icon) icon.className = added ? 'fas fa-heart' : 'far fa-heart';
-    }
-  }
-
-  function onQuickView(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    const id = this.dataset.id;
-    openQuickView(id);
-  }
-
-  /* ── QUICK VIEW MODAL ── */
-  function openQuickView(id) {
-    const product = window.PRODUCTS?.find(p => p.id === id);
-    if (!product) return;
-
-    const modal = document.getElementById('quickViewModal');
-    const body  = document.getElementById('quickViewBody');
-    if (!modal || !body) {
-      showToast(`<strong>${product.name}</strong> — ${product.price}`, 'info');
-      return;
-    }
-
-    const discount = product.originalPrice
-      ? Math.round((1 - parseFloat(product.price.replace(/[^0-9.]/g,'')) / parseFloat(product.originalPrice.replace(/[^0-9.]/g,''))) * 100)
-      : 0;
-
-    body.innerHTML = `
-      <div class="product-modal-grid">
-        <img src="${product.image}" alt="${product.name}" class="product-modal-img" loading="lazy">
-        <div>
-          <div class="product-source" style="margin-bottom:10px;">
-            <i class="fas ${product.storeIcon}"></i> ${product.store}
-          </div>
-          <h3 class="product-modal-name">${product.name}</h3>
-          <div class="product-rating" style="margin:10px 0;">
-            <div class="stars">${[1,2,3,4,5].map(s => `<i class="${s <= Math.floor(product.rating) ? 'fas' : 'far'} fa-star"></i>`).join('')}</div>
-            <span class="rating-count">(${product.reviews.toLocaleString()} reviews)</span>
-          </div>
-          <div class="product-modal-price">
-            ${product.price}
-            ${product.originalPrice ? `<span style="font-size:1rem;color:var(--text-tertiary);text-decoration:line-through;font-weight:400;margin-left:8px;">${product.originalPrice}</span>` : ''}
-            ${discount > 0 ? `<span class="price-save" style="font-size:0.8rem;margin-left:8px;">Save ${discount}%</span>` : ''}
-          </div>
-          <div style="display:flex;gap:10px;margin-top:20px;flex-wrap:wrap;">
-            <button class="btn btn-primary" onclick="Cart.add(window.PRODUCTS.find(p=>p.id==='${product.id}'));closeModal()">
-              <i class="fas fa-shopping-cart"></i> Add to Cart
-            </button>
-            <a href="${product.link || '#'}" target="_blank" rel="noopener noreferrer sponsored"
-              class="btn btn-outline" onclick="trackAffiliate('${product.store}','${product.name}')">
-              <i class="fas fa-external-link-alt"></i> Buy on ${product.store}
-            </a>
-          </div>
-          <div class="cart-info-box" style="margin-top:16px;">
-            <i class="fas fa-shield-alt"></i>
-            <span>Secure checkout via ${product.store}. This is an affiliate link.</span>
-          </div>
-        </div>
-      </div>`;
-
-    modal.classList.add('active');
-    document.body.classList.add('modal-open');
-  }
-
-  window.closeModal = function() {
-    document.querySelectorAll('.modal-overlay').forEach(m => m.classList.remove('active'));
-    document.body.classList.remove('modal-open');
-  };
-
-  // Modal close events
-  document.querySelectorAll('.modal-overlay').forEach(overlay => {
-    overlay.addEventListener('click', e => {
-      if (e.target === overlay) window.closeModal();
-    });
-  });
-  document.querySelectorAll('.modal-close').forEach(btn => {
-    btn.addEventListener('click', window.closeModal);
-  });
-
-  /* ── FILTER SYSTEM ── */
-  window.initFilters = function(filterBarEl, gridEl, products) {
-    if (!filterBarEl) return;
-
-    filterBarEl.querySelectorAll('.filter-btn').forEach(btn => {
-      btn.addEventListener('click', function() {
-        filterBarEl.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        this.classList.add('active');
-
-        const filter = this.dataset.filter;
-        const filtered = filter === 'all' ? products : products.filter(p => p.category === filter || p.sub === filter || p.badge === filter);
-        initProductGrid(gridEl, filtered);
-
-        // Update count
-        const countEl = document.querySelector('.results-count');
-        if (countEl) countEl.innerHTML = `Showing <strong>${filtered.length}</strong> products`;
+        openQuickView();
       });
     });
-  };
+  }
 
-  /* ── ACCORDION / FAQ ── */
-  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
-    trigger.addEventListener('click', function() {
-      const item = this.closest('.accordion-item');
-      const isOpen = item.classList.contains('open');
+  function openQuickView() {
+    const modal = document.getElementById('quickViewModal');
+    if (!modal) return;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
 
-      // Close all
-      document.querySelectorAll('.accordion-item.open').forEach(i => i.classList.remove('open'));
+  function closeQuickView() {
+    const modal = document.getElementById('quickViewModal');
+    if (!modal) return;
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
 
-      // Open clicked if it was closed
-      if (!isOpen) item.classList.add('open');
-    });
-  });
+  /* ─────────────────────────────
+     PRODUCT FILTER TABS
+  ───────────────────────────── */
 
-  /* ── TABS ── */
-  document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const container = this.closest('[data-tabs]') || document;
-      const target = this.dataset.tab;
+  function initProductFilters() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    if (!filterBtns.length) return;
 
-      container.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      container.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        // Update active state
+        filterBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
 
-      this.classList.add('active');
-      container.querySelector(`#${target}`)?.classList.add('active');
-    });
-  });
+        const category = this.dataset.filter || 'all';
+        const cards = document.querySelectorAll('.product-card[data-category]');
 
-  /* ── NEWSLETTER FORMS ── */
-  document.querySelectorAll('.newsletter-form, #footerNewsletterForm').forEach(form => {
-    form.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const email = this.querySelector('input[type="email"]')?.value;
-      if (!email) { showToast('Please enter your email!', 'warning'); return; }
-      showToast(`🎉 Subscribed! Check ${email} for your welcome email.`, 'success');
-      this.reset();
-    });
-  });
-
-  /* ── CONTACT FORM ── */
-  const contactForm = document.getElementById('contactForm');
-  if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      const btn = this.querySelector('[type="submit"]');
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-      btn.disabled = true;
-
-      setTimeout(() => {
-        showToast('📬 Message sent! We\'ll get back within 24 hours.', 'success');
-        this.reset();
-        btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message';
-        btn.disabled = false;
-      }, 1500);
+        cards.forEach((card, i) => {
+          const match = category === 'all' || card.dataset.category === category;
+          if (match) {
+            card.style.display = '';
+            card.style.animationDelay = (i % 8 * 0.05) + 's';
+            card.classList.remove('card-enter');
+            void card.offsetWidth;
+            card.classList.add('card-enter');
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
     });
   }
 
-  /* ── COOKIE BANNER ── */
-  function initCookieBanner() {
-    const banner = document.getElementById('cookieBanner');
-    if (!banner) return;
-    if (localStorage.getItem('cookies_accepted')) return;
+  /* ─────────────────────────────
+     FAQ / ACCORDION
+  ───────────────────────────── */
 
-    setTimeout(() => banner.classList.add('visible'), 2000);
+  function initAccordion() {
+    const faqItems = document.querySelectorAll('.faq-item');
+    if (!faqItems.length) return;
 
-    document.getElementById('acceptCookies')?.addEventListener('click', () => {
-      localStorage.setItem('cookies_accepted', '1');
-      banner.style.transform = 'translateY(100%)';
-      setTimeout(() => banner.remove(), 400);
-    });
+    faqItems.forEach(item => {
+      const question = item.querySelector('h3');
+      if (!question) return;
 
-    document.getElementById('declineCookies')?.addEventListener('click', () => {
-      banner.style.transform = 'translateY(100%)';
-      setTimeout(() => banner.remove(), 400);
+      // Add toggle icon if not present
+      if (!question.querySelector('.faq-icon')) {
+        const icon = document.createElement('i');
+        icon.className = 'fas fa-chevron-down faq-icon';
+        icon.style.cssText = 'float:right; transition:transform 0.3s ease; color:var(--accent);';
+        question.appendChild(icon);
+      }
+
+      const answer = item.querySelector('p, .faq-answer');
+      if (answer) {
+        answer.style.overflow  = 'hidden';
+        answer.style.transition = 'max-height 0.35s ease, opacity 0.35s ease';
+        answer.style.maxHeight = '0';
+        answer.style.opacity   = '0';
+        item.classList.add('faq-closed');
+      }
+
+      question.style.cursor = 'pointer';
+      question.style.userSelect = 'none';
+
+      question.addEventListener('click', () => {
+        const isOpen = item.classList.contains('faq-open');
+
+        // Close all others
+        faqItems.forEach(other => {
+          if (other !== item && other.classList.contains('faq-open')) {
+            const ans = other.querySelector('p, .faq-answer');
+            const ico = other.querySelector('.faq-icon');
+            if (ans) { ans.style.maxHeight = '0'; ans.style.opacity = '0'; }
+            if (ico)  ico.style.transform = 'rotate(0deg)';
+            other.classList.replace('faq-open', 'faq-closed');
+          }
+        });
+
+        // Toggle current
+        if (!isOpen) {
+          if (answer) { answer.style.maxHeight = answer.scrollHeight + 'px'; answer.style.opacity = '1'; }
+          const ico = question.querySelector('.faq-icon');
+          if (ico) ico.style.transform = 'rotate(180deg)';
+          item.classList.replace('faq-closed', 'faq-open');
+        } else {
+          if (answer) { answer.style.maxHeight = '0'; answer.style.opacity = '0'; }
+          const ico = question.querySelector('.faq-icon');
+          if (ico) ico.style.transform = 'rotate(0deg)';
+          item.classList.replace('faq-open', 'faq-closed');
+        }
+      });
     });
   }
 
-  /* ── RIPPLE EFFECT ── */
-  document.querySelectorAll('.btn').forEach(btn => {
-    btn.addEventListener('click', function(e) {
-      const rect = this.getBoundingClientRect();
-      const ripple = document.createElement('span');
-      const size = Math.max(rect.width, rect.height);
-      ripple.className = 'ripple';
-      ripple.style.cssText = `width:${size}px;height:${size}px;left:${e.clientX - rect.left - size/2}px;top:${e.clientY - rect.top - size/2}px`;
-      this.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 700);
+  /* ─────────────────────────────
+     HELP CARDS (help.html)
+  ───────────────────────────── */
+
+  function initHelpCards() {
+    document.querySelectorAll('.help-card').forEach(card => {
+      card.addEventListener('mouseenter', function() {
+        this.querySelector('.help-icon')?.classList.add('animate-pulse');
+      });
+      card.addEventListener('mouseleave', function() {
+        this.querySelector('.help-icon')?.classList.remove('animate-pulse');
+      });
     });
-  });
-
-  /* ── SOCIAL PURCHASE NOTIFICATIONS ── */
-  function initNotifications() {
-    const notifications = [
-      { name: "Sarah from Lahore", item: "Vitamin C Serum", time: "2 mins ago" },
-      { name: "Ahmed from Karachi", item: "Smart Watch",    time: "5 mins ago" },
-      { name: "Priya from Islamabad", item: "Air Fryer",    time: "8 mins ago" },
-      { name: "Omar from London",   item: "Gaming Keyboard","time": "12 mins ago" },
-      { name: "Fatima from Dubai",  item: "Yoga Mat",       time: "15 mins ago" },
-    ];
-
-    let idx = 0;
-    const show = () => {
-      const notif = notifications[idx % notifications.length];
-      idx++;
-
-      const el = document.createElement('div');
-      el.className = 'notification-popup';
-      el.innerHTML = `
-        <img src="https://i.pravatar.cc/44?img=${(idx % 20) + 1}" alt="" class="notif-avatar">
-        <div class="notif-text">
-          <strong>${notif.name}</strong>
-          <span>just bought <em>${notif.item}</em></span>
-        </div>
-        <span class="notif-time">${notif.time}</span>`;
-
-      document.body.appendChild(el);
-      setTimeout(() => el.remove(), 6500);
-    };
-
-    setTimeout(show, 5000);
-    setInterval(show, 18000);
   }
 
-  /* ── AFFILIATE TRACKING ── */
-  window.trackAffiliate = function(platform, productName) {
-    console.log(`[Affiliate] Platform: ${platform} | Product: ${productName}`);
-    if (typeof gtag === 'function') {
-      gtag('event', 'affiliate_click', { affiliate_platform: platform, product_name: productName });
-    }
-  };
+  /* ─────────────────────────────
+     TOOLTIP
+  ───────────────────────────── */
 
-  /* ── INIT ALL ── */
+  function initTooltips() {
+    document.querySelectorAll('[data-tooltip]:not([data-tt-bound])').forEach(el => {
+      el.setAttribute('data-tt-bound', '1');
+
+      let tip = null;
+
+      el.addEventListener('mouseenter', function() {
+        tip = document.createElement('div');
+        tip.className = 'tooltip-bubble';
+        tip.textContent = this.dataset.tooltip;
+        tip.style.cssText = `
+          position:fixed;
+          background:var(--bg-secondary);
+          color:var(--text-primary);
+          border:1px solid var(--border);
+          padding:6px 12px;
+          border-radius:var(--radius-md);
+          font-size:0.8rem;
+          white-space:nowrap;
+          z-index:9999;
+          box-shadow:var(--shadow-md);
+          pointer-events:none;
+          animation:fadeInUp 0.2s ease;
+        `;
+        document.body.appendChild(tip);
+
+        const rect = this.getBoundingClientRect();
+        tip.style.left = rect.left + rect.width / 2 - tip.offsetWidth / 2 + 'px';
+        tip.style.top  = rect.top - tip.offsetHeight - 8 + 'px';
+      });
+
+      el.addEventListener('mouseleave', () => {
+        if (tip) { tip.remove(); tip = null; }
+      });
+    });
+  }
+
+  /* ─────────────────────────────
+     COPY-TO-CLIPBOARD
+  ───────────────────────────── */
+
+  function initCopyButtons() {
+    document.querySelectorAll('[data-copy]:not([data-copy-bound])').forEach(btn => {
+      btn.setAttribute('data-copy-bound', '1');
+      btn.addEventListener('click', function() {
+        const text = this.dataset.copy;
+        navigator.clipboard?.writeText(text).then(() => {
+          const orig = this.innerHTML;
+          this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+          setTimeout(() => { this.innerHTML = orig; }, 2000);
+          if (typeof window.showToast === 'function') {
+            window.showToast('Copied to clipboard!', 'success');
+          }
+        }).catch(() => {
+          if (typeof window.showToast === 'function') {
+            window.showToast('Could not copy. Please copy manually.', 'warning');
+          }
+        });
+      });
+    });
+  }
+
+  /* ─────────────────────────────
+     TABS
+  ───────────────────────────── */
+
+  function initTabs() {
+    document.querySelectorAll('.tabs-container').forEach(container => {
+      const tabs    = container.querySelectorAll('.tab-btn');
+      const panels  = container.querySelectorAll('.tab-panel');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+          tabs.forEach(t  => t.classList.remove('active'));
+          panels.forEach(p => { p.style.display = 'none'; p.classList.remove('active'); });
+
+          this.classList.add('active');
+          const target = document.getElementById(this.dataset.tab);
+          if (target) {
+            target.style.display = '';
+            target.classList.add('active');
+            target.classList.add('animate-fade-in');
+          }
+        });
+      });
+
+      // Activate first tab by default
+      if (tabs[0]) tabs[0].click();
+    });
+  }
+
+  /* ─────────────────────────────
+     MODAL CSS (injected once)
+  ───────────────────────────── */
+
+  function injectModalStyles() {
+    if (document.getElementById('component-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'component-styles';
+    style.textContent = `
+      /* Quick View Modal */
+      .modal-overlay {
+        position: fixed; inset: 0;
+        background: rgba(0,0,0,0.65);
+        backdrop-filter: blur(6px);
+        display: flex; align-items: center; justify-content: center;
+        z-index: var(--z-modal);
+        opacity: 0; visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+        padding: 16px;
+      }
+      .modal-overlay.active { opacity: 1; visibility: visible; }
+      .modal-box {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        padding: 32px;
+        max-width: 860px; width: 100%;
+        max-height: 90vh; overflow-y: auto;
+        position: relative;
+        transform: scale(0.92) translateY(20px);
+        transition: transform 0.3s ease;
+        box-shadow: var(--shadow-2xl);
+      }
+      .modal-overlay.active .modal-box {
+        transform: scale(1) translateY(0);
+      }
+      .modal-close {
+        position: absolute; top: 16px; right: 16px;
+        width: 36px; height: 36px;
+        background: var(--bg-tertiary);
+        border-radius: var(--radius-full);
+        display: flex; align-items: center; justify-content: center;
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: var(--transition-fast);
+        cursor: pointer;
+      }
+      .modal-close:hover { background: var(--danger); color: #fff; }
+
+      /* QV grid */
+      .qv-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: start;
+      }
+      @media (max-width: 640px) { .qv-grid { grid-template-columns: 1fr; } }
+      .qv-image img {
+        width: 100%; border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-lg);
+      }
+      .qv-title {
+        font-size: 1.3rem; margin: 8px 0 12px;
+        color: var(--text-primary);
+      }
+      .qv-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 20px 0 12px; }
+      .qv-note {
+        font-size: 0.78rem; color: var(--text-tertiary);
+        display: flex; align-items: center; gap: 6px;
+      }
+
+      /* Help cards grid */
+      .help-cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 24px;
+        margin-top: 20px;
+      }
+      .help-card {
+        display: block;
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 32px 24px;
+        text-align: center;
+        text-decoration: none;
+        transition: var(--transition);
+        box-shadow: var(--shadow-sm);
+        color: var(--text-primary);
+      }
+      .help-card:hover {
+        transform: translateY(-6px);
+        box-shadow: var(--shadow-xl);
+        border-color: var(--accent);
+      }
+      .help-icon {
+        width: 64px; height: 64px;
+        margin: 0 auto 16px;
+        background: var(--accent-light);
+        border-radius: var(--radius-lg);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.6rem; color: var(--accent);
+        transition: var(--transition);
+      }
+      .help-card:hover .help-icon {
+        background: var(--accent); color: #fff;
+        transform: scale(1.1);
+        box-shadow: var(--shadow-glow-accent);
+      }
+      .help-card h3 { font-size: 1.05rem; margin-bottom: 6px; }
+      .help-card p  { font-size: 0.88rem; color: var(--text-secondary); margin: 0; }
+
+      /* Info cards (shipping, returns) */
+      .info-card {
+        background: var(--accent-light);
+        border: 1px solid var(--accent);
+        border-radius: var(--radius-lg);
+        padding: 24px 28px;
+        margin-bottom: 32px;
+      }
+      .info-card h2 { color: var(--accent); margin-bottom: 8px; }
+      .info-sections {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 24px;
+        margin: 32px 0;
+      }
+      .info-section {
+        background: var(--bg-secondary);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-lg);
+        padding: 24px;
+        box-shadow: var(--shadow-sm);
+      }
+      .info-section h3 {
+        display: flex; align-items: center; gap: 10px;
+        font-size: 1.05rem; margin-bottom: 12px; color: var(--accent);
+      }
+      .info-section h3 i { font-size: 1.1rem; }
+      .info-section ul, .info-section ol {
+        padding-left: 20px; list-style: disc;
+      }
+      .info-section ol { list-style: decimal; }
+      .info-section li { margin-bottom: 6px; color: var(--text-secondary); font-size: 0.95rem; }
+      .alert-box {
+        background: var(--info-light);
+        border-left: 4px solid var(--info);
+        border-radius: var(--radius-md);
+        padding: 16px 20px;
+        font-size: 0.92rem;
+        color: var(--text-secondary);
+        display: flex; align-items: flex-start; gap: 10px;
+        margin: 24px 0;
+      }
+      .alert-box.alert-warning {
+        background: var(--warning-light);
+        border-left-color: var(--warning);
+      }
+      .alert-box i { color: var(--info); flex-shrink: 0; margin-top: 2px; }
+      .alert-box.alert-warning i { color: var(--warning); }
+
+      /* Tab active */
+      .tab-btn { cursor: pointer; padding: 10px 20px; border-radius: var(--radius-full); background: var(--bg-tertiary); border: 1px solid var(--border); font-weight: 600; transition: var(--transition-fast); color: var(--text-secondary); }
+      .tab-btn.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+      .tab-panel { display: none; }
+      .tab-panel.active { display: block; }
+    `;
+    document.head.appendChild(style);
+  }
+
+  /* ─────────────────────────────
+     XSS HELPER
+  ───────────────────────────── */
+
+  function escapeHtml(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  /* ─────────────────────────────
+     INIT ALL COMPONENTS
+  ───────────────────────────── */
+
   document.addEventListener('DOMContentLoaded', () => {
-    bindProductEvents();
-    initCookieBanner();
-    initNotifications();
+    injectModalStyles();
+    initQuickView();
+    initProductFilters();
+    initAccordion();
+    initHelpCards();
+    initTooltips();
+    initCopyButtons();
+    initTabs();
 
-    // Init main product grid if exists
-    const mainGrid = document.getElementById('productGrid');
-    if (mainGrid && window.PRODUCTS) {
-      const cat = new URLSearchParams(window.location.search).get('cat');
-      const products = cat ? window.PRODUCTS.filter(p => p.category === cat) : window.PRODUCTS;
-      initProductGrid(mainGrid, products);
-
-      const filterBar = document.getElementById('filterBar');
-      if (filterBar) window.initFilters(filterBar, mainGrid, window.PRODUCTS);
-    }
-
-    // Home page — featured products
-    const featuredGrid = document.getElementById('featuredGrid');
-    if (featuredGrid && window.PRODUCTS) {
-      initProductGrid(featuredGrid, window.PRODUCTS.filter(p => p.badge === 'hot' || p.badge === 'best'), 8);
-    }
-
-    // Categories grid
-    const catGrid = document.getElementById('categoryGrid');
-    if (catGrid && window.CATEGORIES) {
-      catGrid.innerHTML = window.CATEGORIES.map(c => window.renderCategoryCard(c)).join('');
-    }
-
-    // Reviews grid
-    const reviewGrid = document.getElementById('reviewsGrid');
-    if (reviewGrid && window.REVIEWS) {
-      reviewGrid.innerHTML = window.REVIEWS.map((r, i) => window.renderReviewCard(r, i)).join('');
-    }
+    // Re-run for dynamically added elements
+    const observer = new MutationObserver(() => {
+      initQuickView();
+      initTooltips();
+      initCopyButtons();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
   });
+
+  // Expose for external use
+  window.MeowComponents = { openQuickView, closeQuickView };
+
 })();
