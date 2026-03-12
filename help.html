@@ -1,133 +1,376 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
+<html lang="en">
+  <head>
+  <!-- Basic Meta -->
   <meta charset="UTF-8" />
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MeowMeow Help Center — find answers about orders, returns, shipping, and more." />
-  <title>Help Center — MeowMeow</title>
+  
+  <!-- Title -->
+   <title>Help Center | MeowMeow Support</title>
+  
+  <!-- SEO -->   
+  <meta name="description" content="MeowMeow - Discover the best pet products, fashion, toys, cosmetics, shoes, jewelry, and more. We compare top deals from Amazon, Daraz, Temu & AliExpress." />
+  <meta name="keywords" content="affiliate store, pet products, fashion deals, toys, cosmetics, jewelry, shoes, Amazon affiliate, Daraz deals, Temu products" />
+  <meta name="author" content="MeowMeow" />
+
+  <!-- Open Graph (Social Media Sharing) -->
+  <meta property="og:title" content="MeowMeow | Best Online Deals">
+  <meta property="og:description" content="Discover and compare the best deals from Amazon, Daraz, Temu and AliExpress with MeowMeow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meowmeow-livid.vercel.app/">
+  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS FILES (ORDER MATTERS) -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8QLN8M6LJ3');
+</script>
+  
+  <!-- CSS FILES -->
+  <!-- CSS FILES -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/buttons.css" />
   <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="css/legal.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
-  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/themes.css" />
 </head>
 <body data-theme="light">
+
+  <!-- ====== SCROLL PROGRESS BAR ====== -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<main id="mainContent">
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <span class="section-eyebrow">We've Got You Covered</span>
-      <h1>Help <span class="text-gradient">Center</span></h1>
-      <p>Find answers, guides, and resources to make your shopping experience smooth and enjoyable.</p>
-      <nav class="breadcrumb">
-        <a href="index.html">Home</a>
-        <i class="fas fa-chevron-right"></i>
-        <span>Help Center</span>
-      </nav>
+    <!-- Logo -->
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">
+        <i class="fas fa-paw"></i>
+      </div>
+      <span class="logo-text">
+        Meow<span class="logo-highlight">Meow</span>
+      </span>
+    </a>
+
+    <!-- Search Bar -->
+    <div class="nav-search" id="navSearch">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text"
+               id="searchInput"
+               placeholder="Search products..."
+               autocomplete="off" />
+        <button class="search-clear" id="searchClear">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
     </div>
-  </section>
 
-  <!-- Help Cards -->
-  <section class="section">
-    <div class="container">
-      <div class="help-cards-grid">
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
 
-        <a href="faq.html" class="help-card reveal">
-          <div class="help-card-icon" style="background: var(--rose-light); color: var(--rose);">
-            <i class="fas fa-question-circle"></i>
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+
+      <!-- Search Toggle (Mobile) -->
+      <button class="nav-btn search-toggle" id="searchToggle">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <!-- Cart -->
+      <a href="cart.html" class="nav-btn cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <!-- Theme Toggle -->
+      <button class="nav-btn theme-toggle" id="themeToggle">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="nav-btn menu-toggle" id="menuToggle">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ====== MOBILE OVERLAY ====== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ====== MOBILE MENU ====== -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <i class="fas fa-paw"></i>
+        </div>
+        <span class="logo-text">
+          Meow<span class="logo-highlight">Meow</span>
+        </span>
+      </a>
+      <button class="mobile-close" id="mobileClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+
+    <div class="mobile-theme-switch">
+      <span>Dark Mode</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="mobileThemeToggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+  </div>
+</nav>
+  <main id="mainContent">
+    <section class="page-header">
+      <div class="container">
+        <h1>🆘 Help Center</h1>
+        <p>How can we help you today?</p>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> <span>/</span> <span>Help Center</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="help-cards-grid">
+          <a href="faq.html" class="help-card">
+            <div class="help-icon"><i class="fas fa-question-circle"></i></div>
+            <h3>Frequently Asked Questions</h3>
+            <p>Quick answers to common questions</p>
+          </a>
+          <a href="contact.html" class="help-card">
+            <div class="help-icon"><i class="fas fa-envelope"></i></div>
+            <h3>Contact Support</h3>
+            <p>Send us a message directly</p>
+          </a>
+          <a href="shipping.html" class="help-card">
+            <div class="help-icon"><i class="fas fa-truck"></i></div>
+            <h3>Shipping Information</h3>
+            <p>Delivery times, costs, and regions</p>
+          </a>
+          <a href="returns.html" class="help-card">
+            <div class="help-icon"><i class="fas fa-undo"></i></div>
+            <h3>Returns & Refunds</h3>
+            <p>How to return items or request refunds</p>
+          </a>
+          <a href="disclosure.html" class="help-card">
+            <div class="help-icon"><i class="fas fa-handshake"></i></div>
+            <h3>Affiliate Disclosure</h3>
+            <p>How we earn commissions (at no cost to you)</p>
+          </a>
+          <a href="privacy.html" class="help-card">
+            <div class="help-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Privacy & Data</h3>
+            <p>How we handle your personal information</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+<!-- ====== FOOTER ====== -->
+   <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+      </svg>
+    </div>
+
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-grid">
+
+            <!-- Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <div class="logo-icon"><i class="fas fa-paw"></i></div>
+            <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+          </a>
+          <p>
+            MeowMeow is an independent product discovery and comparison website. 
+            We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more — so you can shop smarter and save.
+          </p>
+
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
           </div>
-          <h3>FAQ</h3>
-          <p>Quick answers to the most common questions about MeowMeow, affiliate links, and how we work.</p>
-          <span class="help-card-link">View FAQ <i class="fas fa-arrow-right"></i></span>
-        </a>
+        </div>
 
-        <a href="shipping.html" class="help-card reveal reveal-delay-1">
-          <div class="help-card-icon" style="background: var(--violet-light); color: var(--violet);">
-            <i class="fas fa-shipping-fast"></i>
-          </div>
-          <h3>Shipping Info</h3>
-          <p>Learn about delivery times, tracking your order, and shipping policies across our partner retailers.</p>
-          <span class="help-card-link">Learn More <i class="fas fa-arrow-right"></i></span>
-        </a>
+        <!-- Quick Links -->
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Hot Deals</a></li>
+            <li><a href="products.html">Categories</a></li>
+            <li><a href="products.html">Trending</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
 
-        <a href="returns.html" class="help-card reveal reveal-delay-2">
-          <div class="help-card-icon" style="background: var(--gold-light); color: var(--gold);">
-            <i class="fas fa-undo-alt"></i>
-          </div>
-          <h3>Returns & Refunds</h3>
-          <p>Understand how to return an item and get a refund through our partner marketplace platforms.</p>
-          <span class="help-card-link">View Policy <i class="fas fa-arrow-right"></i></span>
-        </a>
+        <!-- Support -->
+        <div class="footer-links-group">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="help.html">Help Center</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns</a></li>
+          </ul>
+        </div>
 
-        <a href="disclosure.html" class="help-card reveal">
-          <div class="help-card-icon" style="background: var(--teal-light); color: var(--teal);">
-            <i class="fas fa-info-circle"></i>
-          </div>
-          <h3>Affiliate Disclosure</h3>
-          <p>Full transparency about how our affiliate relationships work and how we earn commissions.</p>
-          <span class="help-card-link">Read Disclosure <i class="fas fa-arrow-right"></i></span>
-        </a>
+        <!-- Legal -->
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="cookie.html">Cookie Policy</a></li>
+            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+            <li><a href="dmca.html">DMCA</a></li>
+          </ul>
+        </div>
 
-        <a href="privacy.html" class="help-card reveal reveal-delay-1">
-          <div class="help-card-icon" style="background: var(--rose-light); color: var(--rose);">
-            <i class="fas fa-shield-alt"></i>
-          </div>
-          <h3>Privacy Policy</h3>
-          <p>We take your privacy seriously. Learn how we collect, use, and protect your personal information.</p>
-          <span class="help-card-link">Read Policy <i class="fas fa-arrow-right"></i></span>
-        </a>
+      </div>
 
-        <a href="contact.html" class="help-card reveal reveal-delay-2">
-          <div class="help-card-icon" style="background: var(--violet-light); color: var(--violet);">
-            <i class="fas fa-headset"></i>
-          </div>
-          <h3>Contact Support</h3>
-          <p>Can't find what you're looking for? Our friendly team is here to help — reach us anytime by email.</p>
-          <span class="help-card-link">Get In Touch <i class="fas fa-arrow-right"></i></span>
-        </a>
+      <!-- TOP ROW (Newsletter + Disclosure) -->
+      <div class="footer-top-row">
+
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get weekly deals, product guides, and smart shopping tips.</p>
+          <form id="newsletterForm">
+            <input type="email" id="newsletterEmail" placeholder="Your email address" required /> 
+            <button type="submit">Subscribe</button>
+          </form>
+          <small id="newsletterMsg">No spam. Unsubscribe anytime.</small>
+        </div>
+
+        <p class="footer-disclosure">
+          Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.
+        </p>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="footer-bottom">
+
+        <p class="footer-copy">
+          &copy; 2026 MeowMeow. All rights reserved.
+        </p>
+
+        <p class="footer-contact">
+          Contact: <a href="/cdn-cgi/l/email-protection#553a3b393c3b3038303a2238303a22153238343c397b363a38"><span class="__cf_email__" data-cfemail="83ecedefeaede6eee6ecf4eee6ecf4c3e4eee2eaefade0ecee">[email&#160;protected]</span></a>
+        </p> 
+
+        <div class="footer-payments">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+          <i class="fab fa-cc-amex"></i>
+        </div>
 
       </div>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- Quick Contact -->
-  <section class="section" style="background: var(--bg-secondary); padding-top:3rem; padding-bottom:3rem;">
-    <div class="container" style="text-align:center;">
-      <h3>Still Need Help?</h3>
-      <p style="color: var(--text-secondary); margin: 0.75rem auto 1.5rem; max-width:500px;">Our support team responds to all emails within 24 hours. Don't hesitate to reach out.</p>
-      <a href="mailto:onlinemeowmeow@gmail.com" class="btn btn-primary btn-lg"><i class="fas fa-envelope"></i> onlinemeowmeow@gmail.com</a>
-    </div>
-  </section>
+  <!-- ====== BACK TO TOP ====== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-</main>
+  <!-- ====== TOAST CONTAINER ====== -->
+  <div class="toast-container" id="toastContainer"></div>
 
-<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
-<div class="toast-container" id="toastContainer"></div>
+  <!-- ====== JS FILES (ORDER MATTERS) ====== -->
+  <script src="js/themes.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/affiliate.js"></script>
 
-<script src="js/components.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/search.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/affiliate.js"></script>
-<script src="js/main.js"></script>
-<script src="js/chatbot.js"></script>
 </body>
 </html>
