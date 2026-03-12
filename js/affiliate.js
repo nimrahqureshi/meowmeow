@@ -1,41 +1,104 @@
-/* AFFILIATE.JS — Auto-tag affiliate links */
-'use strict';
-(function(){
-  const IDS={amazon:'meowmeow-21',daraz:'MEOW123',temu:'MEOWAFF',aliexpress:'meowmeow_site'};
-  const RULES=[
-    {domains:['amazon.com','amazon.co.uk','amazon.ca','amazon.in','amazon.com.au','amazon.de','amazon.com.pk'],
-     apply:u=>{const url=new URL(u);url.searchParams.set('tag',IDS.amazon);return url.toString();}},
-    {domains:['daraz.pk','daraz.com','daraz.lk','daraz.com.bd'],
-     apply:u=>{const url=new URL(u);url.searchParams.set('ref',IDS.daraz);return url.toString();}},
-    {domains:['temu.com'],
-     apply:u=>{const url=new URL(u);url.searchParams.set('refer_code',IDS.temu);return url.toString();}},
-    {domains:['aliexpress.com','s.click.aliexpress.com'],
-     apply:u=>{const url=new URL(u);url.searchParams.set('aff_id',IDS.aliexpress);return url.toString();}}
-  ];
-  function tag(a){
-    try{
-      const href=a.href;
-      if(!href||/^(javascript|mailto|#|tel)/i.test(href))return;
-      const host=new URL(href).hostname.replace(/^www\./,'');
-      for(const r of RULES){
-        if(r.domains.some(d=>host===d||host.endsWith('.'+d))){
-          a.href=r.apply(href);
-          a.setAttribute('target','_blank');
-          a.setAttribute('rel','noopener noreferrer sponsored');
-          a.dataset.affiliate='true';
-          break;
+/* ============================
+   AFFILIATE.JS — LINK TAGGING & TRACKING
+   ============================ */
+
+(function() {
+  'use strict';
+
+  const affiliateConfig = {
+    'amazon.com':     { param: 'tag',          value: 'meowmeow-21'       },
+    'amazon.co.uk':   { param: 'tag',          value: 'meowmeow-21'       },
+    'daraz.pk':       { param: 'aff_id',       value: 'MEOW123'           },
+    'daraz.com':      { param: 'aff_id',       value: 'MEOW123'           },
+    'temu.com':       { param: 'refer_aff_src', value: 'meowmeow'         },
+    'aliexpress.com': { param: 'aff_platform', value: 'meowmeow_site'     },
+    'shein.com':      { param: 'url_from',     value: 'meowmeow'          }
+  };
+
+  // ---- Tag affiliate links with params ----
+  function tagAffiliateLinks() {
+    const links = document.querySelectorAll('a[href]');
+    links.forEach(link => {
+      try {
+        const url = new URL(link.href);
+        let matched = false;
+
+        for (const [domain, config] of Object.entries(affiliateConfig)) {
+          if (url.hostname.includes(domain)) {
+            url.searchParams.set(config.param, config.value);
+            link.href = url.toString();
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer sponsored');
+            matched = true;
+            break;
+          }
         }
+
+        // Add visual "AD" badge to plain text links (not buttons)
+        if (matched && !link.querySelector('.affiliate-tag') && !link.classList.contains('btn')) {
+          const tag = document.createElement('sup');
+          tag.className = 'affiliate-tag';
+          tag.textContent = 'AD';
+          link.appendChild(tag);
+        }
+      } catch(e) {
+        // Skip invalid URLs
       }
-    }catch(e){}
+    });
   }
-  function tagAll(){document.querySelectorAll('a[href]:not([data-affiliate])').forEach(tag);}
-  document.readyState==='loading'?document.addEventListener('DOMContentLoaded',tagAll):tagAll();
-  new MutationObserver(ms=>{
-    ms.forEach(m=>{m.addedNodes.forEach(n=>{
-      if(n.nodeType===1){
-        if(n.tagName==='A')tag(n);
-        n.querySelectorAll?.('a[href]:not([data-affiliate])').forEach(tag);
-      }
-    });});
-  }).observe(document.body||document.documentElement,{childList:true,subtree:true});
+
+  // ---- Track clicks via GA4 / gtag ----
+  function trackAffiliateClicks() {
+    document.querySelectorAll('a[rel*="sponsored"]').forEach(link => {
+      if (link._affTracked) return;
+      link._affTracked = true;
+
+      link.addEventListener('click', () => {
+        try {
+          const url = new URL(link.href);
+          let platform = 'unknown';
+
+          for (const domain of Object.keys(affiliateConfig)) {
+            if (url.hostname.includes(domain)) {
+              platform = domain.split('.')[0];
+              break;
+            }
+          }
+
+          const productName =
+            link.closest('.product-card')?.querySelector('.product-name')?.textContent?.trim()
+            || link.textContent?.trim()
+            || 'Direct Link';
+
+          console.log(`[Affiliate Click] Platform: ${platform} | Product: ${productName}`);
+
+          if (typeof gtag === 'function') {
+            gtag('event', 'affiliate_click', {
+              affiliate_platform: platform,
+              product_name: productName,
+              link_url: link.href
+            });
+          }
+
+          if (typeof ga === 'function') {
+            ga('send', 'event', 'Affiliate', 'Click', platform + ' - ' + productName);
+          }
+        } catch(e) {}
+      });
+    });
+  }
+
+  // ---- Init ----
+  document.addEventListener('DOMContentLoaded', () => {
+    tagAffiliateLinks();
+    trackAffiliateClicks();
+
+    // Re-run if dynamic content added later
+    const observer = new MutationObserver(() => {
+      tagAffiliateLinks();
+      trackAffiliateClicks();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+
 })();
