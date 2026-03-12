@@ -1,215 +1,416 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
+<html lang="en">
+ <head>
+  <!-- Basic Meta -->
   <meta charset="UTF-8" />
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cart – MeowMeow Store</title>
+  
+  <!-- Title -->
+   <title>Your Cart | MeowMeow</title>
+  
+  <!-- SEO -->   
+  <meta name="description" content="MeowMeow - Discover the best pet products, fashion, toys, cosmetics, shoes, jewelry, and more. We compare top deals from Amazon, Daraz, Temu & AliExpress." />
+  <meta name="keywords" content="affiliate store, pet products, fashion deals, toys, cosmetics, jewelry, shoes, Amazon affiliate, Daraz deals, Temu products" />
+  <meta name="author" content="MeowMeow" />
+
+  <!-- Open Graph (Social Media Sharing) -->
+  <meta property="og:title" content="MeowMeow | Best Online Deals">
+  <meta property="og:description" content="Discover and compare the best deals from Amazon, Daraz, Temu and AliExpress with MeowMeow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meowmeow-livid.vercel.app/">
+  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- CSS FILES (ORDER MATTERS) -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8QLN8M6LJ3');
+</script>
+  
+  <!-- CSS FILES -->
+  <!-- CSS FILES -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/buttons.css" />
   <link rel="stylesheet" href="css/cards.css" />
-  <link rel="stylesheet" href="css/cart.css" />
   <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
   <link rel="stylesheet" href="css/sections.css" />
   <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="css/legal.css" />
   <link rel="stylesheet" href="css/responsive.css" />
   <link rel="stylesheet" href="css/themes.css" />
 </head>
-<body>
+<body data-theme="light">
+<!-- ====== SCROLL PROGRESS BAR ====== -->
+<div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- NAVBAR -->
+<!-- ====== NAVBAR ====== -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
+
+    <!-- Logo -->
     <a href="index.html" class="nav-logo">
-      <div class="logo-icon"><i class="fas fa-cat"></i></div>
-      <span class="logo-text"><span class="logo-highlight">Meow</span>Meow</span>
+      <div class="logo-icon">
+        <i class="fas fa-paw"></i>
+      </div>
+      <span class="logo-text">
+        Meow<span class="logo-highlight">Meow</span>
+      </span>
     </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="nav-link"><i class="fas fa-home"></i> Home</a></li>
-      <li><a href="products.html" class="nav-link"><i class="fas fa-store"></i> Products</a></li>
-      <li><a href="blog.html" class="nav-link"><i class="fas fa-blog"></i> Blog</a></li>
-      <li><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i> Contact</a></li>
-    </ul>
-    <div class="nav-actions">
-      <button class="nav-btn" id="themeToggle"><i class="fas fa-sun" id="themeIcon"></i></button>
-      <a href="cart.html" class="nav-btn active"><i class="fas fa-shopping-cart"></i><span class="cart-badge" id="cartCount">0</span></a>
-      <button class="nav-btn menu-toggle" id="menuToggle"><div class="hamburger"><span></span><span></span><span></span></div></button>
+
+    <!-- Search Bar -->
+    <div class="nav-search" id="navSearch">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text"
+               id="searchInput"
+               placeholder="Search products..."
+               autocomplete="off" />
+        <button class="search-clear" id="searchClear">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
     </div>
+
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
+
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+
+      <!-- Search Toggle (Mobile) -->
+      <button class="nav-btn search-toggle" id="searchToggle">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <!-- Cart -->
+      <a href="cart.html" class="nav-btn cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <!-- Theme Toggle -->
+      <button class="nav-btn theme-toggle" id="themeToggle">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="nav-btn menu-toggle" id="menuToggle">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ====== MOBILE OVERLAY ====== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ====== MOBILE MENU ====== -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <i class="fas fa-paw"></i>
+        </div>
+        <span class="logo-text">
+          Meow<span class="logo-highlight">Meow</span>
+        </span>
+      </a>
+      <button class="mobile-close" id="mobileClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+
+    <div class="mobile-theme-switch">
+      <span>Dark Mode</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="mobileThemeToggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
   </div>
 </nav>
+  
 
-<div class="mobile-overlay" id="mobileOverlay"></div>
-<div class="mobile-menu" id="mobileMenu">
-  <div class="mobile-menu-header">
-    <a href="index.html" class="nav-logo"><div class="logo-icon"><i class="fas fa-cat"></i></div><span class="logo-text">MeowMeow</span></a>
-    <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
-  </div>
-  <ul class="mobile-nav-links">
-    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-    <li><a href="products.html"><i class="fas fa-store"></i> Products</a></li>
-    <li><a href="blog.html"><i class="fas fa-blog"></i> Blog</a></li>
-    <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-  </ul>
-  <div class="mobile-theme-switch">
-    <span><i class="fas fa-moon"></i> Dark Mode</span>
-    <label class="toggle-switch"><input type="checkbox" id="mobileThemeToggle" /><span class="toggle-slider"></span></label>
-  </div>
-</div>
+ <main id="mainContent">
 
-<!-- Page Header -->
-<div class="page-header">
-  <div class="container">
-    <div class="breadcrumb"><a href="index.html">Home</a><span>›</span><span>Cart</span></div>
-    <h1><i class="fas fa-shopping-cart"></i> Your <span class="gradient-text">Cart</span></h1>
-    <p>Review your items and checkout on your favourite store</p>
-  </div>
-</div>
-
-<!-- Cart Content -->
-<section class="section">
-  <div class="container">
-    <!-- Empty State -->
-    <div id="emptyCart" class="empty-state" style="display:none;">
-      <div class="empty-icon"><i class="fas fa-shopping-cart"></i></div>
-      <h3>Your cart is empty</h3>
-      <p>Looks like you haven't added anything yet. Start shopping!</p>
-      <a href="products.html" class="btn btn-primary btn-lg"><i class="fas fa-store"></i> Browse Products</a>
-    </div>
-
-    <!-- Cart Grid -->
-    <div id="cartContent" class="cart-grid" style="display:none;">
-      <!-- Cart Items -->
-      <div class="cart-items" id="cartItemsList">
-        <h2 style="margin-bottom:20px; font-family:var(--font-heading); color:var(--text-primary);"><i class="fas fa-shopping-bag"></i> Cart Items</h2>
-      </div>
-
-      <!-- Summary -->
-      <div class="summary-card">
-        <h3><i class="fas fa-receipt"></i> Order Summary</h3>
-        <div class="summary-row">
-          <span>Subtotal</span><strong id="subtotal">$0.00</strong>
-        </div>
-        <div class="summary-row">
-          <span>Shipping</span><strong><span class="tag tag-success">FREE</span></strong>
-        </div>
-        <div class="summary-row">
-          <span>Discount</span><strong style="color:var(--success);">-$0.00</strong>
-        </div>
-        <div class="divider"></div>
-        <div class="summary-row summary-total">
-          <span>Total</span><strong id="total">$0.00</strong>
-        </div>
-        <div style="margin-top:20px;">
-          <p style="font-size:0.85rem; color:var(--text-tertiary); margin-bottom:12px; text-align:center;"><i class="fas fa-info-circle"></i> Items redirect to partner stores for checkout</p>
-          <a href="products.html" class="btn btn-primary btn-block btn-lg" style="margin-bottom:10px;"><i class="fas fa-store"></i> Continue Shopping</a>
-          <button class="btn btn-outline btn-block" id="clearCartBtn"><i class="fas fa-trash"></i> Clear Cart</button>
-        </div>
-        <div class="alert-info" style="margin-top:16px;">
-          <i class="fas fa-shield-alt"></i> Your cart is saved locally on this device.
-        </div>
+  <!-- Page Header -->
+  <section class="page-header">
+    <div class="container">
+      <h1>🛒 Shopping Cart</h1>
+      <p>Review your items before continuing to partner stores</p>
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <span>/</span> <span>Cart</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="footer-wave"><svg viewBox="0 0 1200 80" preserveAspectRatio="none"><path d="M0,40 C200,80 400,0 600,40 C800,80 1000,0 1200,40 L1200,80 L0,80 Z"/></svg></div>
-  <div class="container footer-content">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <a href="index.html" class="footer-logo"><div class="logo-icon"><i class="fas fa-cat"></i></div><span class="logo-text">MeowMeow</span></a>
-        <p>Best deals from Amazon, AliExpress, Temu and Daraz.</p>
+  <!-- CART CONTENT -->
+  <section class="page-content">
+    <div class="container">
+
+      <!-- EMPTY STATE -->
+      <div id="cartEmpty" class="empty-state">
+        <div class="empty-icon"><i class="fas fa-shopping-cart"></i></div>
+        <h3>Your Cart is Empty</h3>
+        <p>Looks like you haven’t added anything yet. Start shopping to build your cart!</p>
+        <a href="products.html" class="btn btn-primary btn-lg btn-3d">
+          <i class="fas fa-arrow-left"></i> Continue Shopping
+        </a>
       </div>
-      <div class="footer-links-group"><h4>Shop</h4><ul><li><a href="products.html">All Products</a></li><li><a href="products.html?cat=electronics">Electronics</a></li><li><a href="products.html?cat=beauty">Beauty</a></li></ul></div>
-      <div class="footer-links-group"><h4>Legal</h4><ul><li><a href="privacy.html">Privacy</a></li><li><a href="terms.html">Terms</a></li><li><a href="disclosure.html">Disclosure</a></li></ul></div>
-      <div class="footer-links-group"><h4>Help</h4><ul><li><a href="contact.html">Contact</a></li><li><a href="about.html">About</a></li></ul></div>
+
+      <!-- CART ITEMS + SUMMARY -->
+      <div id="cartContent" style="display: none;">
+        <div class="cart-grid">
+          
+          <!-- CART ITEMS LIST -->
+          <div class="cart-items" id="cartItems">
+            <!-- Dynamically populated by JS -->
+          </div>
+
+          <!-- ORDER SUMMARY -->
+          <div class="cart-summary">
+            <div class="summary-card">
+              <h3><i class="fas fa-receipt"></i> Order Summary</h3>
+              <div class="summary-row">
+                <span>Subtotal (<span id="itemCount">0</span> items)</span>
+                <span id="cartSubtotal">$0.00</span>
+              </div>
+              <div class="summary-row">
+                <span>Shipping</span>
+                <span class="tag tag-success">FREE</span>
+              </div>
+              <div class="summary-row">
+                <span>Tax (8%)</span>
+                <span id="cartTax">$0.00</span>
+              </div>
+              <div class="divider"></div>
+              <div class="summary-row summary-total">
+                <span><strong>Total</strong></span>
+                <span id="cartTotal"><strong>$0.00</strong></span>
+              </div>
+
+              <div class="alert-info" style="margin: 20px 0; padding: 12px; background: #e3f2fd; border-radius: 8px; font-size: 14px;">
+                <i class="fas fa-info-circle"></i> <strong>Note:</strong> You’ll be redirected to the product’s original store (Amazon, Daraz, etc.) to complete purchase.
+              </div>
+
+              <button class="btn btn-cta btn-block btn-lg btn-3d" onclick="proceedToCheckout()">
+                <i class="fas fa-shopping-bag"></i> Proceed to Stores
+              </button>
+
+              <a href="products.html" class="btn btn-outline btn-block" style="margin-top: 10px;">
+                <i class="fas fa-arrow-left"></i> Continue Shopping
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- CLEAR CART BUTTON -->
+        <div class="text-center" style="margin-top: 30px;">
+          <button class="btn btn-outline" id="clearCartBtn">
+            <i class="fas fa-trash"></i> Clear Entire Cart
+          </button>
+        </div>
+      </div>
+
     </div>
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 MeowMeow Store. All Rights Reserved.</div>
+  </section>
+
+</main>
+
+<!-- TOAST NOTIFICATION CONTAINER -->
+<!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+      </svg>
+    </div>
+
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-grid">
+
+            <!-- Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <div class="logo-icon"><i class="fas fa-paw"></i></div>
+            <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+          </a>
+          <p>
+            MeowMeow is an independent product discovery and comparison website. 
+            We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more — so you can shop smarter and save.
+          </p>
+
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Hot Deals</a></li>
+            <li><a href="products.html">Categories</a></li>
+            <li><a href="products.html">Trending</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+
+        <!-- Support -->
+        <div class="footer-links-group">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="help.html">Help Center</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns</a></li>
+          </ul>
+        </div>
+
+        <!-- Legal -->
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="cookie.html">Cookie Policy</a></li>
+            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+            <li><a href="dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- TOP ROW (Newsletter + Disclosure) -->
+      <div class="footer-top-row">
+
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get weekly deals, product guides, and smart shopping tips.</p>
+          <form id="newsletterForm">
+            <input type="email" id="newsletterEmail" placeholder="Your email address" required /> 
+            <button type="submit">Subscribe</button>
+          </form>
+          <small id="newsletterMsg">No spam. Unsubscribe anytime.</small>
+        </div>
+
+        <p class="footer-disclosure">
+          Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.
+        </p>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="footer-bottom">
+
+        <p class="footer-copy">
+          &copy; 2026 MeowMeow. All rights reserved.
+        </p>
+
+        <p class="footer-contact">
+          Contact: <a href="/cdn-cgi/l/email-protection#6f00010306010a020a0018020a00182f08020e0603410c0002"><span class="__cf_email__" data-cfemail="422d2c2e2b2c272f272d352f272d3502252f232b2e6c212d2f">[email&#160;protected]</span></a>
+        </p> 
+
+        <div class="footer-payments">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+          <i class="fab fa-cc-amex"></i>
+        </div>
+
+      </div>
     </div>
   </div>
 </footer>
 
-<div class="toast-container" id="toastContainer"></div>
-<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
+  <!-- ====== BACK TO TOP ====== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-<script src="js/main.js"></script>
-<script src="js/theme.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/products-data.js"></script>
-<script>
-  function renderCart() {
-    const cart = getCart();
-    const emptyEl = document.getElementById('emptyCart');
-    const contentEl = document.getElementById('cartContent');
-    const listEl = document.getElementById('cartItemsList');
+  <!-- ====== TOAST CONTAINER ====== -->
+  <div class="toast-container" id="toastContainer"></div>
 
-    if (cart.length === 0) {
-      emptyEl.style.display = '';
-      contentEl.style.display = 'none';
-      return;
-    }
-    emptyEl.style.display = 'none';
-    contentEl.style.display = '';
+  <!-- ====== JS FILES (ORDER MATTERS) ====== -->
+  <script src="js/themes.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/affiliate.js"></script>
 
-    let html = `<h2 style="margin-bottom:20px; font-family:var(--font-heading); color:var(--text-primary);"><i class="fas fa-shopping-bag"></i> Cart Items (${cart.length})</h2>`;
-    cart.forEach(item => {
-      html += `
-      <div class="cart-item" data-id="${item.id}">
-        <img src="${item.image}" alt="${item.name}" />
-        <div class="cart-item-details">
-          <h4>${item.name}</h4>
-          <div class="cart-price">$${(item.price * item.qty).toFixed(2)}</div>
-          <div class="quantity-controls">
-            <button onclick="changeQty(${item.id}, -1)"><i class="fas fa-minus"></i></button>
-            <span>${item.qty}</span>
-            <button onclick="changeQty(${item.id}, 1)"><i class="fas fa-plus"></i></button>
-          </div>
-        </div>
-        <button class="remove-item" onclick="removeItem(${item.id})" title="Remove"><i class="fas fa-trash"></i></button>
-      </div>`;
-    });
-    listEl.innerHTML = html;
-
-    const subtotal = cart.reduce((s, i) => s + i.price * i.qty, 0);
-    document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-    document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
-    updateCartBadge();
-  }
-
-  function changeQty(id, delta) {
-    const cart = getCart();
-    const item = cart.find(x => x.id === id);
-    if (!item) return;
-    item.qty += delta;
-    if (item.qty <= 0) { removeItem(id); return; }
-    saveCart(cart);
-    renderCart();
-  }
-
-  function removeItem(id) {
-    let cart = getCart().filter(x => x.id !== id);
-    saveCart(cart);
-    renderCart();
-    if (typeof showToast === 'function') showToast('Item removed from cart', 'warning');
-  }
-
-  document.addEventListener('DOMContentLoaded', function() {
-    renderCart();
-    document.getElementById('clearCartBtn')?.addEventListener('click', function() {
-      if (confirm('Clear all items from cart?')) {
-        saveCart([]);
-        renderCart();
-        if (typeof showToast === 'function') showToast('Cart cleared', 'info');
-      }
-    });
-  });
-</script>
 </body>
 </html>
