@@ -2,6 +2,20 @@
    THEMES.CSS — LIGHT / DARK MODE OVERRIDES
    ============================ */
 
+[data-theme="dark"] {
+  --bg-primary: #0f172a;
+  --bg-secondary: #1e293b;
+  --bg-tertiary: #111827;
+
+  --text-primary: #f9fafb;
+  --text-secondary: #cbd5e1;
+  --text-tertiary: #94a3b8;
+
+  --border: rgba(255,255,255,0.1);
+
+  --footer-bg: #020617;
+}
+
 /* Light mode is already defined in variables.css as :root */
 
 /* Smooth theme transitions on all elements */
@@ -112,3 +126,4 @@ a {
 [data-theme="dark"] .page-header {
   background: var(--bg-secondary);
 }
+
