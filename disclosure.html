@@ -1,109 +1,414 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
+<html lang="en">
+  <head>
+  <!-- Basic Meta -->
   <meta charset="UTF-8" />
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="MeowMeow Affiliate Disclosure — transparency about our affiliate relationships and how we earn commissions." />
-  <title>Affiliate Disclosure — MeowMeow</title>
+  
+  <!-- Title -->
+   <title>Affiliate Disclosure | MeowMeow</title>
+  
+  <!-- SEO -->   
+  <meta name="description" content="MeowMeow - Discover the best pet products, fashion, toys, cosmetics, shoes, jewelry, and more. We compare top deals from Amazon, Daraz, Temu & AliExpress." />
+  <meta name="keywords" content="affiliate store, pet products, fashion deals, toys, cosmetics, jewelry, shoes, Amazon affiliate, Daraz deals, Temu products" />
+  <meta name="author" content="MeowMeow" />
+
+  <!-- Open Graph (Social Media Sharing) -->
+  <meta property="og:title" content="MeowMeow | Best Online Deals">
+  <meta property="og:description" content="Discover and compare the best deals from Amazon, Daraz, Temu and AliExpress with MeowMeow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meowmeow-livid.vercel.app/">
+  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS FILES (ORDER MATTERS) -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8QLN8M6LJ3');
+</script>
+  
+  <!-- CSS FILES -->
+  <!-- CSS FILES -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/buttons.css" />
   <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="css/legal.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
-  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/themes.css" />
 </head>
 <body data-theme="light">
+
+  <!-- ====== SCROLL PROGRESS BAR ====== -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<main id="mainContent">
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
 
-  <section class="page-header">
-    <div class="container">
-      <span class="section-eyebrow">Transparency First</span>
-      <h1>Affiliate <span class="text-gradient">Disclosure</span></h1>
-      <p>Last updated: June 1, 2025</p>
-      <nav class="breadcrumb">
-        <a href="index.html">Home</a>
-        <i class="fas fa-chevron-right"></i>
-        <span>Affiliate Disclosure</span>
-      </nav>
+    <!-- Logo -->
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">
+        <i class="fas fa-paw"></i>
+      </div>
+      <span class="logo-text">
+        Meow<span class="logo-highlight">Meow</span>
+      </span>
+    </a>
+
+    <!-- Search Bar -->
+    <div class="nav-search" id="navSearch">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text"
+               id="searchInput"
+               placeholder="Search products..."
+               autocomplete="off" />
+        <button class="search-clear" id="searchClear">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
     </div>
-  </section>
 
-  <section class="section">
-    <div class="container">
-      <div class="legal-content">
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
 
-        <div class="disclosure-highlight">
-          <i class="fas fa-info-circle"></i>
-          <p><strong>The Short Version:</strong> MeowMeow earns commissions from qualifying purchases made through our affiliate links. This costs you nothing extra. We only recommend products we genuinely believe are worth buying.</p>
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+
+      <!-- Search Toggle (Mobile) -->
+      <button class="nav-btn search-toggle" id="searchToggle">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <!-- Cart -->
+      <a href="cart.html" class="nav-btn cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <!-- Theme Toggle -->
+      <button class="nav-btn theme-toggle" id="themeToggle">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="nav-btn menu-toggle" id="menuToggle">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ====== MOBILE OVERLAY ====== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ====== MOBILE MENU ====== -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <i class="fas fa-paw"></i>
+        </div>
+        <span class="logo-text">
+          Meow<span class="logo-highlight">Meow</span>
+        </span>
+      </a>
+      <button class="mobile-close" id="mobileClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+
+    <div class="mobile-theme-switch">
+      <span>Dark Mode</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="mobileThemeToggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+  </div>
+</nav>
+
+  <main id="mainContent">
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <h1>📢 Affiliate Disclosure</h1>
+        <p>Transparency is everything. Here’s how we’re funded.</p>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> <span>/</span> <span>Affiliate Disclosure</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disclosure Content -->
+    <section class="section">
+      <div class="container">
+        <div class="disclosure-content legal-content">
+
+          <p class="last-updated"><strong>Last Updated:</strong> April 5, 2025</p>
+
+          <div class="alert-box">
+            <i class="fas fa-heart"></i> <strong>TL;DR:</strong> We may earn a small commission if you buy through our links — at absolutely no extra cost to you. This helps keep our content free, honest, and independent.
+          </div>
+
+          <h2>What Is an Affiliate Link?</h2>
+          <p>
+            An affiliate link is a special URL that tracks if you click through from our site and make a purchase. If you do, the retailer (like Amazon or Temu) pays us a small commission as a “thank you” for sending them a customer.
+          </p>
+          <p>
+            You pay the exact same price — no markups, no hidden fees. In fact, sometimes we even find coupons or deals for you!
+          </p>
+
+          <h2>Which Programs Do We Participate In?</h2>
+          <p>We are proud participants in the following affiliate programs:</p>
+          <ul class="marketplace-logos disclosure-logos">
+            <li><i class="fab fa-amazon"></i> Amazon Associates Program</li>
+            <li><i class="fas fa-store"></i> Daraz Affiliate Program</li>
+            <li><i class="fas fa-shopping-bag"></i> Temu Affiliate Program</li>
+            <li><i class="fas fa-globe"></i> AliExpress Affiliate Program</li>
+            <li>...and other trusted global marketplaces</li>
+          </ul>
+
+          <h2>Does This Affect Our Reviews?</h2>
+          <p>
+            <strong>Absolutely not.</strong> Our #1 priority is helping you find the best products for your needs and budget. We research, test (when possible), and compare real user reviews before recommending anything.
+          </p>
+          <p>
+            Commissions never influence our ratings, rankings, or editorial decisions. If a product is bad, we’ll say so — even if it’s from a major affiliate partner.
+          </p>
+
+          <h2>Why Do We Use Affiliate Links?</h2>
+          <p>
+            Running MeowMeow takes time, effort, and resources. Affiliate commissions allow us to:
+          </p>
+          <ul>
+            <li>Keep the site 100% free for you</li>
+            <li>Invest in better tools, research, and content</li>
+            <li>Stay independent — we don’t accept paid placements or sponsored reviews</li>
+          </ul>
+
+          <h2>Your Trust Matters Most</h2>
+          <p>
+            We built MeowMeow to be your unbiased shopping sidekick. If we recommend something, it’s because we genuinely believe it’s worth your money — not because it pays us more.
+          </p>
+          <p>
+            If you ever feel a recommendation seems biased or inaccurate, please <a href="contact.html">let us know</a>. We take feedback seriously.
+          </p>
+
+          <div class="acknowledgement">
+            <p><i class="fas fa-handshake"></i> Thank you for supporting us by using our links. It means the world — and helps us keep delivering honest, helpful content to shoppers like you.</p>
+          </div>
+
+          <div class="contact-info-box" style="margin-top: 40px;">
+            <p><i class="fas fa-envelope"></i> Questions? Email us: <a href="/cdn-cgi/l/email-protection#abc4c5c7c2c5cec6cec4dcc6cec4dcebccc6cac2c785c8c4c6"><span class="__cf_email__" data-cfemail="bbd4d5d7d2d5ded6ded4ccd6ded4ccfbdcd6dad2d795d8d4d6">[email&#160;protected]</span></a></p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Newsletter CTA -->
+    <section class="section newsletter-section">
+      <div class="container">
+        <div class="newsletter-card">
+          <div class="newsletter-content">
+            <h2><i class="fas fa-envelope-open-text"></i> Want Honest Deals Delivered?</h2>
+            <p>We only send the good stuff: weekly top picks, exclusive discounts, and zero spam.</p>
+          </div>
+          <form class="newsletter-form" id="disclosureNewsletterForm">
+            <div class="form-group">
+              <input type="email" placeholder="Your email address" required aria-label="Subscribe to updates">
+              <button type="submit" class="btn btn-cta btn-3d">
+                <i class="fas fa-paper-plane"></i> Subscribe Free
+              </button>
+            </div>
+            <p class="form-note"><i class="fas fa-lock"></i> Unsubscribe anytime. No pressure.</p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+   <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+      </svg>
+    </div>
+
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-grid">
+
+            <!-- Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <div class="logo-icon"><i class="fas fa-paw"></i></div>
+            <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+          </a>
+          <p>
+            MeowMeow is an independent product discovery and comparison website. 
+            We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more — so you can shop smarter and save.
+          </p>
+
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+          </div>
         </div>
 
-        <h2>1. What Is Affiliate Marketing?</h2>
-        <p>Affiliate marketing is a performance-based marketing arrangement where a website (like MeowMeow) earns a commission by promoting another company's products or services. When you click a link on our site and make a purchase, we may receive a small commission from the retailer.</p>
-        <p>This is a standard practice in online publishing. Millions of websites, blogs, and content creators use affiliate marketing to monetize their content.</p>
+        <!-- Quick Links -->
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Hot Deals</a></li>
+            <li><a href="products.html">Categories</a></li>
+            <li><a href="products.html">Trending</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
 
-        <h2>2. Our Affiliate Relationships</h2>
-        <p>MeowMeow has affiliate relationships with the following platforms (and may add more in the future):</p>
-        <ul>
-          <li><strong>Amazon Associates Program:</strong> We participate in the Amazon Services LLC Associates Program, an affiliate advertising program designed to provide a means for sites to earn advertising fees by advertising and linking to Amazon.com and affiliated sites.</li>
-          <li><strong>Daraz Affiliate Program:</strong> We participate in the Daraz affiliate program for markets in Pakistan, Bangladesh, and other South Asian countries.</li>
-          <li><strong>Temu Affiliate Program:</strong> We may earn commissions through the Temu affiliate program.</li>
-          <li><strong>AliExpress Affiliate Program:</strong> We participate in the AliExpress affiliate program through the AliExpress Portals platform.</li>
-        </ul>
+        <!-- Support -->
+        <div class="footer-links-group">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="help.html">Help Center</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns</a></li>
+          </ul>
+        </div>
 
-        <h2>3. Does This Cost You More?</h2>
-        <p><strong>No.</strong> Using our affiliate links never increases the price you pay. The commission we earn comes from the retailer's marketing budget. In some cases, we may even have exclusive discount codes that save you money. The price you see is always the same as if you went directly to the retailer's website.</p>
+        <!-- Legal -->
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="cookie.html">Cookie Policy</a></li>
+            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+            <li><a href="dmca.html">DMCA</a></li>
+          </ul>
+        </div>
 
-        <h2>4. How We Select Products</h2>
-        <p>We choose products to feature based on:</p>
-        <ul>
-          <li>Customer reviews and ratings on the retailer's platform</li>
-          <li>Value for money and price competitiveness</li>
-          <li>Product quality and durability based on available information</li>
-          <li>Popularity and trending status</li>
-          <li>Our own team's testing and experience where applicable</li>
-        </ul>
-        <p>While we do earn commissions from the products we recommend, <strong>we do not allow commission rates to dictate our recommendations</strong>. We will never recommend a product we consider to be poor quality, regardless of the commission it offers. Our readers' trust is more valuable to us than any commission.</p>
+      </div>
 
-        <h2>5. Sponsored Content</h2>
-        <p>Occasionally, brands may pay for sponsored posts or featured placements on MeowMeow. Any sponsored content will be clearly labeled as "Sponsored," "Ad," or "Promoted" to ensure full transparency.</p>
+      
 
-        <h2>6. FTC Compliance</h2>
-        <p>This disclosure is made in accordance with the Federal Trade Commission's guidelines on endorsements and testimonials (16 CFR § 255), which require clear disclosure of material connections between endorsers and the brands they promote. Our affiliate relationships constitute a material connection that could affect the content we publish.</p>
+      <!-- Bottom -->
+      <div class="footer-bottom">
 
-        <h2>7. Questions?</h2>
-        <p>If you have any questions about our affiliate relationships or how we select products, please contact us at <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a>. We're committed to transparency and will always respond honestly to your inquiries.</p>
+        <p class="footer-copy">
+          &copy; 2026 MeowMeow. All rights reserved.
+        </p>
+
+        <p class="footer-contact">
+          Contact: <a href="/cdn-cgi/l/email-protection#a3cccdcfcacdc6cec6ccd4cec6ccd4e3c4cec2cacf8dc0ccce"><span class="__cf_email__" data-cfemail="2d4243414443484048425a4048425a6d4a404c4441034e4240">[email&#160;protected]</span></a>
+        </p> 
+
+        <div class="footer-payments">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+          <i class="fab fa-cc-amex"></i>
+        </div>
 
       </div>
     </div>
-  </section>
+  </div>
+</footer>
 
-</main>
+  <!-- ====== BACK TO TOP ====== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
-<div class="toast-container" id="toastContainer"></div>
+  <!-- ====== TOAST CONTAINER ====== -->
+  <div class="toast-container" id="toastContainer"></div>
 
-<script src="js/components.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/search.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/affiliate.js"></script>
-<script src="js/main.js"></script>
-<script src="js/chatbot.js"></script>
+  <!-- ====== JS FILES (ORDER MATTERS) ====== -->
+  <script src="js/themes.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/affiliate.js"></script>
+
 </body>
 </html>
