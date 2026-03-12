@@ -1,150 +1,374 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
+<html lang="en">
+   <head>
+  <!-- Basic Meta -->
   <meta charset="UTF-8" />
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Frequently Asked Questions about MeowMeow — shipping, returns, affiliate links, and more." />
-  <title>FAQ — MeowMeow</title>
+  
+  <!-- Title -->
+   <title>FAQ | MeowMeow Help Center</title>
+  
+  <!-- SEO -->   
+  <meta name="description" content="MeowMeow - Discover the best pet products, fashion, toys, cosmetics, shoes, jewelry, and more. We compare top deals from Amazon, Daraz, Temu & AliExpress." />
+  <meta name="keywords" content="affiliate store, pet products, fashion deals, toys, cosmetics, jewelry, shoes, Amazon affiliate, Daraz deals, Temu products" />
+  <meta name="author" content="MeowMeow" />
+
+  <!-- Open Graph (Social Media Sharing) -->
+  <meta property="og:title" content="MeowMeow | Best Online Deals">
+  <meta property="og:description" content="Discover and compare the best deals from Amazon, Daraz, Temu and AliExpress with MeowMeow.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://meowmeow-livid.vercel.app/">
+  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png" />
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- CSS FILES (ORDER MATTERS) -->
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+   <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-8QLN8M6LJ3');
+</script>
+  
+  <!-- CSS FILES -->
+  <!-- CSS FILES -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
-  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/buttons.css" />
   <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
   <link rel="stylesheet" href="css/hero.css" />
-  <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="css/sections.css" />
-  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="css/legal.css" />
   <link rel="stylesheet" href="css/responsive.css" />
-  <link rel="stylesheet" href="css/style.css" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-8QLN8M6LJ3');</script>
-  <script src="js/theme.js"></script>
+  <link rel="stylesheet" href="css/themes.css" />
 </head>
 <body data-theme="light">
+
+  <!-- ====== SCROLL PROGRESS BAR ====== -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<main id="mainContent">
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
 
-  <!-- Page Header -->
-  <section class="page-header">
-    <div class="container">
-      <span class="section-eyebrow">Got Questions?</span>
-      <h1>Frequently Asked <span class="text-gradient">Questions</span></h1>
-      <p>Everything you need to know about MeowMeow, our affiliate links, and how we work.</p>
-      <nav class="breadcrumb">
-        <a href="index.html">Home</a>
-        <i class="fas fa-chevron-right"></i>
-        <span>FAQ</span>
-      </nav>
+    <!-- Logo -->
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon">
+        <i class="fas fa-paw"></i>
+      </div>
+      <span class="logo-text">
+        Meow<span class="logo-highlight">Meow</span>
+      </span>
+    </a>
+
+    <!-- Search Bar -->
+    <div class="nav-search" id="navSearch">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text"
+               id="searchInput"
+               placeholder="Search products..."
+               autocomplete="off" />
+        <button class="search-clear" id="searchClear">
+          <i class="fas fa-times"></i>
+        </button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
     </div>
-  </section>
 
-  <!-- FAQ -->
-  <section class="section">
-    <div class="container">
-      <div style="max-width: 860px; margin: 0 auto;">
+    <!-- Desktop Nav Links -->
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html" class="nav-link">Home</a></li>
+      <li><a href="products.html" class="nav-link">Products</a></li>
+      <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
+      <li><a href="contact.html" class="nav-link">Contact</a></li>
+    </ul>
 
-        <h3 class="faq-group-title reveal">About MeowMeow</h3>
+    <!-- Nav Actions -->
+    <div class="nav-actions">
+
+      <!-- Search Toggle (Mobile) -->
+      <button class="nav-btn search-toggle" id="searchToggle">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <!-- Cart -->
+      <a href="cart.html" class="nav-btn cart-btn">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+
+      <!-- Theme Toggle -->
+      <button class="nav-btn theme-toggle" id="themeToggle">
+        <i class="fas fa-sun" id="themeIcon"></i>
+      </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="nav-btn menu-toggle" id="menuToggle">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- ====== MOBILE OVERLAY ====== -->
+  <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ====== MOBILE MENU ====== -->
+  <div class="mobile-menu" id="mobileMenu">
+
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon">
+          <i class="fas fa-paw"></i>
+        </div>
+        <span class="logo-text">
+          Meow<span class="logo-highlight">Meow</span>
+        </span>
+      </a>
+      <button class="mobile-close" id="mobileClose">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+
+    <div class="mobile-theme-switch">
+      <span>Dark Mode</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="mobileThemeToggle">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+
+  </div>
+</nav>
+  <main id="mainContent">
+    <section class="page-header">
+      <div class="container">
+        <h1>❓ Frequently Asked Questions</h1>
+        <p>Everything you’ve ever wanted to know about MeowMeow</p>
+        <div class="breadcrumb">
+          <a href="index.html">Home</a> <span>/</span> <span>FAQ</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
         <div class="faq-list">
-          <div class="faq-item reveal">
-            <button class="faq-question">What is MeowMeow? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>MeowMeow is an affiliate shopping site that curates the best products from top online marketplaces including Amazon, Daraz, Temu, and AliExpress. We handpick products based on quality, value, and popularity, helping you discover great deals without the endless scrolling.</p></div>
+          <div class="faq-item">
+            <h3>Is MeowMeow a store? Do you sell products?</h3>
+            <p>No! We’re a free product discovery and recommendation site. All purchases are made through third-party sellers like Amazon, Daraz, Temu, and AliExpress.</p>
           </div>
-          <div class="faq-item reveal">
-            <button class="faq-question">Is MeowMeow a store? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>No, MeowMeow is not a store. We don't sell products directly. When you click a product link on our site, you'll be redirected to the retailer's website (Amazon, Daraz, etc.) where you can complete your purchase. All transactions happen on those platforms.</p></div>
+          <div class="faq-item">
+            <h3>How do you make money?</h3>
+            <p>We earn small commissions when you buy through our affiliate links — at no extra cost to you. This helps keep our content free and independent.</p>
           </div>
-          <div class="faq-item reveal">
-            <button class="faq-question">How does MeowMeow make money? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>MeowMeow earns a small commission when you click our links and make a purchase on a partner retailer's site. This commission comes at no extra cost to you — the price you pay is the same whether you come through our link or not. This is how affiliate marketing works.</p></div>
+          <div class="faq-item">
+            <h3>Do you handle shipping or returns?</h3>
+            <p>No. All shipping, returns, and customer service are handled by the seller you purchase from. Check their policies before buying.</p>
           </div>
-          <div class="faq-item reveal">
-            <button class="faq-question">Are the prices on MeowMeow accurate? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>We do our best to keep prices current, but prices on partner sites can change at any time without notice. Always verify the final price on the retailer's website before purchasing. We update our listings regularly but cannot guarantee real-time accuracy.</p></div>
+          <div class="faq-item">
+            <h3>Are your reviews biased?</h3>
+            <p>Never. Our recommendations are based on research, user reviews, and hands-on testing (when possible). Commissions never influence our ratings.</p>
+          </div>
+          <div class="faq-item">
+            <h3>How often do you update deals?</h3>
+            <p>Our hot deals refresh every 24 hours. Product listings and prices are updated weekly or as new info becomes available.</p>
+          </div>
+          <div class="faq-item">
+            <h3>Can I trust the prices shown?</h3>
+            <p>We strive for accuracy, but prices may change on seller sites. Always verify the final price on the product’s official page before purchasing.</p>
           </div>
         </div>
 
-        <h3 class="faq-group-title reveal" style="margin-top:3rem;">Shipping & Delivery</h3>
-        <div class="faq-list">
-          <div class="faq-item reveal">
-            <button class="faq-question">Who handles shipping for my order? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>Shipping is handled entirely by the retailer where you place your order (Amazon, Daraz, Temu, or AliExpress). MeowMeow has no involvement in the shipping or fulfillment process. For shipping questions, please contact the retailer directly.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-question">How long does delivery take? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>Delivery times vary by retailer and your location. Daraz typically delivers within 3–7 business days in Pakistan. Amazon Prime items often arrive in 1–2 days. Temu and AliExpress can take 7–20 days for international shipping. Check each retailer's estimated delivery date at checkout.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-question">Do you ship internationally? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>International availability depends on the retailer. Amazon, Temu, and AliExpress ship to many countries worldwide. Daraz primarily serves South Asian markets. Check your retailer of choice for availability in your region.</p></div>
+        <div class="text-center" style="margin-top: 40px;">
+          <p>Still have questions? <a href="contact.html" class="btn btn-outline">Contact Us</a></p>
+        </div>
+      </div>
+    </section>
+  </main>
+<!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+      </svg>
+    </div>
+
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-grid">
+
+            <!-- Brand -->
+        <div class="footer-brand">
+          <a href="index.html" class="footer-logo">
+            <div class="logo-icon"><i class="fas fa-paw"></i></div>
+            <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+          </a>
+          <p>
+            MeowMeow is an independent product discovery and comparison website. 
+            We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more — so you can shop smarter and save.
+          </p>
+
+          <div class="footer-socials">
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
           </div>
         </div>
 
-        <h3 class="faq-group-title reveal" style="margin-top:3rem;">Returns & Refunds</h3>
-        <div class="faq-list">
-          <div class="faq-item reveal">
-            <button class="faq-question">Can I return a product I bought through MeowMeow? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>Yes — but returns are managed by the retailer where you made your purchase, not by MeowMeow. Each retailer has its own return policy. Amazon has a generous 30-day return window for most items. Daraz, Temu, and AliExpress also have buyer protection programs.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-question">What if I received a damaged or wrong item? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>Contact the retailer's customer service directly to report the issue and request a replacement or refund. Amazon, Daraz, Temu, and AliExpress all have buyer protection policies that cover damaged or incorrect orders.</p></div>
-          </div>
+        <!-- Quick Links -->
+        <div class="footer-links-group">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="products.html">Hot Deals</a></li>
+            <li><a href="products.html">Categories</a></li>
+            <li><a href="products.html">Trending</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
         </div>
 
-        <h3 class="faq-group-title reveal" style="margin-top:3rem;">Affiliate Links & Privacy</h3>
-        <div class="faq-list">
-          <div class="faq-item reveal">
-            <button class="faq-question">What is an affiliate link? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>An affiliate link is a special URL that tracks whether a purchase was made after clicking from our site. It lets us earn a small commission from the retailer at no additional cost to you. The product price remains exactly the same.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-question">Does clicking your links cost me anything extra? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>Absolutely not. Using our affiliate links never increases the price you pay. In fact, we sometimes have exclusive discount codes that save you even more money. The commission we earn comes from the retailer's marketing budget, not from your pocket.</p></div>
-          </div>
-          <div class="faq-item reveal">
-            <button class="faq-question">How do you select which products to feature? <i class="fas fa-chevron-down"></i></button>
-            <div class="faq-answer"><p>We select products based on customer reviews, sales data, value for money, and our own testing. We only feature products we genuinely believe are worth buying. While we do earn commissions, we never recommend a product solely based on commission rates — our readers' trust comes first.</p></div>
-          </div>
+        <!-- Support -->
+        <div class="footer-links-group">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="help.html">Help Center</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="contact.html">Contact Us</a></li>
+            <li><a href="shipping.html">Shipping Info</a></li>
+            <li><a href="returns.html">Returns</a></li>
+          </ul>
         </div>
 
-        <div class="reveal" style="margin-top:3rem; text-align:center;">
-          <p style="color: var(--text-secondary); margin-bottom:1.5rem;">Still have questions? We're happy to help.</p>
-          <a href="contact.html" class="btn btn-primary btn-lg">Contact Us <i class="fas fa-arrow-right"></i></a>
+        <!-- Legal -->
+        <div class="footer-links-group">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="terms.html">Terms of Service</a></li>
+            <li><a href="cookie.html">Cookie Policy</a></li>
+            <li><a href="disclosure.html">Affiliate Disclosure</a></li>
+            <li><a href="dmca.html">DMCA</a></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- TOP ROW (Newsletter + Disclosure) -->
+      <div class="footer-top-row">
+
+        <!-- Newsletter -->
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Get weekly deals, product guides, and smart shopping tips.</p>
+          <form id="newsletterForm">
+            <input type="email" id="newsletterEmail" placeholder="Your email address" required /> 
+            <button type="submit">Subscribe</button>
+          </form>
+          <small id="newsletterMsg">No spam. Unsubscribe anytime.</small>
+        </div>
+
+        <p class="footer-disclosure">
+          Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.
+        </p>
+
+      </div>
+
+      <!-- Bottom -->
+      <div class="footer-bottom">
+
+        <p class="footer-copy">
+          &copy; 2026 MeowMeow. All rights reserved.
+        </p>
+
+        <p class="footer-contact">
+          Contact: <a href="/cdn-cgi/l/email-protection#82edeceeebece7efe7edf5efe7edf5c2e5efe3ebeeace1edef"><span class="__cf_email__" data-cfemail="e788898b8e89828a8288908a828890a7808a868e8bc984888a">[email&#160;protected]</span></a>
+        </p> 
+
+        <div class="footer-payments">
+          <i class="fab fa-cc-visa"></i>
+          <i class="fab fa-cc-mastercard"></i>
+          <i class="fab fa-cc-paypal"></i>
+          <i class="fab fa-cc-apple-pay"></i>
+          <i class="fab fa-cc-amex"></i>
         </div>
 
       </div>
     </div>
-  </section>
+  </div>
+</footer>
 
-</main>
+  <!-- ====== BACK TO TOP ====== -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-<button class="back-to-top" id="backToTop"><i class="fas fa-chevron-up"></i></button>
-<div class="toast-container" id="toastContainer"></div>
+  <!-- ====== TOAST CONTAINER ====== -->
+  <div class="toast-container" id="toastContainer"></div>
 
-<script src="js/components.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/search.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/affiliate.js"></script>
-<script src="js/main.js"></script>
-<script>
-  // FAQ accordion
-  document.querySelectorAll('.faq-question').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
-    });
-  });
-</script>
-<script src="js/chatbot.js"></script>
+  <!-- ====== JS FILES (ORDER MATTERS) ====== -->
+  <script src="js/themes.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/affiliate.js"></script>
+
 </body>
 </html>
