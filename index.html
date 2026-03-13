@@ -121,121 +121,151 @@ GOOGLE ANALYTICS (ADD YOUR ID)
 
 <body data-theme="light">
 
-  <!-- ====== SCROLL PROGRESS BAR ====== -->
+<!-- =========================
+SCROLL PROGRESS BAR
+========================= -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- ====== NAVBAR ====== -->
+<!-- =========================
+NAVBAR
+========================= -->
 <nav class="navbar" id="navbar">
-  <div class="nav-container">
 
-    <!-- Logo -->
-    <a href="index.html" class="nav-logo">
-      <div class="logo-icon">
-        <i class="fas fa-paw"></i>
-      </div>
-      <span class="logo-text">
-        Meow<span class="logo-highlight">Meow</span>
-      </span>
-    </a>
+<div class="nav-container">
 
-    <!-- Search Bar -->
-    <div class="nav-search" id="navSearch">
-      <div class="search-wrapper">
-        <i class="fas fa-search search-icon"></i>
-        <input type="text"
-               id="searchInput"
-               placeholder="Search products..."
-               autocomplete="off" />
-        <button class="search-clear" id="searchClear">
-          <i class="fas fa-times"></i>
-        </button>
-        <div class="search-results" id="searchResults"></div>
-      </div>
-    </div>
+<!-- LOGO -->
+<a href="index.html" class="nav-logo">
+<div class="logo-icon">
+<i class="fas fa-paw"></i>
+</div>
 
-    <!-- Desktop Nav Links -->
-    <ul class="nav-links" id="navLinks">
-      <li><a href="index.html" class="nav-link">Home</a></li>
-      <li><a href="products.html" class="nav-link">Products</a></li>
-      <li><a href="products.html" class="nav-link">Hot Deals</a></li>
-      <li><a href="blog.html" class="nav-link">Blog</a></li>
-      <li><a href="products.html" class="nav-link">Categories</a></li>
-      <li><a href="about.html" class="nav-link">About</a></li>
-      <li><a href="contact.html" class="nav-link">Contact</a></li>
-    </ul>
+<span class="logo-text">
+Meow<span class="logo-highlight">Meow</span>
+</span>
+</a>
 
-    <!-- Nav Actions -->
-    <div class="nav-actions">
+<!-- SEARCH -->
+<div class="nav-search" id="navSearch">
 
-      <!-- Search Toggle (Mobile) -->
-      <button class="nav-btn search-toggle" id="searchToggle">
-        <i class="fas fa-search"></i>
-      </button>
+<div class="search-wrapper">
 
-      <!-- Cart -->
-      <a href="cart.html" class="nav-btn cart-btn">
-        <i class="fas fa-shopping-cart"></i>
-        <span class="cart-badge" id="cartCount">0</span>
-      </a>
+<i class="fas fa-search search-icon"></i>
 
-      <!-- Theme Toggle -->
-      <button class="nav-btn theme-toggle" id="themeToggle">
-        <i class="fas fa-sun" id="themeIcon"></i>
-      </button>
+<input
+type="text"
+id="searchInput"
+placeholder="Search products..."
+autocomplete="off"
+/>
 
-      <!-- Mobile Menu Button -->
-      <button class="nav-btn menu-toggle" id="menuToggle">
-        <span class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-        </span>
-      </button>
+<button class="search-clear" id="searchClear">
+<i class="fas fa-times"></i>
+</button>
 
-    </div>
-  </div>
+<div class="search-results" id="searchResults"></div>
 
-  <!-- ====== MOBILE OVERLAY ====== -->
-  <div class="mobile-overlay" id="mobileOverlay"></div>
+</div>
+</div>
 
-  <!-- ====== MOBILE MENU ====== -->
-  <div class="mobile-menu" id="mobileMenu">
+<!-- DESKTOP LINKS -->
+<ul class="nav-links">
 
-    <div class="mobile-menu-header">
-      <a href="index.html" class="nav-logo">
-        <div class="logo-icon">
-          <i class="fas fa-paw"></i>
-        </div>
-        <span class="logo-text">
-          Meow<span class="logo-highlight">Meow</span>
-        </span>
-      </a>
-      <button class="mobile-close" id="mobileClose">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
+<li><a href="index.html" class="nav-link">Home</a></li>
+<li><a href="products.html" class="nav-link">Products</a></li>
+<li><a href="blog.html" class="nav-link">Blog</a></li>
+<li><a href="about.html" class="nav-link">About</a></li>
+<li><a href="contact.html" class="nav-link">Contact</a></li>
 
-     <ul class="mobile-nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="products.html">Products</a></li>
-      <li><a href="products.html">Hot Deals</a></li>
-      <li><a href="blog.html">Blog</a></li>
-      <li><a href="products.html">Categories</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <!-- <li><a href="cart.html">Cart</a></li> -->
-    </ul>
+</ul>
 
-    <div class="mobile-theme-switch">
-      <span>Dark Mode</span>
-      <label class="toggle-switch">
-        <input type="checkbox" id="mobileThemeToggle">
-        <span class="toggle-slider"></span>
-      </label>
-    </div>
+<!-- NAV ACTIONS -->
+<div class="nav-actions">
 
-  </div>
+<!-- MOBILE SEARCH -->
+<button class="nav-btn search-toggle" id="searchToggle">
+<i class="fas fa-search"></i>
+</button>
+
+<!-- CART -->
+<a href="cart.html" class="nav-btn cart-btn" id="cartBtn">
+<i class="fas fa-shopping-cart"></i>
+<span class="cart-badge" id="cartCount">0</span>
+</a>
+
+<!-- THEME -->
+<button class="nav-btn theme-toggle" id="themeToggle">
+<i class="fas fa-sun" id="themeIcon"></i>
+</button>
+
+<!-- MENU -->
+<button class="nav-btn menu-toggle" id="menuToggle">
+
+<span class="hamburger">
+<span></span>
+<span></span>
+<span></span>
+</span>
+
+</button>
+
+</div>
+
+</div>
+
+<!-- MOBILE OVERLAY -->
+<div class="mobile-overlay" id="mobileOverlay"></div>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+
+<div class="mobile-menu-header">
+
+<a href="index.html" class="nav-logo">
+<div class="logo-icon">
+<i class="fas fa-paw"></i>
+</div>
+
+<span class="logo-text">
+Meow<span class="logo-highlight">Meow</span>
+</span>
+
+</a>
+
+<button class="mobile-close" id="mobileClose">
+<i class="fas fa-times"></i>
+</button>
+
+</div>
+
+<ul class="mobile-nav-links">
+
+<li><a href="index.html">Home</a></li>
+<li><a href="products.html">Products</a></li>
+<li><a href="blog.html">Blog</a></li>
+<li><a href="about.html">About</a></li>
+<li><a href="contact.html">Contact</a></li>
+<li><a href="cart.html">Cart</a></li>
+
+</ul>
+
+<div class="mobile-theme-switch">
+
+<span>Dark Mode</span>
+
+<label class="toggle-switch">
+
+<input type="checkbox" id="mobileThemeToggle">
+
+<span class="toggle-slider"></span>
+
+</label>
+
+</div>
+
+</div>
+
 </nav>
+
  <main id="mainContent">
 
   <!-- Affiliate Disclosure -->
@@ -584,5 +614,6 @@ GOOGLE ANALYTICS (ADD YOUR ID)
 
 </body>
 </html>
+
 
 
