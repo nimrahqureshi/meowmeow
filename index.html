@@ -672,29 +672,37 @@ aria-label="Close Menu"
   <script src="js/products.js" defer></script>
   <script src="js/cart.js" defer></script>
 <script>
-document.getElementById("newsletter-form").addEventListener("submit", function(e) {
-  e.preventDefault();
-  const email = document.getElementById("newsletter-email").value;
-  const msg = document.getElementById("newsletter-msg");
+const newsletterForm = document.getElementById("newsletter-form");
+if (newsletterForm) { // Check if the form exists
+  newsletterForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    const email = document.getElementById("newsletter-email").value;
+    const msg = document.getElementById("newsletter-msg");
 
-  if(email){
-    msg.textContent = "✅ Thank you for subscribing!";
-    msg.style.color = "limegreen";
-    document.getElementById("newsletter-email").value = "";
-  }
-});
+    if(email){
+      msg.textContent = "✅ Thank you for subscribing!";
+      msg.style.color = "limegreen";
+      document.getElementById("newsletter-email").value = "";
+    }
+  });
+}
 </script>
+
 
 <!-- ===== JS FIXES ===== -->
 <script>
-  // Affiliate disclosure close
-  const disclosure = document.getElementById('affiliateDisclosure');
-  document.getElementById('disclosureClose').addEventListener('click', () => {
+  // Affiliate disclosure close (safe)
+const disclosure = document.getElementById('affiliateDisclosure');
+const disclosureClose = document.getElementById('disclosureClose');
+if (disclosure && disclosureClose) {
+  disclosureClose.addEventListener('click', () => {
     disclosure.style.display = 'none';
   });
+}
 
-  // Count animation
-  const counters = document.querySelectorAll('.stat-number');
+// Count animation (safe)
+const counters = document.querySelectorAll('.stat-number');
+if (counters.length > 0) {
   counters.forEach(counter => {
     const updateCount = () => {
       const target = +counter.getAttribute('data-count');
@@ -709,26 +717,33 @@ document.getElementById("newsletter-form").addEventListener("submit", function(e
     };
     updateCount();
   });
+}
+
 
   // Countdown Timer
   let timerHours = document.getElementById('timer-hours');
+if (timerHours) { // Only run if the timer exists
   let timerMins = document.getElementById('timer-mins');
   let timerSecs = document.getElementById('timer-secs');
   let totalSeconds = 23*3600 + 59*60 + 59;
+
   setInterval(() => {
-    let hours = Math.floor(totalSeconds/3600);
-    let mins = Math.floor((totalSeconds % 3600)/60);
+    let hours = Math.floor(totalSeconds / 3600);
+    let mins = Math.floor((totalSeconds % 3600) / 60);
     let secs = totalSeconds % 60;
     timerHours.innerText = hours.toString().padStart(2,'0');
     timerMins.innerText = mins.toString().padStart(2,'0');
     timerSecs.innerText = secs.toString().padStart(2,'0');
     totalSeconds--;
-    if(totalSeconds<0) totalSeconds = 24*3600-1;
-  },1000);
+    if(totalSeconds < 0) totalSeconds = 24*3600 - 1;
+  }, 1000);
+}
+
 </script>
 
 </body>
 </html>
+
 
 
 
