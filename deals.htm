@@ -4,26 +4,34 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <!-- SEO -->
   <title>Hot Deals Today | MeowMeow</title>
-  <meta name="description" content="Shop today's hottest deals on fashion, electronics, beauty, home &amp; more. Limited-time offers from Amazon, Daraz, Temu &amp; AliExpress." />
-  <meta name="keywords" content="hot deals, flash sale, discount, affiliate deals, Amazon sale, Temu deals, AliExpress" />
+  <meta name="description" content="Time-limited affiliate deals on fashion, electronics, beauty, pets, home & more. Updated every 24 hours." />
+  <meta name="keywords" content="affiliate deals, hot deals, sale, discount, limited time offers" />
   <meta name="author" content="MeowMeow" />
+
+  <!-- Open Graph -->
   <meta property="og:title" content="Hot Deals Today | MeowMeow" />
-  <meta property="og:description" content="Limited-time deals across every category. Updated daily!" />
+  <meta property="og:description" content="Time-limited affiliate deals on fashion, electronics, beauty, pets, home & more. Updated every 24 hours." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="images/logo.png" />
 
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="images/logo.png" />
 
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
+  <!-- CSS -->
   <link rel="stylesheet" href="css/variables.css" />
   <link rel="stylesheet" href="css/base.css" />
   <link rel="stylesheet" href="css/navbar.css" />
-  <link rel="stylesheet" href="css/hero.css" />
   <link rel="stylesheet" href="css/sections.css" />
   <link rel="stylesheet" href="css/cards.css" />
   <link rel="stylesheet" href="css/buttons.css" />
@@ -33,77 +41,110 @@
   <link rel="stylesheet" href="css/themes.css" />
   <link rel="stylesheet" href="css/responsive.css" />
 
-  <!-- Theme must load before body renders to prevent flash -->
+  <!-- Prevent theme flash -->
   <script src="js/themes.js"></script>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-8QLN8M6LJ3');
-  </script>
 </head>
 <body>
-
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- ====== NAVBAR ====== -->
 <nav class="navbar" id="navbar">
   <div class="nav-container">
+
+    <!-- Logo -->
     <a href="index.html" class="nav-logo">
-      <div class="logo-icon"><i class="fas fa-paw"></i></div>
-      <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+      <div class="logo-icon">
+        <i class="fas fa-paw"></i>
+      </div>
+      <span class="logo-text">
+        Meow<span class="logo-highlight">Meow</span>
+      </span>
     </a>
+
+    <!-- Search Bar -->
     <div class="nav-search" id="navSearch">
       <div class="search-wrapper">
         <i class="fas fa-search search-icon"></i>
-        <input type="text" id="searchInput" placeholder="Search products..." autocomplete="off" />
-        <button class="search-clear" id="searchClear"><i class="fas fa-times"></i></button>
+        <input type="text"
+               id="searchInput"
+               placeholder="Search products..."
+               autocomplete="off" />
+        <button class="search-clear" id="searchClear">
+          <i class="fas fa-times"></i>
+        </button>
         <div class="search-results" id="searchResults"></div>
       </div>
     </div>
+
+    <!-- Desktop Nav Links -->
     <ul class="nav-links" id="navLinks">
       <li><a href="index.html" class="nav-link">Home</a></li>
       <li><a href="products.html" class="nav-link">Products</a></li>
-      <li><a href="deals.html" class="nav-link active">Deals</a></li>
-      <li><a href="categories.html" class="nav-link">Categories</a></li>
-      <li><a href="trending.html" class="nav-link">Trending</a></li>
       <li><a href="blog.html" class="nav-link">Blog</a></li>
+      <li><a href="about.html" class="nav-link">About</a></li>
       <li><a href="contact.html" class="nav-link">Contact</a></li>
     </ul>
+
+    <!-- Nav Actions -->
     <div class="nav-actions">
-      <button class="nav-btn search-toggle" id="searchToggle"><i class="fas fa-search"></i></button>
+
+      <!-- Search Toggle (Mobile) -->
+      <button class="nav-btn search-toggle" id="searchToggle">
+        <i class="fas fa-search"></i>
+      </button>
+
+      <!-- Cart -->
       <a href="cart.html" class="nav-btn cart-btn">
         <i class="fas fa-shopping-cart"></i>
         <span class="cart-badge" id="cartCount">0</span>
       </a>
-      <button class="nav-btn theme-toggle" id="themeToggle"><i class="fas fa-sun" id="themeIcon"></i></button>
-      <button class="nav-btn menu-toggle" id="menuToggle">
-        <span class="hamburger"><span></span><span></span><span></span></span>
+
+      <!-- Theme Toggle -->
+      <button class="nav-btn theme-toggle" id="themeToggle">
+        <i class="fas fa-sun" id="themeIcon"></i>
       </button>
+
+      <!-- Mobile Menu Button -->
+      <button class="nav-btn menu-toggle" id="menuToggle">
+        <span class="hamburger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+
     </div>
   </div>
+
+  <!-- ====== MOBILE OVERLAY ====== -->
   <div class="mobile-overlay" id="mobileOverlay"></div>
+
+  <!-- ====== MOBILE MENU ====== -->
   <div class="mobile-menu" id="mobileMenu">
+
     <div class="mobile-menu-header">
       <a href="index.html" class="nav-logo">
-        <div class="logo-icon"><i class="fas fa-paw"></i></div>
-        <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+        <div class="logo-icon">
+          <i class="fas fa-paw"></i>
+        </div>
+        <span class="logo-text">
+          Meow<span class="logo-highlight">Meow</span>
+        </span>
       </a>
-      <button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button>
+      <button class="mobile-close" id="mobileClose">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
+
     <ul class="mobile-nav-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="products.html">Products</a></li>
-      <li><a href="deals.html">Deals</a></li>
-      <li><a href="categories.html">Categories</a></li>
-      <li><a href="trending.html">Trending</a></li>
       <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
       <li><a href="contact.html">Contact</a></li>
       <li><a href="cart.html">Cart</a></li>
     </ul>
+
     <div class="mobile-theme-switch">
       <span>Dark Mode</span>
       <label class="toggle-switch">
@@ -111,38 +152,43 @@
         <span class="toggle-slider"></span>
       </label>
     </div>
+
   </div>
 </nav>
-
 <main id="mainContent">
 
-  <!-- PAGE HEADER -->
+  <!-- Affiliate Disclosure -->
+  <div class="affiliate-disclosure" id="affiliateDisclosure">
+    <div class="disclosure-content">
+      <i class="fas fa-info-circle"></i>
+      <p><strong>Disclosure:</strong> MeowMeow participates in Amazon, Daraz, Temu &amp; AliExpress affiliate programs. We may earn a commission <em>at no extra cost to you</em>.</p>
+      <button class="disclosure-close" id="disclosureClose" aria-label="Close"><i class="fas fa-times"></i></button>
+    </div>
+  </div>
+
+  <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <h1>🔥 Hot Deals Today</h1>
-      <p>Curated limited-time offers — reset every 24 hours</p>
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="index.html">Home</a>
-        <span>/</span>
-        <span>Hot Deals</span>
-      </nav>
+      <div class="page-header-content">
+        <div class="section-badge"><i class="fas fa-fire"></i> Limited Time</div>
+        <h1 class="page-title">🔥 Hot Deals</h1>
+        <p class="page-subtitle">Time-sensitive deals refreshed every 24 hours — don't miss out!</p>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fas fa-chevron-right"></i>
+          <span>Hot Deals</span>
+        </nav>
+      </div>
     </div>
   </section>
 
-  <!-- DEALS SECTION -->
+  <!-- Deals Section -->
   <section class="section deals-section" id="deals">
     <div class="container">
 
-      <!-- SECTION HEADER -->
-      <div class="section-header center">
-        <div class="section-badge"><i class="fas fa-fire"></i> Limited Time</div>
-        <h2 class="section-title">Today's Best Picks</h2>
-        <p class="section-subtitle">Handpicked deals from Amazon, AliExpress, Temu & Daraz — all in one place.</p>
-      </div>
-
-      <!-- COUNTDOWN TIMER -->
+      <!-- Countdown Timer -->
       <div class="deal-timer">
-        <div class="timer-label"><i class="fas fa-clock"></i> Deals reset in:</div>
+        <div class="timer-label"><i class="fas fa-clock"></i> Deals end in:</div>
         <div class="timer-blocks">
           <div class="timer-block">
             <span class="timer-number" id="hours">23</span>
@@ -161,37 +207,37 @@
         </div>
       </div>
 
-      <!-- FILTER BAR -->
+      <!-- Filter Bar -->
       <div class="filter-bar">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="women">👗 Women</button>
-        <button class="filter-btn" data-filter="men">👔 Men</button>
-        <button class="filter-btn" data-filter="beauty">💄 Beauty</button>
-        <button class="filter-btn" data-filter="electronics">💻 Electronics</button>
-        <button class="filter-btn" data-filter="home">🏠 Home</button>
-        <button class="filter-btn" data-filter="shoes">👟 Shoes</button>
-        <button class="filter-btn" data-filter="pets">🐾 Pets</button>
+        <button class="filter-btn active" data-filter="all">All Deals</button>
+        <button class="filter-btn" data-filter="women">Women</button>
+        <button class="filter-btn" data-filter="men">Men</button>
+        <button class="filter-btn" data-filter="electronics">Electronics</button>
+        <button class="filter-btn" data-filter="home">Home</button>
+        <button class="filter-btn" data-filter="beauty">Beauty</button>
+        <button class="filter-btn" data-filter="pets">Pets</button>
+        <button class="filter-btn" data-filter="toys">Toys</button>
       </div>
 
-      <!-- PRODUCT GRID -->
+      <!-- Product Grid -->
       <div class="product-grid" id="productGrid">
 
         <!-- 1 -->
-        <div class="product-card reveal" data-category="women" data-product-id="deal-001">
+        <div class="product-card reveal" data-category="women">
           <div class="product-badges">
             <span class="badge badge-sale">-50%</span>
             <span class="badge badge-hot">🔥</span>
           </div>
           <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop&auto=format" alt="Floral Summer Boho Dress" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop&auto=format" alt="Floral Summer Dress" loading="lazy">
             <div class="product-overlay">
               <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
             </div>
           </div>
           <div class="product-info">
             <div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div>
-            <h3 class="product-name">Floral Summer Boho Dress</h3>
+            <h3 class="product-name">Floral Summer Dress — Boho Style</h3>
             <div class="product-rating">
               <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
               <span class="rating-count">(1,892)</span>
@@ -200,21 +246,21 @@
               <span class="price-current">$19.99</span>
               <span class="price-original">$39.99</span>
             </div>
-            <a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
+            <a href="https://aliexpress.com/item/1005001234567890.html" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-shopping-cart"></i> Buy Now
             </a>
           </div>
         </div>
 
         <!-- 2 -->
-        <div class="product-card reveal" data-category="electronics" data-product-id="deal-002">
+        <div class="product-card reveal" data-category="electronics">
           <div class="product-badges">
             <span class="badge badge-sale">-40%</span>
             <span class="badge badge-hot">🔥</span>
           </div>
           <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop&auto=format" alt="Smart Watch Pro" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop&auto=format" alt="Smart Watch Pro" loading="lazy">
             <div class="product-overlay">
               <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
             </div>
@@ -230,335 +276,342 @@
               <span class="price-current">$29.99</span>
               <span class="price-original">$49.99</span>
             </div>
-            <a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
+            <a href="https://amazon.com/dp/B08XYZ1234" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-shopping-cart"></i> Buy Now
             </a>
           </div>
         </div>
 
         <!-- 3 -->
-        <div class="product-card reveal" data-category="shoes" data-product-id="deal-003">
+        <div class="product-card reveal" data-category="home">
           <div class="product-badges">
-            <span class="badge badge-sale">-35%</span>
+            <span class="badge badge-new">New</span>
           </div>
           <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop&auto=format" alt="Men's Casual Sneakers" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&h=400&fit=crop&auto=format" alt="Throw Pillow Covers" loading="lazy">
             <div class="product-overlay">
               <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
             </div>
           </div>
           <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div>
-            <h3 class="product-name">Men's Casual Sneakers — White</h3>
+            <div class="product-marketplace"><i class="fas fa-store"></i> Daraz</div>
+            <h3 class="product-name">Bohemian Throw Pillow Covers Set of 4</h3>
             <div class="product-rating">
               <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-              <span class="rating-count">(987)</span>
+              <span class="rating-count">(743)</span>
             </div>
             <div class="product-price">
-              <span class="price-current">$34.99</span>
-              <span class="price-original">$54.99</span>
+              <span class="price-current">$16.99</span>
+              <span class="price-original">$28.00</span>
             </div>
-            <a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
+            <a href="https://daraz.pk/products/pillow-covers" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-shopping-cart"></i> Buy Now
             </a>
           </div>
         </div>
 
         <!-- 4 -->
-        <div class="product-card reveal" data-category="beauty" data-product-id="deal-004">
+        <div class="product-card reveal" data-category="beauty">
           <div class="product-badges">
-            <span class="badge badge-sale">-45%</span>
-            <span class="badge badge-new">New</span>
+            <span class="badge badge-sale">-35%</span>
           </div>
           <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=400&h=400&fit=crop&auto=format" alt="Korean Skincare Set" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=400&h=400&fit=crop&auto=format" alt="Skincare Set" loading="lazy">
             <div class="product-overlay">
               <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
             </div>
           </div>
           <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div>
-            <h3 class="product-name">Korean Skincare 5-Piece Set</h3>
+            <div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div>
+            <h3 class="product-name">Vitamin C Glow Skincare Set — 5pcs</h3>
             <div class="product-rating">
               <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-              <span class="rating-count">(3,104)</span>
+              <span class="rating-count">(2,108)</span>
             </div>
             <div class="product-price">
-              <span class="price-current">$24.99</span>
-              <span class="price-original">$44.99</span>
+              <span class="price-current">$22.99</span>
+              <span class="price-original">$35.99</span>
             </div>
-            <a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
+            <a href="https://temu.com/skincare-set" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-shopping-cart"></i> Buy Now
             </a>
           </div>
         </div>
 
         <!-- 5 -->
-        <div class="product-card reveal" data-category="men" data-product-id="deal-005">
+        <div class="product-card reveal" data-category="men">
           <div class="product-badges">
-            <span class="badge badge-sale">-55%</span>
+            <span class="badge badge-best">Best Seller</span>
           </div>
           <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1586790170083-2f9ceadc732d?w=400&h=400&fit=crop&auto=format" alt="Classic Polo Shirt" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop&auto=format" alt="Running Shoes" loading="lazy">
             <div class="product-overlay">
               <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
             </div>
           </div>
           <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-store"></i> Daraz</div>
-            <h3 class="product-name">Classic Polo Shirt — 5 Colors</h3>
+            <div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div>
+            <h3 class="product-name">Men's Lightweight Running Shoes</h3>
             <div class="product-rating">
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-              <span class="rating-count">(762)</span>
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <span class="rating-count">(6,540)</span>
             </div>
             <div class="product-price">
-              <span class="price-current">$14.99</span>
-              <span class="price-original">$32.99</span>
+              <span class="price-current">$34.99</span>
+              <span class="price-original">$59.99</span>
             </div>
-            <a href="https://daraz.pk" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
+            <a href="https://amazon.com/dp/B09SHOES123" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-shopping-cart"></i> Buy Now
             </a>
           </div>
         </div>
 
         <!-- 6 -->
-        <div class="product-card reveal" data-category="home" data-product-id="deal-006">
-          <div class="product-badges">
-            <span class="badge badge-sale">-30%</span>
-          </div>
-          <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?w=400&h=400&fit=crop&auto=format" alt="Throw Pillow Covers Set" loading="lazy" />
-            <div class="product-overlay">
-              <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
-            </div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div>
-            <h3 class="product-name">Bohemian Throw Pillow Covers — Set of 4</h3>
-            <div class="product-rating">
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-              <span class="rating-count">(2,568)</span>
-            </div>
-            <div class="product-price">
-              <span class="price-current">$16.99</span>
-              <span class="price-original">$24.99</span>
-            </div>
-            <a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
-              <i class="fas fa-shopping-cart"></i> Buy Now
-            </a>
-          </div>
-        </div>
-
-        <!-- 7 -->
-        <div class="product-card reveal" data-category="women" data-product-id="deal-007">
-          <div class="product-badges">
-            <span class="badge badge-sale">-42%</span>
-            <span class="badge badge-hot">🔥</span>
-          </div>
-          <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=400&h=400&fit=crop&auto=format" alt="Luxury PU Shoulder Bag" loading="lazy" />
-            <div class="product-overlay">
-              <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
-            </div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div>
-            <h3 class="product-name">Luxury PU Leather Shoulder Bag</h3>
-            <div class="product-rating">
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-              <span class="rating-count">(1,445)</span>
-            </div>
-            <div class="product-price">
-              <span class="price-current">$27.99</span>
-              <span class="price-original">$47.99</span>
-            </div>
-            <a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
-              <i class="fas fa-shopping-cart"></i> Buy Now
-            </a>
-          </div>
-        </div>
-
-        <!-- 8 -->
-        <div class="product-card reveal" data-category="electronics" data-product-id="deal-008">
-          <div class="product-badges">
-            <span class="badge badge-sale">-60%</span>
-            <span class="badge badge-hot">🔥</span>
-          </div>
-          <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=400&h=400&fit=crop&auto=format" alt="TWS Wireless Earbuds" loading="lazy" />
-            <div class="product-overlay">
-              <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
-            </div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div>
-            <h3 class="product-name">TWS Wireless Earbuds — Noise Cancelling</h3>
-            <div class="product-rating">
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-              <span class="rating-count">(6,782)</span>
-            </div>
-            <div class="product-price">
-              <span class="price-current">$22.99</span>
-              <span class="price-original">$57.99</span>
-            </div>
-            <a href="https://aliexpress.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
-              <i class="fas fa-shopping-cart"></i> Buy Now
-            </a>
-          </div>
-        </div>
-
-        <!-- 9 -->
-        <div class="product-card reveal" data-category="pets" data-product-id="deal-009">
+        <div class="product-card reveal" data-category="pets">
           <div class="product-badges">
             <span class="badge badge-sale">-25%</span>
+            <span class="badge badge-hot">🔥</span>
           </div>
           <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1574158622682-e40e69881006?w=400&h=400&fit=crop&auto=format" alt="Cat Multi-Level Tree" loading="lazy" />
-            <div class="product-overlay">
-              <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
-            </div>
-          </div>
-          <div class="product-info">
-            <div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div>
-            <h3 class="product-name">Multi-Level Cat Tree with Scratching Post</h3>
-            <div class="product-rating">
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-              <span class="rating-count">(3,210)</span>
-            </div>
-            <div class="product-price">
-              <span class="price-current">$39.99</span>
-              <span class="price-original">$54.99</span>
-            </div>
-            <a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
-              <i class="fas fa-shopping-cart"></i> Buy Now
-            </a>
-          </div>
-        </div>
-
-        <!-- 10 -->
-        <div class="product-card reveal" data-category="beauty" data-product-id="deal-010">
-          <div class="product-badges">
-            <span class="badge badge-sale">-50%</span>
-          </div>
-          <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=400&h=400&fit=crop&auto=format" alt="Vitamin C Brightening Serum" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1601758003122-53c40e686a19?w=400&h=400&fit=crop&auto=format" alt="Cat Toy Set" loading="lazy">
             <div class="product-overlay">
               <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
             </div>
           </div>
           <div class="product-info">
             <div class="product-marketplace"><i class="fas fa-store"></i> Daraz</div>
-            <h3 class="product-name">Vitamin C Brightening Serum — 30ml</h3>
+            <h3 class="product-name">Interactive Cat Toy Set — 12 Pieces</h3>
             <div class="product-rating">
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-              <span class="rating-count">(2,891)</span>
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+              <span class="rating-count">(912)</span>
             </div>
             <div class="product-price">
-              <span class="price-current">$18.99</span>
-              <span class="price-original">$37.99</span>
+              <span class="price-current">$12.99</span>
+              <span class="price-original">$17.99</span>
             </div>
-            <a href="https://daraz.pk" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
+            <a href="https://daraz.pk/cat-toy-set" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-shopping-cart"></i> Buy Now
             </a>
           </div>
         </div>
 
-        <!-- 11 -->
-        <div class="product-card reveal" data-category="men" data-product-id="deal-011">
+        <!-- 7 -->
+        <div class="product-card reveal" data-category="toys">
           <div class="product-badges">
-            <span class="badge badge-sale">-38%</span>
+            <span class="badge badge-new">New</span>
           </div>
           <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1552902865-b72c031ac5ea?w=400&h=400&fit=crop&auto=format" alt="Slim Fit Joggers" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?w=400&h=400&fit=crop&auto=format" alt="LEGO Building Set" loading="lazy">
             <div class="product-overlay">
               <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
             </div>
           </div>
           <div class="product-info">
-            <div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div>
-            <h3 class="product-name">Slim Fit Joggers — Stretch Fabric</h3>
+            <div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div>
+            <h3 class="product-name">Creative Building Blocks Set 500pcs</h3>
             <div class="product-rating">
               <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
-              <span class="rating-count">(1,123)</span>
+              <span class="rating-count">(1,340)</span>
             </div>
             <div class="product-price">
-              <span class="price-current">$21.99</span>
-              <span class="price-original">$35.99</span>
+              <span class="price-current">$18.99</span>
+              <span class="price-original">$29.99</span>
             </div>
-            <a href="https://temu.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
+            <a href="https://aliexpress.com/item/1005009876543.html" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-shopping-cart"></i> Buy Now
             </a>
           </div>
         </div>
 
-        <!-- 12 -->
-        <div class="product-card reveal" data-category="home" data-product-id="deal-012">
+        <!-- 8 -->
+        <div class="product-card reveal" data-category="electronics">
           <div class="product-badges">
-            <span class="badge badge-sale">-33%</span>
-            <span class="badge badge-new">New</span>
+            <span class="badge badge-sale">-45%</span>
+            <span class="badge badge-best">Best</span>
           </div>
           <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
           <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1507473885765-e6ed057f782c?w=400&h=400&fit=crop&auto=format" alt="LED Desk Lamp USB" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=400&fit=crop&auto=format" alt="Wireless Headphones" loading="lazy">
             <div class="product-overlay">
               <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
             </div>
           </div>
           <div class="product-info">
             <div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div>
-            <h3 class="product-name">LED Desk Lamp with USB Charging Port</h3>
+            <h3 class="product-name">Wireless Noise-Cancelling Headphones</h3>
             <div class="product-rating">
-              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-              <span class="rating-count">(4,502)</span>
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <span class="rating-count">(8,902)</span>
             </div>
             <div class="product-price">
-              <span class="price-current">$26.99</span>
-              <span class="price-original">$39.99</span>
+              <span class="price-current">$39.99</span>
+              <span class="price-original">$72.99</span>
             </div>
-            <a href="https://amazon.com" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer sponsored">
+            <a href="https://amazon.com/dp/B09HEADP123" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
               <i class="fas fa-shopping-cart"></i> Buy Now
             </a>
           </div>
         </div>
 
-      </div><!-- /product-grid -->
+        <!-- 9 -->
+        <div class="product-card reveal" data-category="women">
+          <div class="product-badges">
+            <span class="badge badge-sale">-30%</span>
+          </div>
+          <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?w=400&h=400&fit=crop&auto=format" alt="Gold Jewelry Set" loading="lazy">
+            <div class="product-overlay">
+              <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div>
+            <h3 class="product-name">Gold-Plated Layered Jewelry Set</h3>
+            <div class="product-rating">
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+              <span class="rating-count">(2,675)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$14.99</span>
+              <span class="price-original">$21.99</span>
+            </div>
+            <a href="https://aliexpress.com/item/1005008765432.html" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-shopping-cart"></i> Buy Now
+            </a>
+          </div>
+        </div>
 
-      <div class="section-cta">
-        <a href="products.html" class="btn btn-outline btn-lg"><i class="fas fa-th-large"></i> Browse All Products</a>
+        <!-- 10 -->
+        <div class="product-card reveal" data-category="home">
+          <div class="product-badges">
+            <span class="badge badge-hot">🔥</span>
+          </div>
+          <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&auto=format" alt="LED Fairy Lights" loading="lazy">
+            <div class="product-overlay">
+              <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div>
+            <h3 class="product-name">LED Fairy String Lights 10m Warm White</h3>
+            <div class="product-rating">
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+              <span class="rating-count">(3,421)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$8.99</span>
+              <span class="price-original">$14.99</span>
+            </div>
+            <a href="https://temu.com/fairy-lights" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-shopping-cart"></i> Buy Now
+            </a>
+          </div>
+        </div>
+
+        <!-- 11 -->
+        <div class="product-card reveal" data-category="men">
+          <div class="product-badges">
+            <span class="badge badge-sale">-20%</span>
+          </div>
+          <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1594938298603-e8d9e3fa6b35?w=400&h=400&fit=crop&auto=format" alt="Men's Wallet" loading="lazy">
+            <div class="product-overlay">
+              <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-marketplace"><i class="fas fa-globe"></i> AliExpress</div>
+            <h3 class="product-name">Slim Leather RFID Blocking Wallet</h3>
+            <div class="product-rating">
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+              <span class="rating-count">(1,087)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$11.99</span>
+              <span class="price-original">$14.99</span>
+            </div>
+            <a href="https://aliexpress.com/item/1005005678901.html" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-shopping-cart"></i> Buy Now
+            </a>
+          </div>
+        </div>
+
+        <!-- 12 -->
+        <div class="product-card reveal" data-category="beauty">
+          <div class="product-badges">
+            <span class="badge badge-best">Best</span>
+            <span class="badge badge-sale">-28%</span>
+          </div>
+          <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
+          <div class="product-image">
+            <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400&h=400&fit=crop&auto=format" alt="Makeup Brush Set" loading="lazy">
+            <div class="product-overlay">
+              <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
+            </div>
+          </div>
+          <div class="product-info">
+            <div class="product-marketplace"><i class="fas fa-shopping-bag"></i> Temu</div>
+            <h3 class="product-name">Professional Makeup Brush Set 18pcs</h3>
+            <div class="product-rating">
+              <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
+              <span class="rating-count">(4,562)</span>
+            </div>
+            <div class="product-price">
+              <span class="price-current">$17.99</span>
+              <span class="price-original">$24.99</span>
+            </div>
+            <a href="https://temu.com/makeup-brushes" class="btn btn-cta btn-block btn-3d" target="_blank" rel="noopener noreferrer">
+              <i class="fas fa-shopping-cart"></i> Buy Now
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /.product-grid -->
+
+      <div class="section-cta" style="text-align:center;margin-top:48px;">
+        <a href="products.html" class="btn btn-outline btn-lg">
+          <i class="fas fa-arrow-right"></i> View All Products
+        </a>
       </div>
 
     </div>
   </section>
 
 </main>
-
 <!-- ====== FOOTER ====== -->
-<footer class="footer">
-  <div class="footer-wave">
-    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-    </svg>
-  </div>
-  <div class="footer-content">
-    <div class="container">
-      <div class="footer-grid">
+  <footer class="footer">
+    <div class="footer-wave">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+      </svg>
+    </div>
+
+    <div class="footer-content">
+      <div class="container">
+        <div class="footer-grid">
+
+            <!-- Brand -->
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">
             <div class="logo-icon"><i class="fas fa-paw"></i></div>
             <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
           </a>
-          <p>MeowMeow is an independent product discovery and comparison website. We help you find top-rated products, smart buying guides, and the best online deals — so you can shop smarter and save.</p>
+          <p>
+            MeowMeow is an independent product discovery and comparison website. 
+            We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more — so you can shop smarter and save.
+          </p>
+
           <div class="footer-socials">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -567,16 +620,20 @@
             <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
           </div>
         </div>
+
+        <!-- Quick Links -->
         <div class="footer-links-group">
           <h4>Quick Links</h4>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="deals.html">Hot Deals</a></li>
-            <li><a href="categories.html">Categories</a></li>
-            <li><a href="trending.html">Trending</a></li>
+            <li><a href="products.html">Hot Deals</a></li>
+            <li><a href="products.html">Categories</a></li>
+            <li><a href="products.html">Trending</a></li>
             <li><a href="blog.html">Blog</a></li>
           </ul>
         </div>
+
+        <!-- Support -->
         <div class="footer-links-group">
           <h4>Support</h4>
           <ul>
@@ -587,6 +644,8 @@
             <li><a href="returns.html">Returns</a></li>
           </ul>
         </div>
+
+        <!-- Legal -->
         <div class="footer-links-group">
           <h4>Legal</h4>
           <ul>
@@ -597,13 +656,29 @@
             <li><a href="dmca.html">DMCA</a></li>
           </ul>
         </div>
+
       </div>
+
+      <!-- TOP ROW (Newsletter + Disclosure) -->
       <div class="footer-top-row">
-        <p class="footer-disclosure">Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.</p>
+
+        <p class="footer-disclosure">
+          Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.
+        </p>
+
       </div>
+
+      <!-- Bottom -->
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved.</p>
-        <p class="footer-contact">Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p>
+
+        <p class="footer-copy">
+          &copy; 2026 MeowMeow. All rights reserved.
+        </p>
+
+        <p class="footer-contact">
+          Contact: <a href="/cdn-cgi/l/email-protection#513e3f3d383f343c343e263c343e2611363c30383d7f323e3c"><span class="__cf_email__" data-cfemail="fa95949693949f979f958d979f958dba9d979b9396d4999597">[email&#160;protected]</span></a>
+        </p> 
+
         <div class="footer-payments">
           <i class="fab fa-cc-visa"></i>
           <i class="fab fa-cc-mastercard"></i>
@@ -611,22 +686,28 @@
           <i class="fab fa-cc-apple-pay"></i>
           <i class="fab fa-cc-amex"></i>
         </div>
+
       </div>
     </div>
   </div>
 </footer>
+  <!-- Back to Top -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
 
-<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
-<div class="toast-container" id="toastContainer"></div>
+  <!-- Toast -->
+  <div class="toast-container" id="toastContainer"></div>
 
-<script src="js/main.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/search.js"></script>
-<script src="js/scroll.js"></script>
-<script src="js/script.js"></script>
-<script src="js/cart.js"></script>
-<script src="js/component.js"></script>
-<script src="js/affiliate.js"></script>
-
+  <!-- JS -->
+  <script src="js/main.js"></script>
+  <script src="js/navbar.js"></script>
+  <script src="js/search.js"></script>
+  <script src="js/scroll.js"></script>
+  <script src="js/script.js"></script>
+  <script src="js/affiliate.js"></script>
+  <script src="js/cart.js"></script>
+  <script src="js/component.js"></script>
+  <script src="js/products.js"></script>
 </body>
 </html>
