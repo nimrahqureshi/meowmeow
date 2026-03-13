@@ -129,12 +129,13 @@ SCROLL PROGRESS BAR
 <!-- =========================
 NAVBAR
 ========================= -->
-<nav class="navbar" id="navbar">
+<nav class="navbar" id="navbar" role="navigation">
 
 <div class="nav-container">
 
 <!-- LOGO -->
-<a href="index.html" class="nav-logo">
+<a href="index.html" class="nav-logo" aria-label="MeowMeow Home">
+
 <div class="logo-icon">
 <i class="fas fa-paw"></i>
 </div>
@@ -142,9 +143,10 @@ NAVBAR
 <span class="logo-text">
 Meow<span class="logo-highlight">Meow</span>
 </span>
+
 </a>
 
-<!-- SEARCH -->
+<!-- SEARCH BAR -->
 <div class="nav-search" id="navSearch">
 
 <div class="search-wrapper">
@@ -154,26 +156,44 @@ Meow<span class="logo-highlight">Meow</span>
 <input
 type="text"
 id="searchInput"
-placeholder="Search products..."
+placeholder="Search products, deals..."
 autocomplete="off"
+aria-label="Search products"
 />
 
-<button class="search-clear" id="searchClear">
+<button
+class="search-clear"
+id="searchClear"
+aria-label="Clear search"
+>
+
 <i class="fas fa-times"></i>
+
 </button>
 
 <div class="search-results" id="searchResults"></div>
 
 </div>
+
 </div>
 
-<!-- DESKTOP LINKS -->
-<ul class="nav-links">
+<!-- DESKTOP NAV LINKS -->
+<ul class="nav-links" id="navLinks">
 
 <li><a href="index.html" class="nav-link">Home</a></li>
+
 <li><a href="products.html" class="nav-link">Products</a></li>
+
+<li><a href="deals.html" class="nav-link">Hot Deals</a></li>
+
+<li><a href="trending.html" class="nav-link">Trending</a></li>
+
+<li><a href="categories.html" class="nav-link">Categories</a></li>
+
 <li><a href="blog.html" class="nav-link">Blog</a></li>
+
 <li><a href="about.html" class="nav-link">About</a></li>
+
 <li><a href="contact.html" class="nav-link">Contact</a></li>
 
 </ul>
@@ -181,29 +201,47 @@ autocomplete="off"
 <!-- NAV ACTIONS -->
 <div class="nav-actions">
 
-<!-- MOBILE SEARCH -->
-<button class="nav-btn search-toggle" id="searchToggle">
+<!-- Mobile Search -->
+<button
+class="nav-btn search-toggle"
+id="searchToggle"
+aria-label="Open Search"
+>
 <i class="fas fa-search"></i>
 </button>
 
-<!-- CART -->
-<a href="cart.html" class="nav-btn cart-btn" id="cartBtn">
+<!-- Cart -->
+<a
+href="cart.html"
+class="nav-btn cart-btn"
+aria-label="Shopping Cart"
+>
 <i class="fas fa-shopping-cart"></i>
 <span class="cart-badge" id="cartCount">0</span>
 </a>
 
-<!-- THEME -->
-<button class="nav-btn theme-toggle" id="themeToggle">
+<!-- Theme Toggle -->
+<button
+class="nav-btn theme-toggle"
+id="themeToggle"
+aria-label="Toggle Theme"
+>
 <i class="fas fa-sun" id="themeIcon"></i>
 </button>
 
-<!-- MENU -->
-<button class="nav-btn menu-toggle" id="menuToggle">
+<!-- Mobile Menu Button -->
+<button
+class="nav-btn menu-toggle"
+id="menuToggle"
+aria-label="Open Menu"
+>
 
 <span class="hamburger">
+
 <span></span>
 <span></span>
 <span></span>
+
 </span>
 
 </button>
@@ -221,6 +259,7 @@ autocomplete="off"
 <div class="mobile-menu-header">
 
 <a href="index.html" class="nav-logo">
+
 <div class="logo-icon">
 <i class="fas fa-paw"></i>
 </div>
@@ -231,8 +270,14 @@ Meow<span class="logo-highlight">Meow</span>
 
 </a>
 
-<button class="mobile-close" id="mobileClose">
+<button
+class="mobile-close"
+id="mobileClose"
+aria-label="Close Menu"
+>
+
 <i class="fas fa-times"></i>
+
 </button>
 
 </div>
@@ -241,6 +286,9 @@ Meow<span class="logo-highlight">Meow</span>
 
 <li><a href="index.html">Home</a></li>
 <li><a href="products.html">Products</a></li>
+<li><a href="deals.html">Hot Deals</a></li>
+<li><a href="trending.html">Trending</a></li>
+<li><a href="categories.html">Categories</a></li>
 <li><a href="blog.html">Blog</a></li>
 <li><a href="about.html">About</a></li>
 <li><a href="contact.html">Contact</a></li>
@@ -614,6 +662,7 @@ Meow<span class="logo-highlight">Meow</span>
 
 </body>
 </html>
+
 
 
 
