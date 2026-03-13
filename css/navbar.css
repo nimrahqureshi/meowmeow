@@ -288,6 +288,21 @@
   color: var(--accent);
   transform: translateY(-1px);
 }
+.navbar::after{
+content:"";
+position:absolute;
+bottom:0;
+left:0;
+right:0;
+height:1px;
+background:linear-gradient(
+90deg,
+transparent,
+var(--accent),
+transparent
+);
+opacity:.3;
+}
 
 .cart-badge,
 .wishlist-badge {
@@ -605,4 +620,5 @@ overflow:hidden;
     display: none;
   }
 }
+
 
