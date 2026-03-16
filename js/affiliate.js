@@ -1,879 +1,562 @@
 /* ============================================================
-   AFFILIATE-MAIN.JS — Dynamic Product Renderer  v2.0
-   Combines Amazon + Daraz + Temu + AliExpress catalogues.
-   Renders cards into any #productGrid on any page.
+   AFFILIATE.JS  v4.0 — MeowMeow
+   Link Tagging · AD Badges · Click Tracking · Disclosure
 
-   CONFLICTS RESOLVED vs v1.0:
-   ─────────────────────────────────────────────────────────
-   1. affiliate.js MutationObserver storm
-      OLD: affiliate-main rendered cards → triggered affiliate.js
-           MutationObserver on EVERY card → hundreds of redundant calls.
-      FIX: Affiliate params are BAKED INTO every URL at render time.
-           Buy links already have rel="noopener noreferrer sponsored"
-           set in the HTML. affiliate.js sees them as already tagged
-           and skips them — observer fires but does nothing.
+   READ BEFORE EDITING — conflicts with every other JS file
+   have been carefully resolved. Here is exactly what each
+   file does that touches affiliate territory, and what this
+   file does about it:
 
-   2. cart.js double-bind
-      OLD: affiliate-main bound ".add-to-cart-btn" via delegation.
-           cart.js MutationObserver also called bindAddToCartButtons()
-           on newly injected cards → two click handlers per button.
-      FIX: Our cart button uses class "aff-cart-btn" (not "add-to-cart-btn").
-           cart.js only looks for [data-add-to-cart] attribute which we
-           do NOT set → zero overlap, zero double-fire.
+   ┌─────────────────┬────────────────────────────────────────────────────────────────┐
+   │ OTHER FILE      │ CONFLICT & FIX                                                 │
+   ├─────────────────┼────────────────────────────────────────────────────────────────┤
+   │ navbar.js       │ Has its OWN disclosure close handler that calls .remove() on   │
+   │                 │ the banner — no sessionStorage, no animation. Runs immediately  │
+   │                 │ (not DOMContentLoaded). FIX: We check window._discBound before  │
+   │                 │ binding. navbar.js runs first so it wins, but we patch it by   │
+   │                 │ overriding its click handler with ours on DOMContentLoaded.     │
+   ├─────────────────┼────────────────────────────────────────────────────────────────┤
+   │ main.js         │ Has its OWN disclosure handler with sessionStorage. Binds on   │
+   │                 │ DOMContentLoaded. FIX: window._discBound flag prevents both    │
+   │                 │ main.js and this file from double-binding the same button.      │
+   ├─────────────────┼────────────────────────────────────────────────────────────────┤
+   │ script.js       │ Loops ALL a[target="_blank"] and sets rel="noopener noreferrer" │
+   │                 │ (WITHOUT "sponsored") if no rel exists. Runs on page load       │
+   │                 │ BEFORE DOMContentLoaded. FIX: We run processLinks() on         │
+   │                 │ DOMContentLoaded, AFTER script.js. Our rel always includes     │
+   │                 │ "sponsored" and we always overwrite whatever is there.          │
+   ├─────────────────┼────────────────────────────────────────────────────────────────┤
+   │ component.js    │ MutationObserver calls initQuickView(), initTooltips(),         │
+   │                 │ initCopyButtons() on EVERY DOM mutation — including every card  │
+   │                 │ affiliate-main renders. Our debounced observer also fires.      │
+   │                 │ FIX: Both observers debounce. Our _affTagged guard means        │
+   │                 │ processLinks() does nothing on already-processed links. Zero   │
+   │                 │ performance impact from component.js triggering ours.           │
+   ├─────────────────┼────────────────────────────────────────────────────────────────┤
+   │ cart.js         │ MutationObserver calls bindAddToCartButtons() on every          │
+   │                 │ mutation. Our cards use class "aff-cart-btn" not               │
+   │                 │ "[data-add-to-cart]" so cart.js finds nothing to bind.          │
+   │                 │ FIX: Already handled by affiliate-main.js class naming.         │
+   ├─────────────────┼────────────────────────────────────────────────────────────────┤
+   │ affiliate-main  │ Already bakes affiliate params + rel="sponsored" into every    │
+   │ .js             │ rendered card link. FIX: We check if param already has correct  │
+   │                 │ value before writing href (no URL corruption, no mutation loop).│
+   │                 │ affiliate-main fires gtag "quick_view" — we fire               │
+   │                 │ "affiliate_click" and "affiliate_buy_click" (no duplication).   │
+   ├─────────────────┼────────────────────────────────────────────────────────────────┤
+   │ scroll.js       │ Has its own filter binding on .filter-btn. No conflict with     │
+   │                 │ affiliate.js — we don't touch filter buttons at all.            │
+   └─────────────────┴────────────────────────────────────────────────────────────────┘
 
-   3. component.js Quick View double-bind
-      OLD: component.js bound ".quick-view-btn:not([data-qv-bound])"
-           and affiliate-main also bound the same class → two modals.
-      FIX: Our quick view button uses class "aff-qv-btn".
-           component.js never sees our buttons. We render our own
-           rich modal (id="affQuickView") with full product data.
+   CORRECT LOAD ORDER in HTML (before </body>):
+     themes.js → main.js → navbar.js → search.js → scroll.js
+     → script.js → cart.js → component.js
+     → affiliate-amazon.js → affiliate-daraz.js
+     → affiliate-temu.js → affiliate-aliexpress.js
+     → affiliate-main.js → affiliate.js  ← LAST
 
-   4. script.js wishlist double-bind
-      OLD: script.js bound .wishlist-toggle on DOMContentLoaded using
-           _meowBound flag. Injected cards didn't have it → re-bound.
-      FIX: After rendering, we immediately set btn._meowBound = true
-           on every new wishlist button. script.js skips any button
-           where _meowBound is already true.
-
-   5. products.js category filter conflict
-      OLD: Both products.js and affiliate-main listened to
-           .filter-btn[data-filter] → double render + state desync.
-      FIX: affiliate-main checks window.MeowProducts before binding.
-           If products.js is present, affiliate-main does NOT bind
-           category filter buttons — products.js owns those.
-
-   LOAD ORDER (in HTML before </body>):
-     1. affiliate-amazon.js
-     2. affiliate-daraz.js
-     3. affiliate-temu.js
-     4. affiliate-aliexpress.js
-     5. affiliate-main.js   ← this file (LAST)
+   GA4 ID: G-8QLN8M6LJ3
    ============================================================ */
 
 (function () {
   'use strict';
 
   /* ──────────────────────────────────────────────────
-     CONFIG
+     1. PLATFORM CONFIG
+     Domain → { param, value } for URL tagging.
+     Matches affiliate-main.js config exactly.
   ────────────────────────────────────────────────── */
 
-  const ITEMS_PER_PAGE = 12;
-  const WISHLIST_KEY   = 'meowmeow-wishlist';
-
-  const AFFILIATE_TAGS = {
-    'amazon.com':     { param: 'tag',            value: 'meowmeow-21'   },
-    'amazon.co.uk':   { param: 'tag',            value: 'meowmeow-21'   },
-    'daraz.pk':       { param: 'aff_id',         value: 'MEOW123'       },
-    'daraz.com':      { param: 'aff_id',         value: 'MEOW123'       },
-    'temu.com':       { param: 'refer_aff_src',  value: 'meowmeow'      },
-    'aliexpress.com': { param: 'aff_platform',   value: 'meowmeow_site' },
-    'shein.com':      { param: 'url_from',       value: 'meowmeow'      }
+  var CONFIG = {
+    'amazon.com':     { param: 'tag',           value: 'meowmeow-21'   },
+    'amazon.co.uk':   { param: 'tag',           value: 'meowmeow-21'   },
+    'amzn.to':        { param: 'tag',           value: 'meowmeow-21'   },
+    'daraz.pk':       { param: 'aff_id',        value: 'MEOW123'       },
+    'daraz.com':      { param: 'aff_id',        value: 'MEOW123'       },
+    'temu.com':       { param: 'refer_aff_src', value: 'meowmeow'      },
+    'aliexpress.com': { param: 'aff_platform',  value: 'meowmeow_site' },
+    'aliexpress.us':  { param: 'aff_platform',  value: 'meowmeow_site' },
+    'shein.com':      { param: 'url_from',      value: 'meowmeow'      },
+    'shein.co.uk':    { param: 'url_from',      value: 'meowmeow'      }
   };
 
-  /* ──────────────────────────────────────────────────
-     MERGE ALL PLATFORM CATALOGUES
-  ────────────────────────────────────────────────── */
-
-  const ALL_PRODUCTS = [
-    ...(window.AmazonProducts     || []),
-    ...(window.DarazProducts      || []),
-    ...(window.TemuProducts       || []),
-    ...(window.AliExpressProducts || [])
-  ];
-
-  if (ALL_PRODUCTS.length === 0) {
-    console.warn('[affiliate-main] No products found. Load platform files before affiliate-main.js.');
-    return;
-  }
+  var GA4_ID = 'G-8QLN8M6LJ3';
 
   /* ──────────────────────────────────────────────────
-     STATE
+     2. HELPERS
   ────────────────────────────────────────────────── */
 
-  let filteredProducts = [...ALL_PRODUCTS];
-  let currentPage      = 1;
-  let activeCategory   = 'all';
-  let activePlatform   = 'all';
-  let activeSort       = 'default';
-  let activeSearch     = '';
-  let wishlist         = loadWishlist();
-
-  /* ──────────────────────────────────────────────────
-     WISHLIST HELPERS
-  ────────────────────────────────────────────────── */
-
-  function loadWishlist() {
-    try { return JSON.parse(localStorage.getItem(WISHLIST_KEY)) || []; }
-    catch (e) { return []; }
-  }
-
-  function saveWishlist() {
-    try { localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist)); }
-    catch (e) {}
-  }
-
-  function isWishlisted(id) { return wishlist.includes(id); }
-
-  function toggleWishlist(id, btn) {
-    const idx = wishlist.indexOf(id);
-    if (idx === -1) {
-      wishlist.push(id);
-      btn.classList.add('active');
-      btn.querySelector('i')?.classList.replace('far', 'fas');
-      showToast('Added to wishlist ❤️', 'success');
-    } else {
-      wishlist.splice(idx, 1);
-      btn.classList.remove('active');
-      btn.querySelector('i')?.classList.replace('fas', 'far');
-      showToast('Removed from wishlist', 'warning');
-    }
-    saveWishlist();
-  }
-
-  /* ──────────────────────────────────────────────────
-     AFFILIATE URL BUILDER
-     Bakes params in at render time — affiliate.js skips
-     links that already have the correct param set.
-  ────────────────────────────────────────────────── */
-
-  function buildAffiliateUrl(rawUrl) {
-    try {
-      const url = new URL(rawUrl);
-      for (const [domain, cfg] of Object.entries(AFFILIATE_TAGS)) {
-        if (url.hostname.includes(domain)) {
-          url.searchParams.set(cfg.param, cfg.value);
-          break;
-        }
+  /* Returns { domain, cfg } for a hostname, or null */
+  function matchDomain(hostname) {
+    var domains = Object.keys(CONFIG);
+    for (var i = 0; i < domains.length; i++) {
+      if (hostname.indexOf(domains[i]) !== -1) {
+        return { domain: domains[i], cfg: CONFIG[domains[i]] };
       }
-      return url.toString();
-    } catch (e) {
-      return rawUrl;
     }
+    return null;
+  }
+
+  /* Returns platform slug: "amazon", "daraz", etc. */
+  function getPlatformFromHostname(hostname) {
+    var m = matchDomain(hostname);
+    return m ? m.domain.split('.')[0] : 'unknown';
+  }
+
+  /*
+   * Should this link get an AD badge?
+   * NEVER badge:
+   *   .btn          — product card buy/cart buttons
+   *   nav           — site navigation
+   *   footer        — footer links
+   *   header        — header links
+   *   .affiliate-tag already present
+   *   empty text    — icon-only links
+   */
+  function shouldBadge(link) {
+    if (link.classList.contains('btn'))       return false;
+    if (link.closest('nav'))                  return false;
+    if (link.closest('footer'))               return false;
+    if (link.closest('header'))               return false;
+    if (link.querySelector('.affiliate-tag')) return false;
+    if ((link.textContent || '').trim() === '') return false;
+    return true;
   }
 
   /* ──────────────────────────────────────────────────
-     XSS-SAFE ESCAPING
+     3. CORE: PROCESS LINKS
+     Scans every <a href> and:
+       • Injects affiliate param (only if not already correct)
+       • Sets rel="noopener noreferrer sponsored"
+       • Adds AD badge to plain text links
+       • Attaches click tracker
+
+     GUARD: link._affTagged → safe to call many times.
+     After first pass each link is O(1) to skip.
+
+     FIX vs script.js:
+       script.js sets rel="noopener noreferrer" (no "sponsored")
+       only when rel is absent. We run AFTER script.js on
+       DOMContentLoaded and always overwrite rel to include
+       "sponsored". This is the correct final value.
+
+     FIX vs affiliate-main.js:
+       affiliate-main bakes params into every card URL.
+       We check existing param value before writing —
+       if it's already correct we skip the href write,
+       preventing a pointless DOM mutation that would
+       re-trigger every other MutationObserver.
   ────────────────────────────────────────────────── */
 
-  function esc(str) {
-    return String(str)
-      .replace(/&/g,  '&amp;')
-      .replace(/</g,  '&lt;')
-      .replace(/>/g,  '&gt;')
-      .replace(/"/g,  '&quot;')
-      .replace(/'/g,  '&#39;');
-  }
+  function processLinks() {
+    var links = document.querySelectorAll('a[href]');
 
-  /* ──────────────────────────────────────────────────
-     STAR BUILDER
-  ────────────────────────────────────────────────── */
+    for (var i = 0; i < links.length; i++) {
+      var link = links[i];
 
-  function buildStars(rating) {
-    const full  = Math.floor(rating);
-    const half  = (rating % 1) >= 0.4 ? 1 : 0;
-    const empty = 5 - full - half;
-    return (
-      '<i class="fas fa-star"></i>'.repeat(full) +
-      (half ? '<i class="fas fa-star-half-alt"></i>' : '') +
-      '<i class="far fa-star"></i>'.repeat(empty)
-    );
-  }
+      /* Already processed — O(1) skip */
+      if (link._affTagged) continue;
+      link._affTagged = true;
 
-  /* ──────────────────────────────────────────────────
-     BADGE BUILDER
-  ────────────────────────────────────────────────── */
+      var matched  = false;
+      var platform = 'unknown';
 
-  function buildBadges(p) {
-    const map = {
-      sale:       `<span class="badge badge-sale">-${p.discount}%</span>`,
-      hot:        `<span class="badge badge-sale">-${p.discount}%</span><span class="badge badge-hot">🔥</span>`,
-      new:        `<span class="badge badge-new">New</span>`,
-      bestseller: `<span class="badge badge-best">Bestseller</span>`
-    };
-    return map[p.badge] || `<span class="badge badge-sale">-${p.discount}%</span>`;
-  }
+      try {
+        var url   = new URL(link.href);
+        var match = matchDomain(url.hostname);
 
-  /* ──────────────────────────────────────────────────
-     REVIEW COUNT FORMATTER
-  ────────────────────────────────────────────────── */
+        if (match) {
+          matched  = true;
+          platform = match.domain.split('.')[0];
 
-  function fmtReviews(n) {
-    return n >= 1000
-      ? (n / 1000).toFixed(1).replace(/\.0$/, '') + 'k'
-      : n.toLocaleString();
-  }
+          /* ── INJECT PARAM (idempotent write) ── */
+          var existing = url.searchParams.get(match.cfg.param);
+          if (existing !== match.cfg.value) {
+            url.searchParams.set(match.cfg.param, match.cfg.value);
+            link.href = url.toString();
+          }
 
-  /* ──────────────────────────────────────────────────
-     CARD HTML BUILDER
+          /* ── rel (always overwrite — fixes script.js "noopener noreferrer" without "sponsored") ── */
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer sponsored');
 
-     CRITICAL DIFFERENCES FROM v1.0 (conflict fixes):
-     • Cart btn  → class "aff-cart-btn"  (NOT "add-to-cart-btn")
-     • QV btn    → class "aff-qv-btn"    (NOT "quick-view-btn")
-     • Buy link  → already has rel="noopener noreferrer sponsored"
-                   + affiliate params baked in → affiliate.js skips
-     • _meowBound set on wishlist buttons after DOM insertion
-       → script.js skips re-binding
-  ────────────────────────────────────────────────── */
-
-  function buildCard(p) {
-    const url    = buildAffiliateUrl(p.url);
-    const wl     = isWishlisted(p.id);
-    const safeId = esc(p.id);
-
-    return `<div class="product-card"
-     data-category="${esc(p.category)}"
-     data-subcategory="${esc(p.subcategory || '')}"
-     data-product-id="${safeId}"
-     data-price="${p.price}"
-     data-rating="${p.rating}"
-     data-marketplace="${esc(p.marketplace.toLowerCase())}">
-
-  <div class="product-badges">${buildBadges(p)}</div>
-
-  <button class="wishlist-toggle${wl ? ' active' : ''}"
-          data-id="${safeId}"
-          aria-label="${wl ? 'Remove from' : 'Add to'} wishlist">
-    <i class="${wl ? 'fas' : 'far'} fa-heart"></i>
-  </button>
-
-  <div class="product-image">
-    <img src="${esc(p.image)}"
-         alt="${esc(p.name)}"
-         loading="lazy"
-         onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&h=400&fit=crop'" />
-    <div class="product-overlay">
-      <button class="btn btn-sm btn-primary aff-qv-btn" data-id="${safeId}">
-        <i class="fas fa-eye"></i> Quick View
-      </button>
-    </div>
-  </div>
-
-  <div class="product-info">
-    <div class="product-marketplace">
-      <i class="${esc(p.marketplaceIcon)}"></i> ${esc(p.marketplace)}
-    </div>
-    <h3 class="product-name">${esc(p.name)}</h3>
-    <div class="product-rating">
-      <div class="stars" aria-label="${p.rating} out of 5 stars">${buildStars(p.rating)}</div>
-      <span class="rating-count">(${fmtReviews(p.reviews)})</span>
-    </div>
-    <div class="product-price">
-      <span class="price-current">$${p.price.toFixed(2)}</span>
-      <span class="price-original">$${p.originalPrice.toFixed(2)}</span>
-    </div>
-    <div class="product-actions">
-      <button class="btn btn-cta btn-block btn-3d aff-cart-btn"
-              data-id="${safeId}"
-              data-name="${esc(p.name)}"
-              data-price="${p.price}"
-              data-img="${esc(p.image)}">
-        <i class="fas fa-cart-plus"></i> Add to Cart
-      </button>
-      <a href="${esc(url)}"
-         class="btn btn-outline btn-block btn-sm"
-         target="_blank"
-         rel="noopener noreferrer sponsored">
-        <i class="fas fa-external-link-alt"></i> Buy on ${esc(p.marketplace)}
-      </a>
-    </div>
-  </div>
-</div>`;
-  }
-
-  /* ──────────────────────────────────────────────────
-     FILTER + SORT PIPELINE
-  ────────────────────────────────────────────────── */
-
-  function applyFilters() {
-    let results = [...ALL_PRODUCTS];
-
-    if (activeCategory !== 'all') {
-      results = results.filter(p => p.category === activeCategory);
-    }
-
-    if (activePlatform !== 'all') {
-      results = results.filter(p =>
-        p.marketplace.toLowerCase().includes(activePlatform)
-      );
-    }
-
-    if (activeSearch.length >= 2) {
-      const q = activeSearch.toLowerCase();
-      results = results.filter(p =>
-        p.name.toLowerCase().includes(q) ||
-        p.category.toLowerCase().includes(q) ||
-        (p.subcategory || '').toLowerCase().includes(q) ||
-        (p.tags || []).some(t => t.toLowerCase().includes(q)) ||
-        p.marketplace.toLowerCase().includes(q)
-      );
-    }
-
-    switch (activeSort) {
-      case 'price-asc':   results.sort((a, b) => a.price    - b.price);    break;
-      case 'price-desc':  results.sort((a, b) => b.price    - a.price);    break;
-      case 'rating':      results.sort((a, b) => b.rating   - a.rating);   break;
-      case 'discount':    results.sort((a, b) => b.discount - a.discount); break;
-      case 'reviews':     results.sort((a, b) => b.reviews  - a.reviews);  break;
-      default:
-        results.sort((a, b) => {
-          const w = { hot: 3, bestseller: 2, new: 1, sale: 0 };
-          return ((w[b.badge] ?? 0) - (w[a.badge] ?? 0)) || (b.reviews - a.reviews);
-        });
-    }
-
-    filteredProducts = results;
-    currentPage = 1;
-  }
-
-  /* ──────────────────────────────────────────────────
-     RENDER PRODUCTS
-  ────────────────────────────────────────────────── */
-
-  function renderProducts(append) {
-    const grid = document.getElementById('productGrid');
-    if (!grid) return;
-
-    const start = (currentPage - 1) * ITEMS_PER_PAGE;
-    const end   = start + ITEMS_PER_PAGE;
-    const page  = filteredProducts.slice(start, end);
-
-    const noResults = document.getElementById('noResults');
-
-    if (filteredProducts.length === 0) {
-      if (!append) grid.innerHTML = '';
-      if (noResults) noResults.style.display = 'flex';
-      hideLoadMore();
-      updateResultsCount();
-      return;
-    }
-    if (noResults) noResults.style.display = 'none';
-
-    if (!append) {
-      grid.innerHTML = page.map(buildCard).join('');
-    } else {
-      const tmp = document.createElement('div');
-      tmp.innerHTML = page.map(buildCard).join('');
-      while (tmp.firstChild) grid.appendChild(tmp.firstChild);
-    }
-
-    // FIX 4: Mark wishlist buttons so script.js does not re-bind them
-    grid.querySelectorAll('.wishlist-toggle:not([data-aff-wl])').forEach(btn => {
-      btn._meowBound   = true;  // script.js guard
-      btn.dataset.affWl = '1'; // our guard (avoids re-marking on re-render)
-    });
-
-    // Stagger entrance animation
-    grid.querySelectorAll('.product-card:not([data-aff-in])').forEach((el, i) => {
-      el.dataset.affIn = '1';
-      el.style.opacity   = '0';
-      el.style.transform = 'translateY(22px)';
-      el.style.transition =
-        `opacity 0.45s ease ${(i % ITEMS_PER_PAGE) * 0.035}s,` +
-        `transform 0.45s ease ${(i % ITEMS_PER_PAGE) * 0.035}s`;
-      requestAnimationFrame(() =>
-        requestAnimationFrame(() => {
-          el.style.opacity   = '1';
-          el.style.transform = 'translateY(0)';
-        })
-      );
-    });
-
-    updateLoadMoreBtn(end < filteredProducts.length);
-    updateResultsCount();
-  }
-
-  /* ──────────────────────────────────────────────────
-     GRID EVENT DELEGATION
-     Three separate listeners, each bound ONCE via flag.
-     Using distinct classes prevents conflicts with other scripts.
-  ────────────────────────────────────────────────── */
-
-  function bindGridEvents() {
-    const grid = document.getElementById('productGrid');
-    if (!grid) return;
-
-    // ── WISHLIST ("wishlist-toggle" + "data-id") ──
-    if (!grid._affWLBound) {
-      grid._affWLBound = true;
-      grid.addEventListener('click', function (e) {
-        const btn = e.target.closest('.wishlist-toggle[data-id]');
-        if (!btn) return;
-        e.preventDefault();
-        e.stopPropagation();
-        toggleWishlist(btn.dataset.id, btn);
-      });
-    }
-
-    // ── ADD TO CART ("aff-cart-btn") — FIX 2 ──
-    if (!grid._affCartBound) {
-      grid._affCartBound = true;
-      grid.addEventListener('click', function (e) {
-        const btn = e.target.closest('.aff-cart-btn');
-        if (!btn) return;
-        e.preventDefault();
-        e.stopPropagation();
-
-        const p = ALL_PRODUCTS.find(x => x.id === btn.dataset.id);
-        const item = {
-          id:          btn.dataset.id,
-          name:        btn.dataset.name,
-          price:       parseFloat(btn.dataset.price),
-          image:       btn.dataset.img,
-          marketplace: p?.marketplace || '',
-          url:         p ? buildAffiliateUrl(p.url) : '#'
-        };
-
-        if (typeof window.MeowCart?.add === 'function') {
-          window.MeowCart.add(item);
-        } else {
-          showToast(`🛒 "${item.name}" added to cart!`, 'success');
+          /* ── AD BADGE on plain text links only ── */
+          if (shouldBadge(link)) {
+            var badge = document.createElement('sup');
+            badge.className   = 'affiliate-tag';
+            badge.textContent = 'AD';
+            badge.setAttribute('aria-label', 'Affiliate link');
+            badge.setAttribute('title', 'Affiliate link — we may earn a commission');
+            link.appendChild(badge);
+          }
         }
-      });
-    }
 
-    // ── QUICK VIEW ("aff-qv-btn") — FIX 3 ──
-    if (!grid._affQVBound) {
-      grid._affQVBound = true;
-      grid.addEventListener('click', function (e) {
-        const btn = e.target.closest('.aff-qv-btn');
-        if (!btn) return;
-        e.preventDefault();
-        e.stopPropagation();
-        const p = ALL_PRODUCTS.find(x => x.id === btn.dataset.id);
-        if (p) openQuickView(p);
-      });
+      } catch (e) {
+        /* Relative, blob:, data:, mailto: — skip silently */
+      }
+
+      /* ── CLICK TRACKER (affiliate links only) ── */
+      if (matched) {
+        /* Closure to capture platform per link */
+        (function (l, p) {
+          l.addEventListener('click', function () {
+            trackLinkClick(l, p);
+          });
+        }(link, platform));
+      }
     }
   }
 
   /* ──────────────────────────────────────────────────
-     QUICK VIEW MODAL
-     id="affQuickView" — NOT "quickViewModal" — FIX 3
-     component.js owns #quickViewModal. We own #affQuickView.
-     No collision.
+     4. GA4 CLICK TRACKING
+
+     Events fired:
+       affiliate_buy_click  — link inside .product-card
+       affiliate_click      — any other affiliate link
+
+     affiliate-main.js fires "quick_view" — we never
+     fire that event here. No duplication.
   ────────────────────────────────────────────────── */
 
-  function openQuickView(p) {
-    document.getElementById('affQuickView')?.remove();
-
-    const url     = buildAffiliateUrl(p.url);
-    const savings = (p.originalPrice - p.price).toFixed(2);
-    const tagHtml = (p.tags || []).map(t =>
-      `<span style="background:var(--bg-tertiary);border:1px solid var(--border);
-       padding:3px 10px;border-radius:var(--radius-full);
-       font-size:0.72rem;color:var(--text-secondary);">${esc(t)}</span>`
-    ).join('');
-
-    document.body.insertAdjacentHTML('beforeend', `
-<div id="affQuickView" role="dialog" aria-modal="true"
-     aria-label="Quick view: ${esc(p.name)}"
-     style="position:fixed;inset:0;z-index:9999;
-            display:flex;align-items:center;justify-content:center;
-            background:rgba(0,0,0,0.65);backdrop-filter:blur(6px);padding:16px;">
-  <div style="background:var(--bg-secondary);border:1px solid var(--border);
-              border-radius:var(--radius-xl);max-width:700px;width:100%;position:relative;
-              display:grid;grid-template-columns:1fr 1fr;overflow:hidden;
-              box-shadow:var(--shadow-2xl);animation:scaleInBounce 0.35s ease both;
-              max-height:90vh;">
-
-    <!-- image panel -->
-    <div style="position:relative;min-height:300px;background:var(--bg-tertiary);overflow:hidden;">
-      <img src="${esc(p.image)}" alt="${esc(p.name)}"
-           style="width:100%;height:100%;object-fit:cover;"
-           onerror="this.src='https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=400&h=400&fit=crop'" />
-      <div style="position:absolute;top:12px;left:12px;background:var(--danger);color:#fff;
-                  padding:4px 10px;border-radius:var(--radius-full);font-size:0.75rem;font-weight:700;">
-        -${p.discount}% OFF
-      </div>
-    </div>
-
-    <!-- info panel -->
-    <div style="padding:26px 22px;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:90vh;">
-
-      <button id="affQVClose" aria-label="Close"
-              style="position:absolute;top:12px;right:12px;background:var(--bg-tertiary);
-                     border:1px solid var(--border);border-radius:50%;width:32px;height:32px;
-                     display:flex;align-items:center;justify-content:center;
-                     font-size:0.9rem;color:var(--text-secondary);cursor:pointer;z-index:1;">
-        <i class="fas fa-times"></i>
-      </button>
-
-      <div style="font-size:0.78rem;color:var(--text-tertiary);display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-        <span><i class="${esc(p.marketplaceIcon)}"></i> ${esc(p.marketplace)}</span>
-        <span style="background:var(--accent-light);color:var(--accent);padding:2px 8px;
-                     border-radius:var(--radius-full);font-size:0.7rem;font-weight:600;">
-          ${esc(p.subcategory || p.category)}
-        </span>
-      </div>
-
-      <h2 style="font-family:var(--font-heading);font-size:1.1rem;font-weight:800;
-                 color:var(--text-primary);line-height:1.35;margin:0;">
-        ${esc(p.name)}
-      </h2>
-
-      <div style="display:flex;align-items:center;gap:8px;">
-        <div style="color:var(--warning);font-size:0.82rem;display:flex;gap:2px;">${buildStars(p.rating)}</div>
-        <span style="font-size:0.78rem;color:var(--text-tertiary);">
-          ${p.rating} · ${p.reviews.toLocaleString()} reviews
-        </span>
-      </div>
-
-      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;">
-        <span style="font-family:var(--font-heading);font-size:1.9rem;font-weight:900;color:var(--accent);">
-          $${p.price.toFixed(2)}
-        </span>
-        <span style="font-size:0.9rem;color:var(--text-tertiary);text-decoration:line-through;">
-          $${p.originalPrice.toFixed(2)}
-        </span>
-        <span style="font-size:0.82rem;color:var(--danger);font-weight:700;">
-          Save $${savings}
-        </span>
-      </div>
-
-      ${tagHtml ? `<div style="display:flex;flex-wrap:wrap;gap:6px;">${tagHtml}</div>` : ''}
-
-      <div style="display:flex;flex-direction:column;gap:8px;margin-top:auto;padding-top:8px;">
-        <button class="btn btn-cta btn-3d aff-qv-cart-btn"
-                data-id="${esc(p.id)}"
-                data-name="${esc(p.name)}"
-                data-price="${p.price}"
-                data-img="${esc(p.image)}"
-                style="width:100%;">
-          <i class="fas fa-cart-plus"></i> Add to Cart
-        </button>
-        <a href="${esc(url)}"
-           class="btn btn-outline"
-           style="width:100%;text-align:center;"
-           target="_blank"
-           rel="noopener noreferrer sponsored">
-          <i class="fas fa-external-link-alt"></i> Buy on ${esc(p.marketplace)}
-        </a>
-        <p style="font-size:0.7rem;color:var(--text-tertiary);text-align:center;margin:0;">
-          <i class="fas fa-shield-alt"></i> Redirects to official seller — secured checkout
-        </p>
-      </div>
-    </div>
-  </div>
-</div>`);
-
-    const modal    = document.getElementById('affQuickView');
-    const closeBtn = document.getElementById('affQVClose');
-
-    function closeModal() {
-      modal?.remove();
-      document.removeEventListener('keydown', onEsc);
-    }
-    function onEsc(e) { if (e.key === 'Escape') closeModal(); }
-
-    closeBtn?.addEventListener('click', closeModal);
-    modal?.addEventListener('click', e => { if (e.target === modal) closeModal(); });
-    document.addEventListener('keydown', onEsc);
-
-    modal?.querySelector('.aff-qv-cart-btn')?.addEventListener('click', function () {
-      const prod = ALL_PRODUCTS.find(x => x.id === this.dataset.id);
-      const item = {
-        id:          this.dataset.id,
-        name:        this.dataset.name,
-        price:       parseFloat(this.dataset.price),
-        image:       this.dataset.img,
-        marketplace: prod?.marketplace || '',
-        url:         prod ? buildAffiliateUrl(prod.url) : '#'
-      };
-      if (typeof window.MeowCart?.add === 'function') window.MeowCart.add(item);
-      else showToast(`🛒 "${item.name}" added to cart!`, 'success');
-      closeModal();
-    });
-
-    // GA4 tracking
+  function trackLinkClick(link, platform) {
     try {
+      var card        = link.closest('.product-card');
+      var productName = (
+        (card && card.querySelector('.product-name') && card.querySelector('.product-name').textContent.trim()) ||
+        link.getAttribute('aria-label') ||
+        link.getAttribute('title') ||
+        (link.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 80) ||
+        'Direct Link'
+      );
+
+      var eventName = card ? 'affiliate_buy_click' : 'affiliate_click';
+
       if (typeof gtag === 'function') {
-        gtag('event', 'quick_view', {
-          product_name: p.name,
-          affiliate_platform: p.marketplace.toLowerCase()
+        gtag('event', eventName, {
+          send_to:            GA4_ID,
+          affiliate_platform: platform,
+          product_name:       productName,
+          link_url:           link.href,
+          page_path:          window.location.pathname
         });
       }
-    } catch (e) {}
-  }
 
-  /* ──────────────────────────────────────────────────
-     LOAD MORE
-  ────────────────────────────────────────────────── */
-
-  function updateLoadMoreBtn(show) {
-    let btn = document.getElementById('affLoadMore');
-
-    if (show) {
-      if (!btn) {
-        const wrap = document.createElement('div');
-        wrap.style.cssText = 'text-align:center;margin:32px 0;';
-        wrap.innerHTML = `
-          <button id="affLoadMore" class="btn btn-outline btn-lg load-more-btn">
-            <i class="fas fa-plus"></i> Load More
-            <span id="affLoadMoreCount"></span>
-          </button>`;
-        document.getElementById('productGrid')?.insertAdjacentElement('afterend', wrap);
-        document.getElementById('affLoadMore')?.addEventListener('click', onLoadMore);
-        btn = document.getElementById('affLoadMore');
+      /* Legacy Universal Analytics */
+      if (typeof ga === 'function') {
+        ga('send', 'event', 'Affiliate', 'Click', platform + ' — ' + productName);
       }
-      btn.style.display = 'inline-flex';
-      const remaining = filteredProducts.length - currentPage * ITEMS_PER_PAGE;
-      const cEl = document.getElementById('affLoadMoreCount');
-      if (cEl && remaining > 0) cEl.textContent = ` (${remaining} more)`;
-    } else {
-      hideLoadMore();
-    }
-  }
 
-  function hideLoadMore() {
-    const btn = document.getElementById('affLoadMore');
-    if (btn) btn.style.display = 'none';
-  }
-
-  function onLoadMore() {
-    currentPage++;
-    renderProducts(true);
-    const cards = document.getElementById('productGrid')?.querySelectorAll('.product-card');
-    const first = cards?.item((currentPage - 1) * ITEMS_PER_PAGE);
-    if (first) setTimeout(() => first.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 150);
+    } catch (e) { /* never crash on tracking */ }
   }
 
   /* ──────────────────────────────────────────────────
-     RESULTS COUNT
+     5. CARD-LEVEL BUY CLICK — delegated from document
+     Catches "Buy on X" links inside .product-card that
+     are injected dynamically by affiliate-main.js.
+     Uses event delegation so no per-card binding needed
+     and no conflict with component.js / cart.js.
   ────────────────────────────────────────────────── */
 
-  function updateResultsCount() {
-    let el = document.getElementById('affResultsCount');
-    if (!el) {
-      el = document.createElement('p');
-      el.id = 'affResultsCount';
-      el.style.cssText = 'text-align:right;font-size:0.82rem;color:var(--text-tertiary);margin-bottom:12px;';
-      document.getElementById('productGrid')?.insertAdjacentElement('beforebegin', el);
-    }
-    const showing = Math.min(currentPage * ITEMS_PER_PAGE, filteredProducts.length);
-    el.textContent = filteredProducts.length > 0
-      ? `Showing ${showing} of ${filteredProducts.length} products`
-      : 'No products found';
-  }
+  function initCardBuyTracking() {
+    document.addEventListener('click', function (e) {
+      var link = e.target.closest
+        ? e.target.closest('.product-card a[rel~="sponsored"]')
+        : null;
+      if (!link) return;
 
-  /* ──────────────────────────────────────────────────
-     SORT DROPDOWN INJECTION
-  ────────────────────────────────────────────────── */
-
-  function injectSortDropdown() {
-    if (document.getElementById('affSortSelect')) return;
-
-    const wrapper = document.createElement('div');
-    wrapper.style.cssText = 'display:flex;align-items:center;gap:8px;flex-shrink:0;';
-    wrapper.innerHTML = `
-      <label for="affSortSelect"
-             style="font-size:0.82rem;color:var(--text-secondary);
-                    font-weight:500;white-space:nowrap;">
-        Sort:
-      </label>
-      <select id="affSortSelect"
-              style="padding:8px 12px;background:var(--bg-secondary);
-                     border:2px solid var(--border);border-radius:var(--radius-md);
-                     color:var(--text-primary);font-size:0.82rem;
-                     font-family:var(--font-body);cursor:pointer;">
-        <option value="default">Featured</option>
-        <option value="price-asc">Price ↑</option>
-        <option value="price-desc">Price ↓</option>
-        <option value="rating">Top Rated</option>
-        <option value="discount">Biggest Discount</option>
-        <option value="reviews">Most Reviewed</option>
-      </select>`;
-
-    const filterBar = document.querySelector('.filter-bar');
-    if (filterBar) {
-      filterBar.style.flexWrap = 'wrap';
-      filterBar.appendChild(wrapper);
-    } else {
-      document.getElementById('productGrid')?.insertAdjacentElement('beforebegin', wrapper);
-    }
-
-    document.getElementById('affSortSelect')?.addEventListener('change', function () {
-      activeSort = this.value;
-      applyFilters();
-      renderProducts(false);
+      try {
+        var hostname = new URL(link.href).hostname;
+        var platform = getPlatformFromHostname(hostname);
+        trackLinkClick(link, platform);
+      } catch (e) {}
     });
   }
 
   /* ──────────────────────────────────────────────────
-     PLATFORM FILTER BAR INJECTION
+     6. DISCLOSURE BANNER
+
+     THREE files touch #affiliateDisclosure:
+       navbar.js  — binds click, calls .remove() (no sessionStorage)
+       main.js    — binds click on DOMContentLoaded (has sessionStorage)
+       affiliate.js (this file) — canonical handler
+
+     FIX STRATEGY:
+       • We use window._discBound to let only ONE handler win.
+       • We run on DOMContentLoaded (AFTER navbar.js and main.js
+         have already bound their handlers).
+       • We REPLACE the close button's event listeners by cloning
+         the button — this removes navbar.js's .remove() handler
+         AND main.js's handler in one shot.
+       • Our handler: smooth CSS animation + sessionStorage persist.
+       • sessionStorage key: 'meowmeow-disclosure-closed'
+         (matches main.js — so if main.js ran first it's still compatible)
   ────────────────────────────────────────────────── */
 
-  function injectPlatformFilter() {
-    if (document.getElementById('affPlatformBar')) return;
+  function initDisclosure() {
+    /* Only one file should own this */
+    if (window._discBound) return;
+    window._discBound = true;
 
-    const grid = document.getElementById('productGrid');
-    if (!grid) return;
+    var banner  = document.getElementById('affiliateDisclosure');
+    var closeEl = document.getElementById('disclosureClose');
 
-    const bar = document.createElement('div');
-    bar.id = 'affPlatformBar';
-    bar.style.cssText = 'display:flex;align-items:center;gap:8px;margin-bottom:16px;flex-wrap:wrap;';
-    bar.innerHTML = `
-      <span style="font-size:0.78rem;color:var(--text-tertiary);font-weight:600;">Platform:</span>
-      <button class="filter-btn active" data-platform="all">All</button>
-      <button class="filter-btn" data-platform="amazon"><i class="fab fa-amazon"></i> Amazon</button>
-      <button class="filter-btn" data-platform="daraz"><i class="fas fa-store"></i> Daraz</button>
-      <button class="filter-btn" data-platform="temu"><i class="fas fa-shopping-bag"></i> Temu</button>
-      <button class="filter-btn" data-platform="aliexpress"><i class="fas fa-globe"></i> AliExpress</button>`;
+    if (!banner) return;
 
-    grid.insertAdjacentElement('beforebegin', bar);
-
-    bar.addEventListener('click', function (e) {
-      const btn = e.target.closest('[data-platform]');
-      if (!btn) return;
-      bar.querySelectorAll('[data-platform]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      activePlatform = btn.dataset.platform;
-      applyFilters();
-      renderProducts(false);
-    });
-  }
-
-  /* ──────────────────────────────────────────────────
-     CATEGORY FILTER BINDING
-     FIX 5: Skip if products.js is present — it owns these buttons.
-  ────────────────────────────────────────────────── */
-
-  function bindCategoryFilter() {
-    // products.js owns .filter-btn[data-filter] when it is loaded
-    if (typeof window.MeowProducts !== 'undefined') return;
-
-    const filterBar = document.querySelector('.filter-bar');
-    if (!filterBar) return;
-
-    filterBar.addEventListener('click', function (e) {
-      const btn = e.target.closest('.filter-btn[data-filter]');
-      if (!btn) return;
-
-      filterBar.querySelectorAll('.filter-btn[data-filter]').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      activeCategory = btn.dataset.filter || 'all';
-
-      // Reset platform bar to "All"
-      document.querySelectorAll('#affPlatformBar [data-platform]').forEach(b => {
-        b.classList.toggle('active', b.dataset.platform === 'all');
-      });
-      activePlatform = 'all';
-
-      applyFilters();
-      renderProducts(false);
-    });
-  }
-
-  /* ──────────────────────────────────────────────────
-     SEARCH BINDING
-     Adds a secondary 'input' listener on #searchInput.
-     Does NOT conflict with search.js — search.js only builds
-     its own dropdown from the value; it never calls renderProducts().
-  ────────────────────────────────────────────────── */
-
-  function bindSearch() {
-    const input = document.getElementById('searchInput');
-    if (!input || input._affSearchBound) return;
-    input._affSearchBound = true;
-
-    input.addEventListener('input', function () {
-      activeSearch = this.value.trim();
-      if (activeSearch.length === 0 || activeSearch.length >= 2) {
-        applyFilters();
-        renderProducts(false);
-      }
-    });
-  }
-
-  /* ──────────────────────────────────────────────────
-     URL PARAM SUPPORT  (?cat=beauty)
-  ────────────────────────────────────────────────── */
-
-  function readUrlParams() {
+    /* Already dismissed this session? */
     try {
-      const cat = new URLSearchParams(window.location.search).get('cat');
-      if (cat) {
-        activeCategory = cat.toLowerCase();
-        document.querySelectorAll('.filter-btn[data-filter]').forEach(btn => {
-          btn.classList.toggle('active', btn.dataset.filter === activeCategory);
-        });
+      if (sessionStorage.getItem('meowmeow-disclosure-closed') === '1') {
+        banner.style.display = 'none';
+        return;
       }
+    } catch (e) {}
+
+    /* Make sure it is visible */
+    banner.style.display   = '';
+    banner.style.opacity   = '';
+    banner.style.transform = '';
+
+    if (!closeEl) return;
+
+    /*
+     * CLONE the close button to strip ALL previously bound handlers
+     * (navbar.js binds synchronously before DOMContentLoaded).
+     * The clone inherits the element but not the listeners.
+     */
+    var freshClose = closeEl.cloneNode(true);
+    closeEl.parentNode.replaceChild(freshClose, closeEl);
+
+    freshClose.addEventListener('click', function () {
+      /* Smooth slide-up + fade */
+      banner.style.transition  = 'opacity 0.35s ease, transform 0.35s ease, max-height 0.4s ease, padding 0.4s ease, margin 0.4s ease';
+      banner.style.overflow    = 'hidden';
+      banner.style.maxHeight   = banner.offsetHeight + 'px';
+
+      /* Trigger reflow so transition plays */
+      void banner.offsetHeight;
+
+      banner.style.opacity   = '0';
+      banner.style.transform = 'translateY(-10px)';
+      banner.style.maxHeight = '0';
+      banner.style.padding   = '0';
+      banner.style.margin    = '0';
+
+      setTimeout(function () {
+        banner.style.display = 'none';
+      }, 420);
+
+      try {
+        sessionStorage.setItem('meowmeow-disclosure-closed', '1');
+      } catch (e) {}
+    });
+  }
+
+  /* ──────────────────────────────────────────────────
+     7. AFFILIATE-TAG STYLES (self-contained)
+     Injected into <head> once. Works even when base.css
+     is not loaded. Uses CSS variables with fallbacks.
+  ────────────────────────────────────────────────── */
+
+  function injectTagStyles() {
+    if (document.getElementById('aff-tag-styles')) return;
+
+    var style = document.createElement('style');
+    style.id  = 'aff-tag-styles';
+    style.textContent = [
+      '.affiliate-tag {',
+      '  display: inline-block;',
+      '  font-size: 0.58em;',
+      '  font-weight: 700;',
+      '  line-height: 1;',
+      '  padding: 2px 5px;',
+      '  margin-left: 5px;',
+      '  border-radius: 3px;',
+      '  background: var(--warning, #F59E0B);',
+      '  color: #fff;',
+      '  vertical-align: super;',
+      '  letter-spacing: 0.04em;',
+      '  text-transform: uppercase;',
+      '  cursor: default;',
+      '  pointer-events: none;',
+      '  user-select: none;',
+      '  font-family: var(--font-body, Inter, sans-serif);',
+      '}',
+      '[data-theme="dark"] .affiliate-tag {',
+      '  background: var(--warning, #D97706);',
+      '}'
+    ].join('\n');
+
+    document.head.appendChild(style);
+  }
+
+  /* ──────────────────────────────────────────────────
+     8. DNS PRECONNECT HINTS
+     Adds <link rel="preconnect"> for affiliate domains.
+     Browser resolves DNS before user clicks Buy Now.
+     Only added if not already present.
+  ────────────────────────────────────────────────── */
+
+  function addPreconnects() {
+    var origins = [
+      'https://www.amazon.com',
+      'https://www.daraz.pk',
+      'https://www.temu.com',
+      'https://www.aliexpress.com'
+    ];
+
+    origins.forEach(function (origin) {
+      if (!document.querySelector('link[rel="preconnect"][href="' + origin + '"]')) {
+        var link  = document.createElement('link');
+        link.rel  = 'preconnect';
+        link.href = origin;
+        document.head.appendChild(link);
+      }
+    });
+  }
+
+  /* ──────────────────────────────────────────────────
+     9. PAGE VIEW TRACKING
+     One GA4 event per page load to track which pages
+     drive affiliate clicks. Fires after gtag is ready.
+  ────────────────────────────────────────────────── */
+
+  function trackPageView() {
+    try {
+      if (typeof gtag !== 'function') return;
+      gtag('event', 'affiliate_page_view', {
+        send_to:       GA4_ID,
+        page_title:    document.title,
+        page_location: window.location.href,
+        page_path:     window.location.pathname
+      });
     } catch (e) {}
   }
 
   /* ──────────────────────────────────────────────────
-     TOAST HELPER
+     10. DEBOUNCED MUTATION OBSERVER
+     Collapses rapid DOM bursts (affiliate-main injecting
+     12 cards, component.js re-binding tooltips, cart.js
+     re-binding buttons) into ONE processLinks() call.
+
+     DEBOUNCE = 250ms — longer than component.js's implied
+     synchronous re-run to ensure we run last.
+
+     processLinks() is O(new links only) due to _affTagged
+     so firing this 100 times costs nothing after first pass.
   ────────────────────────────────────────────────── */
 
-  function showToast(msg, type) {
-    if (typeof window.showToast === 'function') window.showToast(msg, type);
-    else console.log(`[${type}] ${msg}`);
+  var _debounceTimer = null;
+
+  function scheduleProcess() {
+    clearTimeout(_debounceTimer);
+    _debounceTimer = setTimeout(processLinks, 250);
   }
 
   /* ──────────────────────────────────────────────────
-     EXTEND NAVBAR SEARCH
-     Pushes catalogue products into search.js product list
-     so the navbar search dropdown shows affiliate products.
+     11. PUBLIC API
+     window.MeowAffiliate — shared with affiliate-main.js
+     which also writes to this object. We use Object.assign
+     so both files can contribute methods safely.
   ────────────────────────────────────────────────── */
 
-  function extendNavbarSearch() {
-    if (!Array.isArray(window.MeowSearchProducts)) return;
-    window.MeowSearchProducts.push(
-      ...ALL_PRODUCTS.map(p => ({
-        name:     p.name,
-        price:    '$' + p.price.toFixed(2),
-        category: p.subcategory || p.category,
-        image:    p.image
-      }))
-    );
-  }
+  window.MeowAffiliate = window.MeowAffiliate || {};
+
+  Object.assign(window.MeowAffiliate, {
+
+    /**
+     * Re-tag all links manually after injecting HTML.
+     * Usage: window.MeowAffiliate.tag()
+     */
+    tag: processLinks,
+
+    /**
+     * Get the affiliate config for a URL.
+     * Usage: window.MeowAffiliate.getConfig('https://amazon.com/dp/...')
+     * Returns: { param, value } or null
+     */
+    getConfig: function (urlStr) {
+      try {
+        var m = matchDomain(new URL(urlStr).hostname);
+        return m ? m.cfg : null;
+      } catch (e) { return null; }
+    },
+
+    /**
+     * Get the platform name for a URL.
+     * Usage: window.MeowAffiliate.getPlatform('https://daraz.pk/...')
+     * Returns: "daraz" | "amazon" | "temu" | "aliexpress" | "unknown"
+     */
+    getPlatform: function (urlStr) {
+      try {
+        return getPlatformFromHostname(new URL(urlStr).hostname);
+      } catch (e) { return 'unknown'; }
+    },
+
+    /**
+     * Manually fire a click tracking event.
+     * Usage: window.MeowAffiliate.trackClick(linkEl, 'amazon')
+     */
+    trackClick: trackLinkClick,
+
+    /**
+     * Show the disclosure banner again (e.g. after navigation).
+     * Usage: window.MeowAffiliate.showDisclosure()
+     */
+    showDisclosure: function () {
+      var banner = document.getElementById('affiliateDisclosure');
+      if (!banner) return;
+      banner.style.cssText = '';
+      banner.style.display = '';
+      try { sessionStorage.removeItem('meowmeow-disclosure-closed'); } catch (e) {}
+      /* Reset _discBound so initDisclosure() can re-bind */
+      window._discBound = false;
+      initDisclosure();
+    },
+
+    /** All configured affiliate domains */
+    domains: Object.keys(CONFIG),
+
+    /** Version */
+    version: '4.0'
+  });
 
   /* ──────────────────────────────────────────────────
-     INIT
+     12. INIT
   ────────────────────────────────────────────────── */
 
   function init() {
-    if (!document.getElementById('productGrid')) return;
+    /* Run styles + preconnects immediately (no DOM needed) */
+    injectTagStyles();
+    addPreconnects();
 
-    readUrlParams();
-    applyFilters();
-    injectSortDropdown();
-    injectPlatformFilter();
-    bindCategoryFilter();
-    bindSearch();
-    bindGridEvents();
-    extendNavbarSearch();
-    renderProducts(false);
+    /* processLinks + disclosure need DOM */
+    processLinks();
+    initDisclosure();
+    initCardBuyTracking();
+    trackPageView();
 
-    console.log(
-      `[affiliate-main] ✅ ${ALL_PRODUCTS.length} products loaded — ` +
-      `Amazon:${(window.AmazonProducts||[]).length}  ` +
-      `Daraz:${(window.DarazProducts||[]).length}  ` +
-      `Temu:${(window.TemuProducts||[]).length}  ` +
-      `AliExpress:${(window.AliExpressProducts||[]).length}`
-    );
+    /* Watch for dynamic content */
+    if (typeof MutationObserver !== 'undefined') {
+      var observer = new MutationObserver(scheduleProcess);
+      observer.observe(document.body, {
+        childList: true,
+        subtree:   true
+      });
+    }
   }
 
+  /*
+   * Run as late as possible so we run AFTER:
+   *   navbar.js (sync, already ran)
+   *   main.js DOMContentLoaded
+   *   script.js (sync, already ran — sets rel without "sponsored")
+   *
+   * DOMContentLoaded fires after all sync scripts have run.
+   * If it has already fired (script at end of body), run now.
+   */
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
   } else {
     init();
   }
-
-  /* ──────────────────────────────────────────────────
-     PUBLIC API
-  ────────────────────────────────────────────────── */
-
-  window.MeowAffiliate = {
-    products:      ALL_PRODUCTS,
-    getByCategory: cat => ALL_PRODUCTS.filter(p => p.category === cat),
-    getByPlatform: mp  => ALL_PRODUCTS.filter(p =>
-                            p.marketplace.toLowerCase().includes(mp.toLowerCase())),
-    search:        q   => ALL_PRODUCTS.filter(p =>
-                            p.name.toLowerCase().includes(q.toLowerCase()) ||
-                            (p.tags||[]).some(t => t.toLowerCase().includes(q.toLowerCase()))),
-    setCategory:   cat => { activeCategory = cat; applyFilters(); renderProducts(false); },
-    setPlatform:   mp  => { activePlatform = mp;  applyFilters(); renderProducts(false); },
-    refresh:       ()  => { applyFilters(); renderProducts(false); }
-  };
 
 })();
