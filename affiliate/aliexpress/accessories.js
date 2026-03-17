@@ -6,23 +6,25 @@
 window.AmazonProducts = window.AmazonProducts || [];
 
 window.AmazonProducts.push(
-  {
-    id:             'ama-acce-001',
-    name:           'Oversized Sunglasses — UV400 Retro',
-    category:       'accessories',
-    subcategory:    'Hats',
-    price:          42.16,
-    originalPrice:  58.56,
-    discount:       28,
-    rating:         4.5,
-    reviews:        874,
-    badge:          'hot',
-    image:          'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=400&h=400&fit=crop&auto=format',
-    url:            'https://www.amazon.com/dp/B0ACCE001?tag=meowmeow-21',
-    marketplace:    'Amazon',
+ 
+{
+    id: 'ama-acce-001',
+    name: 'Nike Men\'s Golf Cap',
+    category: 'accessories',
+    subcategory: 'Hats',
+    price: 7819.01,            // Current price in PKR
+    originalPrice: 10953.81,    // Original Amazon price (optional, for discount calculation)
+    discount: 28,               // Percentage off
+    rating: 4.6,                // Star rating
+    reviews: 3374,              // Number of reviews
+    badge: 'hot',               // Optional badge (hot, sale, bestseller)
+    image: 'https://a.co/d/01T5q03G',  // Amazon image link
+    url: 'https://amzn.to/4rLxsdG',    // Affiliate link
+    marketplace: 'Amazon',
     marketplaceIcon: 'fab fa-amazon',
-    tags:           ["fashion", "accessories", "hats", "sunglasses", "style", "outfit"]
-  },
+    tags: ['fashion', 'accessories', 'hats', 'style', 'outfit']
+},
+
   {
     id:             'ama-acce-002',
     name:           'Claw Hair Clips Set — 6 Pack Pastel',
