@@ -1,5 +1,5 @@
 /* ============================================================
-   RENDER-AMAZON.JS  v1.0
+   RENDER-ALIEXPRESS.JS  v1.0
    AliExpress Product Renderer
 
    WHAT THIS FILE DOES:
@@ -71,7 +71,7 @@
   var GRID_ID        = 'aliexpressGrid';   /* preferred; falls back to productGrid */
 
   /* ──────────────────────────────────────────────────
-     COLLECT ALL AMAZON PRODUCTS
+     COLLECT ALL ALIEXPRESS PRODUCTS
      The per-category files (Women.js, Men.js …) all push
      into window.AliExpressProducts via the push() pattern.
      We read that single array here.
@@ -224,7 +224,7 @@
       ' data-product-id="' + esc(p.id) + '"' +
       ' data-price="' + p.price + '"' +
       ' data-rating="' + p.rating + '"' +
-      ' data-marketplace="amazon">' +
+      ' data-marketplace="aliexpress">' +
 
       '<div class="product-badges">' + badges(p) + '</div>' +
 
