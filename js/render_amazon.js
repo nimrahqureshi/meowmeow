@@ -1,4 +1,3 @@
-
 /* ============================================================
    RENDER-AMAZON.JS  v1.0
    Amazon Product Renderer
