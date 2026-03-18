@@ -1,5 +1,5 @@
 /* ============================================================
-   RENDER-AMAZON.JS  v1.0
+   RENDER-DARAZ.JS  v1.0
    Daraz Product Renderer
 
    WHAT THIS FILE DOES:
@@ -71,7 +71,7 @@
   var GRID_ID        = 'darazGrid';   /* preferred; falls back to productGrid */
 
   /* ──────────────────────────────────────────────────
-     COLLECT ALL AMAZON PRODUCTS
+     COLLECT ALL DARAZ PRODUCTS
      The per-category files (Women.js, Men.js …) all push
      into window.DarazProducts via the push() pattern.
      We read that single array here.
@@ -224,7 +224,7 @@
       ' data-product-id="' + esc(p.id) + '"' +
       ' data-price="' + p.price + '"' +
       ' data-rating="' + p.rating + '"' +
-      ' data-marketplace="amazon">' +
+      ' data-marketplace="daraz">' +
 
       '<div class="product-badges">' + badges(p) + '</div>' +
 
