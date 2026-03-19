@@ -12,7 +12,9 @@
    ============================================================ */
 
 /* Initialise array once — category files push into it */
-window.AmazonProducts = [];
+// window.AmazonProducts = [];
+window.AmazonProducts = window.AmazonProducts || [];
+
 
 /* Metadata used by affiliate-main.js */
 window.AmazonProducts._meta = {
