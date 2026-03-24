@@ -1,332 +1,175 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- =========================
-BASIC META
-========================= -->
-<meta charset="UTF-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Products | MeowMeow</title>
 
-<!-- =========================
-PRIMARY SEO
-========================= -->
-<title>Products | MeowMeow</title></title>
+  <meta name="description" content="Browse thousands of affiliate-curated products from Amazon, Daraz, Temu and AliExpress — fashion, electronics, beauty, pets, toys, home and more." />
+  <meta name="keywords" content="affiliate store, best deals, amazon deals, daraz, temu, aliexpress, fashion, electronics, beauty, pets" />
+  <meta name="author" content="MeowMeow" />
+  <meta name="robots" content="index, follow" />
 
-<meta name="description"
-content="MeowMeow helps you discover the best deals online. Compare products from Amazon, Daraz, Temu and AliExpress including fashion, toys, gadgets, cosmetics and jewelry.">
+  <link rel="canonical" href="https://meowmeow-livid.vercel.app/products.html" />
 
-<meta name="keywords"
-content="best online deals, affiliate store, amazon deals, temu deals, daraz products, gadgets, fashion, toys, cosmetics, jewelry">
+  <meta property="og:title" content="Products | MeowMeow" />
+  <meta property="og:description" content="Browse thousands of curated deals across every category." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://meowmeow-livid.vercel.app/products.html" />
+  <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png" />
 
-<meta name="author" content="MeowMeow">
-<meta name="robots" content="index, follow">
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Products | MeowMeow" />
+  <meta name="twitter:description" content="Best deals across Amazon, Daraz, Temu and AliExpress." />
 
-<!-- =========================
-CANONICAL URL
-========================= -->
-<link rel="canonical" href="https://meowmeow-livid.vercel.app/">
+  <link rel="icon" type="image/png" href="images/logo.png" />
 
-<!-- =========================
-OPEN GRAPH (FACEBOOK / WHATSAPP)
-========================= -->
-<meta property="og:title" content="MeowMeow | Best Online Deals">
-<meta property="og:description"
-content="Compare the best deals across Amazon, Temu, Daraz and AliExpress.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://meowmeow-livid.vercel.app/">
-<meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-<!-- =========================
-TWITTER CARD
-========================= -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MeowMeow | Smart Affiliate Shopping">
-<meta name="twitter:description"
-content="Find trending products and the best deals across multiple marketplaces.">
-<meta name="twitter:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-<!-- =========================
-FAVICON
-========================= -->
-<link rel="icon" type="image/png" href="/images/logo.png">
+  <!-- CSS (order matters — themes last) -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/buttons.css" />
+  <link rel="stylesheet" href="css/cards.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/navbar.css" />
+  <link rel="stylesheet" href="css/hero.css" />
+  <link rel="stylesheet" href="css/sections.css" />
+  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/contact.css" />
+  <link rel="stylesheet" href="css/cart.css" />
+  <link rel="stylesheet" href="css/legal.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <link rel="stylesheet" href="css/themes.css" />
+  <link rel="stylesheet" href="css/animations.css" />
 
-<!-- =========================
-PERFORMANCE
-========================= -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- themes.js in <head> prevents flash of wrong theme -->
+  <script src="js/themes.js"></script>
 
-<!-- =========================
-GOOGLE FONTS
-========================= -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<!-- =========================
-ICONS
-========================= -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- =========================
-STRUCTURED DATA (SEO BOOST)
-========================= -->
-<script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "WebSite",
-"name": "MeowMeow",
-"url": "https://meowmeow-livid.vercel.app",
-"potentialAction": {
-"@type": "SearchAction",
-"target": "https://meowmeow-livid.vercel.app/search?q={search_term_string}",
-"query-input": "required name=search_term_string"
-}
-}
-</script>
-
-<!-- =========================
-CSS FILES
-========================= -->
-<link rel="stylesheet" href="/css/variables.css">
-<link rel="stylesheet" href="/css/base.css">
-<link rel="stylesheet" href="/css/buttons.css">
-<link rel="stylesheet" href="/css/cards.css">
-<link rel="stylesheet" href="/css/components.css">
-<link rel="stylesheet" href="/css/navbar.css">
-<link rel="stylesheet" href="/css/hero.css">
-<link rel="stylesheet" href="/css/sections.css">
-<link rel="stylesheet" href="/css/footer.css">
-<link rel="stylesheet" href="/css/contact.css">
-<link rel="stylesheet" href="/css/cart.css">
-<link rel="stylesheet" href="/css/legal.css">
-<link rel="stylesheet" href="/css/responsive.css">
-<link rel="stylesheet" href="/css/themes.css">
-<link rel="stylesheet" href="/css/style.css">
-<link rel="stylesheet" href="/css/animations.css">
-
-<!-- =========================
-GOOGLE ANALYTICS (ADD YOUR ID)
-========================= -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8QLN8M6LJ3');
-</script>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-8QLN8M6LJ3');
+  </script>
 </head>
 
 <body data-theme="light">
 
-<!-- =========================
-SCROLL PROGRESS BAR
-========================= -->
+<!-- ====== SCROLL PROGRESS ====== -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- =========================
-NAVBAR
-========================= -->
-<nav class="navbar" id="navbar" role="navigation">
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar" id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="nav-container">
 
-<div class="nav-container">
+    <a href="index.html" class="nav-logo" aria-label="MeowMeow Home">
+      <div class="logo-icon"><i class="fas fa-paw"></i></div>
+      <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+    </a>
 
-<!-- LOGO -->
-<a href="index.html" class="nav-logo" aria-label="MeowMeow Home">
+    <div class="nav-search" id="navSearch">
+      <div class="search-wrapper">
+        <i class="fas fa-search search-icon"></i>
+        <input type="text" id="searchInput" placeholder="Search products, deals..." autocomplete="off" aria-label="Search products" />
+        <button class="search-clear" id="searchClear" aria-label="Clear search"><i class="fas fa-times"></i></button>
+        <div class="search-results" id="searchResults"></div>
+      </div>
+    </div>
 
-<div class="logo-icon">
-<i class="fas fa-paw"></i>
-</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html"      class="nav-link">Home</a></li>
+      <li><a href="products.html"   class="nav-link active">Products</a></li>
+      <li><a href="deals.html"      class="nav-link">Hot Deals</a></li>
+      <li><a href="trending.html"   class="nav-link">Trending</a></li>
+      <li><a href="categories.html" class="nav-link">Categories</a></li>
+      <li><a href="blog.html"       class="nav-link">Blog</a></li>
+      <li><a href="about.html"      class="nav-link">About</a></li>
+      <li><a href="contact.html"    class="nav-link">Contact</a></li>
+    </ul>
 
-<span class="logo-text">
-Meow<span class="logo-highlight">Meow</span>
-</span>
+    <div class="nav-actions">
+      <button class="nav-btn search-toggle" id="searchToggle" aria-label="Toggle Search"><i class="fas fa-search"></i></button>
+      <a href="cart.html" class="nav-btn cart-btn" aria-label="Shopping Cart">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-badge" id="cartCount">0</span>
+      </a>
+      <button class="nav-btn theme-toggle" id="themeToggle" aria-label="Toggle Theme"><i class="fas fa-sun" id="themeIcon"></i></button>
+      <button class="nav-btn menu-toggle" id="menuToggle" aria-label="Open Menu">
+        <span class="hamburger"><span></span><span></span><span></span></span>
+      </button>
+    </div>
+  </div>
 
-</a>
+  <div class="mobile-overlay" id="mobileOverlay"></div>
 
-<!-- SEARCH BAR -->
-<div class="nav-search" id="navSearch">
-
-<div class="search-wrapper">
-
-<i class="fas fa-search search-icon"></i>
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search products, deals..."
-autocomplete="off"
-aria-label="Search products"
-/>
-
-<button
-class="search-clear"
-id="searchClear"
-aria-label="Clear search"
->
-
-<i class="fas fa-times"></i>
-
-</button>
-
-<div class="search-results" id="searchResults"></div>
-
-</div>
-
-</div>
-
-<!-- DESKTOP NAV LINKS -->
-<ul class="nav-links" id="navLinks">
-
-<li><a href="index.html" class="nav-link">Home</a></li>
-
-<li><a href="products.html" class="nav-link">Products</a></li>
-
-<li><a href="deals.html" class="nav-link">Hot Deals</a></li>
-
-<li><a href="trending.html" class="nav-link">Trending</a></li>
-
-<li><a href="categories.html" class="nav-link">Categories</a></li>
-
-<li><a href="blog.html" class="nav-link">Blog</a></li>
-
-<li><a href="about.html" class="nav-link">About</a></li>
-
-<li><a href="contact.html" class="nav-link">Contact</a></li>
-
-</ul>
-
-<!-- NAV ACTIONS -->
-<div class="nav-actions">
-
-<!-- Mobile Search -->
-<button
-class="nav-btn search-toggle"
-id="searchToggle"
-aria-label="Open Search"
->
-<i class="fas fa-search"></i>
-</button>
-
-<!-- Cart -->
-<a
-href="cart.html"
-class="nav-btn cart-btn"
-aria-label="Shopping Cart"
->
-<i class="fas fa-shopping-cart"></i>
-<span class="cart-badge" id="cartCount">0</span>
-</a>
-
-<!-- Theme Toggle -->
-<button
-class="nav-btn theme-toggle"
-id="themeToggle"
-aria-label="Toggle Theme"
->
-<i class="fas fa-sun" id="themeIcon"></i>
-</button>
-
-<!-- Mobile Menu Button -->
-<button
-class="nav-btn menu-toggle"
-id="menuToggle"
-aria-label="Open Menu"
->
-
-<span class="hamburger">
-
-<span></span>
-<span></span>
-<span></span>
-
-</span>
-
-</button>
-
-</div>
-
-</div>
-
-<!-- MOBILE OVERLAY -->
-<div class="mobile-overlay" id="mobileOverlay"></div>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobileMenu">
-
-<div class="mobile-menu-header">
-
-<a href="index.html" class="nav-logo">
-
-<div class="logo-icon">
-<i class="fas fa-paw"></i>
-</div>
-
-<span class="logo-text">
-Meow<span class="logo-highlight">Meow</span>
-</span>
-
-</a>
-
-<button
-class="mobile-close"
-id="mobileClose"
-aria-label="Close Menu"
->
-
-<i class="fas fa-times"></i>
-
-</button>
-
-</div>
-
-<ul class="mobile-nav-links">
-
-<li><a href="index.html">Home</a></li>
-<li><a href="products.html">Products</a></li>
-<li><a href="deals.html">Hot Deals</a></li>
-<li><a href="trending.html">Trending</a></li>
-<li><a href="categories.html">Categories</a></li>
-<li><a href="blog.html">Blog</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="contact.html">Contact</a></li>
-<li><a href="cart.html">Cart</a></li>
-
-</ul>
-
-<div class="mobile-theme-switch">
-
-<span>Dark Mode</span>
-
-<label class="toggle-switch">
-
-<input type="checkbox" id="mobileThemeToggle">
-
-<span class="toggle-slider"></span>
-
-</label>
-
-</div>
-
-</div>
-
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+      <a href="index.html" class="nav-logo">
+        <div class="logo-icon"><i class="fas fa-paw"></i></div>
+        <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+      </a>
+      <button class="mobile-close" id="mobileClose" aria-label="Close Menu"><i class="fas fa-times"></i></button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="deals.html">Hot Deals</a></li>
+      <li><a href="trending.html">Trending</a></li>
+      <li><a href="categories.html">Categories</a></li>
+      <li><a href="blog.html">Blog</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="cart.html">Cart</a></li>
+    </ul>
+    <div class="mobile-theme-switch">
+      <span>Dark Mode</span>
+      <label class="toggle-switch">
+        <input type="checkbox" id="mobileThemeToggle" />
+        <span class="toggle-slider"></span>
+      </label>
+    </div>
+  </div>
 </nav>
+
 <main id="mainContent">
+
+  <!-- Affiliate Disclosure -->
+  <div class="affiliate-disclosure" id="affiliateDisclosure">
+    <div class="disclosure-content">
+      <i class="fas fa-info-circle" aria-hidden="true"></i>
+      <p><strong>Disclosure:</strong> MeowMeow participates in Amazon, Daraz, Temu &amp; AliExpress affiliate programs. We may earn a commission <em>at no extra cost to you</em>.</p>
+      <button class="disclosure-close" id="disclosureClose" aria-label="Close disclosure"><i class="fas fa-times" aria-hidden="true"></i></button>
+    </div>
+  </div>
 
   <!-- Page Header -->
   <section class="page-header">
     <div class="container">
-      <h1>🛍️ All Products</h1>
-      <p>Browse thousands of affiliate-curated products from Amazon, Daraz, Temu & AliExpress</p>
-      <div class="breadcrumb">
-        <a href="index.html">Home</a> <span>/</span> <span>All Products</span>
+      <div class="page-header-content">
+        <div class="section-badge"><i class="fas fa-store"></i> All Products</div>
+        <h1 class="page-title">🛍️ Browse All Products</h1>
+        <p class="page-subtitle">Thousands of curated deals from Amazon, Daraz, Temu &amp; AliExpress across 15 categories.</p>
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fas fa-chevron-right"></i>
+          <span>Products</span>
+        </nav>
       </div>
     </div>
   </section>
 
-  <!-- CATEGORY FILTER -->
+  <!-- Category Filter Bar -->
   <section class="section" style="padding-top:30px;padding-bottom:0;">
     <div class="container">
       <div class="filter-bar">
@@ -336,110 +179,99 @@ aria-label="Close Menu"
         <button class="filter-btn" data-filter="kids">🧒 Kids</button>
         <button class="filter-btn" data-filter="shoes">👟 Shoes</button>
         <button class="filter-btn" data-filter="bags">👜 Bags</button>
-        <button class="filter-btn" data-filter="jewelry">💎 Jewelry</button>
+        <button class="filter-btn" data-filter="jewelry">💍 Jewelry</button>
         <button class="filter-btn" data-filter="watches">⌚ Watches</button>
         <button class="filter-btn" data-filter="beauty">💄 Beauty</button>
         <button class="filter-btn" data-filter="pets">🐾 Pets</button>
-        <button class="filter-btn" data-filter="toys">🎮 Toys</button>
+        <button class="filter-btn" data-filter="toys">🎲 Toys</button>
         <button class="filter-btn" data-filter="electronics">💻 Electronics</button>
         <button class="filter-btn" data-filter="crafts">🎨 Crafts</button>
         <button class="filter-btn" data-filter="home">🏠 Home</button>
-        <button class="filter-btn" data-filter="accessories">🎁 Accessories</button>
+        <button class="filter-btn" data-filter="accessories">🕶️ Accessories</button>
         <button class="filter-btn" data-filter="flowers">🌸 Flowers</button>
       </div>
     </div>
   </section>
 
-  <!-- PRODUCT GRID -->
-  <section class="page-content">
+  <!-- Product Grid Section -->
+  <section class="page-content" style="padding-top:24px;">
     <div class="container">
 
-      <!-- SUBCATEGORY BAR (DYNAMIC) -->
-      <div id="subcategoryBar" class="subcategory-bar" style="display: none; margin: 20px 0; padding: 20px; background: var(--bg-tertiary); border-radius: var(--radius-lg); box-shadow: var(--shadow-sm);">
-        <h4 id="subcategoryTitle" style="margin: 0 0 15px; color: var(--text-primary); font-family: var(--font-heading);"></h4>
-        <div id="subcategoryList" class="subcategory-list" style="display: flex; flex-wrap: wrap; gap: 10px;"></div>
+      <!-- Subcategory bar — populated by products.js -->
+      <div id="subcategoryBar" class="subcategory-bar" style="display:none;margin:20px 0;padding:16px;background:var(--bg-secondary);border:1px solid var(--border);border-radius:var(--radius-lg);">
+        <div id="subcategoryList" class="subcategory-list" style="display:flex;flex-wrap:wrap;gap:8px;"></div>
       </div>
 
+      <!-- Platform filter injected by affiliate-main.js -->
+
+      <!-- Product Grid — affiliate-main.js + render_*.js render cards here -->
       <div class="product-grid" id="productGrid">
-        <!-- All product cards stay as-is -->
-        <!-- Example Product Card (Women) -->
-        <div class="product-card" data-category="women">
-          <div class="product-badges"><span class="badge badge-sale">-45%</span></div>
-          <button class="wishlist-toggle" aria-label="Add to wishlist"><i class="far fa-heart"></i></button>
-          <div class="product-image">
-            <img src="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=400&h=400&fit=crop&auto=format" alt="Elegant Floral Maxi Dress" loading="lazy">
-            <div class="product-overlay">
-              <button class="btn btn-sm btn-primary quick-view-btn"><i class="fas fa-eye"></i> Quick View</button>
-            </div>
-          </div>
+
+        <!-- Loading skeleton shown before JS fires -->
+        <div class="product-card" style="opacity:0.35;pointer-events:none;">
+          <div class="product-image" style="background:var(--bg-tertiary);height:220px;border-radius:var(--radius-lg);"></div>
           <div class="product-info">
-            <div class="product-marketplace"><i class="fab fa-amazon"></i> Amazon</div>
-            <h3 class="product-name">Elegant Floral Maxi Dress</h3>
-            <div class="product-rating">
-              <div class="stars" aria-label="4.5 stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i></div>
-              <span class="rating-count">(2,147)</span>
-            </div>
-            <div class="product-price">
-              <span class="price-current">$24.99</span>
-              <span class="price-original">$44.99</span>
-            </div>
-            <div class="product-actions">
-              <button class="btn btn-cta btn-block btn-3d add-to-cart-btn" 
-                      data-name="Elegant Floral Maxi Dress" 
-                      data-price="24.99" 
-                      data-img="https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=100&h=100&fit=crop">
-                <i class="fas fa-cart-plus"></i> Add to Cart
-              </button>
-              <a href="https://amazon.com/dp/WOMEN-DRESS-001" class="btn btn-outline btn-block btn-sm" target="_blank" rel="noopener noreferrer">
-                <i class="fas fa-external-link-alt"></i> Buy Now
-              </a>
-            </div>
+            <div style="height:12px;background:var(--bg-tertiary);border-radius:4px;margin-bottom:8px;"></div>
+            <div style="height:16px;background:var(--bg-tertiary);border-radius:4px;margin-bottom:12px;width:80%;"></div>
+            <div style="height:12px;background:var(--bg-tertiary);border-radius:4px;width:50%;"></div>
           </div>
         </div>
-        <!-- Repeat for all other product cards -->
+
       </div>
 
-      <!-- NO RESULTS STATE -->
-      <div id="noResults" class="empty-state" style="display: none; margin: 40px 0;">
-        <div class="empty-icon">
-          <i class="fas fa-search"></i>
-        </div>
-        <h3>No products found in this category</h3>
-        <p>Try selecting a different filter or view all products.</p>
-        <button class="btn btn-primary" onclick="document.querySelector('.filter-btn[data-filter=all]').click();">
+      <!-- No Results State -->
+      <div id="noResults" class="empty-state" style="display:none;text-align:center;padding:60px 20px;">
+        <div style="font-size:4rem;margin-bottom:16px;opacity:0.4;"><i class="fas fa-search"></i></div>
+        <h3>No products found</h3>
+        <p>Try a different category or search term.</p>
+        <button class="btn btn-outline" onclick="document.querySelector('.filter-btn[data-filter=all]')?.click()">
           Show All Products
         </button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="section newsletter-section">
+    <div class="container">
+      <div class="newsletter-card">
+        <div class="newsletter-content">
+          <h2><i class="fas fa-envelope-open-text"></i> Get Weekly Hot Deals</h2>
+          <p>Join 50,000+ savvy shoppers. Exclusive coupons + early flash sale access.</p>
+        </div>
+        <form class="newsletter-form" id="newsletterForm">
+          <div class="form-group">
+            <input type="email" id="newsletterEmail" placeholder="Your best email" required aria-label="Email for newsletter" />
+            <button type="submit" class="btn btn-cta btn-3d"><i class="fas fa-paper-plane"></i> Subscribe</button>
+          </div>
+          <p class="form-note" id="newsletterMsg"><i class="fas fa-lock"></i> Zero spam. Unsubscribe anytime.</p>
+        </form>
       </div>
     </div>
   </section>
 
 </main>
 
-  <!-- ====== FOOTER ====== -->
-  <footer class="footer">
-    <div class="footer-wave">
-      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-      </svg>
-    </div>
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="footer-wave">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+    </svg>
+  </div>
+  <div class="footer-content">
+    <div class="container">
+      <div class="footer-grid">
 
-    <div class="footer-content">
-      <div class="container">
-        <div class="footer-grid">
-
-            <!-- Brand -->
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">
             <div class="logo-icon"><i class="fas fa-paw"></i></div>
             <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
           </a>
-          <p>
-            MeowMeow is an independent product discovery and comparison website. 
-            We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more — so you can shop smarter and save.
-          </p>
-
+          <p>MeowMeow is an independent product discovery site. We curate the best deals across fashion, electronics, beauty, home, toys and more — so you shop smarter.</p>
           <div class="footer-socials">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -449,7 +281,6 @@ aria-label="Close Menu"
           </div>
         </div>
 
-        <!-- Quick Links -->
         <div class="footer-links-group">
           <h4>Quick Links</h4>
           <ul>
@@ -461,7 +292,6 @@ aria-label="Close Menu"
           </ul>
         </div>
 
-        <!-- Support -->
         <div class="footer-links-group">
           <h4>Support</h4>
           <ul>
@@ -473,7 +303,6 @@ aria-label="Close Menu"
           </ul>
         </div>
 
-        <!-- Legal -->
         <div class="footer-links-group">
           <h4>Legal</h4>
           <ul>
@@ -487,38 +316,24 @@ aria-label="Close Menu"
 
       </div>
 
-      <!-- TOP ROW (Newsletter + Disclosure) -->
       <div class="footer-top-row">
-        <!-- Newsletter -->
         <div class="footer-newsletter">
           <h4>Stay Updated</h4>
-          <p>Get weekly deals, product guides, and smart shopping tips.</p>
-          <form id="newsletter-form">
-            <input type="email" id="newsletter-email" placeholder="Your email address" required /> 
+          <p>Weekly deals, guides, and smart shopping tips.</p>
+          <form id="footer-newsletter-form">
+            <input type="email" id="footer-newsletter-email" placeholder="Your email address" required />
             <button type="submit">Subscribe</button>
           </form>
-          <small id="newsletter-msg">No spam. Unsubscribe anytime.</small>
+          <small id="footer-newsletter-msg">No spam. Unsubscribe anytime.</small>
         </div>
-       
         <p class="footer-disclosure">
           Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.
         </p>
-
       </div>
-        
 
-      <!-- Bottom -->
       <div class="footer-bottom">
-
-        <p class="footer-copy">
-          &copy; 2026 MeowMeow. All rights reserved.
-        </p>
-
-        <p class="footer-contact">
-          Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a>
-        </p> 
-
-
+        <p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved.</p>
+        <p class="footer-contact">Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p>
         <div class="footer-payments">
           <i class="fab fa-cc-visa"></i>
           <i class="fab fa-cc-mastercard"></i>
@@ -526,172 +341,132 @@ aria-label="Close Menu"
           <i class="fab fa-cc-apple-pay"></i>
           <i class="fab fa-cc-amex"></i>
         </div>
-
       </div>
     </div>
   </div>
 </footer>
 
-  <!-- ====== BACK TO TOP ====== -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
+<!-- ====== BACK TO TOP ====== -->
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
 
-  <!-- ====== TOAST CONTAINER ====== -->
-  <div class="toast-container" id="toastContainer"></div>
+<!-- ====== TOAST CONTAINER ====== -->
+<div class="toast-container" id="toastContainer"></div>
 
-  <!-- ====== JS FILES (ORDER MATTERS) ====== -->
-    <script src="js/amazon/Women.js"></script>
-     <script src="js/amazon/Men.js"></script>
-     <script src="js/amazon/Kids.js"></script>
-     <script src="js/amazon/Shoes.js"></script>
-     <script src="js/amazon/Bags.js"></script>
-     <script src="js/amazon/Jewelry.js"></script>
-     <script src="js/amazon/Watches.js"></script>
-     <script src="js/amazon/Beauty.js"></script>
-     <script src="js/amazon/Pets.js"></script>
-     <script src="js/amazon/Toys.js"></script>
-     <script src="js/amazon/Electronics.js"></script>
-     <script src="js/amazon/Crafts.js"></script>
-     <script src="js/amazon/Home.js"></script>
-     <script src="js/amazon/Accessories.js"></script>
-     <script src="js/amazon/Flowers.js"></script>
+<!-- ================================================================
+     JS LOAD ORDER — CRITICAL: do NOT add defer to data or render files
+     ================================================================
 
- <script src="js/daraz/Women.js"></script>
-     <script src="js/daraz/Men.js"></script>
-     <script src="js/daraz/Kids.js"></script>
-     <script src="js/daraz/Shoes.js"></script>
-     <script src="js/daraz/Bags.js"></script>
-     <script src="js/daraz/Jewelry.js"></script>
-     <script src="js/daraz/Watches.js"></script>
-     <script src="js/daraz/Beauty.js"></script>
-     <script src="js/daraz/Pets.js"></script>
-     <script src="js/daraz/Toys.js"></script>
-     <script src="js/daraz/Electronics.js"></script>
-     <script src="js/daraz/Crafts.js"></script>
-     <script src="js/daraz/Home.js"></script>
-     <script src="js/daraz/Accessories.js"></script>
-     <script src="js/daraz/Flowers.js"></script>
+  STEP 1 — Core UI (defer OK — they only need DOM)
+  STEP 2 — Product data files (NO defer — render files read them synchronously)
+  STEP 3 — Render files (NO defer — must run after data files)
+  STEP 4 — affiliate-main.js (NO defer — reads AMZ_/DRZ_/TMU_/AEX_ vars set by render files)
+  STEP 5 — affiliate.js (NO defer — must run last to tag all links)
+-->
 
-  <script src="js/aliexpress/Women.js"></script>
-     <script src="js/aliexpress/Men.js"></script>
-     <script src="js/aliexpress/Kids.js"></script>
-     <script src="js/aliexpress/Shoes.js"></script>
-     <script src="js/aliexpress/Bags.js"></script>
-     <script src="js/aliexpress/Jewelry.js"></script>
-     <script src="js/aliexpress/Watches.js"></script>
-     <script src="js/aliexpress/Beauty.js"></script>
-     <script src="js/aliexpress/Pets.js"></script>
-     <script src="js/aliexpress/Toys.js"></script>
-     <script src="js/aliexpress/Electronics.js"></script>
-     <script src="js/aliexpress/Crafts.js"></script>
-     <script src="js/aliexpress/Home.js"></script>
-     <script src="js/aliexpress/Accessories.js"></script>
-     <script src="js/aliexpress/Flowers.js"></script>
+<!-- STEP 1: Core UI scripts -->
+<script src="js/main.js"      defer></script>
+<script src="js/navbar.js"    defer></script>
+<script src="js/search.js"    defer></script>
+<script src="js/scroll.js"    defer></script>
+<script src="js/script.js"    defer></script>
+<script src="js/cart.js"      defer></script>
+<script src="js/component.js" defer></script>
+<script src="js/products.js"  defer></script>
 
-  <script src="js/temu/Women.js"></script>
-     <script src="js/temu/Men.js"></script>
-     <script src="js/temu/Kids.js"></script>
-     <script src="js/temu/Shoes.js"></script>
-     <script src="js/temu/Bags.js"></script>
-     <script src="js/temu/Jewelry.js"></script>
-     <script src="js/temu/Watches.js"></script>
-     <script src="js/temu/Beauty.js"></script>
-     <script src="js/temu/Pets.js"></script>
-     <script src="js/temu/Toys.js"></script>
-     <script src="js/temu/Electronics.js"></script>
-     <script src="js/temu/Crafts.js"></script>
-     <script src="js/temu/Home.js"></script>
-     <script src="js/temu/Accessories.js"></script>
-     <script src="js/temu/Flowers.js"></script>
+<!-- STEP 2a: Amazon product data (push into window.AmazonProducts) -->
+<script src="data/amazon/women.js"></script>
+<script src="data/amazon/men.js"></script>
+<script src="data/amazon/kids.js"></script>
+<script src="data/amazon/shoes.js"></script>
+<script src="data/amazon/bags.js"></script>
+<script src="data/amazon/jewelry.js"></script>
+<script src="data/amazon/watches.js"></script>
+<script src="data/amazon/beauty.js"></script>
+<script src="data/amazon/pets.js"></script>
+<script src="data/amazon/toys.js"></script>
+<script src="data/amazon/electronics.js"></script>
+<script src="data/amazon/crafts.js"></script>
+<script src="data/amazon/home.js"></script>
+<script src="data/amazon/accessories.js"></script>
+<script src="data/amazon/flowers.js"></script>
 
-  <script src="js/render_amazon.js"></script>
-  <script src="js/render_daraz.js"></script>
-  <script src="js/render_temu.js"></script>
-  <script src="js/render_aliexpress.js"></script>
+<!-- STEP 2b: Daraz product data -->
+<script src="data/daraz/women.js"></script>
+<script src="data/daraz/men.js"></script>
+<script src="data/daraz/kids.js"></script>
+<script src="data/daraz/shoes.js"></script>
+<script src="data/daraz/bags.js"></script>
+<script src="data/daraz/jewelry.js"></script>
+<script src="data/daraz/watches.js"></script>
+<script src="data/daraz/beauty.js"></script>
+<script src="data/daraz/pets.js"></script>
+<script src="data/daraz/toys.js"></script>
+<script src="data/daraz/electronics.js"></script>
+<script src="data/daraz/crafts.js"></script>
+<script src="data/daraz/home.js"></script>
+<script src="data/daraz/accessories.js"></script>
+<script src="data/daraz/flowers.js"></script>
 
-  <script src="js/themes.js" defer></script>
-  <script src="js/main.js" defer></script>
-  <script src="js/navbar.js" defer></script>
-  <script src="js/search.js" defer></script>
-  <script src="js/scroll.js" defer></script>
-  <script src="js/script.js" defer></script>
-  <script src="js/components.js" defer></script>
-  <script src="js/products.js" defer></script>
-  <script src="js/cart.js" defer></script>
-  <script src="js/affiliate.js"></script>
+<!-- STEP 2c: Temu product data -->
+<script src="data/temu/women.js"></script>
+<script src="data/temu/men.js"></script>
+<script src="data/temu/kids.js"></script>
+<script src="data/temu/shoes.js"></script>
+<script src="data/temu/bags.js"></script>
+<script src="data/temu/jewelry.js"></script>
+<script src="data/temu/watches.js"></script>
+<script src="data/temu/beauty.js"></script>
+<script src="data/temu/pets.js"></script>
+<script src="data/temu/toys.js"></script>
+<script src="data/temu/electronics.js"></script>
+<script src="data/temu/crafts.js"></script>
+<script src="data/temu/home.js"></script>
+<script src="data/temu/accessories.js"></script>
+<script src="data/temu/flowers.js"></script>
 
-  
+<!-- STEP 2d: AliExpress product data -->
+<script src="data/aliexpress/women.js"></script>
+<script src="data/aliexpress/men.js"></script>
+<script src="data/aliexpress/kids.js"></script>
+<script src="data/aliexpress/shoes.js"></script>
+<script src="data/aliexpress/bags.js"></script>
+<script src="data/aliexpress/jewelry.js"></script>
+<script src="data/aliexpress/watches.js"></script>
+<script src="data/aliexpress/beauty.js"></script>
+<script src="data/aliexpress/pets.js"></script>
+<script src="data/aliexpress/toys.js"></script>
+<script src="data/aliexpress/electronics.js"></script>
+<script src="data/aliexpress/crafts.js"></script>
+<script src="data/aliexpress/home.js"></script>
+<script src="data/aliexpress/accessories.js"></script>
+<script src="data/aliexpress/flowers.js"></script>
+
+<!-- STEP 3: Render files (split AmazonProducts → AMZ_Women etc for affiliate-main) -->
+<script src="js/render_amazon.js"></script>
+<script src="js/render_daraz.js"></script>
+<script src="js/render_temu.js"></script>
+<script src="js/render_aliexpress.js"></script>
+
+<!-- STEP 4: affiliate-main.js — merges all AMZ_/DRZ_/TMU_/AEX_ arrays and renders the unified grid -->
+<script src="js/affiliate-main.js"></script>
+
+<!-- STEP 5: affiliate.js — tags links, AD badges, click tracking, disclosure (MUST BE LAST) -->
+<script src="js/affiliate.js"></script>
+
 <script>
-const newsletterForm = document.getElementById("newsletter-form");
-if (newsletterForm) { // Check if the form exists
-  newsletterForm.addEventListener("submit", function(e){
-    e.preventDefault();
-    const email = document.getElementById("newsletter-email").value;
-    const msg = document.getElementById("newsletter-msg");
-
-    if(email){
-      msg.textContent = "✅ Thank you for subscribing!";
-      msg.style.color = "limegreen";
-      document.getElementById("newsletter-email").value = "";
-    }
-  });
-}
-</script>
-
-
-<!-- ===== JS FIXES ===== -->
-<script>
-  // Affiliate disclosure close (safe)
-const disclosure = document.getElementById('affiliateDisclosure');
-const disclosureClose = document.getElementById('disclosureClose');
-if (disclosure && disclosureClose) {
-  disclosureClose.addEventListener('click', () => {
-    disclosure.style.display = 'none';
-  });
-}
-
-// Count animation (safe)
-const counters = document.querySelectorAll('.stat-number');
-if (counters.length > 0) {
-  counters.forEach(counter => {
-    const updateCount = () => {
-      const target = +counter.getAttribute('data-count');
-      const count = +counter.innerText;
-      const increment = Math.ceil(target / 200);
-      if (count < target) {
-        counter.innerText = count + increment;
-        setTimeout(updateCount, 20);
-      } else {
-        counter.innerText = target;
-      }
-    };
-    updateCount();
-  });
-}
-
-
-  // Countdown Timer
-  let timerHours = document.getElementById('timer-hours');
-if (timerHours) { // Only run if the timer exists
-  let timerMins = document.getElementById('timer-mins');
-  let timerSecs = document.getElementById('timer-secs');
-  let totalSeconds = 23*3600 + 59*60 + 59;
-
-  setInterval(() => {
-    let hours = Math.floor(totalSeconds / 3600);
-    let mins = Math.floor((totalSeconds % 3600) / 60);
-    let secs = totalSeconds % 60;
-    timerHours.innerText = hours.toString().padStart(2,'0');
-    timerMins.innerText = mins.toString().padStart(2,'0');
-    timerSecs.innerText = secs.toString().padStart(2,'0');
-    totalSeconds--;
-    if(totalSeconds < 0) totalSeconds = 24*3600 - 1;
-  }, 1000);
-}
-
+  // Footer newsletter form
+  var footerForm = document.getElementById('footer-newsletter-form');
+  if (footerForm) {
+    footerForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var msg = document.getElementById('footer-newsletter-msg');
+      if (msg) { msg.textContent = '✅ Thank you for subscribing!'; msg.style.color = 'var(--success)'; }
+      this.reset();
+    });
+  }
 </script>
 
 </body>
 </html>
-
