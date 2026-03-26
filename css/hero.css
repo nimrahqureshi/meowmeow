@@ -75,21 +75,20 @@
   right: 15%;
   animation: float 16s ease-in-out infinite;
 }
-/* ===== HERO BACKGROUND ANIMATION ===== */
-
-.hero {
-  position: relative;
-  overflow: hidden;
-  background: linear-gradient(270deg, #667eea, #764ba2, #6a11cb, #2575fc);
-  background-size: 800% 800%;
-  animation: gradientMove 15s ease infinite;
+.shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: floatMove 20s infinite ease-in-out;
 }
 
-@keyframes gradientMove {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+@keyframes floatMove {
+  0%   { transform: translate(0, 0); }
+  50%  { transform: translate(30px, -40px); }
+  100% { transform: translate(0, 0); }
 }
+
 
 
 /* ===== HERO LAYOUT ===== */
