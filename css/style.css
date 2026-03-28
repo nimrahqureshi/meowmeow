@@ -1,28 +1,22 @@
 /* ============================
-   STYLE.CSS — MASTER STYLESHEET
+   STYLE.CSS — MASTER STYLESHEET  (FIXED v2)
    ============================ */
 
 @charset "UTF-8";
 
-/* ============================
-   1. EXTERNAL FONTS & ICONS
-   ============================ */
+/* 1. Fonts & Icons */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@600;700;800;900&display=swap');
 
-/* ============================
-   2. DESIGN TOKENS & VARIABLES
-   (Must be first — everything depends on these)
-   ============================ */
+/* 2. Design tokens (must be first) */
 @import url('variables.css');
 
-/* ============================
-   3. BASE RESET & FOUNDATIONS
-   ============================ */
+/* 3. Animations (before themes so keyframes are available) */
+@import url('animations.css');
+
+/* 4. Base reset */
 @import url('base.css');
 
-/* ============================
-   4. COMPONENT STYLES
-   ============================ */
+/* 5. Components */
 @import url('buttons.css');
 @import url('cards.css');
 @import url('components.css');
@@ -31,16 +25,11 @@
 @import url('sections.css');
 @import url('footer.css');
 
-/* ============================
-   5. PAGE-SPECIFIC STYLES
-   ============================ */
+/* 6. Page-specific */
 @import url('contact.css');
 @import url('cart.css');
 @import url('legal.css');
 
-/* ============================
-   6. RESPONSIVE & THEMES LAST
-   (Overrides must come after)
-   ============================ */
+/* 7. Responsive & themes last (must override above) */
 @import url('responsive.css');
 @import url('themes.css');
