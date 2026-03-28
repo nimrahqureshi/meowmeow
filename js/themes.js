@@ -1,110 +1,80 @@
 /* ============================
-   THEMES.JS — LIGHT / DARK TOGGLE
+   THEMES.JS — THEME MANAGER  (FIXED v2)
+   Load in <head> BEFORE body renders — prevents white flash on dark mode
    ============================ */
 
-(function() {
+(function () {
   'use strict';
 
-  var STORAGE_KEY = 'meowmeow-theme';
-  var body = document.documentElement; // Apply to <html> for immediate effect before body loads
+  var THEME_KEY = 'meowmeow-theme';
 
-  /* ===== GET PREFERRED THEME ===== */
-  function getPreferredTheme() {
-    var saved = localStorage.getItem(STORAGE_KEY);
-    if (saved === 'dark' || saved === 'light') return saved;
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      return 'dark';
-    }
-    return 'light';
+  /* Apply immediately (synchronous, in <head>) to prevent FOUC */
+  try {
+    var saved = localStorage.getItem(THEME_KEY);
+    if (saved === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  } catch (e) {}
+
+  /* ─── Core functions ─── */
+
+  function getCurrentTheme() {
+    return document.documentElement.getAttribute('data-theme') || 'light';
   }
 
-  /* ===== APPLY THEME ===== */
   function applyTheme(theme) {
-    // Apply to both html and body for reliability
     document.documentElement.setAttribute('data-theme', theme);
-    if (document.body) {
-      document.body.setAttribute('data-theme', theme);
-    }
-    localStorage.setItem(STORAGE_KEY, theme);
-    updateThemeIcon(theme);
-    updateMobileToggle(theme);
-  }
+    try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
 
-  /* ===== UPDATE DESKTOP ICON ===== */
-  function updateThemeIcon(theme) {
-    var themeIcon = document.getElementById('themeIcon');
-    if (!themeIcon) return;
-    if (theme === 'dark') {
-      themeIcon.className = themeIcon.className.replace('fa-sun', 'fa-moon');
-      if (!themeIcon.className.includes('fa-moon')) {
-        themeIcon.classList.add('fa-moon');
-      }
-    } else {
-      themeIcon.className = themeIcon.className.replace('fa-moon', 'fa-sun');
-      if (!themeIcon.className.includes('fa-sun')) {
-        themeIcon.classList.add('fa-sun');
-      }
-    }
-  }
+    /* Sync all toggle checkboxes */
+    document.querySelectorAll(
+      '#themeCheckbox, #mobileThemeCheckbox, .theme-toggle-input'
+    ).forEach(function (el) {
+      if (el.type === 'checkbox') el.checked = (theme === 'dark');
+    });
 
-  /* ===== UPDATE MOBILE TOGGLE ===== */
-  function updateMobileToggle(theme) {
-    var mobileToggle = document.getElementById('mobileThemeToggle');
-    if (!mobileToggle) return;
-    mobileToggle.checked = (theme === 'dark');
-  }
-
-  /* ===== TOGGLE THEME ===== */
-  function toggleTheme() {
-    var current = document.documentElement.getAttribute('data-theme') || 'light';
-    applyTheme(current === 'light' ? 'dark' : 'light');
-  }
-
-  /* ===== INIT IMMEDIATELY (prevent flash) ===== */
-  var initialTheme = getPreferredTheme();
-  document.documentElement.setAttribute('data-theme', initialTheme);
-
-  /* ===== BIND EVENTS AFTER DOM LOADS ===== */
-  function bindEvents() {
-    var themeToggle = document.getElementById('themeToggle');
-    if (themeToggle) {
-      themeToggle.addEventListener('click', toggleTheme);
-    }
-
-    var mobileToggle = document.getElementById('mobileThemeToggle');
-    if (mobileToggle) {
-      mobileToggle.addEventListener('change', function() {
-        applyTheme(this.checked ? 'dark' : 'light');
-      });
-    }
-
-    // Apply to body now that DOM is ready
-    applyTheme(getPreferredTheme());
-  }
-
-  /* ===== SYSTEM THEME CHANGE ===== */
-  if (window.matchMedia) {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
-      // Only auto-switch if user hasn't manually set a preference
-      if (!localStorage.getItem(STORAGE_KEY)) {
-        applyTheme(e.matches ? 'dark' : 'light');
-      }
+    /* Sync icon buttons */
+    document.querySelectorAll('[data-theme-icon]').forEach(function (el) {
+      el.className = theme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
     });
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bindEvents);
-  } else {
-    bindEvents();
+  function toggleTheme() {
+    applyTheme(getCurrentTheme() === 'dark' ? 'light' : 'dark');
   }
 
-  // Export for external use
+  /* ─── Expose global API ─── */
   window.MeowTheme = {
-    toggle: toggleTheme,
-    apply: applyTheme,
-    get: function() {
-      return document.documentElement.getAttribute('data-theme') || 'light';
-    }
+    toggle : toggleTheme,
+    set    : applyTheme,
+    get    : getCurrentTheme
   };
+
+  /* ─── Bind controls after DOM ready ─── */
+  document.addEventListener('DOMContentLoaded', function () {
+    /* Re-apply to sync checkboxes that are now in the DOM */
+    applyTheme(getCurrentTheme());
+
+    /* Checkbox toggles (mobile menu uses label + hidden checkbox) */
+    document.querySelectorAll(
+      '#themeCheckbox, #mobileThemeCheckbox, .theme-toggle-input'
+    ).forEach(function (el) {
+      if (el._themeBound) return;
+      el._themeBound = true;
+      el.addEventListener('change', function () {
+        applyTheme(this.checked ? 'dark' : 'light');
+      });
+    });
+
+    /* Button toggles */
+    document.querySelectorAll(
+      '[data-theme-btn], #themeToggleBtn, .theme-toggle-btn'
+    ).forEach(function (btn) {
+      if (btn._themeBound) return;
+      btn._themeBound = true;
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        toggleTheme();
+      });
+    });
+  });
 
 })();
