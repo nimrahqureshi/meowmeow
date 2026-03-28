@@ -1,34 +1,51 @@
 /* ============================
-   SCRIPT.JS — PAGE INTERACTIONS  (FIXED v2)
+   SCRIPT.JS — PAGE INTERACTIONS  v2.0
+   All conflicts resolved with guards:
+   1. Wishlist: _meowBound flag
+   2. Quick view: [data-qv-bound] guard (component.js primary)
+   3. Add-to-cart: fallback only when MeowCart absent
+   4. Affiliate rel: only sets when no rel exists
+   5. Disclosure: not touched (affiliate.js owns it)
    ============================ */
 
 (function () {
   'use strict';
 
-  /* ─── WISHLIST TOGGLE (static cards not yet bound) ─── */
-  function bindWishlistButtons() {
+  /* ── 1. WISHLIST TOGGLE ── */
+  function bindWishlist() {
     document.querySelectorAll('.wishlist-toggle').forEach(function (btn) {
       if (btn._meowBound) return;
       btn._meowBound = true;
-
       btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
+        e.preventDefault(); e.stopPropagation();
         this.classList.toggle('active');
         var icon = this.querySelector('i');
         if (!icon) return;
         if (this.classList.contains('active')) {
           icon.classList.replace('far', 'fas');
-          if (window.showToast) showToast('Added to wishlist! \u2764\uFE0F', 'success');
+          if (window.showToast) window.showToast('Added to wishlist ❤️', 'success');
         } else {
           icon.classList.replace('fas', 'far');
-          if (window.showToast) showToast('Removed from wishlist', 'warning');
+          if (window.showToast) window.showToast('Removed from wishlist', 'warning');
         }
       });
     });
   }
 
-  /* ─── ADD TO CART fallback (only when MeowCart not loaded) ─── */
+  /* ── 2. QUICK VIEW (fallback) ── */
+  function bindQuickView() {
+    document.querySelectorAll('.quick-view-btn:not([data-qv-bound])').forEach(function (btn) {
+      btn.addEventListener('click', function (e) {
+        e.preventDefault(); e.stopPropagation();
+        if (typeof window.MeowComponents !== 'undefined') return;
+        var card = this.closest('.product-card');
+        var name = card && card.querySelector('.product-name') ? card.querySelector('.product-name').textContent.trim() : 'Product';
+        if (window.showToast) window.showToast('👁️ Quick view: ' + name, 'info');
+      });
+    });
+  }
+
+  /* ── 3. ADD TO CART (fallback) ── */
   function bindAddToCart() {
     if (typeof window.MeowCart !== 'undefined') return;
     document.querySelectorAll('.add-to-cart-btn, [data-action="add-to-cart"]').forEach(function (btn) {
@@ -36,44 +53,38 @@
       btn._cartBound = true;
       btn.addEventListener('click', function (e) {
         e.preventDefault();
-        if (window.showToast) showToast('\uD83D\uDED2 Added to cart!', 'success');
+        if (window.showToast) window.showToast('🛒 Added to cart!', 'success');
       });
     });
   }
 
-  /* ─── LAZY LOAD ─── */
-  function initLazyLoad() {
+  /* ── 4. LAZY LOAD ── */
+  function initLazy() {
     if (!('IntersectionObserver' in window)) return;
-    var observer = new IntersectionObserver(function (entries) {
+    var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (!entry.isIntersecting) return;
         var img = entry.target;
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-          img.classList.add('loaded');
-        }
-        observer.unobserve(img);
+        if (img.dataset.src) { img.src = img.dataset.src; img.removeAttribute('data-src'); img.classList.add('loaded'); }
+        io.unobserve(img);
       });
     }, { rootMargin: '200px' });
-    document.querySelectorAll('img[data-src]').forEach(function (img) {
-      observer.observe(img);
-    });
+    document.querySelectorAll('img[data-src]').forEach(function (img) { io.observe(img); });
   }
 
-  /* ─── AFFILIATE LINK rel= safety net ─── */
-  function setMissingRel() {
+  /* ── 5. REL SAFETY NET ── */
+  function setRel() {
     document.querySelectorAll('a[target="_blank"]').forEach(function (link) {
       if (link.getAttribute('rel')) return;
       link.setAttribute('rel', 'noopener noreferrer');
     });
   }
 
-  /* ─── PARALLAX HERO ─── */
+  /* ── 6. PARALLAX ── */
   function initParallax() {
-    var hero   = document.querySelector('.hero');
-    if (!hero || window.innerWidth < 768) return;
-    var shapes  = document.querySelectorAll('.shape');
+    var hero = document.querySelector('.hero');
+    var shapes = document.querySelectorAll('.shape');
+    if (!hero || !shapes.length || window.innerWidth < 768) return;
     var ticking = false;
     window.addEventListener('mousemove', function (e) {
       if (ticking || window.innerWidth < 768) return;
@@ -81,50 +92,60 @@
       requestAnimationFrame(function () {
         var mx = (e.clientX / window.innerWidth  - 0.5) * 2;
         var my = (e.clientY / window.innerHeight - 0.5) * 2;
-        shapes.forEach(function (s, i) {
-          var sp = (i + 1) * 5;
-          s.style.transform = 'translate(' + (mx * sp) + 'px,' + (my * sp) + 'px)';
-        });
+        shapes.forEach(function (s, i) { var sp = (i + 1) * 5; s.style.transform = 'translate(' + (mx * sp) + 'px,' + (my * sp) + 'px)'; });
         ticking = false;
       });
     }, { passive: true });
   }
 
-  /* ─── NEWSLETTER FORM ─── */
+  /* ── 7. NEWSLETTER (fallback) ── */
   function bindNewsletter() {
     var form = document.getElementById('newsletterForm');
     if (!form || form._meowNewsletterBound) return;
     form._meowNewsletterBound = true;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (window.showToast) showToast('\uD83C\uDF89 Subscribed! Check your inbox.', 'success');
-      var msg = document.getElementById('newsletterMsg');
-      if (msg) msg.textContent = '\u2705 Thank you for subscribing!';
+      if (window.showToast) window.showToast('🎉 Subscribed!', 'success');
+      var note = document.getElementById('newsletterMsg');
+      if (note) note.textContent = '✅ Thank you for subscribing!';
       this.reset();
     });
   }
 
-  /* ─── CONTACT FORM ─── */
-  function bindContactForm() {
+  /* ── 8. CONTACT FORM (fallback) ── */
+  function bindContact() {
     var form = document.getElementById('contactForm');
     if (!form || form._meowContactBound) return;
     form._meowContactBound = true;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-      if (window.showToast) showToast('\uD83D\uDCEC Message sent! We\'ll reply shortly.', 'success');
+      if (window.showToast) window.showToast('📬 Message sent!', 'success');
       this.reset();
     });
   }
 
-  /* ─── INIT ─── */
+  /* ── 9. SMOOTH IMAGE FADE-IN ── */
+  function initImageFade() {
+    document.querySelectorAll('img:not([data-src])').forEach(function (img) {
+      if (img.complete) return;
+      img.style.opacity = '0';
+      img.style.transition = 'opacity 0.4s ease';
+      img.addEventListener('load',  function () { img.style.opacity = '1'; });
+      img.addEventListener('error', function () { img.style.opacity = '0.5'; });
+    });
+  }
+
+  /* ── INIT ── */
   document.addEventListener('DOMContentLoaded', function () {
-    bindWishlistButtons();
+    bindWishlist();
+    bindQuickView();
     bindAddToCart();
-    initLazyLoad();
-    setMissingRel();
+    initLazy();
+    setRel();
     initParallax();
     bindNewsletter();
-    bindContactForm();
+    bindContact();
+    initImageFade();
   });
 
 })();
