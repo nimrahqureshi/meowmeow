@@ -1,59 +1,128 @@
 /* ============================
-   THEMES.CSS  (FIXED v2)
-   FIX: removed "body *" transition that caused mobile scroll jank
+   THEMES.CSS — LIGHT / DARK MODE OVERRIDES
    ============================ */
 
 [data-theme="dark"] {
-  --bg-primary:   #0f172a;
+  --bg-primary: #0f172a;
   --bg-secondary: #1e293b;
-  --bg-tertiary:  #111827;
-  --text-primary:   #f9fafb;
+  --bg-tertiary: #111827;
+
+  --text-primary: #f9fafb;
   --text-secondary: #cbd5e1;
-  --text-tertiary:  #94a3b8;
+  --text-tertiary: #94a3b8;
+
   --border: rgba(255,255,255,0.1);
+
   --footer-bg: #020617;
 }
 
-/* Only transition the elements that actually change on theme switch.
-   The original "body *" selector hit EVERY node and caused jank on mobile scroll. */
-body { transition: background-color 0.3s ease, color 0.3s ease; }
+/* Light mode is already defined in variables.css as :root */
 
-.navbar, .mobile-menu, .footer,
-.product-card, .blog-card, .review-card, .category-card,
-.feature-card, .summary-card, .cart-items, .contact-form,
-.legal-content, .affiliate-disclosure, .search-results,
-.toast, .back-to-top, .empty-state, .page-header,
-.faq-item, .team-member {
-  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+/* Smooth theme transitions on all elements */
+body,
+body * {
+  transition-property: background-color, color, border-color, box-shadow;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
 }
 
-/* Animated elements: only transform/opacity transitions */
-.shape, .floating-card, .float-element {
-  transition: transform 0.3s ease, opacity 0.3s ease;
+/* Override for elements that need faster transitions */
+.btn,
+.nav-link,
+a {
+  transition: var(--transition-fast);
 }
 
-/* Dark mode tweaks */
-[data-theme="dark"] .navbar { border-bottom-color: rgba(255,255,255,0.06); }
+/* Override for animated elements (don't slow down animations) */
+.shape,
+.floating-card,
+.float-element {
+  transition: transform 0.3s ease, opacity 0.3s ease !important;
+}
+
+/* ====== DARK MODE SPECIFIC TWEAKS ====== */
+
+[data-theme="dark"] .navbar {
+  border-bottom-color: rgba(255, 255, 255, 0.06);
+}
+
 [data-theme="dark"] .product-card,
 [data-theme="dark"] .blog-card,
 [data-theme="dark"] .review-card,
-[data-theme="dark"] .category-card { box-shadow: var(--shadow-md); }
-[data-theme="dark"] .floating-card { border-color: rgba(255,255,255,0.08); }
-[data-theme="dark"] .newsletter-form input,
-[data-theme="dark"] .footer-newsletter input {
-  background: rgba(255,255,255,0.1); color: #fff; border-color: rgba(255,255,255,0.2);
+[data-theme="dark"] .category-card {
+  box-shadow: var(--shadow-md);
 }
-[data-theme="dark"] .newsletter-form input::placeholder,
-[data-theme="dark"] .footer-newsletter input::placeholder { color: rgba(255,255,255,0.55); }
-[data-theme="dark"] .tag-success { background: rgba(16,185,129,0.2); color: #6ee7b7; }
-[data-theme="dark"] .alert-info  { background: rgba(59,130,246,0.15); color: #93c5fd; border-left-color: #3b82f6; }
-[data-theme="dark"] .affiliate-disclosure { background: rgba(245,158,11,0.12); color: #fbbf24; border-left-color: #f59e0b; }
-[data-theme="dark"] .contact-form  { background: var(--bg-secondary); }
-[data-theme="dark"] .summary-card  { background: var(--bg-secondary); }
-[data-theme="dark"] .legal-content { background: var(--bg-secondary); }
-[data-theme="dark"] .mobile-menu   { background: var(--bg-secondary); }
-[data-theme="dark"] .search-results{ background: var(--bg-secondary); border-color: var(--border); }
-[data-theme="dark"] .empty-state   { background: var(--bg-secondary); }
-[data-theme="dark"] .page-header   { background: var(--bg-secondary); }
-[data-theme="dark"] .back-to-top   { box-shadow: var(--shadow-xl), var(--shadow-glow-accent); }
 
+[data-theme="dark"] .floating-card {
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="dark"] .newsletter-form input {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .newsletter-form input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .footer-newsletter input {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] .footer-newsletter input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+[data-theme="dark"] .tag-success {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+}
+
+[data-theme="dark"] .alert-info {
+  background: rgba(59, 130, 246, 0.15);
+  color: #93c5fd;
+  border-left-color: #3b82f6;
+}
+
+[data-theme="dark"] .affiliate-disclosure {
+  background: rgba(245, 158, 11, 0.12);
+  color: #fbbf24;
+  border-left-color: #f59e0b;
+}
+
+[data-theme="dark"] .contact-form {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .summary-card {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .legal-content {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .mobile-menu {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .search-results {
+  background: var(--bg-secondary);
+  border-color: var(--border);
+}
+
+[data-theme="dark"] .back-to-top {
+  box-shadow: var(--shadow-xl), var(--shadow-glow-accent);
+}
+
+[data-theme="dark"] .empty-state {
+  background: var(--bg-secondary);
+}
+
+[data-theme="dark"] .page-header {
+  background: var(--bg-secondary);
+}
