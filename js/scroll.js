@@ -1,338 +1,164 @@
 /* ============================
-   SCROLL.JS — SCROLL REVEAL + TIMER + FORMS
-   Load after main.js
+   SCROLL.JS — ANIMATIONS & PAGE INTERACTIONS  v2.0
+   Reveal · Stat counters · Countdown timer
+   Newsletter · Contact form · Filter buttons · Blog tilt
    ============================ */
 
 (function () {
   'use strict';
 
-  /* ─────────────────────────────
-     SCROLL REVEAL
-  ───────────────────────────── */
-  function initScrollReveal() {
-    if (!('IntersectionObserver' in window)) {
-      document.querySelectorAll('.reveal').forEach(function (el) {
-        el.classList.add('revealed');
-      });
-      return;
-    }
-
-    var observer = new IntersectionObserver(function (entries) {
+  /* ── 1. SCROLL REVEAL ── */
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!els.length) return;
+    if (!('IntersectionObserver' in window)) { els.forEach(function (el) { el.classList.add('revealed'); }); return; }
+    var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add('revealed');
-        observer.unobserve(entry.target);
+        if (entry.isIntersecting) { entry.target.classList.add('revealed'); io.unobserve(entry.target); }
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
 
-    document.querySelectorAll('.reveal').forEach(function (el) {
-      observer.observe(el);
-    });
-  }
+  /* ── 2. STAT COUNTER ANIMATION ── */
+  (function () {
+    var counters = document.querySelectorAll('.stat-number[data-count]');
+    if (!counters.length) return;
 
-  /* ─────────────────────────────
-     ANIMATED STAT COUNTERS
-     Works with data-target attribute OR reads existing number
-  ───────────────────────────── */
-  function initCounters() {
-    if (!('IntersectionObserver' in window)) return;
-
-    var ran = new WeakSet();
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting || ran.has(entry.target)) return;
-        ran.add(entry.target);
-        observer.unobserve(entry.target);
-
-        var el = entry.target;
-        var raw = el.dataset.target || el.textContent.replace(/[^0-9.]/g, '');
-        var target = parseFloat(raw) || 0;
-        var suffix = el.dataset.suffix || '';
-
-        /* Try to infer suffix from existing text if not set in data-suffix */
-        if (!suffix) {
-          var existing = el.textContent.trim();
-          suffix = existing.replace(/[0-9,.\s]/g, '') || '';
+    function animate(el) {
+      if (el.dataset.animated) return;
+      el.dataset.animated = '1';
+      var target  = parseInt(el.getAttribute('data-count'), 10) || 0;
+      var suffix  = el.getAttribute('data-suffix') || '';
+      var step    = target / (1800 / 16);
+      var current = 0;
+      el.textContent = '0' + suffix;
+      var timer = setInterval(function () {
+        current += step;
+        if (current >= target) {
+          el.textContent = target.toLocaleString() + suffix;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(current).toLocaleString() + suffix;
         }
-
-        var duration = 1800;
-        var start = performance.now();
-
-        function tick(now) {
-          var elapsed = now - start;
-          var progress = Math.min(elapsed / duration, 1);
-          var eased = 1 - Math.pow(1 - progress, 3);
-          var current = Math.floor(eased * target);
-          el.textContent = current.toLocaleString() + suffix;
-          if (progress < 1) {
-            requestAnimationFrame(tick);
-          } else {
-            el.textContent = target.toLocaleString() + suffix;
-          }
-        }
-
-        requestAnimationFrame(tick);
-      });
-    }, { threshold: 0.3 });
-
-    document.querySelectorAll('.stat-number, [data-counter]').forEach(function (el) {
-      observer.observe(el);
-    });
-  }
-
-  /* ─────────────────────────────
-     COUNTDOWN TIMER
-     Looks for .timer-number[data-unit] or #timerHours/#timerMins/#timerSecs
-     Resets to 24h if expired (daily deals pattern)
-  ───────────────────────────── */
-  function initCountdownTimer() {
-    var hoursEl = document.getElementById('timerHours')   || document.querySelector('.timer-number[data-unit="hours"]');
-    var minsEl  = document.getElementById('timerMins')    || document.querySelector('.timer-number[data-unit="mins"]');
-    var secsEl  = document.getElementById('timerSecs')    || document.querySelector('.timer-number[data-unit="secs"]');
-
-    if (!hoursEl || !minsEl || !secsEl) return;
-
-    var STORAGE_KEY = 'meowmeow-timer-end';
-    var DURATION    = 24 * 60 * 60 * 1000; // 24 hours in ms
-
-    function getEndTime() {
-      try {
-        var saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-          var t = parseInt(saved, 10);
-          if (t > Date.now()) return t;
-        }
-      } catch (e) {}
-      var end = Date.now() + DURATION;
-      try { localStorage.setItem(STORAGE_KEY, String(end)); } catch (e) {}
-      return end;
+      }, 16);
     }
 
-    var endTime = getEndTime();
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { animate(entry.target); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.3 });
+      counters.forEach(function (c) { io.observe(c); });
+    } else {
+      counters.forEach(animate);
+    }
+  })();
 
-    function pad(n) { return n < 10 ? '0' + n : String(n); }
+  /* ── 3. COUNTDOWN TIMER (24h deal timer) ── */
+  (function () {
+    var h = document.getElementById('hours')   || document.getElementById('timer-hours');
+    var m = document.getElementById('minutes') || document.getElementById('timer-mins');
+    var s = document.getElementById('seconds') || document.getElementById('timer-secs');
+    if (!h || !m || !s) return;
+
+    var KEY = 'mm-deal-timer-end';
+    var end;
+    try { end = parseInt(sessionStorage.getItem(KEY), 10); } catch (e) {}
+    if (!end || Date.now() >= end) {
+      end = Date.now() + 24 * 3600 * 1000;
+      try { sessionStorage.setItem(KEY, end); } catch (e) {}
+    }
 
     function tick() {
-      var diff = Math.max(0, endTime - Date.now());
-      var h = Math.floor(diff / 3600000);
-      var m = Math.floor((diff % 3600000) / 60000);
-      var s = Math.floor((diff % 60000) / 1000);
-
-      hoursEl.textContent = pad(h);
-      minsEl.textContent  = pad(m);
-      secsEl.textContent  = pad(s);
-
+      var diff = Math.max(0, Math.floor((end - Date.now()) / 1000));
+      h.textContent = String(Math.floor(diff / 3600)).padStart(2, '0');
+      m.textContent = String(Math.floor((diff % 3600) / 60)).padStart(2, '0');
+      s.textContent = String(diff % 60).padStart(2, '0');
       if (diff <= 0) {
-        /* Reset timer */
-        endTime = Date.now() + DURATION;
-        try { localStorage.setItem(STORAGE_KEY, String(endTime)); } catch (e) {}
+        end = Date.now() + 24 * 3600 * 1000;
+        try { sessionStorage.setItem(KEY, end); } catch (e) {}
       }
     }
-
     tick();
     setInterval(tick, 1000);
-  }
+  })();
 
-  /* ─────────────────────────────
-     NEWSLETTER FORMS
-     Handles both #newsletterForm and .footer-newsletter form
-  ───────────────────────────── */
-  function initNewsletterForms() {
-    function handleSubmit(form) {
+  /* ── 4. NEWSLETTER FORMS ── */
+  (function () {
+    document.querySelectorAll('.newsletter-form, .footer-newsletter form, #newsletter-form').forEach(function (form) {
       if (form._meowNewsletterBound) return;
       form._meowNewsletterBound = true;
-
       form.addEventListener('submit', function (e) {
         e.preventDefault();
-
-        var input = form.querySelector('input[type="email"], input[type="text"]');
-        var email = input ? input.value.trim() : '';
-
-        if (!email) {
-          if (typeof window.showToast === 'function') {
-            window.showToast('Please enter your email address.', 'warning');
-          }
-          return;
-        }
-
-        /* Simulate submit */
-        var btn = form.querySelector('button[type="submit"], button');
-        if (btn) {
-          btn.disabled = true;
-          btn.classList.add('loading');
-        }
-
-        setTimeout(function () {
-          if (typeof window.showToast === 'function') {
-            window.showToast('🎉 Subscribed! Check your inbox.', 'success');
-          }
-          var msg = form.querySelector('#newsletterMsg, .newsletter-msg');
-          if (msg) msg.textContent = '✅ Thank you! You\'re subscribed.';
-          form.reset();
-          if (btn) {
-            btn.disabled = false;
-            btn.classList.remove('loading');
-          }
-        }, 600);
+        var inp  = form.querySelector('input[type="email"]');
+        var note = form.querySelector('.form-note, #newsletter-msg, small');
+        if (!inp || !inp.value.trim()) return;
+        inp.value = '';
+        if (note) note.innerHTML = '<i class="fas fa-check-circle" style="color:#22c55e"></i> Thank you! You\'re subscribed.';
+        if (window.showToast) window.showToast('🎉 Subscribed! Welcome aboard.', 'success');
       });
-    }
+    });
+  })();
 
-    document.querySelectorAll(
-      '#newsletterForm, .newsletter-form, .footer-newsletter form'
-    ).forEach(handleSubmit);
-  }
-
-  /* ─────────────────────────────
-     CONTACT FORM
-  ───────────────────────────── */
-  function initContactForm() {
+  /* ── 5. CONTACT FORM ── */
+  (function () {
     var form = document.getElementById('contactForm');
     if (!form || form._meowContactBound) return;
     form._meowContactBound = true;
-
     form.addEventListener('submit', function (e) {
       e.preventDefault();
-
-      var btn = form.querySelector('button[type="submit"], .btn');
-      if (btn) { btn.disabled = true; btn.classList.add('loading'); }
-
-      setTimeout(function () {
-        if (typeof window.showToast === 'function') {
-          window.showToast('📬 Message sent! We\'ll reply within 24h.', 'success');
-        }
-        form.reset();
-        if (btn) { btn.disabled = false; btn.classList.remove('loading'); }
-      }, 700);
-    });
-  }
-
-  /* ─────────────────────────────
-     LAZY IMAGE LOADING
-  ───────────────────────────── */
-  function initLazyImages() {
-    if (!('IntersectionObserver' in window)) return;
-
-    var observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (!entry.isIntersecting) return;
-        var img = entry.target;
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-          img.classList.add('loaded');
-        }
-        observer.unobserve(img);
-      });
-    }, { rootMargin: '300px 0px' });
-
-    document.querySelectorAll('img[data-src]').forEach(function (img) {
-      observer.observe(img);
-    });
-  }
-
-  /* ─────────────────────────────
-     SMOOTH IMAGE FADE-IN ON LOAD
-  ───────────────────────────── */
-  function initImageFade() {
-    document.querySelectorAll('img:not([data-src])').forEach(function (img) {
-      if (img.complete) return;
-      img.style.opacity = '0';
-      img.style.transition = 'opacity 0.4s ease';
-      img.addEventListener('load', function () { img.style.opacity = '1'; });
-      img.addEventListener('error', function () { img.style.opacity = '0.4'; });
-    });
-  }
-
-  /* ─────────────────────────────
-     WISHLIST TOGGLE (static cards)
-     Dynamic cards handled by render-*.js
-  ───────────────────────────── */
-  function initWishlistToggles() {
-    document.querySelectorAll('.wishlist-toggle:not([data-wl-init])').forEach(function (btn) {
-      btn.setAttribute('data-wl-init', '1');
-      if (btn._meowBound) return;
-      btn._meowBound = true;
-
-      /* Load state */
-      var card = btn.closest('.product-card');
-      var id   = card ? (card.dataset.productId || card.dataset.id) : null;
-      if (id) {
-        try {
-          var wl = JSON.parse(localStorage.getItem('meowmeow-wishlist') || '[]');
-          if (wl.indexOf(id) !== -1) {
-            btn.classList.add('active');
-            var icon = btn.querySelector('i');
-            if (icon) { icon.classList.remove('far'); icon.classList.add('fas'); }
-          }
-        } catch (e) {}
+      var btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        btn.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+        btn.style.background = 'var(--success,#10b981)';
+        setTimeout(function () { btn.innerHTML = '<i class="fas fa-paper-plane"></i> Send Message'; btn.style.background = ''; form.reset(); }, 3000);
       }
+      if (window.showToast) window.showToast('📬 Message sent! We\'ll reply within 24h.', 'success');
+    });
+  })();
 
-      btn.addEventListener('click', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-
-        this.classList.toggle('active');
-        var icon2 = this.querySelector('i');
-
-        if (this.classList.contains('active')) {
-          if (icon2) { icon2.classList.remove('far'); icon2.classList.add('fas'); }
-          if (typeof window.showToast === 'function') window.showToast('Added to wishlist ❤️', 'success');
-          if (id) saveWishlistId(id, true);
-        } else {
-          if (icon2) { icon2.classList.remove('fas'); icon2.classList.add('far'); }
-          if (typeof window.showToast === 'function') window.showToast('Removed from wishlist', 'warning');
-          if (id) saveWishlistId(id, false);
-        }
+  /* ── 6. FILTER BUTTONS ── */
+  (function () {
+    var btns = document.querySelectorAll('.filter-btn[data-filter]');
+    btns.forEach(function (btn) {
+      if (btn._scrollFilterBound) return;
+      btn._scrollFilterBound = true;
+      btn.addEventListener('click', function () {
+        btns.forEach(function (b) { b.classList.remove('active'); });
+        this.classList.add('active');
+        var cat   = this.dataset.filter || 'all';
+        var cards = document.querySelectorAll('.product-card[data-category]');
+        var shown = 0;
+        cards.forEach(function (card, i) {
+          var match = (cat === 'all') || (card.dataset.category === cat);
+          card.style.display = match ? '' : 'none';
+          if (match) { card.style.animationDelay = (shown % 12 * 0.04) + 's'; card.classList.remove('card-enter'); void card.offsetWidth; card.classList.add('card-enter'); shown++; }
+        });
+        var noRes = document.getElementById('noResults');
+        if (noRes) noRes.style.display = shown === 0 ? 'block' : 'none';
+        try {
+          var url = new URL(window.location.href);
+          if (cat === 'all') url.searchParams.delete('cat'); else url.searchParams.set('cat', cat);
+          history.replaceState(null, '', url.toString());
+        } catch (e) {}
       });
     });
-  }
+  })();
 
-  function saveWishlistId(id, add) {
-    try {
-      var wl = JSON.parse(localStorage.getItem('meowmeow-wishlist') || '[]');
-      var idx = wl.indexOf(id);
-      if (add && idx === -1) wl.push(id);
-      if (!add && idx !== -1) wl.splice(idx, 1);
-      localStorage.setItem('meowmeow-wishlist', JSON.stringify(wl));
-    } catch (e) {}
-  }
-
-  /* ─────────────────────────────
-     BACK TO TOP BUTTON
-  ───────────────────────────── */
-  function initBackToTop() {
-    var btn = document.getElementById('backToTop');
-    if (!btn) return;
-
-    window.addEventListener('scroll', function () {
-      btn.classList.toggle('visible', window.scrollY > 400);
-    }, { passive: true });
-
-    btn.addEventListener('click', function () {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
+  /* ── 7. BLOG CARD TILT (desktop only) ── */
+  (function () {
+    if (window.innerWidth < 768) return;
+    document.querySelectorAll('.blog-card').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r  = card.getBoundingClientRect();
+        var dx = (e.clientX - r.left - r.width / 2) / r.width;
+        var dy = (e.clientY - r.top  - r.height / 2) / r.height;
+        card.style.transform = 'translateY(-6px) rotateX(' + (-dy * 4) + 'deg) rotateY(' + (dx * 4) + 'deg)';
+      });
+      card.addEventListener('mouseleave', function () { card.style.transform = ''; });
     });
-  }
-
-  /* ─────────────────────────────
-     INIT
-  ───────────────────────────── */
-  document.addEventListener('DOMContentLoaded', function () {
-    initScrollReveal();
-    initCounters();
-    initCountdownTimer();
-    initNewsletterForms();
-    initContactForm();
-    initLazyImages();
-    initImageFade();
-    initWishlistToggles();
-    initBackToTop();
-
-    /* Re-bind wishlist when dynamic cards are added */
-    if ('MutationObserver' in window) {
-      var mo = new MutationObserver(function () { initWishlistToggles(); });
-      mo.observe(document.body, { childList: true, subtree: true });
-    }
-  });
+  })();
 
 })();
