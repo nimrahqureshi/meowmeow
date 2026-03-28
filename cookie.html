@@ -1,94 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-<!-- =========================
-BASIC META
-========================= -->
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- =========================
-PRIMARY SEO
-========================= -->
-<title>MeowMeow | Smart Deals, Reviews & Affiliate Shopping</title>
-
-<meta name="description"
-content="MeowMeow helps you discover the best deals online. Compare products from Amazon, Daraz, Temu and AliExpress including fashion, toys, gadgets, cosmetics and jewelry.">
-
-<meta name="keywords"
-content="best online deals, affiliate store, amazon deals, temu deals, daraz products, gadgets, fashion, toys, cosmetics, jewelry">
-
+<title>Cookie Policy | MeowMeow</title>
+<meta name="description" content="MeowMeow helps you discover the best deals online. Compare products from Amazon, Daraz, Temu and AliExpress including fashion, toys, gadgets, cosmetics and jewelry.">
+<meta name="keywords" content="best online deals, affiliate store, amazon deals, temu deals, daraz products, gadgets, fashion, toys, cosmetics, jewelry">
 <meta name="author" content="MeowMeow">
 <meta name="robots" content="index, follow">
-
-<!-- =========================
-CANONICAL URL
-========================= -->
-<link rel="canonical" href="https://meowmeow-livid.vercel.app/">
-
-<!-- =========================
-OPEN GRAPH (FACEBOOK / WHATSAPP)
-========================= -->
-<meta property="og:title" content="MeowMeow | Best Online Deals">
-<meta property="og:description"
-content="Compare the best deals across Amazon, Temu, Daraz and AliExpress.">
+<link rel="canonical" href="https://meowmeow-livid.vercel.app/cookie.html">
+<meta property="og:title" content="Cookie Policy | MeowMeow">
+<meta property="og:description" content="MeowMeow helps you discover the best deals online. Compare products from Amazon, Daraz, Temu and AliExpress including fashion, toys, gadgets, cosmetics and jewelry.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://meowmeow-livid.vercel.app/">
+<meta property="og:url" content="https://meowmeow-livid.vercel.app/cookie.html">
 <meta property="og:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
-
-<!-- =========================
-TWITTER CARD
-========================= -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MeowMeow | Smart Affiliate Shopping">
-<meta name="twitter:description"
-content="Find trending products and the best deals across multiple marketplaces.">
+<meta name="twitter:title" content="Cookie Policy | MeowMeow">
+<meta name="twitter:description" content="MeowMeow helps you discover the best deals online. Compare products from Amazon, Daraz, Temu and AliExpress including fashion, toys, gadgets, cosmetics and jewelry.">
 <meta name="twitter:image" content="https://meowmeow-livid.vercel.app/images/logo.png">
-
-<!-- =========================
-FAVICON
-========================= -->
 <link rel="icon" type="image/png" href="/images/logo.png">
-
-<!-- =========================
-PERFORMANCE
-========================= -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<!-- =========================
-GOOGLE FONTS
-========================= -->
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
-<!-- =========================
-ICONS
-========================= -->
-<link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- =========================
-STRUCTURED DATA (SEO BOOST)
-========================= -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <script type="application/ld+json">
-{
-"@context": "https://schema.org",
-"@type": "WebSite",
-"name": "MeowMeow",
-"url": "https://meowmeow-livid.vercel.app",
-"potentialAction": {
-"@type": "SearchAction",
-"target": "https://meowmeow-livid.vercel.app/search?q={search_term_string}",
-"query-input": "required name=search_term_string"
-}
-}
+{"@context":"https://schema.org","@type":"WebSite","name":"MeowMeow","url":"https://meowmeow-livid.vercel.app","potentialAction":{"@type":"SearchAction","target":"https://meowmeow-livid.vercel.app/search?q={search_term_string}","query-input":"required name=search_term_string"}}
 </script>
-
-<!-- =========================
-CSS FILES
-========================= -->
 <link rel="stylesheet" href="/css/variables.css">
 <link rel="stylesheet" href="/css/base.css">
 <link rel="stylesheet" href="/css/buttons.css">
@@ -105,216 +43,188 @@ CSS FILES
 <link rel="stylesheet" href="/css/themes.css">
 <link rel="stylesheet" href="/css/style.css">
 <link rel="stylesheet" href="/css/animations.css">
-
-<!-- =========================
-GOOGLE ANALYTICS (ADD YOUR ID)
-========================= -->
+<style>
+/* ===== MOBILE FIX INLINE ===== */
+*,*::before,*::after{box-sizing:border-box}
+html,body{overflow-x:hidden;width:100%}
+img{max-width:100%;height:auto}
+/* NAV mobile */
+@media(max-width:900px){
+  .nav-links{display:none!important}
+  .menu-toggle{display:flex!important}
+  .nav-container{padding:0 16px;gap:8px}
+}
+@media(max-width:600px){
+  .nav-search{display:none}
+  .nav-search.search-open{display:block;position:fixed;top:64px;left:0;right:0;padding:8px 16px;background:var(--bg-primary,#fff);z-index:999;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+}
+/* Mobile menu */
+.mobile-menu{position:fixed;top:0;left:-100%;width:min(300px,85vw);height:100vh;background:var(--bg-primary,#fff);z-index:10000;transition:left .3s ease;overflow-y:auto;box-shadow:4px 0 20px rgba(0,0,0,.15);display:flex;flex-direction:column}
+.mobile-menu.is-open{left:0}
+.mobile-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.mobile-overlay.is-open{opacity:1;pointer-events:all}
+.mobile-menu-header{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;border-bottom:2px solid var(--primary,#ff6b6b)}
+.mobile-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--text-primary,#333);padding:4px}
+.mobile-nav-links{list-style:none;padding:8px 0;margin:0}
+.mobile-nav-links li a{display:block;padding:14px 24px;font-size:16px;border-bottom:1px solid var(--border-color,#eee);text-decoration:none;color:var(--text-primary,#333)}
+.mobile-theme-switch{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;border-top:1px solid var(--border-color,#eee);margin-top:auto}
+/* Hero mobile */
+@media(max-width:768px){
+  .hero{padding:80px 16px 40px}
+  .hero-container{flex-direction:column;text-align:center;gap:30px}
+  .hero-title{font-size:clamp(1.6rem,6vw,2.4rem)!important;line-height:1.2}
+  .hero-subtitle{font-size:clamp(.9rem,3.5vw,1.1rem)}
+  .hero-cta{flex-direction:column;gap:12px;align-items:center}
+  .hero-cta .btn{width:100%;max-width:300px;justify-content:center}
+  .hero-stats{flex-wrap:wrap;justify-content:center;gap:16px}
+  .hero-visual{display:none}
+}
+/* Product grid */
+@media(max-width:768px){.product-grid{grid-template-columns:repeat(2,1fr)!important;gap:12px}}
+@media(max-width:480px){.product-grid{grid-template-columns:1fr 1fr!important;gap:8px}}
+/* Filter tabs scroll */
+.filter-bar{display:flex;flex-wrap:nowrap;overflow-x:auto;-webkit-overflow-scrolling:touch;gap:8px;padding-bottom:8px;scrollbar-width:thin}
+.filter-bar::-webkit-scrollbar{height:4px}
+.filter-bar::-webkit-scrollbar-thumb{background:var(--primary,#ff6b6b);border-radius:4px}
+.filter-btn{white-space:nowrap;flex-shrink:0;padding:8px 16px;border-radius:20px;font-size:13px;cursor:pointer;border:2px solid var(--border-color,#eee);background:transparent;transition:all .2s}
+.filter-btn.active,.filter-btn:hover{background:var(--primary,#ff6b6b);color:#fff;border-color:var(--primary,#ff6b6b)}
+/* Categories grid */
+@media(max-width:768px){.category-grid{grid-template-columns:repeat(3,1fr)!important;gap:12px}}
+@media(max-width:480px){.category-grid{grid-template-columns:repeat(2,1fr)!important}}
+/* Timer mobile */
+@media(max-width:480px){
+  .deal-timer{flex-direction:column;align-items:center;gap:10px}
+  .timer-number{font-size:clamp(1.4rem,7vw,2rem)!important}
+}
+/* Team grid */
+@media(max-width:768px){.team-grid{grid-template-columns:repeat(2,1fr)!important}}
+@media(max-width:480px){.team-grid{grid-template-columns:1fr!important}}
+/* Features grid */
+@media(max-width:768px){.features-grid{grid-template-columns:repeat(2,1fr)!important;gap:16px}}
+@media(max-width:480px){.features-grid{grid-template-columns:1fr!important}}
+/* About hero */
+@media(max-width:768px){
+  .about-content{flex-direction:column!important;gap:24px}
+  .about-image img{width:100%;max-height:300px;object-fit:cover}
+  .about-stats{flex-wrap:wrap;justify-content:center;gap:16px}
+}
+/* Contact grid */
+@media(max-width:768px){.contact-grid{grid-template-columns:1fr!important;gap:30px}}
+/* Form row */
+@media(max-width:600px){
+  .form-row{flex-direction:column!important;gap:16px}
+  input,textarea,select{width:100%;font-size:16px!important}
+}
+/* Cart grid */
+@media(max-width:768px){.cart-grid{grid-template-columns:1fr!important;gap:20px}}
+/* Footer */
+@media(max-width:768px){
+  .footer-grid{grid-template-columns:1fr!important;gap:24px}
+  .footer-bottom{flex-direction:column!important;gap:12px;text-align:center}
+  .footer-top-row{flex-direction:column!important;gap:20px}
+}
+/* Newsletter */
+@media(max-width:600px){
+  .newsletter-card{flex-direction:column!important;gap:20px;padding:24px 16px!important}
+  .newsletter-form .form-group{flex-direction:column;gap:10px}
+  .newsletter-form input,.newsletter-form button{width:100%}
+}
+/* Blog grid */
+@media(max-width:768px){.blog-grid{grid-template-columns:1fr!important}}
+/* Section padding */
+@media(max-width:768px){
+  .section{padding:40px 16px!important}
+  .page-header{padding:80px 16px 30px!important}
+  .page-header h1,.page-title{font-size:clamp(1.4rem,6vw,2rem)}
+  .section-title{font-size:clamp(1.3rem,5vw,1.8rem)}
+  .container{padding:0 16px}
+}
+/* Marketplace bar */
+@media(max-width:600px){.marketplace-logos{flex-wrap:wrap;justify-content:center;gap:16px}}
+/* Trending grid */
+@media(max-width:768px){.trending-grid{grid-template-columns:1fr!important}}
+/* Map */
+@media(max-width:600px){.map-container iframe{height:250px!important}}
+/* Stats */
+.stat-number{display:block;font-weight:800;line-height:1}
+</style>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-8QLN8M6LJ3"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8QLN8M6LJ3');
+window.dataLayer=window.dataLayer||[];
+function gtag(){dataLayer.push(arguments);}
+gtag('js',new Date());
+gtag('config','G-8QLN8M6LJ3');
 </script>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5612689133797925" crossorigin="anonymous"></script>
 </head>
-
 <body data-theme="light">
-
-<!-- =========================
-SCROLL PROGRESS BAR
-========================= -->
 <div class="scroll-progress" id="scrollProgress"></div>
-
-<!-- =========================
-NAVBAR
-========================= -->
 <nav class="navbar" id="navbar" role="navigation">
-
 <div class="nav-container">
-
-<!-- LOGO -->
 <a href="index.html" class="nav-logo" aria-label="MeowMeow Home">
-
-<div class="logo-icon">
-<i class="fas fa-paw"></i>
-</div>
-
-<span class="logo-text">
-Meow<span class="logo-highlight">Meow</span>
-</span>
-
+  <div class="logo-icon"><i class="fas fa-paw"></i></div>
+  <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
 </a>
-
-<!-- SEARCH BAR -->
 <div class="nav-search" id="navSearch">
-
-<div class="search-wrapper">
-
-<i class="fas fa-search search-icon"></i>
-
-<input
-type="text"
-id="searchInput"
-placeholder="Search products, deals..."
-autocomplete="off"
-aria-label="Search products"
-/>
-
-<button
-class="search-clear"
-id="searchClear"
-aria-label="Clear search"
->
-
-<i class="fas fa-times"></i>
-
-</button>
-
-<div class="search-results" id="searchResults"></div>
-
+  <div class="search-wrapper">
+    <i class="fas fa-search search-icon"></i>
+    <input type="text" id="searchInput" placeholder="Search products, deals..." autocomplete="off" aria-label="Search products"/>
+    <button class="search-clear" id="searchClear" aria-label="Clear search"><i class="fas fa-times"></i></button>
+    <div class="search-results" id="searchResults"></div>
+  </div>
 </div>
-
-</div>
-
-<!-- DESKTOP NAV LINKS -->
 <ul class="nav-links" id="navLinks">
-
-<li><a href="index.html" class="nav-link">Home</a></li>
-
-<li><a href="products.html" class="nav-link">Products</a></li>
-
-<li><a href="deals.html" class="nav-link">Hot Deals</a></li>
-
-<li><a href="trending.html" class="nav-link">Trending</a></li>
-
-<li><a href="categories.html" class="nav-link">Categories</a></li>
-
-<li><a href="blog.html" class="nav-link">Blog</a></li>
-
-<li><a href="about.html" class="nav-link">About</a></li>
-
-<li><a href="contact.html" class="nav-link">Contact</a></li>
-
+  <li><a href="index.html" class="nav-link">Home</a></li>
+  <li><a href="products.html" class="nav-link">Products</a></li>
+  <li><a href="deals.html" class="nav-link">Hot Deals</a></li>
+  <li><a href="trending.html" class="nav-link">Trending</a></li>
+  <li><a href="categories.html" class="nav-link">Categories</a></li>
+  <li><a href="blog.html" class="nav-link">Blog</a></li>
+  <li><a href="about.html" class="nav-link">About</a></li>
+  <li><a href="contact.html" class="nav-link">Contact</a></li>
 </ul>
-
-<!-- NAV ACTIONS -->
 <div class="nav-actions">
-
-<!-- Mobile Search -->
-<button
-class="nav-btn search-toggle"
-id="searchToggle"
-aria-label="Open Search"
->
-<i class="fas fa-search"></i>
-</button>
-
-<!-- Cart -->
-<a
-href="cart.html"
-class="nav-btn cart-btn"
-aria-label="Shopping Cart"
->
-<i class="fas fa-shopping-cart"></i>
-<span class="cart-badge" id="cartCount">0</span>
-</a>
-
-<!-- Theme Toggle -->
-<button
-class="nav-btn theme-toggle"
-id="themeToggle"
-aria-label="Toggle Theme"
->
-<i class="fas fa-sun" id="themeIcon"></i>
-</button>
-
-<!-- Mobile Menu Button -->
-<button
-class="nav-btn menu-toggle"
-id="menuToggle"
-aria-label="Open Menu"
->
-
-<span class="hamburger">
-
-<span></span>
-<span></span>
-<span></span>
-
-</span>
-
-</button>
-
+  <button class="nav-btn search-toggle" id="searchToggle" aria-label="Open Search"><i class="fas fa-search"></i></button>
+  <a href="cart.html" class="nav-btn cart-btn" aria-label="Shopping Cart">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-badge" id="cartCount">0</span>
+  </a>
+  <button class="nav-btn theme-toggle" id="themeToggle" aria-label="Toggle Theme"><i class="fas fa-sun" id="themeIcon"></i></button>
+  <button class="nav-btn menu-toggle" id="menuToggle" aria-label="Open Menu">
+    <span class="hamburger"><span></span><span></span><span></span></span>
+  </button>
 </div>
-
 </div>
-
-<!-- MOBILE OVERLAY -->
 <div class="mobile-overlay" id="mobileOverlay"></div>
-
-<!-- MOBILE MENU -->
 <div class="mobile-menu" id="mobileMenu">
-
-<div class="mobile-menu-header">
-
-<a href="index.html" class="nav-logo">
-
-<div class="logo-icon">
-<i class="fas fa-paw"></i>
+  <div class="mobile-menu-header">
+    <a href="index.html" class="nav-logo">
+      <div class="logo-icon"><i class="fas fa-paw"></i></div>
+      <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
+    </a>
+    <button class="mobile-close" id="mobileClose" aria-label="Close Menu"><i class="fas fa-times"></i></button>
+  </div>
+  <ul class="mobile-nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="products.html">Products</a></li>
+    <li><a href="deals.html">Hot Deals</a></li>
+    <li><a href="trending.html">Trending</a></li>
+    <li><a href="categories.html">Categories</a></li>
+    <li><a href="blog.html">Blog</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+    <li><a href="cart.html">Cart</a></li>
+  </ul>
+  <div class="mobile-theme-switch">
+    <span>Dark Mode</span>
+    <label class="toggle-switch">
+      <input type="checkbox" id="mobileThemeToggle">
+      <span class="toggle-slider"></span>
+    </label>
+  </div>
 </div>
-
-<span class="logo-text">
-Meow<span class="logo-highlight">Meow</span>
-</span>
-
-</a>
-
-<button
-class="mobile-close"
-id="mobileClose"
-aria-label="Close Menu"
->
-
-<i class="fas fa-times"></i>
-
-</button>
-
-</div>
-
-<ul class="mobile-nav-links">
-
-<li><a href="index.html">Home</a></li>
-<li><a href="products.html">Products</a></li>
-<li><a href="deals.html">Hot Deals</a></li>
-<li><a href="trending.html">Trending</a></li>
-<li><a href="categories.html">Categories</a></li>
-<li><a href="blog.html">Blog</a></li>
-<li><a href="about.html">About</a></li>
-<li><a href="contact.html">Contact</a></li>
-<li><a href="cart.html">Cart</a></li>
-
-</ul>
-
-<div class="mobile-theme-switch">
-
-<span>Dark Mode</span>
-
-<label class="toggle-switch">
-
-<input type="checkbox" id="mobileThemeToggle">
-
-<span class="toggle-slider"></span>
-
-</label>
-
-</div>
-
-</div>
-
 </nav>
-
-   <main id="mainContent">
+<main id="mainContent">
     <section class="page-header">
       <div class="container">
         <h1>🍪 Cookie Policy</h1>
@@ -364,39 +274,30 @@ aria-label="Close Menu"
           <p>We may update this Cookie Policy periodically. Check the “Last Updated” date at the top.</p>
 
           <div class="contact-info-box">
-            <p><i class="fas fa-cookie-bite"></i> Questions about cookies? Email us: <a href="/cdn-cgi/l/email-protection#412e2f2d282f242c242e362c242e3601262c20282d6f222e2c"><span class="__cf_email__" data-cfemail="0867666461666d656d677f656d677f486f65696164266b6765">[email&#160;protected]</span></a></p>
+            <p><i class="fas fa-cookie-bite"></i> Questions about cookies? Email us: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-
-  <!-- ====== FOOTER ====== -->
-  <footer class="footer">
-    <div class="footer-wave">
-      <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
-        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
-        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
-      </svg>
-    </div>
-
-    <div class="footer-content">
-      <div class="container">
-        <div class="footer-grid">
-
-            <!-- Brand -->
+<footer class="footer">
+  <div class="footer-wave">
+    <svg viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25"></path>
+      <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5"></path>
+      <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z"></path>
+    </svg>
+  </div>
+  <div class="footer-content">
+    <div class="container">
+      <div class="footer-grid">
         <div class="footer-brand">
           <a href="index.html" class="footer-logo">
             <div class="logo-icon"><i class="fas fa-paw"></i></div>
             <span class="logo-text">Meow<span class="logo-highlight">Meow</span></span>
           </a>
-          <p>
-            MeowMeow is an independent product discovery and comparison website. 
-            We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more — so you can shop smarter and save.
-          </p>
-
+          <p>MeowMeow is an independent product discovery and comparison website. We help you find top-rated products, smart buying guides, and the best online deals across fashion, electronics, beauty, home, toys, and more.</p>
           <div class="footer-socials">
             <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
             <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
@@ -405,8 +306,6 @@ aria-label="Close Menu"
             <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
           </div>
         </div>
-
-        <!-- Quick Links -->
         <div class="footer-links-group">
           <h4>Quick Links</h4>
           <ul>
@@ -417,8 +316,6 @@ aria-label="Close Menu"
             <li><a href="blog.html">Blog</a></li>
           </ul>
         </div>
-
-        <!-- Support -->
         <div class="footer-links-group">
           <h4>Support</h4>
           <ul>
@@ -429,8 +326,6 @@ aria-label="Close Menu"
             <li><a href="returns.html">Returns</a></li>
           </ul>
         </div>
-
-        <!-- Legal -->
         <div class="footer-links-group">
           <h4>Legal</h4>
           <ul>
@@ -441,41 +336,13 @@ aria-label="Close Menu"
             <li><a href="dmca.html">DMCA</a></li>
           </ul>
         </div>
-
       </div>
-
-      <!-- TOP ROW (Newsletter + Disclosure) -->
       <div class="footer-top-row">
-        <!-- Newsletter -->
-        <!-- <div class="footer-newsletter">
-          <h4>Stay Updated</h4>
-          <p>Get weekly deals, product guides, and smart shopping tips.</p>
-          <form id="newsletter-form">
-            <input type="email" id="newsletter-email" placeholder="Your email address" required /> 
-            <button type="submit">Subscribe</button>
-          </form>
-          <small id="newsletter-msg">No spam. Unsubscribe anytime.</small>
-        </div> -->
-       
-        <p class="footer-disclosure">
-          Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.
-        </p>
-
+        <p class="footer-disclosure">Disclosure: MeowMeow participates in affiliate programs including Amazon, Daraz, Temu, and AliExpress. We may earn a commission at no extra cost to you.</p>
       </div>
-        
-
-      <!-- Bottom -->
       <div class="footer-bottom">
-
-        <p class="footer-copy">
-          &copy; 2026 MeowMeow. All rights reserved.
-        </p>
-
-        <p class="footer-contact">
-          Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a>
-        </p> 
-
-
+        <p class="footer-copy">&copy; 2026 MeowMeow. All rights reserved.</p>
+        <p class="footer-contact">Contact: <a href="mailto:onlinemeowmeow@gmail.com">onlinemeowmeow@gmail.com</a></p>
         <div class="footer-payments">
           <i class="fab fa-cc-visa"></i>
           <i class="fab fa-cc-mastercard"></i>
@@ -483,113 +350,304 @@ aria-label="Close Menu"
           <i class="fab fa-cc-apple-pay"></i>
           <i class="fab fa-cc-amex"></i>
         </div>
-
       </div>
     </div>
   </div>
 </footer>
-
-  <!-- ====== BACK TO TOP ====== -->
-  <button class="back-to-top" id="backToTop" aria-label="Back to top">
-    <i class="fas fa-chevron-up"></i>
-  </button>
-
-  <!-- ====== TOAST CONTAINER ====== -->
-  <div class="toast-container" id="toastContainer"></div>
-
-  <!-- ====== JS FILES (ORDER MATTERS) ====== -->
-  <script src="js/themes.js" defer></script>
-  <script src="js/main.js" defer></script>
-  <script src="js/navbar.js" defer></script>
-  <script src="js/search.js" defer></script>
-  <script src="js/scroll.js" defer></script>
-  <script src="js/script.js" defer></script>
-  <script src="js/components.js" defer></script>
-  <script src="js/products.js" defer></script>
-  <script src="js/cart.js" defer></script>
-  <script src="js/affiliate-amazon.js"></script>
-  <script src="js/affiliate-daraz.js"></script>
-  <script src="js/affiliate-aliexpress.js"></script>
-  <script src="js/affiliate-temu.js"></script>
-  <script src="js/affiliate-main.js"></script>
-
+<button class="back-to-top" id="backToTop" aria-label="Back to top"><i class="fas fa-chevron-up"></i></button>
+<div class="toast-container" id="toastContainer"></div>
+<script src="/js/themes.js" defer></script>
+<script src="/js/main.js" defer></script>
+<script src="/js/navbar.js" defer></script>
+<script src="/js/search.js" defer></script>
+<script src="/js/scroll.js" defer></script>
+<script src="/js/script.js" defer></script>
+<script src="/js/components.js" defer></script>
+<script src="/js/products.js" defer></script>
+<script src="/js/cart.js" defer></script>
+<script src="/js/affiliate.js"></script>
 <script>
-const newsletterForm = document.getElementById("newsletter-form");
-if (newsletterForm) { // Check if the form exists
-  newsletterForm.addEventListener("submit", function(e){
-    e.preventDefault();
-    const email = document.getElementById("newsletter-email").value;
-    const msg = document.getElementById("newsletter-msg");
+(function(){
+  // ── Mobile Menu ──────────────────────────────
+  var menuToggle   = document.getElementById('menuToggle');
+  var mobileMenu   = document.getElementById('mobileMenu');
+  var mobileClose  = document.getElementById('mobileClose');
+  var overlay      = document.getElementById('mobileOverlay');
+  var searchToggle = document.getElementById('searchToggle');
+  var navSearch    = document.getElementById('navSearch');
 
-    if(email){
-      msg.textContent = "✅ Thank you for subscribing!";
-      msg.style.color = "limegreen";
-      document.getElementById("newsletter-email").value = "";
+  function openMenu(){
+    if(mobileMenu)  mobileMenu.classList.add('is-open');
+    if(overlay)     overlay.classList.add('is-open');
+    document.body.style.overflow='hidden';
+  }
+  function closeMenu(){
+    if(mobileMenu)  mobileMenu.classList.remove('is-open');
+    if(overlay)     overlay.classList.remove('is-open');
+    document.body.style.overflow='';
+  }
+  if(menuToggle)  menuToggle.addEventListener('click', openMenu);
+  if(mobileClose) mobileClose.addEventListener('click', closeMenu);
+  if(overlay)     overlay.addEventListener('click', closeMenu);
+
+  // Mobile search toggle
+  if(searchToggle && navSearch){
+    searchToggle.addEventListener('click', function(){
+      navSearch.classList.toggle('search-open');
+    });
+  }
+
+  // ── Theme ────────────────────────────────────
+  var themeToggle       = document.getElementById('themeToggle');
+  var mobileThemeToggle = document.getElementById('mobileThemeToggle');
+  var themeIcon         = document.getElementById('themeIcon');
+
+  function applyTheme(t){
+    document.body.setAttribute('data-theme', t);
+    try{ localStorage.setItem('mm-theme', t); }catch(e){}
+    if(themeIcon) themeIcon.className = (t==='dark') ? 'fas fa-moon' : 'fas fa-sun';
+    if(mobileThemeToggle) mobileThemeToggle.checked = (t==='dark');
+  }
+  var saved = 'light';
+  try{ saved = localStorage.getItem('mm-theme') || 'light'; }catch(e){}
+  applyTheme(saved);
+
+  if(themeToggle){
+    themeToggle.addEventListener('click', function(){
+      applyTheme(document.body.getAttribute('data-theme')==='dark' ? 'light' : 'dark');
+    });
+  }
+  if(mobileThemeToggle){
+    mobileThemeToggle.addEventListener('change', function(){
+      applyTheme(this.checked ? 'dark' : 'light');
+    });
+  }
+
+  // ── Scroll progress ──────────────────────────
+  var progress = document.getElementById('scrollProgress');
+  var navbar   = document.getElementById('navbar');
+  var backTop  = document.getElementById('backToTop');
+  window.addEventListener('scroll', function(){
+    var st  = window.scrollY;
+    var dh  = document.documentElement.scrollHeight - window.innerHeight;
+    if(progress) progress.style.width = (dh>0 ? (st/dh)*100 : 0)+'%';
+    if(navbar)   navbar.classList.toggle('scrolled', st>50);
+    if(backTop)  backTop.classList.toggle('visible', st>400);
+  });
+  if(backTop) backTop.addEventListener('click', function(){ window.scrollTo({top:0,behavior:'smooth'}); });
+
+  // ── Cart count ───────────────────────────────
+  var cartCountEl = document.getElementById('cartCount');
+  if(cartCountEl){
+    try{
+      var cart = JSON.parse(localStorage.getItem('mm-cart') || '[]');
+      cartCountEl.textContent = cart.reduce(function(s,i){ return s+(i.qty||1); }, 0);
+    }catch(e){}
+  }
+
+  // ── Stat counter (IntersectionObserver) ──────
+  var counters = document.querySelectorAll('.stat-number[data-count]');
+  if(counters.length){
+    function animateCounter(el){
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      if(!target) return;
+      var suffix = el.getAttribute('data-suffix') || '';
+      var dur = 1800, step = target/(dur/16), cur = 0;
+      var timer = setInterval(function(){
+        cur += step;
+        if(cur >= target){
+          el.textContent = target.toLocaleString() + suffix;
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(cur).toLocaleString() + suffix;
+        }
+      }, 16);
     }
-  });
-}
-</script>
+    if('IntersectionObserver' in window){
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting && !e.target.dataset.animated){
+            e.target.dataset.animated='1';
+            animateCounter(e.target);
+          }
+        });
+      },{threshold:0.3});
+      counters.forEach(function(c){ io.observe(c); });
+    } else {
+      counters.forEach(animateCounter);
+    }
+  }
 
+  // ── Countdown timer ──────────────────────────
+  var timerH = document.getElementById('hours') || document.getElementById('timer-hours');
+  var timerM = document.getElementById('minutes') || document.getElementById('timer-mins');
+  var timerS = document.getElementById('seconds') || document.getElementById('timer-secs');
+  if(timerH && timerM && timerS){
+    var totalSec = 23*3600 + 59*60 + 59;
+    setInterval(function(){
+      if(totalSec<=0) totalSec=23*3600+59*60+59;
+      var h=Math.floor(totalSec/3600);
+      var m=Math.floor((totalSec%3600)/60);
+      var s=totalSec%60;
+      timerH.textContent = String(h).padStart(2,'0');
+      timerM.textContent = String(m).padStart(2,'0');
+      timerS.textContent = String(s).padStart(2,'0');
+      totalSec--;
+    },1000);
+  }
 
-<!-- ===== JS FIXES ===== -->
-<script>
-  // Affiliate disclosure close (safe)
-const disclosure = document.getElementById('affiliateDisclosure');
-const disclosureClose = document.getElementById('disclosureClose');
-if (disclosure && disclosureClose) {
-  disclosureClose.addEventListener('click', () => {
-    disclosure.style.display = 'none';
-  });
-}
+  // ── Filter buttons ───────────────────────────
+  var filterBtns = document.querySelectorAll('.filter-btn');
+  if(filterBtns.length){
+    filterBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        filterBtns.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var cat = btn.getAttribute('data-filter');
+        var cards = document.querySelectorAll('.product-card');
+        var visible = 0;
+        cards.forEach(function(card){
+          var match = (cat==='all') || (card.getAttribute('data-category')===cat);
+          card.style.display = match ? '' : 'none';
+          if(match) visible++;
+        });
+        var noRes = document.getElementById('noResults');
+        if(noRes) noRes.style.display = visible===0 ? 'block' : 'none';
+      });
+    });
+  }
 
-// Count animation (safe)
-const counters = document.querySelectorAll('.stat-number');
-if (counters.length > 0) {
-  counters.forEach(counter => {
-    const updateCount = () => {
-      const target = +counter.getAttribute('data-count');
-      const count = +counter.innerText;
-      const increment = Math.ceil(target / 200);
-      if (count < target) {
-        counter.innerText = count + increment;
-        setTimeout(updateCount, 20);
-      } else {
-        counter.innerText = target;
+  // ── Disclosure close ─────────────────────────
+  var discClose = document.getElementById('disclosureClose');
+  var discBox   = document.getElementById('affiliateDisclosure');
+  if(discClose && discBox) discClose.addEventListener('click', function(){ discBox.style.display='none'; });
+
+  // ── Newsletter forms ─────────────────────────
+  document.querySelectorAll('.newsletter-form').forEach(function(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var inp = form.querySelector('input[type="email"]');
+      var note = form.querySelector('.form-note');
+      if(inp && inp.value){
+        inp.value='';
+        if(note) note.innerHTML='<i class="fas fa-check-circle" style="color:#22c55e"></i> Thank you! You\'re subscribed.';
       }
-    };
-    updateCount();
+    });
   });
-}
 
+  // ── Contact form ─────────────────────────────
+  var contactForm = document.getElementById('contactForm');
+  if(contactForm){
+    contactForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = contactForm.querySelector('button[type="submit"]');
+      if(btn){
+        btn.innerHTML='<i class="fas fa-check"></i> Message Sent!';
+        btn.style.background='#22c55e';
+        setTimeout(function(){
+          btn.innerHTML='<i class="fas fa-paper-plane"></i> Send Message';
+          btn.style.background='';
+          contactForm.reset();
+        },3000);
+      }
+    });
+  }
 
-  // Countdown Timer
-  let timerHours = document.getElementById('timer-hours');
-if (timerHours) { // Only run if the timer exists
-  let timerMins = document.getElementById('timer-mins');
-  let timerSecs = document.getElementById('timer-secs');
-  let totalSeconds = 23*3600 + 59*60 + 59;
+  // ── Add to cart ──────────────────────────────
+  document.querySelectorAll('.add-to-cart-btn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var name  = btn.getAttribute('data-name')  || 'Product';
+      var price = btn.getAttribute('data-price') || '0';
+      var img   = btn.getAttribute('data-img')   || '';
+      try{
+        var cart = JSON.parse(localStorage.getItem('mm-cart') || '[]');
+        var existing = cart.find(function(i){ return i.name===name; });
+        if(existing){ existing.qty=(existing.qty||1)+1; }
+        else{ cart.push({name:name, price:parseFloat(price), img:img, qty:1}); }
+        localStorage.setItem('mm-cart', JSON.stringify(cart));
+        var cc = document.getElementById('cartCount');
+        if(cc) cc.textContent = cart.reduce(function(s,i){ return s+(i.qty||1); },0);
+        btn.innerHTML='<i class="fas fa-check"></i> Added!';
+        setTimeout(function(){ btn.innerHTML='<i class="fas fa-cart-plus"></i> Add to Cart'; },1500);
+      }catch(err){}
+    });
+  });
 
-  setInterval(() => {
-    let hours = Math.floor(totalSeconds / 3600);
-    let mins = Math.floor((totalSeconds % 3600) / 60);
-    let secs = totalSeconds % 60;
-    timerHours.innerText = hours.toString().padStart(2,'0');
-    timerMins.innerText = mins.toString().padStart(2,'0');
-    timerSecs.innerText = secs.toString().padStart(2,'0');
-    totalSeconds--;
-    if(totalSeconds < 0) totalSeconds = 24*3600 - 1;
-  }, 1000);
-}
+  // ── Cart page ────────────────────────────────
+  var cartEmpty   = document.getElementById('cartEmpty');
+  var cartContent = document.getElementById('cartContent');
+  var cartItems   = document.getElementById('cartItems');
+  var clearBtn    = document.getElementById('clearCartBtn');
 
+  function renderCart(){
+    try{
+      var cart = JSON.parse(localStorage.getItem('mm-cart') || '[]');
+      if(!cartEmpty||!cartContent) return;
+      if(cart.length===0){
+        cartEmpty.style.display='block';
+        cartContent.style.display='none';
+        return;
+      }
+      cartEmpty.style.display='none';
+      cartContent.style.display='block';
+      var subtotal=0;
+      if(cartItems){
+        cartItems.innerHTML='';
+        cart.forEach(function(item,idx){
+          subtotal += (item.price||0)*(item.qty||1);
+          var d=document.createElement('div');
+          d.className='cart-item';
+          d.style.cssText='display:flex;align-items:center;gap:16px;padding:16px;border:1px solid var(--border-color,#eee);border-radius:12px;margin-bottom:12px;';
+          d.innerHTML='<img src="'+item.img+'" style="width:70px;height:70px;object-fit:cover;border-radius:8px;" alt="'+item.name+'">'
+            +'<div style="flex:1"><strong>'+item.name+'</strong><br>$'+item.price.toFixed(2)+' x '+item.qty+'</div>'
+            +'<button onclick="removeCartItem('+idx+')" style="background:none;border:none;color:#ef4444;font-size:18px;cursor:pointer;"><i class="fas fa-trash"></i></button>';
+          cartItems.appendChild(d);
+        });
+      }
+      var tax=subtotal*0.08;
+      var ic=document.getElementById('itemCount');
+      var cs=document.getElementById('cartSubtotal');
+      var ct=document.getElementById('cartTax');
+      var ctt=document.getElementById('cartTotal');
+      if(ic) ic.textContent=cart.reduce(function(s,i){return s+(i.qty||1);},0);
+      if(cs) cs.textContent='$'+subtotal.toFixed(2);
+      if(ct) ct.textContent='$'+tax.toFixed(2);
+      if(ctt) ctt.innerHTML='<strong>$'+(subtotal+tax).toFixed(2)+'</strong>';
+    }catch(e){}
+  }
+
+  window.removeCartItem=function(idx){
+    try{
+      var cart=JSON.parse(localStorage.getItem('mm-cart')||'[]');
+      cart.splice(idx,1);
+      localStorage.setItem('mm-cart',JSON.stringify(cart));
+      renderCart();
+    }catch(e){}
+  };
+  window.proceedToCheckout=function(){
+    alert('You will be redirected to the individual product stores to complete your purchase.');
+  };
+  if(clearBtn){
+    clearBtn.addEventListener('click',function(){
+      localStorage.removeItem('mm-cart');
+      renderCart();
+    });
+  }
+  renderCart();
+
+  // ── Wishlist toggle ──────────────────────────
+  document.querySelectorAll('.wishlist-toggle').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var icon=btn.querySelector('i');
+      if(icon){
+        icon.classList.toggle('far');
+        icon.classList.toggle('fas');
+        icon.style.color=icon.classList.contains('fas')?'#ef4444':'';
+      }
+    });
+  });
+
+})();
 </script>
-
 </body>
 </html>
-
-
-
-
-
-
-
-
