@@ -1,0 +1,13 @@
+{
+  "name": "MeowMeow — Premium Affiliate Shopping",
+  "short_name": "MeowMeow",
+  "description": "A curated affiliate shopping platform. Compare products, then buy from the retailer.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0812",
+  "theme_color": "#e11d75",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

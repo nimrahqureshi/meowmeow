@@ -1,0 +1,167 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+# A newer push supersedes an in-flight run on the same branch.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  NODE_VERSION: "20"
+  # Test-only values. Real secrets belong in repository settings, never here.
+  DATABASE_URL: postgresql://postgres:postgres@localhost:5432/meowmeow_test
+  AUTH_SECRET: ci-only-secret-not-used-in-production
+  NEXT_PUBLIC_APP_URL: http://127.0.0.1:3000
+
+jobs:
+  # ---------------------------------------------------------------------------
+  # Fast feedback: static analysis and everything that needs no database.
+  # ---------------------------------------------------------------------------
+  static:
+    name: Lint, typecheck & unit tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Unit tests
+        run: npm run test:unit
+
+      - name: Component tests
+        run: npm run test:component
+
+  # ---------------------------------------------------------------------------
+  # Everything that needs a real database and a running server.
+  # ---------------------------------------------------------------------------
+  verify:
+    name: Integration, E2E & build
+    runs-on: ubuntu-latest
+    needs: static
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: meowmeow_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Apply migrations
+        run: npm run db:migrate
+
+      - name: Seed the catalogue
+        run: npm run db:seed
+
+      - name: Build
+        run: npm run build
+
+      - name: Performance budgets
+        run: npm run test:perf
+
+      - name: Start the server
+        run: |
+          npm run start &
+          npx wait-on http://127.0.0.1:3000/api/health --timeout 90000
+
+      - name: Integration tests
+        run: npm run test:integration
+
+      - name: Coverage
+        run: npm run test:coverage
+
+      - name: Upload coverage
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage/
+          retention-days: 14
+
+      # Playwright's browser download is cached separately from node_modules,
+      # keyed on the version, so it is fetched once per upgrade rather than
+      # once per run.
+      - name: Cache Playwright browsers
+        id: playwright-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+
+      - name: Install Playwright browsers
+        run: npx playwright install --with-deps chromium
+
+      - name: End-to-end, SEO, accessibility & responsive tests
+        run: npx playwright test
+        env:
+          BASE_URL: http://127.0.0.1:3000
+          PLAYWRIGHT_NO_SERVER: "1"
+
+      - name: Upload Playwright report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 14
+
+  # ---------------------------------------------------------------------------
+  # Dependency security. Runs in parallel; production dependencies are the gate.
+  # ---------------------------------------------------------------------------
+  audit:
+    name: Dependency audit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      # Production dependencies must be clean at high severity and above —
+      # this is what actually ships to users, so it fails the build.
+      - name: Audit production dependencies
+        run: npm audit --omit=dev --audit-level=high
+
+      # Dev-tooling advisories are reported for visibility but do not block a
+      # release: they never reach the deployed artifact.
+      - name: Audit all dependencies (advisory only)
+        run: npm audit || true

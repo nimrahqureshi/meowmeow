@@ -1,0 +1,418 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-fg: var(--fg);
+  --color-card: var(--card);
+  --color-soft: var(--soft);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-2: var(--brand-2);
+  --color-brand-vivid: var(--brand-vivid);
+  --color-gold: var(--gold);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-info: var(--info);
+  --color-brand-text: var(--brand-text);
+  --color-gold-text: var(--gold-text);
+  --color-success-text: var(--success-text);
+  --color-danger-text: var(--danger-text);
+  --color-info-text: var(--info-text);
+
+  /* Semantic surface aliases. `bg/card/soft` remain so existing components
+     keep working; these are the names the design system speaks in. */
+  --color-background: var(--bg);
+  --color-foreground: var(--fg);
+  --color-surface: var(--card);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-surface-muted: var(--soft);
+  --color-border: var(--line);
+  --color-border-subtle: var(--line-subtle);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted);
+
+  /* Radius scale */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 32px;
+
+  /* Container widths */
+  --container-content: 46rem;
+  --container-page: 80rem;
+  --container-wide: 96rem;
+
+  /* Elevation scale — three steps, all tinted with the brand hue so shadows
+     feel like they belong to this palette rather than generic grey blur. */
+  --shadow-e1: 0 1px 2px -1px var(--shadow-tint-weak), 0 2px 8px -2px var(--shadow-tint-weak);
+  --shadow-e2: 0 4px 12px -4px var(--shadow-tint), 0 12px 28px -12px var(--shadow-tint);
+  --shadow-e3: 0 8px 24px -8px var(--shadow-tint), 0 32px 64px -24px var(--shadow-tint-strong);
+
+  /* Motion scale — one vocabulary for every transition in the app. */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --dur-micro: 150ms;
+  --dur-base: 300ms;
+  --dur-slow: 500ms;
+  --dur-cinematic: 700ms;
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-sora), var(--font-manrope), ui-sans-serif, sans-serif;
+}
+
+:root {
+  /* Warm ivory paper, charcoal ink, restrained gold — editorial, not dashboard. */
+  --bg: #faf7f2;
+  --fg: #1b1714;
+  --card: #ffffff;
+  --surface-elevated: #fffdfa;
+  --soft: #f3ede4;
+  --muted: #6b6259;
+  --line: rgba(27, 23, 20, 0.10);
+  --line-subtle: rgba(27, 23, 20, 0.06);
+  --accent: #8a6217;        /* AA 4.6:1 on ivory — safe for small text as well as fills */
+  /* Gold is the brand accent in both themes now — the pink/violet pairing read
+     as a consumer-tech gradient rather than the editorial luxury direction.
+     Both values clear AA on ivory and white, so they are safe for small text
+     as well as fills and gradients. */
+  --brand: #8a6217;        /* AA 5.12:1 on --bg, 5.47:1 on --card */
+  --brand-vivid: #a8791f;  /* brighter gold for fills and large display type */
+  --brand-2: #5c421a;      /* umber — the darker stop in gold gradients */
+  --gold: #d97706;
+  --success: #059669;
+  --warning: #d97706;
+  --danger: #e11d48;
+  --info: #0284c7;
+
+  /* Text-safe accent variants — the vivid tokens above are for fills, icons
+     and large display type; these darker pairs are for small text so every
+     accent clears WCAG AA 4.5:1 on both --bg and --card. */
+  --brand-text: #8a6217;
+  --gold-text: #a95d05;
+  --success-text: #04815a;
+  --danger-text: #dc1c47;
+  --info-text: #0277b3;
+
+  --shadow-tint-weak: rgba(25, 22, 33, 0.06);
+  --shadow-tint: rgba(25, 22, 33, 0.10);
+  --shadow-tint-strong: rgba(25, 22, 33, 0.14);
+}
+
+.dark {
+  /* Deep charcoal rather than pure black, warm cream text, gold accent.
+     Surfaces stay close together so the page reads calm, not high-contrast. */
+  --bg: #0b0a09;
+  --fg: #f2ede4;
+  --card: #141211;
+  --surface-elevated: #1b1917;
+  --soft: #1c1a18;
+  --muted: #a49a8c;
+  --line: rgba(242, 237, 228, 0.10);
+  --line-subtle: rgba(242, 237, 228, 0.06);
+  --accent: #d4a24c;
+
+  --brand: #d4a24c;        /* muted gold — 8.55:1 on --bg */
+  --brand-vivid: #e8c98a;  /* champagne highlight for gradients */
+  --brand-2: #b8863b;      /* bronze — the deeper stop in gold gradients */
+  --gold: #d4a24c;
+  --success: #34d399;
+  --warning: #fbbf24;
+  --danger: #fb7185;
+  --info: #38bdf8;
+
+  --brand-text: #d4a24c;
+  --gold-text: #e0b467;
+  --success-text: #34d399;
+  --danger-text: #fb7185;
+  --info-text: #38bdf8;
+
+  --shadow-tint-weak: rgba(0, 0, 0, 0.40);
+  --shadow-tint: rgba(0, 0, 0, 0.55);
+  --shadow-tint-strong: rgba(0, 0, 0, 0.70);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  h1, h2, h3 {
+    text-wrap: balance;
+  }
+  img {
+    font-style: italic; /* styles broken-image alt text distinctly */
+  }
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.3s ease;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--brand) 30%, transparent);
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--muted) 35%, transparent);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+/* ---------- Premium helpers ---------- */
+
+/* Custom helper classes live in the components layer so Tailwind
+   utilities (which come later in the cascade) can always override them —
+   e.g. `absolute` on a `.btn-shine` button must win. */
+@layer components {
+  .glass {
+    background: color-mix(in srgb, var(--card) 62%, transparent);
+    backdrop-filter: blur(18px) saturate(160%);
+    -webkit-backdrop-filter: blur(18px) saturate(160%);
+    border: 1px solid var(--line);
+  }
+
+  .glass-strong {
+    background: color-mix(in srgb, var(--card) 82%, transparent);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid var(--line);
+  }
+
+  .text-gradient {
+    /* Token-driven so the whole site follows the theme. The hardcoded cyan and
+       violet stops were what made dark mode read as a tech gradient. */
+    background: linear-gradient(100deg, var(--brand-vivid) 0%, var(--brand) 55%, var(--brand-2) 110%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(100deg, var(--brand-vivid) 0%, var(--brand) 70%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .card-hover {
+    transition:
+      transform var(--dur-base) var(--ease-out-soft),
+      box-shadow var(--dur-base) var(--ease-out-soft),
+      border-color var(--dur-base) ease;
+    box-shadow: var(--shadow-e1);
+  }
+  .card-hover:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-e3), 0 20px 50px -18px color-mix(in srgb, var(--brand) 22%, transparent);
+    border-color: color-mix(in srgb, var(--brand) 35%, var(--line));
+  }
+  /* Keyboard parity: focusing anything inside a card lifts it exactly like hover. */
+  .card-hover:focus-within {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-e3);
+    border-color: color-mix(in srgb, var(--brand) 35%, var(--line));
+  }
+
+  /* Elevation utilities */
+  .elev-1 { box-shadow: var(--shadow-e1); }
+  .elev-2 { box-shadow: var(--shadow-e2); }
+  .elev-3 { box-shadow: var(--shadow-e3); }
+
+  .btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(105deg, transparent 40%, rgba(255, 255, 255, 0.35) 50%, transparent 60%);
+    transform: translateX(-120%);
+    transition: transform 0.7s ease;
+  }
+  .btn-shine:hover::after {
+    transform: translateX(120%);
+  }
+
+  .noise::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.025;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* ---------- Aurora / floating elements ---------- */
+
+  .aurora-blob {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(90px);
+    opacity: 0.5;
+    will-change: transform;
+    animation: blob-drift 22s ease-in-out infinite alternate;
+  }
+
+  .float-slow {
+    animation: floaty 7s ease-in-out infinite;
+  }
+  .float-slower {
+    animation: floaty 11s ease-in-out infinite reverse;
+  }
+
+  .marquee-track {
+    animation: marquee 38s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+
+  .skeleton {
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--soft) 60%, transparent) 25%,
+      color-mix(in srgb, var(--card) 80%, transparent) 50%,
+      color-mix(in srgb, var(--soft) 60%, transparent) 75%
+    );
+    background-size: 600px 100%;
+    animation: shimmer 1.6s linear infinite;
+  }
+
+  .animate-gradient-x {
+    background-size: 200% 200%;
+    animation: gradient-x 8s ease infinite;
+  }
+
+  .ping-slow {
+    animation: ping-slow 2.4s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  .pop-in {
+    animation: pop-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .reveal {
+    animation: slide-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+@keyframes blob-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(60px, -50px) scale(1.15);
+  }
+  100% {
+    transform: translate(-40px, 40px) scale(0.95);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -600px 0;
+  }
+  100% {
+    background-position: 600px 0;
+  }
+}
+
+@keyframes gradient-x {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes ping-slow {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  80%,
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+@keyframes pop-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.92) translateY(8px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
